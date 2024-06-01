@@ -2,10 +2,10 @@
 # plugin
 plugin-gradle-android = "8.4.1"
 plugin-ben-manes = "0.51.0"
-plugin-google-services = "4.4.1"
+plugin-google-services = "4.4.2"
 plugin-firebase-crashlytics = "3.0.1"
 plugin-firebase-perf = "1.4.2"
-plugin-ksp = "1.9.24-1.0.20"
+plugin-ksp = "2.0.0-1.0.21"
 # project
 version = "1"
 version-name = "1.0.0"
@@ -17,9 +17,9 @@ sdk-target = "34"
 jvm-target = "17"
 jvm-target-kotlin = "17"
 # kotlin
-kotlin = "1.9.24"
+kotlin = "2.0.0"
 kotlin-atomic = "0.24.0"
-kotlin-coroutines = "1.8.1"
+kotlin-coroutines = "1.9.0-RC"
 kotlin-immutable-collections = "0.3.7"
 kotlin-serialization-json = "1.6.3"
 
@@ -27,20 +27,19 @@ kotlin-serialization-json = "1.6.3"
 jetpack-core = "1.13.1"
 jetpack-activity = "1.9.0"
 jetpack-annotation = "1.8.0"
-jetpack-appcompat = "1.6.1"
+jetpack-appcompat = "1.7.0"
 jetpack-browser = "1.8.0"
-jetpack-lifecycle = "2.8.0"
+jetpack-lifecycle = "2.8.1"
 jetpack-splash = "1.0.1"
 # compose
 compose-bom = "2024.05.00"
 compose-activity = "1.9.0"
-compose-compiler = "1.5.14"
 # navigation
 compose-navigation = "2.7.7"
 
 ## frameworks
 # firebase
-firebase-bom = "33.0.0"
+firebase-bom = "33.1.0"
 # di
 di-hilt = "2.51.1"
 di-hilt-navigation-compose = "1.2.0"
@@ -111,6 +110,7 @@ firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "plugi
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "plugin-ksp" }
 
 [bundles]
