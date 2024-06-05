@@ -1,8 +1,8 @@
 package ua.frist008.action.record.ui.entity.base
 
-import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.Stable
 
-@Immutable class UIState<Entity : UIEntity, Error : Exception> private constructor(
+@Stable class UIState<Entity : UIEntity, Error : Exception> private constructor(
     val entity: Entity? = null,
     val cause: Error? = null,
     val isLoading: Boolean = entity == null && cause == null,
