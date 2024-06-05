@@ -13,18 +13,23 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.hilt.navigation.compose.hiltViewModel
 import ua.frist008.action.record.presentation.impl.SettingsViewModel
-import ua.frist008.action.record.ui.entity.SettingsUIEntity
+import ua.frist008.action.record.ui.entity.SettingsSuccessState
 import ua.frist008.action.record.ui.entity.base.UIState
+import ua.frist008.action.record.util.exception.unsupportedUI
 import ua.frist008.action.record.util.ui.ExceptionPreviewProvider
 
 @Composable
 fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
-    val state: UIState<SettingsUIEntity, Exception> by viewModel.state.collectAsState()
-    val currentState = state
-    when {
-        currentState.entity != null -> SuccessScreen(currentState.entity)
-        currentState.cause != null -> ErrorScreen(currentState.cause)
-        else -> LoadingScreen()
+    val state by viewModel.state.collectAsState()
+    when (val currentState = state) {
+        is SettingsSuccessState -> SuccessScreen(currentState)
+        is UIState.Error -> ErrorScreen(currentState)
+
+        is UIState.Progress -> {
+            // None
+        }
+
+        else -> unsupportedUI()
     }
 }
 
@@ -33,7 +38,7 @@ fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
     showSystemUi = true,
 )
 @Composable
-private fun SuccessScreen(@PreviewParameter(SettingsProvider::class) entry: SettingsUIEntity) {
+private fun SuccessScreen(@PreviewParameter(SettingsProvider::class) entry: SettingsSuccessState) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Text(
             text = "Android",
@@ -50,15 +55,7 @@ private fun SuccessScreen(@PreviewParameter(SettingsProvider::class) entry: Sett
 private fun ErrorScreen(@PreviewParameter(ExceptionPreviewProvider::class) cause: Exception) {
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-)
-@Composable
-private fun LoadingScreen() {
-}
+private class SettingsProvider : PreviewParameterProvider<SettingsSuccessState> {
 
-private class SettingsProvider : PreviewParameterProvider<SettingsUIEntity> {
-
-    override val values = sequenceOf(SettingsUIEntity())
+    override val values = sequenceOf(SettingsSuccessState())
 }
