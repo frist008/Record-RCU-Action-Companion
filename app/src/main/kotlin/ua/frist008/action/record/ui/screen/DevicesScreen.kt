@@ -12,19 +12,29 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.hilt.navigation.compose.hiltViewModel
+import kotlinx.collections.immutable.PersistentList
+import kotlinx.collections.immutable.persistentListOf
 import ua.frist008.action.record.presentation.impl.DevicesViewModel
-import ua.frist008.action.record.ui.entity.DeviceUIEntity
 import ua.frist008.action.record.ui.entity.base.UIState
+import ua.frist008.action.record.ui.entity.device.DeviceProgressState
+import ua.frist008.action.record.ui.entity.device.DeviceSuccessState
+import ua.frist008.action.record.ui.entity.device.DevicesSuccessState
+import ua.frist008.action.record.util.exception.unsupportedUI
 import ua.frist008.action.record.util.ui.ExceptionPreviewProvider
 
 @Composable
 fun DevicesScreen(viewModel: DevicesViewModel = hiltViewModel()) {
-    val state: UIState<DeviceUIEntity, Exception> by viewModel.state.collectAsState()
-    val currentState = state
-    when {
-        currentState.entity != null -> SuccessScreen(currentState.entity)
-        currentState.cause != null -> ErrorScreen(currentState.cause)
-        else -> LoadingScreen()
+    val state by viewModel.state.collectAsState()
+    when (val currentState = state) {
+        is DevicesSuccessState -> SuccessScreen(currentState)
+        is UIState.Error -> ErrorScreen(currentState)
+        is DeviceProgressState -> LoadingScreen(currentState)
+
+        is UIState.Progress -> {
+            // None
+        }
+
+        else -> unsupportedUI()
     }
 }
 
@@ -33,7 +43,7 @@ fun DevicesScreen(viewModel: DevicesViewModel = hiltViewModel()) {
     showSystemUi = true,
 )
 @Composable
-private fun SuccessScreen(@PreviewParameter(DeviceProvider::class) entry: DeviceUIEntity) {
+private fun SuccessScreen(@PreviewParameter(DevicesProvider::class) list: DevicesSuccessState) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Text(
             text = "Android",
@@ -47,7 +57,7 @@ private fun SuccessScreen(@PreviewParameter(DeviceProvider::class) entry: Device
     showSystemUi = true,
 )
 @Composable
-private fun ErrorScreen(@PreviewParameter(ExceptionPreviewProvider::class) cause: Exception) {
+private fun ErrorScreen(@PreviewParameter(ExceptionPreviewProvider::class) cause: UIState.Error) {
 }
 
 @Preview(
@@ -55,10 +65,23 @@ private fun ErrorScreen(@PreviewParameter(ExceptionPreviewProvider::class) cause
     showSystemUi = true,
 )
 @Composable
-private fun LoadingScreen() {
+private fun LoadingScreen(@PreviewParameter(DeviceProgressProvider::class) entity: DeviceProgressState) {
 }
 
-private class DeviceProvider : PreviewParameterProvider<DeviceUIEntity> {
+private class DevicesProvider : PreviewParameterProvider<PersistentList<DeviceSuccessState>> {
 
-    override val values = sequenceOf(DeviceUIEntity())
+    override val values = sequenceOf(
+        persistentListOf(
+            DeviceSuccessState(
+                status = true,
+                name = "Name PC",
+                address = "192.168.0.1:2555",
+            ),
+        ),
+    )
+}
+
+private class DeviceProgressProvider : PreviewParameterProvider<DeviceProgressState> {
+
+    override val values = sequenceOf(DeviceProgressState("5"))
 }

@@ -13,18 +13,23 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.hilt.navigation.compose.hiltViewModel
 import ua.frist008.action.record.presentation.impl.RecordViewModel
-import ua.frist008.action.record.ui.entity.RecordUIEntity
+import ua.frist008.action.record.ui.entity.RecordSuccessState
 import ua.frist008.action.record.ui.entity.base.UIState
+import ua.frist008.action.record.util.exception.unsupportedUI
 import ua.frist008.action.record.util.ui.ExceptionPreviewProvider
 
 @Composable
 fun RecordScreen(viewModel: RecordViewModel = hiltViewModel()) {
-    val state: UIState<RecordUIEntity, Exception> by viewModel.state.collectAsState()
-    val currentState = state
-    when {
-        currentState.entity != null -> SuccessScreen(currentState.entity)
-        currentState.cause != null -> ErrorScreen(currentState.cause)
-        else -> LoadingScreen()
+    val state by viewModel.state.collectAsState()
+    when (val currentState = state) {
+        is RecordSuccessState -> SuccessScreen(currentState)
+        is UIState.Error -> ErrorScreen(currentState)
+
+        is UIState.Progress -> {
+            // None
+        }
+
+        else -> unsupportedUI()
     }
 }
 
@@ -33,7 +38,7 @@ fun RecordScreen(viewModel: RecordViewModel = hiltViewModel()) {
     showSystemUi = true,
 )
 @Composable
-private fun SuccessScreen(@PreviewParameter(RecordProvider::class) entry: RecordUIEntity) {
+private fun SuccessScreen(@PreviewParameter(RecordProvider::class) entry: RecordSuccessState) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Text(
             text = "Android",
@@ -50,15 +55,7 @@ private fun SuccessScreen(@PreviewParameter(RecordProvider::class) entry: Record
 private fun ErrorScreen(@PreviewParameter(ExceptionPreviewProvider::class) cause: Exception) {
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-)
-@Composable
-private fun LoadingScreen() {
-}
+private class RecordProvider : PreviewParameterProvider<RecordSuccessState> {
 
-private class RecordProvider : PreviewParameterProvider<RecordUIEntity> {
-
-    override val values = sequenceOf(RecordUIEntity())
+    override val values = sequenceOf(RecordSuccessState())
 }
