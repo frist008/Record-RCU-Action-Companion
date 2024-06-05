@@ -5,8 +5,8 @@ import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.android.components.ActivityRetainedComponent
 import dagger.hilt.android.scopes.ActivityRetainedScoped
-import ua.frist008.action.record.presentation.base.entity.PresentationDependenciesDelegate
-import ua.frist008.action.record.presentation.impl.entity.PresentationDependencies
+import ua.frist008.action.record.presentation.base.dependency.PresentationDependenciesDelegate
+import ua.frist008.action.record.presentation.impl.dependency.PresentationDependencies
 
 @Module
 @InstallIn(ActivityRetainedComponent::class)

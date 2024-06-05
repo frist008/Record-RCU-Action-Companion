@@ -10,12 +10,11 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import ua.frist008.action.record.presentation.base.entity.PresentationDependenciesDelegate
-import ua.frist008.action.record.ui.entity.base.UIEntity
+import ua.frist008.action.record.presentation.base.dependency.PresentationDependenciesDelegate
 import ua.frist008.action.record.ui.entity.base.UIState
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseViewModel<State : UIState<out UIEntity, out Exception>>(
+abstract class BaseViewModel(
     dependencies: PresentationDependenciesDelegate,
 ) : ViewModel(),
     PresentationDependenciesDelegate by dependencies {
@@ -23,12 +22,12 @@ abstract class BaseViewModel<State : UIState<out UIEntity, out Exception>>(
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, cause ->
         runCatching { onFailure(cause) }
             .onSuccess { Timber.i(cause) }
-            .onFailure { innterCause -> Timber.e(cause, innterCause.stackTraceToString()) }
+            .onFailure { innerCause -> Timber.e(cause, innerCause.stackTraceToString()) }
     }
 
     protected val scope by lazy(LazyThreadSafetyMode.NONE) { viewModelScope }
 
-    protected abstract val mutableState: MutableStateFlow<State>
+    protected val mutableState = MutableStateFlow<UIState>(UIState.Progress())
     val state by lazy(LazyThreadSafetyMode.NONE) { mutableState.asStateFlow() }
 
     protected fun launch(
