@@ -10,6 +10,7 @@
 
 # Intellij
 /.idea
+/.kotlin
 
 # Project
 .editorconfig

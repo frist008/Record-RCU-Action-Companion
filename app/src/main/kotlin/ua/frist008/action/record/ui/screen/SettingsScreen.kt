@@ -16,14 +16,14 @@ import ua.frist008.action.record.presentation.impl.SettingsViewModel
 import ua.frist008.action.record.ui.entity.SettingsSuccessState
 import ua.frist008.action.record.ui.entity.base.UIState
 import ua.frist008.action.record.util.exception.unsupportedUI
-import ua.frist008.action.record.util.ui.ExceptionPreviewProvider
+import ua.frist008.action.record.util.ui.preview.ErrorPreviewProvider
 
 @Composable
 fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
     when (val currentState = state) {
-        is SettingsSuccessState -> SuccessScreen(currentState)
-        is UIState.Error -> ErrorScreen(currentState)
+        is SettingsSuccessState -> SettingsSuccessScreen(currentState)
+        is UIState.Error -> SettingsErrorScreen(currentState)
 
         is UIState.Progress -> {
             // None
@@ -38,7 +38,7 @@ fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
     showSystemUi = true,
 )
 @Composable
-private fun SuccessScreen(@PreviewParameter(SettingsProvider::class) entry: SettingsSuccessState) {
+private fun SettingsSuccessScreen(@PreviewParameter(SettingsProvider::class) entry: SettingsSuccessState) {
     Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
         Text(
             text = "Android",
@@ -52,7 +52,7 @@ private fun SuccessScreen(@PreviewParameter(SettingsProvider::class) entry: Sett
     showSystemUi = true,
 )
 @Composable
-private fun ErrorScreen(@PreviewParameter(ExceptionPreviewProvider::class) cause: Exception) {
+private fun SettingsErrorScreen(@PreviewParameter(ErrorPreviewProvider::class) cause: Exception) {
 }
 
 private class SettingsProvider : PreviewParameterProvider<SettingsSuccessState> {
