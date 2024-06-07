@@ -40,6 +40,8 @@ compose-navigation = "2.7.7"
 ## frameworks
 # firebase
 firebase-bom = "33.1.0"
+# database
+room = "2.6.1"
 # di
 di-hilt = "2.51.1"
 di-hilt-navigation-compose = "1.2.0"
@@ -88,6 +90,9 @@ firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "fir
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 firebase-perf = { module = "com.google.firebase:firebase-perf" }
+# database
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 # di
 di-hilt = { module = "com.google.dagger:hilt-android", version.ref = "di-hilt" }
 di-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "di-hilt-navigation-compose" }
@@ -107,6 +112,7 @@ di-hilt = { id = "com.google.dagger.hilt.android", version.ref = "di-hilt" }
 google-services = { id = "com.google.gms.google-services", version.ref = "plugin-google-services" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "plugin-firebase-crashlytics" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "plugin-firebase-perf" }
+room = { id = "androidx.room", version.ref = "room" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
@@ -155,6 +161,8 @@ firebase-bom = [
     "firebase-crashlytics",
     "firebase-perf",
 ]
+database = ["room-runtime"]
+database-compiler = ["room-compiler"]
 di = ["di-hilt", "di-hilt-navigation-compose"]
 di-compiler = ["di-hilt-compiler"]
 multithreading = [

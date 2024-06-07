@@ -7,4 +7,11 @@ import kotlinx.coroutines.flow.MutableSharedFlow
  */
 class Navigator(
     private val navigatorSharedFlow: MutableSharedFlow<NavCommand> = MutableSharedFlow(),
-) : MutableSharedFlow<NavCommand> by navigatorSharedFlow
+) : MutableSharedFlow<NavCommand> by navigatorSharedFlow {
+
+    @Deprecated(
+        message = "Unsupported",
+        replaceWith = ReplaceWith("emit(value)"),
+        level = DeprecationLevel.ERROR,
+    ) override fun tryEmit(value: NavCommand): Nothing = throw UnsupportedOperationException()
+}

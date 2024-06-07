@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.firebase.perf)
+    alias(libs.plugins.room)
     alias(libs.plugins.google.services)
 }
 
@@ -72,6 +73,10 @@ android {
         buildConfig = true
     }
 
+    room {
+        schemaDirectory("$projectDir/schemas")
+    }
+
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
@@ -100,6 +105,8 @@ dependencies {
 
     // Framework
     implementation(libs.bundles.di)
+    ksp(libs.bundles.database.compiler)
+    implementation(libs.bundles.database)
     ksp(libs.bundles.di.compiler)
     implementation(libs.bundles.multithreading)
     implementation(libs.bundles.network)

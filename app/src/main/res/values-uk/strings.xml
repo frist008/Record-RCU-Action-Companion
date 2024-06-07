@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Devices -->
+
+    <string name="devices_title">Пристрої</string>
+    <string name="device_available">Доступний</string>
+    <string name="device_not_available">Недоступний</string>
+    <string name="device_not_available_message">Пристрій недоступний</string>
+
+</resources>

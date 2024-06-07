@@ -2,38 +2,39 @@ package ua.frist008.action.record.ui.theme.typography
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
 
-val titleSmallStyle = TextStyle(
-    fontFamily = FontFamily.Default,
-    fontWeight = FontWeight.Medium,
-    fontSize = 11.sp,
-    lineHeight = 16.sp,
-    letterSpacing = 0.5.sp
-)
+private val LocalTypography = Typography()
 
-val titleMediumStyle = TextStyle(
-    fontFamily = FontFamily.Default,
-    fontWeight = FontWeight.SemiBold,
-    fontSize = 16.sp,
-    lineHeight = 24.sp,
-    letterSpacing = 0.15.sp,
-    fontStyle = FontStyle.Italic,
-)
-
-val titleLargeStyle = TextStyle(
-    fontFamily = FontFamily.Default,
-    fontWeight = FontWeight.Normal,
-    fontSize = 22.sp,
-    lineHeight = 28.sp,
-    letterSpacing = 0.sp,
-)
+val DisplayLargeStyle: TextStyle = LocalTypography.displayLarge
+val DisplayMediumStyle: TextStyle = LocalTypography.displayMedium
+val DisplaySmallStyle: TextStyle = LocalTypography.displaySmall
+val HeadlineLargeStyle: TextStyle = LocalTypography.headlineLarge
+val HeadlineMediumStyle: TextStyle = LocalTypography.headlineMedium
+val HeadlineSmallStyle: TextStyle = LocalTypography.headlineSmall
+val TitleLargeStyle: TextStyle = LocalTypography.titleLarge
+val TitleMediumStyle: TextStyle = LocalTypography.titleMedium
+val TitleSmallStyle: TextStyle = LocalTypography.titleSmall
+val BodyLargeStyle: TextStyle = LocalTypography.bodyLarge
+val BodyMediumStyle: TextStyle = LocalTypography.bodyMedium
+val BodySmallStyle: TextStyle = LocalTypography.bodySmall
+val LabelLargeStyle: TextStyle = LocalTypography.labelLarge
+val LabelMediumStyle: TextStyle = LocalTypography.labelMedium
+val LabelSmallStyle: TextStyle = LocalTypography.labelSmall
 
 val Typography = Typography(
-    titleLarge = titleLargeStyle,
-    titleMedium = titleMediumStyle,
-    titleSmall = titleSmallStyle,
+    displayLarge = DisplayLargeStyle,
+    displayMedium = DisplayMediumStyle,
+    displaySmall = DisplaySmallStyle,
+    headlineLarge = HeadlineLargeStyle,
+    headlineMedium = HeadlineMediumStyle,
+    headlineSmall = HeadlineSmallStyle,
+    titleLarge = TitleLargeStyle,
+    titleMedium = TitleMediumStyle,
+    titleSmall = TitleSmallStyle,
+    bodyLarge = BodyLargeStyle,
+    bodyMedium = BodyMediumStyle,
+    bodySmall = BodySmallStyle,
+    labelLarge = LabelLargeStyle,
+    labelMedium = LabelMediumStyle,
+    labelSmall = LabelSmallStyle,
 )
