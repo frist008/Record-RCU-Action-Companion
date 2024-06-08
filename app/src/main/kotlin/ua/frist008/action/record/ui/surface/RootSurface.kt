@@ -12,9 +12,9 @@ import kotlinx.coroutines.flow.onEach
 import ua.frist008.action.record.presentation.impl.RootNavigationViewModel
 import ua.frist008.action.record.ui.navigation.NavCommand
 import ua.frist008.action.record.ui.navigation.Router
-import ua.frist008.action.record.ui.screen.DevicesScreen
 import ua.frist008.action.record.ui.screen.RecordScreen
 import ua.frist008.action.record.ui.screen.SettingsScreen
+import ua.frist008.action.record.ui.screen.device.DevicesScreen
 import ua.frist008.action.record.ui.theme.RootTheme
 
 @Composable

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="leak_canary_display_activity_label" translatable="false">@string/app_name</string>
+
+</resources>
