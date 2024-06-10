@@ -16,14 +16,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
-import androidx.core.content.res.ResourcesCompat
 import kotlinx.collections.immutable.persistentListOf
 import ua.frist008.action.record.ui.component.CircleStatusComponent
 import ua.frist008.action.record.ui.component.item.TextColumnItemComponent
@@ -72,14 +69,12 @@ private fun DeviceComponent(
             .padding(horizontal = 16.dp, vertical = 24.dp),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        if (device.deviceType.imageRes != ResourcesCompat.ID_NULL) {
-            Image(
-                imageVector = ImageVector.vectorResource(id = device.deviceType.imageRes),
-                contentDescription = stringResource(id = device.deviceType.description),
-                modifier = Modifier.height(48.dp),
-            )
-            Spacer(modifier = Modifier.width(16.dp))
-        }
+        Image(
+            imageVector = device.deviceType.image,
+            contentDescription = stringResource(id = device.deviceType.description),
+            modifier = Modifier.height(48.dp),
+        )
+        Spacer(modifier = Modifier.width(16.dp))
 
         TextColumnItemComponent(
             text = device.name,
