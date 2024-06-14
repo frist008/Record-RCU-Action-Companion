@@ -1,18 +1,18 @@
 [versions]
 # plugin
-plugin-gradle-android = "8.4.1"
+plugin-gradle-android = "8.5.0"
 plugin-ben-manes = "0.51.0"
 plugin-google-services = "4.4.2"
 plugin-firebase-crashlytics = "3.0.1"
 plugin-firebase-perf = "1.4.2"
-plugin-ksp = "2.0.0-1.0.21"
+plugin-ksp = "2.0.0-1.0.22"
 # project
 version = "1"
 version-name = "1.0.0"
 build-tools-version = "34.0.0"
 sdk-min = "26"
 sdk-compile = "34"
-sdk-compile-Extension = "11" # for compileSdk 34
+sdk-compile-Extension = "12" # for compileSdk 34
 sdk-target = "34"
 jvm-target = "17"
 jvm-target-kotlin = "17"
@@ -21,7 +21,7 @@ kotlin = "2.0.0"
 kotlin-atomic = "0.24.0"
 kotlin-coroutines = "1.9.0-RC"
 kotlin-immutable-collections = "0.3.7"
-kotlin-serialization-json = "1.6.3"
+kotlin-serialization-json = "1.7.0"
 
 # jetpack
 jetpack-core = "1.13.1"
@@ -29,11 +29,12 @@ jetpack-activity = "1.9.0"
 jetpack-annotation = "1.8.0"
 jetpack-appcompat = "1.7.0"
 jetpack-browser = "1.8.0"
-jetpack-lifecycle = "2.8.1"
+jetpack-lifecycle = "2.8.2"
 jetpack-splash = "1.0.1"
 # compose
-compose-bom = "2024.05.00"
+compose-bom = "2024.06.00"
 compose-activity = "1.9.0"
+compose-constraintlayout = "1.0.1"
 # navigation
 compose-navigation = "2.7.7"
 
@@ -76,12 +77,13 @@ jetpack-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", ver
 jetpack-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "jetpack-lifecycle" }
 # compose
 compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
-compose-activity = { module = "androidx.activity:activity-compose", version.ref = "compose-activity" }
 compose-foundation = { module = "androidx.compose.foundation:foundation" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-material = { module = "androidx.compose.material:material" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
 compose-tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-activity = { module = "androidx.activity:activity-compose", version.ref = "compose-activity" }
+compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "compose-constraintlayout" }
 # navigation
 compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
 
@@ -149,6 +151,7 @@ navigation = ["compose-navigation"]
 # compose
 compose = [
     "compose-activity",
+    "compose-constraintlayout",
     "compose-foundation",
     "compose-material3",
     "compose-ui",

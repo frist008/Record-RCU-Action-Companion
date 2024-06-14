@@ -5,4 +5,8 @@ import ua.frist008.action.record.ui.entity.base.UIState
 
 @Stable data class DeviceProgressState(
     val timerValue: String,
-) : UIState.Progress()
+    private val _isLoading: Boolean = timerValue.isEmpty(),
+) : UIState.Progress() {
+
+    val isLoading = _isLoading || timerValue.isEmpty()
+}

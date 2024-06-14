@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import ua.frist008.action.record.R
 import ua.frist008.action.record.ui.theme.RootTheme
 
-val DarkColorScheme: ColorScheme = darkColorScheme(
+val AppColorScheme: ColorScheme = darkColorScheme(
     primary = Palette.PURPLE_DARK,
     onPrimary = Palette.WHITE_LIGHT,
     primaryContainer = Palette.PURPLE_DARK,

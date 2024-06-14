@@ -7,5 +7,7 @@
     <string name="device_available">Available</string>
     <string name="device_not_available">Not Available</string>
     <string name="device_not_available_message">Device not available</string>
+    <string name="device_error_not_found">Devices not found…</string>
+    <string name="device_error_more">How to fix?</string>
 
 </resources>
