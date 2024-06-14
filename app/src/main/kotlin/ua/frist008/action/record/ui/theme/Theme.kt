@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import ua.frist008.action.record.R
-import ua.frist008.action.record.ui.theme.color.DarkColorScheme
+import ua.frist008.action.record.ui.theme.color.AppColorScheme
 import ua.frist008.action.record.ui.theme.typography.Typography
 
 @Composable
@@ -28,7 +28,7 @@ fun RootTheme(
 }
 
 @Composable @ReadOnlyComposable
-private fun getColorScheme() = DarkColorScheme
+private fun getColorScheme() = AppColorScheme
 
 @Preview(
     showBackground = true,
