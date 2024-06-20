@@ -29,4 +29,3 @@ dependencyResolutionManagement {
 
 rootProject.name = rootProject.projectDir.name
 include(":app")
-//include(":old")

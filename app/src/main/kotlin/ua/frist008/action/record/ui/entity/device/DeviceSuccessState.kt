@@ -5,12 +5,12 @@ import ua.frist008.action.record.ui.entity.base.UIState
 
 @Stable data class DeviceSuccessState(
     val id: Long,
-    val availableStatus: Boolean,
-    val deviceType: DeviceType = if (availableStatus) {
+    val isAvailableStatus: Boolean,
+    val deviceType: DeviceType = if (isAvailableStatus) {
         DeviceType.ONLINE_PC
     } else {
         DeviceType.OFFLINE_PC
     },
-    val name: String,
+    val name: String?,
     val address: String,
 ) : UIState.Success()
