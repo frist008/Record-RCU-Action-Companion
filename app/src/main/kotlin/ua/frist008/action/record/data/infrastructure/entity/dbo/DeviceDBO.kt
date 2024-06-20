@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 import ua.frist008.action.record.domain.entity.DeviceDomainEntity
+import ua.frist008.action.record.util.extension.network.toIPStr
 
 @Entity(
     tableName = DeviceDBO.NAME_TABLE,
@@ -15,19 +16,19 @@ data class DeviceDBO(
     @ColumnInfo(name = ID)
     val id: Long = 0,
     @ColumnInfo(name = NAME)
-    val name: String,
+    val name: String?,
     @ColumnInfo(name = IP, index = true)
-    val ip: String,
-    @ColumnInfo(name = MAC)
-    val mac: String,
+    val ip: Long,
+    @ColumnInfo(name = PORT)
+    val port: Int,
 ) {
 
-    fun toDomain(available: Boolean): DeviceDomainEntity =
+    fun toDomain(isAvailable: Boolean): DeviceDomainEntity =
         DeviceDomainEntity(
             id = id,
-            availableStatus = available,
+            isAvailableStatus = isAvailable,
             name = name,
-            address = "$ip:$mac",
+            address = "${ip.toIPStr}:$port",
         )
 
     companion object {
@@ -35,6 +36,6 @@ data class DeviceDBO(
         const val ID = "id_$NAME_TABLE"
         const val NAME = "name_$NAME_TABLE"
         const val IP = "ip_$NAME_TABLE"
-        const val MAC = "mac_$NAME_TABLE"
+        const val PORT = "port_$NAME_TABLE"
     }
 }

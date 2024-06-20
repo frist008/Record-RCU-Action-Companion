@@ -61,6 +61,7 @@ kotlin-stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib" }
 kotlin-atomic = { module = "org.jetbrains.kotlinx:atomicfu", version.ref = "kotlin-atomic" }
 kotlin-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlin-coroutines" }
 kotlin-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlin-coroutines" }
+kotlin-coroutines-play-services = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-play-services", version.ref = "kotlin-coroutines" }
 kotlin-immutable-collections = { module = "org.jetbrains.kotlinx:kotlinx-collections-immutable", version.ref = "kotlin-immutable-collections" }
 kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization-json" }
 
@@ -76,7 +77,7 @@ jetpack-splash = { module = "androidx.core:core-splashscreen", version.ref = "je
 jetpack-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "jetpack-lifecycle" }
 jetpack-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "jetpack-lifecycle" }
 # compose
-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "compose-bom" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 compose-foundation = { module = "androidx.compose.foundation:foundation" }
 compose-ui = { module = "androidx.compose.ui:ui" }
 compose-material = { module = "androidx.compose.material:material" }
@@ -171,5 +172,6 @@ di-compiler = ["di-hilt-compiler"]
 multithreading = [
     "kotlin-coroutines",
     "kotlin-coroutines-android",
+    "kotlin-coroutines-play-services",
 ]
 network = ["compose-coil"]

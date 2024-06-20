@@ -23,25 +23,27 @@ import androidx.constraintlayout.compose.ConstrainedLayoutReference
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintLayoutScope
 import ua.frist008.action.record.R
-import ua.frist008.action.record.ui.entity.device.DeviceProgressState
+import ua.frist008.action.record.ui.entity.device.DeviceLoadingState
 import ua.frist008.action.record.ui.svg.DevicesNotAvailable
 import ua.frist008.action.record.ui.theme.color.Palette
 import ua.frist008.action.record.ui.theme.typography.Typography
 import ua.frist008.action.record.ui.theme.typography.link
+import ua.frist008.action.record.util.extension.ui.clickable
 
 @Preview(
     showSystemUi = true,
     showBackground = true,
     backgroundColor = Palette.PURPLE_LIGHT_LONG,
-)
-@Composable
+) @Composable
 fun DevicesLoadingScreen(
-    @PreviewParameter(DeviceProgressProvider::class) state: DeviceProgressState,
+    @PreviewParameter(DeviceProgressProvider::class) state: DeviceLoadingState,
     innerPadding: PaddingValues = PaddingValues(),
+    onSurfaceClick: (DeviceLoadingState) -> Unit = {},
 ) {
     ConstraintLayout(
         modifier = Modifier
             .padding(innerPadding)
+            .clickable(isRippleEnabled = false) { onSurfaceClick(state) }
             .padding(horizontal = 16.dp)
             .fillMaxSize(),
     ) {
@@ -106,7 +108,7 @@ private fun ConstraintLayoutScope.DevicesLoadingMessage(
 @Composable
 private fun ConstraintLayoutScope.DevicesLoadingTimer(
     timer: ConstrainedLayoutReference,
-    state: DeviceProgressState,
+    state: DeviceLoadingState,
     constrainBlock: ConstrainScope.() -> Unit,
 ) {
     val timerModifier = Modifier.Companion
@@ -120,14 +122,12 @@ private fun ConstraintLayoutScope.DevicesLoadingTimer(
             trackColor = Palette.WHITE_DARK,
         )
     } else {
-        ClickableText(
-            text = AnnotatedString(state.timerValue),
+        Text(
+            text = state.timerValue,
             style = Typography.headlineSmall,
             maxLines = 1,
             modifier = timerModifier,
-        ) {
-            // TODO force reconnection (may not needs)
-        }
+        )
     }
 }
 
@@ -147,11 +147,12 @@ private fun ConstraintLayoutScope.DevicesLoadingFooter(
     }
 }
 
-private class DeviceProgressProvider : PreviewParameterProvider<DeviceProgressState> {
+private class DeviceProgressProvider : PreviewParameterProvider<DeviceLoadingState> {
 
     override val values = sequenceOf(
-        DeviceProgressState("5", false),
-        DeviceProgressState("5", true),
-        DeviceProgressState("", false),
+        DeviceLoadingState("5", false),
+        DeviceLoadingState("5", true),
+        DeviceLoadingState("", false),
+        DeviceLoadingState(),
     )
 }

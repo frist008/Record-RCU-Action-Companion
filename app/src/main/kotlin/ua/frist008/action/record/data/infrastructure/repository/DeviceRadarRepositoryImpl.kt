@@ -3,7 +3,6 @@ package ua.frist008.action.record.data.infrastructure.repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
-import ua.frist008.action.record.data.infrastructure.entity.dto.DeviceDTO
 import ua.frist008.action.record.data.infrastructure.source.database.DeviceDAO
 import ua.frist008.action.record.data.infrastructure.source.network.DeviceRadarNetworkSource
 import ua.frist008.action.record.data.repository.DeviceRadarRepository
@@ -15,13 +14,17 @@ class DeviceRadarRepositoryImpl @Inject constructor(
     private val networkSource: DeviceRadarNetworkSource,
 ) : DeviceRadarRepository {
 
-    override fun get(): Flow<List<DeviceDomainEntity>> =
-        networkSource.get().map { dtoList ->
-            val newDboList = dtoList.map(DeviceDTO::toDBO)
-            databaseSource.insert(newDboList)
+    override suspend fun get(): Flow<List<DeviceDomainEntity>> =
+        networkSource.get().map { dto ->
+            val newDbo = dto?.toDBO()
+            val newIp = newDbo?.ip
 
-            val actualDboList = databaseSource.getAll().firstOrNull() ?: listOf()
+            if (newDbo != null) {
+                databaseSource.insert(newDbo)
+            }
 
-            actualDboList.map { actual -> actual.toDomain(newDboList.any { it.ip == actual.ip }) }
+            val actualDboList = databaseSource.getAll().firstOrNull() ?: emptyList()
+
+            actualDboList.map { actual -> actual.toDomain(newIp == actual.ip) }
         }
 }

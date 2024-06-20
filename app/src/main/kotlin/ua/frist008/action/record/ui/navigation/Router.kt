@@ -15,7 +15,7 @@ class Router(private val navController: NavHostController) {
                     } else {
                         navController.popBackStack(
                             route = command.route,
-                            inclusive = true
+                            inclusive = true,
                         )
                     }
 
@@ -28,7 +28,10 @@ class Router(private val navController: NavHostController) {
             }
 
             else -> navController.navigate(command.route) {
-                launchSingleTop = command.replaceScreen
+                val route = navController.currentBackStackEntry?.destination?.route
+                popUpTo(route ?: return@navigate) {
+                    inclusive = command.replaceScreen
+                }
             }
         }
     }

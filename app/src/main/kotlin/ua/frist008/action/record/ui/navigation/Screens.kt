@@ -1,8 +1,8 @@
 package ua.frist008.action.record.ui.navigation
 
 sealed class NavCommand(
-    route: String? = null,
     val replaceScreen: Boolean = false,
+    route: String? = null,
 ) {
 
     val route by lazy(LazyThreadSafetyMode.NONE) { route ?: getStubRoute() }
@@ -11,7 +11,7 @@ sealed class NavCommand(
 
     override fun toString() = route
 
-    class BackCommand(screen: NavCommand? = null) : NavCommand(screen?.route) {
+    class BackCommand(screen: NavCommand? = null) : NavCommand(route = screen?.route) {
 
         override fun getStubRoute() = ""
     }
