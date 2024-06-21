@@ -16,9 +16,9 @@ import ua.frist008.action.record.ui.theme.RootTheme
 import ua.frist008.action.record.ui.theme.typography.Typography
 
 @Composable
-fun TextColumnItemComponent(text: String, subtext: String, modifier: Modifier = Modifier) {
+fun TextColumnItemComponent(text: String?, subtext: String, modifier: Modifier = Modifier) {
     Column(modifier = modifier) {
-        if (text.isNotEmpty()) {
+        if (!text.isNullOrEmpty()) {
             Text(
                 text = text,
                 style = Typography.bodyLarge,
@@ -27,7 +27,7 @@ fun TextColumnItemComponent(text: String, subtext: String, modifier: Modifier = 
                 maxLines = 1,
             )
         }
-        if (text.isNotEmpty() && subtext.isNotEmpty()) {
+        if (!text.isNullOrEmpty() && subtext.isNotEmpty()) {
             Spacer(modifier = Modifier.height(16.dp))
         }
         if (subtext.isNotEmpty()) {

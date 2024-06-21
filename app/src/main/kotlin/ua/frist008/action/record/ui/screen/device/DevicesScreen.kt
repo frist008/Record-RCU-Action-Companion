@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -16,7 +17,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import ua.frist008.action.record.R
 import ua.frist008.action.record.presentation.impl.DevicesViewModel
 import ua.frist008.action.record.ui.entity.base.UIState
-import ua.frist008.action.record.ui.entity.device.DeviceProgressState
+import ua.frist008.action.record.ui.entity.device.DeviceLoadingState
 import ua.frist008.action.record.ui.entity.device.DevicesSuccessState
 import ua.frist008.action.record.ui.theme.color.BrushPalette
 import ua.frist008.action.record.ui.theme.color.Palette
@@ -51,13 +52,30 @@ private fun DevicesScreen(
             onItemClick = viewModel::onItemClicked,
         )
 
-        is UIState.Error -> DevicesErrorScreen(currentState, innerPadding)
-        is DeviceProgressState -> DevicesLoadingScreen(currentState, innerPadding)
+        is UIState.Error -> DevicesErrorScreen(
+            cause = currentState,
+            innerPadding = innerPadding,
+            onSurfaceClick = viewModel::onRefreshClicked,
+        )
+
+        is DeviceLoadingState -> DevicesLoadingScreen(
+            state = currentState,
+            innerPadding = innerPadding,
+            onSurfaceClick = viewModel::onRefreshClicked,
+        )
 
         is UIState.Progress -> {
-            // None
+            DevicesLoadingScreen(
+                state = DeviceLoadingState(),
+                innerPadding = innerPadding,
+            )
         }
 
         else -> unsupportedUI()
+    }
+
+    DisposableEffect(viewModel) {
+        viewModel.onInit()
+        onDispose { viewModel.onDispose() }
     }
 }

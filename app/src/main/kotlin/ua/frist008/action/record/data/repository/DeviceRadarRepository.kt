@@ -5,5 +5,5 @@ import ua.frist008.action.record.domain.entity.DeviceDomainEntity
 
 interface DeviceRadarRepository {
 
-    fun get(): Flow<List<DeviceDomainEntity>>
+    suspend fun get(): Flow<List<DeviceDomainEntity>>
 }

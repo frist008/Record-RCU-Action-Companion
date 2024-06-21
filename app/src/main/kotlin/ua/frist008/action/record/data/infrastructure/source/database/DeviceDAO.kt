@@ -9,14 +9,14 @@ import javax.inject.Inject
 class DeviceDAO @Inject constructor() {
 
     // TODO remove
-    private lateinit var list: List<DeviceDBO>
+    private var dbo: DeviceDBO? = null
 
     //    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(list: List<DeviceDBO>) {
+    suspend fun insert(dbo: DeviceDBO) {
         // TODO Will Impl at version 1.1
-        this.list = list
+        this.dbo = dbo
     }
 
     //    @Query("SELECT * FROM ${DevicesDBO.NAME_TABLE}")
-    fun getAll(): Flow<List<DeviceDBO>> = MutableStateFlow(list)
+    fun getAll(): Flow<List<DeviceDBO>> = MutableStateFlow(dbo?.let(::listOf) ?: emptyList())
 }

@@ -85,7 +85,7 @@ private fun DeviceComponent(
         )
 
         Spacer(modifier = Modifier.width(16.dp))
-        CircleStatusComponent(device.availableStatus)
+        CircleStatusComponent(device.isAvailableStatus)
     }
 }
 
@@ -96,25 +96,25 @@ private class DevicesProvider : PreviewParameterProvider<DevicesSuccessState> {
             persistentListOf(
                 DeviceSuccessState(
                     id = 0,
-                    availableStatus = true,
+                    isAvailableStatus = true,
                     name = "Name PC",
                     address = "192.168.0.1:2555",
                 ),
                 DeviceSuccessState(
                     id = 0,
-                    availableStatus = true,
+                    isAvailableStatus = true,
                     name = "Name PC",
                     address = "192.168.0.2:2555",
                 ),
                 DeviceSuccessState(
                     id = 0,
-                    availableStatus = false,
+                    isAvailableStatus = false,
                     name = "Name PC",
                     address = "192.168.0.3:2555",
                 ),
                 DeviceSuccessState(
                     id = 0,
-                    availableStatus = false,
+                    isAvailableStatus = false,
                     name = "Name PC",
                     address = "192.168.0.4:2555",
                 ),
