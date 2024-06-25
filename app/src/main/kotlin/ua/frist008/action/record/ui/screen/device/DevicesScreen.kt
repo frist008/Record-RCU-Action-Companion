@@ -23,6 +23,7 @@ import ua.frist008.action.record.ui.theme.color.BrushPalette
 import ua.frist008.action.record.ui.theme.color.Palette
 import ua.frist008.action.record.util.exception.unsupportedUI
 
+// TODO maybe move to only DevicesSuccessScreen
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DevicesScreen() {

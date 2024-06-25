@@ -17,9 +17,9 @@ object FirebaseId {
             val idArr = id.toByteArray()
             val hash = MurmurHash3.murmurhash3_x86_32(idArr, 0, idArr.size, 0)
             val idHashArr = byteArrayOf(
-                (hash shr (Byte.SIZE_BITS * 3)).toByte(),
-                (hash shr (Byte.SIZE_BITS * 2)).toByte(),
-                (hash shr Byte.SIZE_BITS).toByte(),
+                (hash shr ByteConst.BITS_3).toByte(),
+                (hash shr ByteConst.BITS_2).toByte(),
+                (hash shr ByteConst.BITS_1).toByte(),
                 hash.toByte(),
             ).also(this::idHashArr::set)
 
