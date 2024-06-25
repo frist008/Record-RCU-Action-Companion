@@ -1,6 +1,8 @@
 package ua.frist008.action.record.data.infrastructure.entity.dto
 
+import ua.frist008.action.record.util.common.ByteConst
 import ua.frist008.action.record.util.common.FirebaseId
+import ua.frist008.action.record.util.common.NetworkDataConst
 
 class RadarRequestDataHolder private constructor(androidIdArr: ByteArray?) {
 
@@ -10,8 +12,8 @@ class RadarRequestDataHolder private constructor(androidIdArr: ByteArray?) {
         val randomInt = (Math.random() * Short.MAX_VALUE).toInt()
         clientDataArr[0] = 65
         clientDataArr[1] = 72
-        clientDataArr[2] = ((randomInt shr Byte.SIZE_BITS) and MAX_UBYTE).toByte()
-        clientDataArr[3] = (randomInt and MAX_UBYTE).toByte()
+        clientDataArr[2] = ((randomInt shr ByteConst.BITS_1) and ByteConst.MAX_UBYTE).toByte()
+        clientDataArr[3] = (randomInt and ByteConst.MAX_UBYTE).toByte()
 
         clientDataArr[8] = 16
         clientDataArr[9] = 102
@@ -29,14 +31,10 @@ class RadarRequestDataHolder private constructor(androidIdArr: ByteArray?) {
     fun isResponseValid(clientDataArr: ByteArray): Boolean = // clientDataArr[0-3]
         clientDataArr[0] == this.clientDataArr[0] &&
             clientDataArr[1] == this.clientDataArr[1] &&
-            (((clientDataArr[2].toInt() shl Byte.SIZE_BITS) and FF00) or
-                (clientDataArr[3].toInt() and MAX_UBYTE)) > Short.MAX_VALUE
+            (((clientDataArr[2].toInt() shl Byte.SIZE_BITS) and NetworkDataConst.FF00) or
+                (clientDataArr[3].toInt() and ByteConst.MAX_UBYTE)) > Short.MAX_VALUE
 
     companion object {
-
-        private val MAX_UBYTE = UByte.MAX_VALUE.toInt() // 255
-        private val MAX_USHORT = UShort.MAX_VALUE.toInt() // 65535
-        private val FF00 = MAX_USHORT - MAX_UBYTE // 65280
 
         suspend fun newInstance() = RadarRequestDataHolder(FirebaseId.getIdMurmurHash3())
     }
