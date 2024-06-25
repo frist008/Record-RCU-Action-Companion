@@ -7,7 +7,18 @@
     <string name="device_available">Available</string>
     <string name="device_not_available">Not Available</string>
     <string name="device_not_available_message">Device not available</string>
+    <string name="device_searching">Searching for devices…</string>
     <string name="device_error_not_found">Devices not found…</string>
     <string name="device_error_more">How to fix?</string>
+
+    <!-- Record -->
+
+    <string name="record_title_recording_screen">Screen Recording</string>
+    <string name="record_title_recording_game">Game Recording</string>
+    <string name="record_title_streaming">Live Streaming</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">Settings</string>
 
 </resources>
