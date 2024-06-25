@@ -7,7 +7,18 @@
     <string name="device_available">Доступный</string>
     <string name="device_not_available">Недоступеный</string>
     <string name="device_not_available_message">Устройство недоступно</string>
+    <string name="device_searching">Идёт поиск устройств…</string>
     <string name="device_error_not_found">Устройства не найдены…</string>
     <string name="device_error_more">Как исправить?</string>
+
+    <!-- Record -->
+
+    <string name="record_title_recording_screen">Запись Экрана</string>
+    <string name="record_title_recording_game">Запись Игры</string>
+    <string name="record_title_streaming">Прямая Трансляция</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">Настройки</string>
 
 </resources>
