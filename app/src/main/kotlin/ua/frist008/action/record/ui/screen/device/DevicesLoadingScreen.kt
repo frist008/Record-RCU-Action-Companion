@@ -5,7 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.CircularProgressIndicator
@@ -55,7 +55,10 @@ fun DevicesLoadingScreen(
 
         createVerticalChain(descriptionAndImage, timer, link, chainStyle = ChainStyle.SpreadInside)
 
-        DevicesLoadingHeader(descriptionAndImage = descriptionAndImage) {
+        DevicesLoadingHeader(
+            descriptionAndImage = descriptionAndImage,
+            isLoading = state.isLoading,
+        ) {
             top.linkTo(parent.top)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
@@ -79,11 +82,15 @@ fun DevicesLoadingScreen(
 @Composable
 private fun ConstraintLayoutScope.DevicesLoadingHeader(
     descriptionAndImage: ConstrainedLayoutReference,
+    isLoading: Boolean,
     constrainBlock: ConstrainScope.() -> Unit,
 ) {
+    val textRes = if (isLoading) R.string.device_searching else R.string.device_error_not_found
+    val text = stringResource(textRes)
+
     Column(modifier = Modifier.Companion.constrainAs(descriptionAndImage, constrainBlock)) {
         Text(
-            text = stringResource(R.string.device_error_not_found),
+            text = text,
             style = Typography.headlineSmall,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
@@ -91,7 +98,7 @@ private fun ConstraintLayoutScope.DevicesLoadingHeader(
         )
         Image(
             imageVector = Icons.DevicesNotAvailable,
-            contentDescription = stringResource(R.string.device_error_not_found),
+            contentDescription = text,
             modifier = Modifier.Companion
                 .padding(horizontal = 24.dp)
                 .padding(top = 56.dp),
@@ -112,16 +119,16 @@ private fun ConstraintLayoutScope.DevicesLoadingTimer(
 
     if (state.isLoading) {
         CircularProgressIndicator(
-            modifier = timerModifier.width(56.dp),
+            modifier = timerModifier.size(56.dp),
             color = Palette.WHITE_LIGHT,
             trackColor = Palette.WHITE_DARK,
         )
     } else {
         Text(
             text = state.timerValue,
-            style = Typography.headlineSmall,
-            maxLines = 1,
             modifier = timerModifier,
+            maxLines = 1,
+            style = Typography.headlineSmall,
         )
     }
 }
