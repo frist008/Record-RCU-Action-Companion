@@ -14,26 +14,26 @@ import androidx.compose.ui.unit.dp
 
 val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
     Builder(
-        name = "Cat1", defaultWidth = 288.0.dp, defaultHeight = 268.0.dp,
-        viewportWidth = 288.0f, viewportHeight = 268.0f,
+        name = "NoDevicesAvailable", defaultWidth = 288.0.dp,
+        defaultHeight = 274.0.dp, viewportWidth = 288.0f, viewportHeight = 274.0f,
     ).apply {
         path(
             fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(137.62f, 22.04f)
-            lineTo(161.0f, 3.14f)
-            curveTo(163.72f, 0.94f, 167.25f, -0.1f, 170.71f, 0.49f)
-            curveTo(172.01f, 0.71f, 173.37f, 1.16f, 174.74f, 1.95f)
-            curveTo(176.1f, 2.75f, 177.16f, 3.72f, 177.98f, 4.71f)
-            curveTo(179.77f, 6.88f, 180.68f, 9.65f, 180.69f, 12.46f)
-            lineTo(180.84f, 77.68f)
-            curveTo(180.84f, 79.5f, 180.66f, 81.31f, 180.27f, 83.09f)
-            curveTo(179.5f, 86.61f, 178.27f, 89.89f, 175.78f, 92.56f)
-            lineTo(133.77f, 51.83f)
-            lineTo(137.63f, 22.03f)
-            lineTo(137.62f, 22.04f)
+            moveTo(136.732f, 22.606f)
+            lineTo(161.292f, 2.866f)
+            curveTo(164.062f, 0.626f, 167.662f, -0.434f, 171.172f, 0.166f)
+            curveTo(172.492f, 0.386f, 173.882f, 0.846f, 175.272f, 1.656f)
+            curveTo(176.662f, 2.466f, 177.742f, 3.456f, 178.572f, 4.466f)
+            curveTo(180.392f, 6.676f, 181.322f, 9.486f, 181.322f, 12.346f)
+            lineTo(181.472f, 78.676f)
+            curveTo(181.472f, 80.526f, 181.292f, 82.376f, 180.892f, 84.176f)
+            curveTo(180.112f, 87.756f, 178.852f, 91.096f, 176.322f, 93.806f)
+            lineTo(133.572f, 52.386f)
+            lineTo(136.722f, 22.596f)
+            lineTo(136.732f, 22.606f)
             close()
         }
         path(
@@ -41,13 +41,12 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(147.34f, 25.33f)
-            lineTo(166.43f, 9.39f)
-            curveTo(167.16f, 8.78f, 168.04f, 8.33f, 168.98f, 8.2f)
-            curveTo(170.61f, 7.97f, 171.94f, 8.56f, 172.96f, 9.99f)
-            lineTo(154.08f, 29.51f)
-            lineTo(147.33f, 25.33f)
-            horizontalLineTo(147.34f)
+            moveTo(147.402f, 25.436f)
+            lineTo(166.832f, 9.226f)
+            curveTo(167.582f, 8.606f, 168.472f, 8.146f, 169.432f, 8.016f)
+            curveTo(171.082f, 7.786f, 172.442f, 8.376f, 173.482f, 9.836f)
+            lineTo(154.272f, 29.686f)
+            lineTo(147.402f, 25.436f)
             close()
         }
         path(
@@ -55,10 +54,10 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(172.58f, 46.45f)
-            lineTo(172.96f, 9.99f)
-            lineTo(154.08f, 29.51f)
-            curveTo(161.04f, 33.73f, 167.15f, 39.49f, 172.58f, 46.45f)
+            moveTo(173.082f, 46.916f)
+            lineTo(173.472f, 9.836f)
+            lineTo(154.262f, 29.686f)
+            curveTo(161.352f, 33.976f, 167.562f, 39.836f, 173.082f, 46.916f)
             close()
         }
         path(
@@ -66,16 +65,16 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(68.54f, 59.79f)
-            verticalLineTo(11.81f)
-            curveTo(68.54f, 9.26f, 69.3f, 6.75f, 70.84f, 4.72f)
-            curveTo(71.56f, 3.77f, 72.5f, 2.84f, 73.73f, 2.08f)
-            curveTo(76.63f, 0.27f, 80.23f, -0.08f, 83.53f, 1.02f)
-            curveTo(84.76f, 1.43f, 85.89f, 2.08f, 86.91f, 2.88f)
-            lineTo(101.27f, 14.11f)
-            verticalLineTo(28.84f)
-            lineTo(68.54f, 59.81f)
-            verticalLineTo(59.79f)
+            moveTo(67.202f, 60.486f)
+            verticalLineTo(11.686f)
+            curveTo(67.202f, 9.096f, 67.972f, 6.536f, 69.542f, 4.476f)
+            curveTo(70.282f, 3.506f, 71.232f, 2.566f, 72.482f, 1.786f)
+            curveTo(75.432f, -0.054f, 79.092f, -0.404f, 82.452f, 0.706f)
+            curveTo(83.702f, 1.116f, 84.852f, 1.786f, 85.892f, 2.596f)
+            lineTo(100.502f, 14.016f)
+            verticalLineTo(28.996f)
+            lineTo(67.192f, 60.496f)
+            lineTo(67.202f, 60.486f)
             close()
         }
         path(
@@ -83,10 +82,10 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(76.73f, 93.94f)
-            verticalLineTo(113.45f)
-            lineTo(87.69f, 103.29f)
-            lineTo(76.73f, 93.94f)
+            moveTo(75.542f, 95.216f)
+            verticalLineTo(115.066f)
+            lineTo(86.702f, 104.726f)
+            lineTo(75.542f, 95.216f)
             close()
         }
         path(
@@ -94,11 +93,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(77.03f, 165.65f)
-            lineTo(76.73f, 113.45f)
-            lineTo(87.69f, 103.29f)
-            lineTo(90.22f, 163.66f)
-            lineTo(77.03f, 165.65f)
+            moveTo(75.852f, 168.146f)
+            lineTo(75.542f, 115.066f)
+            lineTo(86.702f, 104.726f)
+            lineTo(89.272f, 166.126f)
+            lineTo(75.852f, 168.146f)
             close()
         }
         path(
@@ -106,13 +105,14 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(78.18f, 194.39f)
-            lineTo(90.6f, 184.33f)
-            lineTo(100.95f, 175.95f)
-            lineTo(90.23f, 162.28f)
-            curveTo(84.73f, 161.7f, 80.18f, 162.74f, 76.74f, 165.65f)
-            lineTo(52.88f, 183.18f)
-            lineTo(78.18f, 194.39f)
+            moveTo(77.012f, 197.376f)
+            lineTo(89.652f, 187.146f)
+            lineTo(100.182f, 178.626f)
+            lineTo(89.272f, 164.726f)
+            curveTo(83.672f, 164.136f, 79.052f, 165.196f, 75.542f, 168.156f)
+            lineTo(51.262f, 185.986f)
+            lineTo(77.012f, 197.386f)
+            verticalLineTo(197.376f)
             close()
         }
         path(
@@ -120,12 +120,12 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(88.38f, 174.95f)
-            curveTo(84.89f, 170.0f, 77.75f, 167.94f, 70.69f, 170.09f)
-            lineTo(63.98f, 175.02f)
-            curveTo(65.23f, 174.54f, 74.87f, 170.99f, 83.48f, 176.43f)
-            curveTo(87.46f, 178.95f, 89.58f, 182.35f, 90.6f, 184.33f)
-            curveTo(90.77f, 182.74f, 90.96f, 178.61f, 88.38f, 174.95f)
+            moveTo(87.392f, 177.606f)
+            curveTo(83.842f, 172.576f, 76.572f, 170.476f, 69.392f, 172.666f)
+            lineTo(62.572f, 177.676f)
+            curveTo(63.842f, 177.186f, 73.652f, 173.576f, 82.412f, 179.116f)
+            curveTo(86.462f, 181.676f, 88.622f, 185.136f, 89.652f, 187.146f)
+            curveTo(89.822f, 185.526f, 90.022f, 181.326f, 87.392f, 177.606f)
             close()
         }
         path(
@@ -133,12 +133,12 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(78.18f, 194.39f)
-            horizontalLineTo(91.03f)
-            lineTo(96.01f, 185.99f)
-            lineTo(105.5f, 181.48f)
-            lineTo(100.95f, 175.95f)
-            lineTo(78.18f, 194.39f)
+            moveTo(77.012f, 197.376f)
+            horizontalLineTo(90.092f)
+            lineTo(95.162f, 188.836f)
+            lineTo(104.822f, 184.246f)
+            lineTo(100.192f, 178.626f)
+            lineTo(77.012f, 197.376f)
             close()
         }
         path(
@@ -146,11 +146,12 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(49.08f, 194.39f)
-            horizontalLineTo(78.18f)
-            curveTo(79.13f, 187.06f, 76.6f, 182.73f, 71.49f, 180.59f)
-            horizontalLineTo(56.4f)
-            curveTo(50.89f, 183.16f, 48.6f, 187.85f, 49.08f, 194.39f)
+            moveTo(47.402f, 197.376f)
+            horizontalLineTo(77.012f)
+            curveTo(77.982f, 189.926f, 75.402f, 185.516f, 70.202f, 183.346f)
+            horizontalLineTo(54.842f)
+            curveTo(49.242f, 185.956f, 46.902f, 190.736f, 47.392f, 197.376f)
+            horizontalLineTo(47.402f)
             close()
         }
         path(
@@ -158,19 +159,19 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(81.91f, 9.42f)
-            curveTo(80.64f, 7.85f, 78.67f, 7.59f, 77.61f, 8.42f)
-            curveTo(76.66f, 9.16f, 76.72f, 10.56f, 76.73f, 10.75f)
-            verticalLineTo(41.24f)
-            curveTo(75.46f, 42.84f, 62.92f, 59.21f, 68.86f, 79.4f)
-            curveTo(73.23f, 94.24f, 84.78f, 101.57f, 87.69f, 103.3f)
-            lineTo(88.26f, 152.15f)
-            curveTo(88.28f, 154.26f, 88.57f, 156.36f, 89.09f, 158.4f)
-            curveTo(91.68f, 168.41f, 96.02f, 176.85f, 103.47f, 182.47f)
-            horizontalLineTo(117.69f)
-            lineTo(128.78f, 164.64f)
-            lineTo(173.6f, 92.58f)
-            lineTo(81.91f, 9.42f)
+            moveTo(80.812f, 9.256f)
+            curveTo(79.522f, 7.666f, 77.512f, 7.396f, 76.442f, 8.236f)
+            curveTo(75.482f, 8.986f, 75.532f, 10.416f, 75.542f, 10.606f)
+            verticalLineTo(41.616f)
+            curveTo(74.252f, 43.246f, 61.482f, 59.896f, 67.542f, 80.426f)
+            curveTo(71.992f, 95.526f, 83.752f, 102.976f, 86.702f, 104.736f)
+            lineTo(87.282f, 154.416f)
+            curveTo(87.302f, 156.556f, 87.592f, 158.696f, 88.132f, 160.766f)
+            curveTo(90.772f, 170.946f, 95.182f, 179.526f, 102.762f, 185.256f)
+            horizontalLineTo(117.232f)
+            lineTo(128.512f, 167.116f)
+            lineTo(174.122f, 93.826f)
+            lineTo(80.812f, 9.256f)
             close()
         }
         path(
@@ -178,31 +179,30 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(150.03f, 27.0f)
-            curveTo(125.34f, 15.96f, 98.84f, 20.03f, 85.04f, 35.94f)
-            curveTo(68.55f, 54.96f, 72.15f, 88.68f, 82.75f, 93.54f)
-            curveTo(88.55f, 96.2f, 98.42f, 91.11f, 103.84f, 86.43f)
-            curveTo(111.71f, 79.62f, 112.33f, 71.8f, 117.62f, 71.15f)
-            curveTo(120.18f, 70.84f, 124.09f, 72.18f, 129.62f, 80.28f)
-            lineTo(140.95f, 49.22f)
-            curveTo(142.66f, 47.98f, 147.15f, 44.36f, 149.26f, 37.86f)
-            curveTo(150.79f, 33.17f, 150.39f, 29.1f, 150.03f, 27.0f)
+            moveTo(150.142f, 27.136f)
+            curveTo(125.012f, 15.916f, 98.042f, 20.046f, 84.002f, 36.226f)
+            curveTo(67.222f, 55.566f, 70.882f, 89.866f, 81.672f, 94.806f)
+            curveTo(87.582f, 97.506f, 97.622f, 92.336f, 103.132f, 87.576f)
+            curveTo(111.142f, 80.656f, 111.772f, 72.696f, 117.152f, 72.036f)
+            curveTo(119.762f, 71.716f, 123.732f, 73.086f, 129.372f, 81.326f)
+            lineTo(140.902f, 49.736f)
+            curveTo(142.642f, 48.476f, 147.202f, 44.796f, 149.362f, 38.186f)
+            curveTo(150.922f, 33.416f, 150.512f, 29.276f, 150.142f, 27.136f)
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF8102)), stroke = null, strokeLineWidth = 0.0f,
+            fill = SolidColor(Color(0xFFFD511B)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(170.79f, 98.03f)
-            curveTo(165.46f, 98.01f, 157.31f, 97.37f, 148.14f, 94.01f)
-            curveTo(139.24f, 90.75f, 131.59f, 87.96f, 127.66f, 80.35f)
-            curveTo(123.81f, 72.92f, 123.18f, 60.27f, 131.68f, 53.36f)
-            curveTo(140.37f, 46.28f, 153.83f, 49.12f, 159.47f, 55.45f)
-            curveTo(164.56f, 61.16f, 161.26f, 67.42f, 166.7f, 79.31f)
-            curveTo(169.56f, 85.57f, 173.29f, 89.97f, 175.78f, 92.56f)
-            lineTo(170.8f, 98.02f)
-            lineTo(170.79f, 98.03f)
+            moveTo(171.272f, 99.376f)
+            curveTo(165.842f, 99.356f, 157.562f, 98.706f, 148.222f, 95.286f)
+            curveTo(139.162f, 91.976f, 131.382f, 89.126f, 127.372f, 81.396f)
+            curveTo(123.462f, 73.836f, 122.812f, 60.976f, 131.462f, 53.946f)
+            curveTo(140.312f, 46.746f, 154.002f, 49.636f, 159.742f, 56.066f)
+            curveTo(164.922f, 61.876f, 161.562f, 68.246f, 167.102f, 80.336f)
+            curveTo(170.012f, 86.706f, 173.802f, 91.186f, 176.342f, 93.816f)
+            lineTo(171.272f, 99.376f)
             close()
         }
         path(
@@ -210,22 +210,23 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(100.02f, 13.07f)
-            lineTo(111.48f, 21.69f)
-            lineTo(99.45f, 25.33f)
-            lineTo(100.02f, 13.07f)
+            moveTo(99.242f, 12.966f)
+            lineTo(110.912f, 21.736f)
+            lineTo(98.662f, 25.436f)
+            lineTo(99.242f, 12.966f)
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF8102)), stroke = null, strokeLineWidth = 0.0f,
+            fill = SolidColor(Color(0xFFFD511B)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(100.27f, 49.75f)
-            curveTo(102.19f, 50.49f, 108.39f, 53.16f, 111.52f, 59.71f)
-            curveTo(115.27f, 67.55f, 113.01f, 77.43f, 105.75f, 84.62f)
-            lineTo(100.27f, 57.06f)
-            verticalLineTo(49.75f)
+            moveTo(99.492f, 50.276f)
+            curveTo(101.442f, 51.026f, 107.752f, 53.746f, 110.932f, 60.406f)
+            curveTo(114.742f, 68.386f, 112.452f, 78.436f, 105.062f, 85.736f)
+            lineTo(99.482f, 57.706f)
+            verticalLineTo(50.276f)
+            horizontalLineTo(99.492f)
             close()
         }
         path(
@@ -233,11 +234,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(92.6f, 80.37f)
-            curveTo(99.51f, 80.37f, 105.11f, 74.77f, 105.11f, 67.86f)
-            curveTo(105.11f, 60.95f, 99.51f, 55.35f, 92.6f, 55.35f)
-            curveTo(85.69f, 55.35f, 80.09f, 60.95f, 80.09f, 67.86f)
-            curveTo(80.09f, 74.77f, 85.69f, 80.37f, 92.6f, 80.37f)
+            moveTo(91.692f, 81.406f)
+            curveTo(98.723f, 81.406f, 104.422f, 75.711f, 104.422f, 68.686f)
+            curveTo(104.422f, 61.66f, 98.723f, 55.966f, 91.692f, 55.966f)
+            curveTo(84.661f, 55.966f, 78.962f, 61.66f, 78.962f, 68.686f)
+            curveTo(78.962f, 75.711f, 84.661f, 81.406f, 91.692f, 81.406f)
             close()
         }
         path(
@@ -245,11 +246,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(87.85f, 65.93f)
-            curveTo(89.68f, 65.93f, 91.16f, 64.45f, 91.16f, 62.62f)
-            curveTo(91.16f, 60.79f, 89.68f, 59.31f, 87.85f, 59.31f)
-            curveTo(86.02f, 59.31f, 84.54f, 60.79f, 84.54f, 62.62f)
-            curveTo(84.54f, 64.45f, 86.02f, 65.93f, 87.85f, 65.93f)
+            moveTo(86.862f, 66.726f)
+            curveTo(88.723f, 66.726f, 90.232f, 65.217f, 90.232f, 63.356f)
+            curveTo(90.232f, 61.494f, 88.723f, 59.986f, 86.862f, 59.986f)
+            curveTo(85.001f, 59.986f, 83.492f, 61.494f, 83.492f, 63.356f)
+            curveTo(83.492f, 65.217f, 85.001f, 66.726f, 86.862f, 66.726f)
             close()
         }
         path(
@@ -257,11 +258,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(98.19f, 64.84f)
-            curveTo(99.42f, 64.84f, 100.41f, 63.85f, 100.41f, 62.62f)
-            curveTo(100.41f, 61.39f, 99.42f, 60.4f, 98.19f, 60.4f)
-            curveTo(96.96f, 60.4f, 95.97f, 61.39f, 95.97f, 62.62f)
-            curveTo(95.97f, 63.85f, 96.96f, 64.84f, 98.19f, 64.84f)
+            moveTo(97.382f, 65.616f)
+            curveTo(98.63f, 65.616f, 99.642f, 64.604f, 99.642f, 63.356f)
+            curveTo(99.642f, 62.107f, 98.63f, 61.096f, 97.382f, 61.096f)
+            curveTo(96.134f, 61.096f, 95.122f, 62.107f, 95.122f, 63.356f)
+            curveTo(95.122f, 64.604f, 96.134f, 65.616f, 97.382f, 65.616f)
             close()
         }
         path(
@@ -269,92 +270,114 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(99.18f, 67.06f)
-            curveTo(99.57f, 64.91f, 101.51f, 65.11f, 101.51f, 67.06f)
-            curveTo(101.6f, 72.05f, 97.5f, 76.17f, 92.6f, 76.14f)
-            curveTo(87.63f, 76.11f, 83.55f, 71.83f, 83.8f, 66.78f)
-            curveTo(83.85f, 65.09f, 85.67f, 65.0f, 86.01f, 66.78f)
-            curveTo(86.72f, 69.86f, 89.47f, 72.07f, 92.6f, 72.08f)
-            curveTo(95.65f, 72.09f, 98.37f, 70.03f, 99.18f, 67.06f)
+            moveTo(98.392f, 68.876f)
+            curveTo(98.792f, 66.686f, 100.762f, 66.896f, 100.762f, 68.876f)
+            curveTo(100.852f, 73.946f, 96.682f, 78.136f, 91.692f, 78.106f)
+            curveTo(86.632f, 78.076f, 82.482f, 73.726f, 82.742f, 68.586f)
+            curveTo(82.792f, 66.866f, 84.642f, 66.766f, 84.992f, 68.586f)
+            curveTo(85.712f, 71.726f, 88.512f, 73.966f, 91.702f, 73.976f)
+            curveTo(94.802f, 73.986f, 97.572f, 71.896f, 98.402f, 68.866f)
+            lineTo(98.392f, 68.876f)
             close()
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF031F33)),
-            strokeLineWidth = 4.25f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 4.32f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(113.06f, 82.51f)
-            horizontalLineTo(121.52f)
+            moveTo(112.512f, 83.586f)
+            horizontalLineTo(121.122f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF031F33)),
-            strokeLineWidth = 4.25f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 4.32f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(117.29f, 90.46f)
-            verticalLineTo(84.25f)
+            moveTo(116.822f, 91.676f)
+            verticalLineTo(85.366f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF031F33)),
-            strokeLineWidth = 4.25f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 4.32f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(112.97f, 95.37f)
-            lineTo(117.29f, 90.46f)
+            moveTo(112.422f, 96.666f)
+            lineTo(116.822f, 91.676f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF031F33)),
-            strokeLineWidth = 4.25f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 4.32f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(121.61f, 95.5f)
-            lineTo(117.29f, 90.59f)
+            moveTo(121.222f, 96.806f)
+            lineTo(116.822f, 91.806f)
         }
         path(
             fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(180.83f, 97.63f)
-            curveTo(183.45f, 100.21f, 187.61f, 104.16f, 192.99f, 108.64f)
-            curveTo(210.92f, 123.58f, 220.24f, 125.97f, 230.96f, 136.55f)
-            curveTo(235.97f, 141.5f, 242.56f, 149.49f, 247.83f, 162.13f)
-            lineTo(227.67f, 167.92f)
-            lineTo(203.57f, 159.24f)
-            curveTo(185.8f, 156.54f, 173.1f, 163.12f, 166.09f, 180.13f)
-            curveTo(165.73f, 181.0f, 165.15f, 181.76f, 164.42f, 182.34f)
-            lineTo(140.35f, 201.73f)
-            lineTo(105.97f, 202.03f)
-            lineTo(128.78f, 164.62f)
-            lineTo(180.83f, 97.62f)
-            verticalLineTo(97.63f)
+            moveTo(249.662f, 164.566f)
+            lineTo(229.142f, 170.456f)
+            lineTo(228.542f, 170.236f)
+            lineTo(226.992f, 169.676f)
+            lineTo(208.062f, 162.866f)
+            lineTo(204.612f, 161.626f)
+            curveTo(186.532f, 158.876f, 173.602f, 165.576f, 166.472f, 182.866f)
+            curveTo(166.102f, 183.746f, 165.522f, 184.526f, 164.772f, 185.126f)
+            lineTo(162.032f, 187.336f)
+            lineTo(160.452f, 188.606f)
+            lineTo(151.452f, 195.846f)
+            lineTo(146.492f, 199.836f)
+            lineTo(140.282f, 204.846f)
+            lineTo(124.032f, 204.986f)
+            lineTo(115.492f, 205.066f)
+            lineTo(105.292f, 205.156f)
+            lineTo(105.412f, 204.966f)
+            lineTo(114.492f, 190.086f)
+            lineTo(117.752f, 184.746f)
+            lineTo(119.562f, 181.786f)
+            lineTo(122.712f, 176.616f)
+            lineTo(125.662f, 171.786f)
+            lineTo(128.522f, 167.106f)
+            lineTo(132.012f, 162.626f)
+            lineTo(134.502f, 159.416f)
+            lineTo(181.432f, 99.046f)
+            lineTo(181.492f, 98.976f)
+            curveTo(184.172f, 101.606f, 188.392f, 105.616f, 193.872f, 110.176f)
+            curveTo(210.462f, 123.996f, 219.812f, 127.256f, 229.582f, 135.836f)
+            curveTo(230.552f, 136.686f, 231.532f, 137.596f, 232.512f, 138.566f)
+            curveTo(233.592f, 139.636f, 234.752f, 140.846f, 235.952f, 142.206f)
+            curveTo(240.402f, 147.266f, 245.462f, 154.456f, 249.682f, 164.586f)
+            lineTo(249.662f, 164.566f)
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFE9900)), stroke = null, strokeLineWidth = 0.0f,
+            fill = SolidColor(Color(0xFFFD9D00)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(168.42f, 211.74f)
-            curveTo(164.42f, 191.33f, 173.96f, 171.58f, 190.43f, 163.86f)
-            curveTo(208.34f, 155.45f, 226.18f, 165.14f, 228.06f, 166.2f)
-            curveTo(218.74f, 180.46f, 209.42f, 194.72f, 200.11f, 208.98f)
-            horizontalLineTo(174.32f)
-            lineTo(168.42f, 211.75f)
-            verticalLineTo(211.74f)
+            moveTo(168.852f, 215.026f)
+            curveTo(164.772f, 194.266f, 174.492f, 174.186f, 191.252f, 166.326f)
+            curveTo(209.472f, 157.776f, 227.642f, 167.626f, 229.552f, 168.706f)
+            curveTo(220.072f, 183.206f, 210.582f, 197.706f, 201.102f, 212.216f)
+            horizontalLineTo(174.862f)
+            lineTo(168.852f, 215.036f)
+            verticalLineTo(215.026f)
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF8102)), stroke = null, strokeLineWidth = 0.0f,
+            fill = SolidColor(Color(0xFFFD511B)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(247.83f, 162.13f)
-            lineTo(250.89f, 171.28f)
-            lineTo(214.46f, 209.09f)
-            lineTo(200.12f, 208.97f)
-            curveTo(199.57f, 203.66f, 199.71f, 196.18f, 203.13f, 188.49f)
-            curveTo(210.05f, 172.92f, 227.48f, 162.96f, 247.83f, 162.13f)
+            moveTo(249.662f, 164.566f)
+            lineTo(252.772f, 173.876f)
+            lineTo(215.692f, 212.336f)
+            lineTo(201.102f, 212.216f)
+            curveTo(200.542f, 206.816f, 200.692f, 199.206f, 204.172f, 191.386f)
+            curveTo(211.212f, 175.546f, 228.952f, 165.426f, 249.662f, 164.576f)
+            verticalLineTo(164.566f)
             close()
         }
         path(
@@ -362,13 +385,13 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(253.13f, 188.54f)
-            lineTo(228.07f, 209.08f)
-            horizontalLineTo(214.45f)
-            curveTo(214.77f, 205.04f, 216.05f, 195.94f, 222.69f, 187.23f)
-            curveTo(232.83f, 173.93f, 247.76f, 171.67f, 250.88f, 171.27f)
-            lineTo(253.12f, 188.54f)
-            horizontalLineTo(253.13f)
+            moveTo(255.062f, 191.436f)
+            lineTo(229.562f, 212.336f)
+            horizontalLineTo(215.702f)
+            curveTo(216.022f, 208.226f, 217.332f, 198.966f, 224.092f, 190.116f)
+            curveTo(234.412f, 176.596f, 249.602f, 174.296f, 252.782f, 173.886f)
+            lineTo(255.062f, 191.446f)
+            verticalLineTo(191.436f)
             close()
         }
         path(
@@ -376,13 +399,12 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(237.3f, 193.95f)
-            curveTo(243.91f, 188.76f, 251.0f, 188.54f, 253.12f, 188.55f)
-            curveTo(253.31f, 189.72f, 254.49f, 197.97f, 248.73f, 204.19f)
-            curveTo(245.82f, 207.34f, 242.4f, 208.59f, 240.59f, 209.1f)
-            horizontalLineTo(228.06f)
-            curveTo(228.44f, 207.13f, 230.16f, 199.56f, 237.3f, 193.96f)
-            verticalLineTo(193.95f)
+            moveTo(238.952f, 196.926f)
+            curveTo(245.682f, 191.646f, 252.892f, 191.416f, 255.052f, 191.436f)
+            curveTo(255.242f, 192.626f, 256.442f, 201.016f, 250.582f, 207.336f)
+            curveTo(247.612f, 210.536f, 244.142f, 211.806f, 242.302f, 212.326f)
+            horizontalLineTo(229.552f)
+            curveTo(229.942f, 210.326f, 231.692f, 202.626f, 238.952f, 196.926f)
             close()
         }
         path(
@@ -390,15 +412,15 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(128.78f, 164.62f)
-            curveTo(127.88f, 161.72f, 122.33f, 142.65f, 133.76f, 124.01f)
-            curveTo(142.91f, 109.09f, 157.16f, 103.9f, 162.48f, 102.36f)
-            curveTo(163.54f, 102.06f, 164.54f, 101.6f, 165.48f, 101.02f)
-            curveTo(168.66f, 99.06f, 171.83f, 97.09f, 175.01f, 95.13f)
-            curveTo(171.05f, 101.03f, 166.62f, 113.93f, 166.62f, 113.93f)
-            curveTo(166.62f, 113.93f, 144.73f, 142.06f, 135.26f, 156.18f)
-            lineTo(128.78f, 164.61f)
-            verticalLineTo(164.62f)
+            moveTo(128.512f, 167.106f)
+            curveTo(127.602f, 164.156f, 121.952f, 144.756f, 133.582f, 125.806f)
+            curveTo(142.892f, 110.636f, 157.392f, 105.346f, 162.812f, 103.786f)
+            curveTo(163.882f, 103.476f, 164.912f, 103.016f, 165.862f, 102.426f)
+            curveTo(169.092f, 100.426f, 172.322f, 98.436f, 175.562f, 96.436f)
+            curveTo(171.532f, 102.436f, 167.022f, 115.556f, 167.022f, 115.556f)
+            curveTo(167.022f, 115.556f, 144.742f, 144.166f, 135.112f, 158.536f)
+            lineTo(128.522f, 167.116f)
+            lineTo(128.512f, 167.106f)
             close()
         }
         path(
@@ -406,17 +428,16 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(175.71f, 92.91f)
-            lineTo(180.77f, 97.62f)
-            curveTo(181.43f, 102.46f, 182.25f, 113.82f, 175.84f, 124.97f)
-            curveTo(173.9f, 128.34f, 169.62f, 134.61f, 162.27f, 139.29f)
-            curveTo(155.77f, 143.43f, 151.88f, 143.14f, 144.21f, 148.05f)
-            curveTo(139.3f, 151.19f, 136.42f, 155.18f, 134.19f, 157.59f)
-            curveTo(137.2f, 144.13f, 142.17f, 135.58f, 146.94f, 130.74f)
-            curveTo(153.14f, 124.44f, 159.3f, 122.01f, 164.82f, 113.28f)
-            curveTo(168.45f, 107.55f, 170.0f, 101.94f, 170.74f, 98.02f)
-            lineTo(175.72f, 92.9f)
-            lineTo(175.71f, 92.91f)
+            moveTo(176.272f, 94.176f)
+            lineTo(181.412f, 98.966f)
+            curveTo(182.082f, 103.886f, 182.922f, 115.446f, 176.392f, 126.786f)
+            curveTo(174.422f, 130.216f, 170.062f, 136.586f, 162.582f, 141.346f)
+            curveTo(155.972f, 145.556f, 152.012f, 145.256f, 144.202f, 150.256f)
+            curveTo(139.202f, 153.446f, 136.272f, 157.506f, 134.002f, 159.956f)
+            curveTo(137.062f, 146.266f, 142.122f, 137.576f, 146.972f, 132.656f)
+            curveTo(153.282f, 126.246f, 159.552f, 123.776f, 165.172f, 114.896f)
+            curveTo(168.862f, 109.066f, 170.442f, 103.356f, 171.202f, 99.376f)
+            lineTo(176.272f, 94.176f)
             close()
         }
         path(
@@ -424,41 +445,41 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(132.14f, 160.23f)
-            curveTo(134.68f, 159.89f, 141.42f, 159.06f, 148.62f, 163.26f)
-            curveTo(160.18f, 170.0f, 161.6f, 183.21f, 161.73f, 184.63f)
-            lineTo(156.85f, 188.18f)
-            curveTo(156.72f, 186.79f, 155.37f, 174.25f, 144.44f, 167.82f)
-            curveTo(137.84f, 163.94f, 131.26f, 164.34f, 128.78f, 164.63f)
-            lineTo(132.14f, 160.23f)
+            moveTo(131.932f, 162.636f)
+            curveTo(134.522f, 162.286f, 141.372f, 161.446f, 148.702f, 165.716f)
+            curveTo(160.462f, 172.566f, 161.912f, 186.006f, 162.052f, 187.446f)
+            lineTo(157.082f, 191.066f)
+            curveTo(156.952f, 189.656f, 155.582f, 176.896f, 144.452f, 170.356f)
+            curveTo(137.742f, 166.406f, 131.042f, 166.816f, 128.512f, 167.106f)
+            lineTo(131.932f, 162.636f)
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFE9900)), stroke = null, strokeLineWidth = 0.0f,
+            fill = SolidColor(Color(0xFFFD9D00)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(125.92f, 169.23f)
-            curveTo(128.28f, 169.11f, 134.65f, 169.12f, 140.77f, 173.3f)
-            curveTo(150.53f, 179.96f, 151.26f, 191.48f, 151.33f, 192.89f)
-            lineTo(146.46f, 196.82f)
-            curveTo(146.35f, 195.32f, 145.35f, 184.07f, 135.77f, 177.76f)
-            curveTo(130.65f, 174.39f, 125.45f, 174.0f, 122.97f, 173.98f)
-            lineTo(125.92f, 169.23f)
+            moveTo(125.602f, 171.786f)
+            curveTo(128.002f, 171.666f, 134.482f, 171.676f, 140.712f, 175.926f)
+            curveTo(150.652f, 182.696f, 151.392f, 194.416f, 151.462f, 195.846f)
+            lineTo(146.502f, 199.836f)
+            curveTo(146.392f, 198.306f, 145.372f, 186.866f, 135.622f, 180.456f)
+            curveTo(130.412f, 177.026f, 125.122f, 176.626f, 122.592f, 176.616f)
+            lineTo(125.592f, 171.786f)
+            horizontalLineTo(125.602f)
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF8102)), stroke = null, strokeLineWidth = 0.0f,
+            fill = SolidColor(Color(0xFFFD511B)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(119.8f, 179.07f)
-            curveTo(122.07f, 178.97f, 125.84f, 179.18f, 129.66f, 181.26f)
-            curveTo(139.47f, 186.6f, 140.05f, 199.1f, 140.07f, 199.94f)
-            curveTo(139.6f, 198.16f, 136.98f, 188.96f, 128.05f, 184.4f)
-            curveTo(124.1f, 182.38f, 120.36f, 182.0f, 117.99f, 181.98f)
-            lineTo(119.79f, 179.08f)
-            lineTo(119.8f, 179.07f)
+            moveTo(119.382f, 181.796f)
+            curveTo(121.692f, 181.696f, 125.532f, 181.906f, 129.412f, 184.016f)
+            curveTo(139.402f, 189.446f, 139.982f, 202.166f, 140.012f, 203.016f)
+            curveTo(139.532f, 201.206f, 136.872f, 191.856f, 127.782f, 187.206f)
+            curveTo(123.762f, 185.156f, 119.952f, 184.766f, 117.552f, 184.746f)
+            lineTo(119.382f, 181.796f)
             close()
         }
         path(
@@ -466,29 +487,29 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(124.38f, 202.04f)
-            verticalLineTo(194.09f)
-            curveTo(123.3f, 191.04f, 121.49f, 188.97f, 119.01f, 187.8f)
-            curveTo(118.17f, 187.4f, 117.24f, 187.22f, 116.3f, 187.22f)
-            horizontalLineTo(105.48f)
-            curveTo(104.66f, 187.22f, 103.84f, 187.36f, 103.07f, 187.67f)
-            curveTo(96.71f, 190.26f, 94.95f, 195.35f, 95.57f, 201.74f)
-            lineTo(124.37f, 202.04f)
-            horizontalLineTo(124.38f)
+            moveTo(124.042f, 205.156f)
+            verticalLineTo(197.066f)
+            curveTo(122.942f, 193.966f, 121.092f, 191.866f, 118.572f, 190.666f)
+            curveTo(117.712f, 190.256f, 116.772f, 190.076f, 115.822f, 190.076f)
+            horizontalLineTo(104.812f)
+            curveTo(103.972f, 190.076f, 103.142f, 190.216f, 102.362f, 190.536f)
+            curveTo(95.892f, 193.166f, 94.102f, 198.346f, 94.732f, 204.846f)
+            lineTo(124.042f, 205.146f)
+            verticalLineTo(205.156f)
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF8102)), stroke = null, strokeLineWidth = 0.0f,
+            fill = SolidColor(Color(0xFFFD511B)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(247.83f, 212.34f)
-            curveTo(252.64f, 209.29f, 255.9f, 204.01f, 258.11f, 197.24f)
-            curveTo(258.97f, 199.2f, 260.14f, 202.04f, 261.32f, 205.55f)
-            curveTo(262.91f, 210.27f, 264.01f, 213.52f, 264.23f, 216.48f)
-            curveTo(264.39f, 218.72f, 264.37f, 225.18f, 257.07f, 233.22f)
-            lineTo(247.83f, 212.33f)
-            verticalLineTo(212.34f)
+            moveTo(249.662f, 215.636f)
+            curveTo(254.562f, 212.536f, 257.882f, 207.166f, 260.122f, 200.276f)
+            curveTo(260.992f, 202.266f, 262.182f, 205.166f, 263.392f, 208.736f)
+            curveTo(265.012f, 213.546f, 266.132f, 216.836f, 266.352f, 219.856f)
+            curveTo(266.522f, 222.136f, 266.502f, 228.706f, 259.062f, 236.886f)
+            lineTo(249.662f, 215.646f)
+            verticalLineTo(215.636f)
             close()
         }
         path(
@@ -496,17 +517,17 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(217.7f, 215.23f)
-            lineTo(239.08f, 214.73f)
-            curveTo(240.98f, 214.69f, 242.86f, 214.3f, 244.63f, 213.6f)
-            lineTo(247.82f, 212.33f)
-            lineTo(257.22f, 222.93f)
-            lineTo(264.17f, 216.26f)
-            curveTo(264.38f, 217.02f, 266.41f, 225.03f, 260.9f, 231.72f)
-            curveTo(255.0f, 238.9f, 245.94f, 237.89f, 245.37f, 237.81f)
-            curveTo(235.26f, 237.96f, 225.16f, 238.11f, 215.05f, 238.26f)
-            lineTo(217.7f, 215.2f)
-            verticalLineTo(215.23f)
+            moveTo(219.012f, 218.576f)
+            lineTo(240.772f, 218.076f)
+            curveTo(242.712f, 218.036f, 244.622f, 217.646f, 246.422f, 216.926f)
+            lineTo(249.672f, 215.636f)
+            lineTo(259.232f, 226.416f)
+            lineTo(266.302f, 219.636f)
+            curveTo(266.512f, 220.406f, 268.572f, 228.556f, 262.972f, 235.366f)
+            curveTo(256.962f, 242.666f, 247.742f, 241.636f, 247.172f, 241.566f)
+            curveTo(236.892f, 241.716f, 226.602f, 241.876f, 216.322f, 242.026f)
+            lineTo(219.022f, 218.576f)
+            horizontalLineTo(219.012f)
             close()
         }
         path(
@@ -514,15 +535,15 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(234.81f, 214.84f)
-            curveTo(235.7f, 215.96f, 238.76f, 220.1f, 238.61f, 226.14f)
-            curveTo(238.43f, 232.86f, 234.4f, 237.11f, 233.49f, 238.02f)
-            lineTo(243.25f, 237.87f)
-            curveTo(244.17f, 236.74f, 247.55f, 232.31f, 247.4f, 225.78f)
-            curveTo(247.26f, 219.48f, 243.93f, 215.31f, 242.95f, 214.17f)
-            lineTo(240.41f, 214.65f)
-            lineTo(234.81f, 214.83f)
-            verticalLineTo(214.84f)
+            moveTo(236.422f, 218.176f)
+            curveTo(237.322f, 219.316f, 240.442f, 223.526f, 240.282f, 229.666f)
+            curveTo(240.102f, 236.506f, 235.992f, 240.826f, 235.072f, 241.746f)
+            lineTo(245.002f, 241.596f)
+            curveTo(245.942f, 240.446f, 249.382f, 235.946f, 249.232f, 229.296f)
+            curveTo(249.082f, 222.886f, 245.692f, 218.646f, 244.702f, 217.486f)
+            lineTo(242.112f, 217.976f)
+            lineTo(236.412f, 218.166f)
+            lineTo(236.422f, 218.176f)
             close()
         }
         path(
@@ -530,12 +551,13 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(200.84f, 214.99f)
-            lineTo(217.71f, 215.23f)
-            curveTo(218.37f, 216.01f, 222.07f, 220.56f, 221.38f, 227.16f)
-            curveTo(220.67f, 233.96f, 215.85f, 237.69f, 215.05f, 238.29f)
-            horizontalLineTo(189.45f)
-            lineTo(200.84f, 214.99f)
+            moveTo(201.842f, 218.336f)
+            lineTo(219.012f, 218.586f)
+            curveTo(219.682f, 219.376f, 223.452f, 224.006f, 222.752f, 230.716f)
+            curveTo(222.032f, 237.626f, 217.122f, 241.426f, 216.312f, 242.036f)
+            horizontalLineTo(190.252f)
+            lineTo(201.842f, 218.346f)
+            verticalLineTo(218.336f)
             close()
         }
         path(
@@ -543,14 +565,13 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(174.99f, 214.99f)
-            horizontalLineTo(200.84f)
-            curveTo(201.55f, 216.17f, 204.13f, 220.78f, 202.83f, 226.38f)
-            curveTo(201.44f, 232.37f, 196.17f, 237.07f, 189.46f, 238.29f)
-            lineTo(176.45f, 237.95f)
-            curveTo(169.45f, 236.75f, 164.91f, 230.52f, 165.73f, 224.64f)
-            curveTo(166.35f, 220.14f, 170.05f, 216.26f, 175.01f, 215.0f)
-            lineTo(174.99f, 214.99f)
+            moveTo(175.542f, 218.336f)
+            horizontalLineTo(201.842f)
+            curveTo(202.562f, 219.536f, 205.192f, 224.226f, 203.862f, 229.916f)
+            curveTo(202.452f, 236.006f, 197.082f, 240.786f, 190.252f, 242.026f)
+            lineTo(177.012f, 241.676f)
+            curveTo(169.882f, 240.456f, 165.272f, 234.116f, 166.102f, 228.136f)
+            curveTo(166.732f, 223.556f, 170.502f, 219.616f, 175.542f, 218.336f)
             close()
         }
         path(
@@ -558,11 +579,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(143.4f, 80.37f)
-            curveTo(150.31f, 80.37f, 155.91f, 74.77f, 155.91f, 67.86f)
-            curveTo(155.91f, 60.95f, 150.31f, 55.35f, 143.4f, 55.35f)
-            curveTo(136.49f, 55.35f, 130.89f, 60.95f, 130.89f, 67.86f)
-            curveTo(130.89f, 74.77f, 136.49f, 80.37f, 143.4f, 80.37f)
+            moveTo(143.392f, 81.406f)
+            curveTo(150.423f, 81.406f, 156.122f, 75.711f, 156.122f, 68.686f)
+            curveTo(156.122f, 61.66f, 150.423f, 55.966f, 143.392f, 55.966f)
+            curveTo(136.362f, 55.966f, 130.662f, 61.66f, 130.662f, 68.686f)
+            curveTo(130.662f, 75.711f, 136.362f, 81.406f, 143.392f, 81.406f)
             close()
         }
         path(
@@ -570,11 +591,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(138.66f, 65.93f)
-            curveTo(140.49f, 65.93f, 141.97f, 64.45f, 141.97f, 62.62f)
-            curveTo(141.97f, 60.79f, 140.49f, 59.31f, 138.66f, 59.31f)
-            curveTo(136.83f, 59.31f, 135.35f, 60.79f, 135.35f, 62.62f)
-            curveTo(135.35f, 64.45f, 136.83f, 65.93f, 138.66f, 65.93f)
+            moveTo(138.562f, 66.726f)
+            curveTo(140.423f, 66.726f, 141.932f, 65.217f, 141.932f, 63.356f)
+            curveTo(141.932f, 61.494f, 140.423f, 59.986f, 138.562f, 59.986f)
+            curveTo(136.701f, 59.986f, 135.192f, 61.494f, 135.192f, 63.356f)
+            curveTo(135.192f, 65.217f, 136.701f, 66.726f, 138.562f, 66.726f)
             close()
         }
         path(
@@ -582,11 +603,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(148.99f, 64.84f)
-            curveTo(150.22f, 64.84f, 151.21f, 63.85f, 151.21f, 62.62f)
-            curveTo(151.21f, 61.39f, 150.22f, 60.4f, 148.99f, 60.4f)
-            curveTo(147.76f, 60.4f, 146.77f, 61.39f, 146.77f, 62.62f)
-            curveTo(146.77f, 63.85f, 147.76f, 64.84f, 148.99f, 64.84f)
+            moveTo(149.082f, 65.616f)
+            curveTo(150.33f, 65.616f, 151.342f, 64.604f, 151.342f, 63.356f)
+            curveTo(151.342f, 62.107f, 150.33f, 61.096f, 149.082f, 61.096f)
+            curveTo(147.834f, 61.096f, 146.822f, 62.107f, 146.822f, 63.356f)
+            curveTo(146.822f, 64.604f, 147.834f, 65.616f, 149.082f, 65.616f)
             close()
         }
         path(
@@ -594,13 +615,14 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(149.99f, 67.06f)
-            curveTo(150.38f, 64.91f, 152.32f, 65.11f, 152.32f, 67.06f)
-            curveTo(152.41f, 72.05f, 148.31f, 76.17f, 143.41f, 76.14f)
-            curveTo(138.44f, 76.11f, 134.36f, 71.83f, 134.61f, 66.78f)
-            curveTo(134.66f, 65.09f, 136.48f, 65.0f, 136.82f, 66.78f)
-            curveTo(137.53f, 69.86f, 140.28f, 72.07f, 143.41f, 72.08f)
-            curveTo(146.46f, 72.09f, 149.18f, 70.03f, 149.99f, 67.06f)
+            moveTo(150.092f, 68.876f)
+            curveTo(150.492f, 66.686f, 152.462f, 66.896f, 152.462f, 68.876f)
+            curveTo(152.552f, 73.946f, 148.382f, 78.136f, 143.392f, 78.106f)
+            curveTo(138.332f, 78.076f, 134.182f, 73.726f, 134.442f, 68.586f)
+            curveTo(134.492f, 66.866f, 136.342f, 66.766f, 136.692f, 68.586f)
+            curveTo(137.412f, 71.726f, 140.212f, 73.966f, 143.402f, 73.976f)
+            curveTo(146.502f, 73.986f, 149.272f, 71.896f, 150.102f, 68.866f)
+            lineTo(150.092f, 68.876f)
             close()
         }
         path(
@@ -608,16 +630,16 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(280.71f, 223.0f)
-            curveTo(279.64f, 234.01f, 272.71f, 246.51f, 261.81f, 250.02f)
-            curveTo(259.7f, 250.7f, 257.83f, 250.92f, 256.51f, 250.98f)
-            curveTo(256.4f, 248.18f, 256.3f, 245.38f, 256.19f, 242.59f)
-            curveTo(257.47f, 242.57f, 259.34f, 242.37f, 261.33f, 241.51f)
-            curveTo(269.24f, 238.07f, 273.82f, 226.33f, 272.51f, 216.53f)
-            curveTo(271.18f, 206.55f, 264.06f, 200.67f, 267.07f, 196.11f)
-            curveTo(267.3f, 195.76f, 268.14f, 194.49f, 269.42f, 194.38f)
-            curveTo(274.03f, 193.97f, 282.08f, 208.83f, 280.71f, 223.02f)
-            verticalLineTo(223.0f)
+            moveTo(283.122f, 226.476f)
+            curveTo(282.032f, 237.676f, 274.972f, 250.386f, 263.882f, 253.956f)
+            curveTo(261.732f, 254.646f, 259.832f, 254.866f, 258.482f, 254.936f)
+            curveTo(258.372f, 252.086f, 258.262f, 249.246f, 258.152f, 246.396f)
+            curveTo(259.452f, 246.376f, 261.352f, 246.176f, 263.382f, 245.296f)
+            curveTo(271.432f, 241.796f, 276.092f, 229.856f, 274.762f, 219.886f)
+            curveTo(273.402f, 209.736f, 266.162f, 203.756f, 269.232f, 199.116f)
+            curveTo(269.462f, 198.766f, 270.322f, 197.466f, 271.632f, 197.356f)
+            curveTo(276.322f, 196.936f, 284.522f, 212.056f, 283.122f, 226.486f)
+            verticalLineTo(226.476f)
             close()
         }
         path(
@@ -625,10 +647,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(159.3f, 228.65f)
-            lineTo(126.04f, 242.55f)
-            horizontalLineTo(171.91f)
-            curveTo(165.16f, 239.87f, 160.82f, 235.34f, 159.3f, 228.65f)
+            moveTo(159.572f, 232.226f)
+            lineTo(125.732f, 246.356f)
+            horizontalLineTo(172.412f)
+            curveTo(165.542f, 243.626f, 161.122f, 239.026f, 159.582f, 232.226f)
+            horizontalLineTo(159.572f)
             close()
         }
         path(
@@ -636,16 +659,15 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(84.56f, 240.11f)
-            lineTo(38.65f, 232.16f)
-            curveTo(37.75f, 233.32f, 31.61f, 240.99f, 24.19f, 240.11f)
-            curveTo(13.66f, 238.87f, 10.45f, 221.6f, 10.09f, 219.5f)
-            curveTo(8.14f, 208.2f, 20.49f, 198.29f, 14.79f, 195.64f)
-            curveTo(9.09f, 192.99f, 2.36f, 206.03f, 2.5f, 220.58f)
-            curveTo(2.62f, 233.8f, 11.8f, 246.04f, 25.51f, 250.82f)
-            horizontalLineTo(85.4f)
-            lineTo(84.55f, 240.1f)
-            lineTo(84.56f, 240.11f)
+            moveTo(83.512f, 243.876f)
+            lineTo(36.792f, 235.786f)
+            curveTo(35.872f, 236.966f, 29.632f, 244.766f, 22.082f, 243.876f)
+            curveTo(11.362f, 242.616f, 8.102f, 225.046f, 7.732f, 222.916f)
+            curveTo(5.742f, 211.426f, 18.322f, 201.346f, 12.512f, 198.646f)
+            curveTo(6.712f, 195.966f, -0.138f, 209.226f, 0.002f, 224.026f)
+            curveTo(0.132f, 237.466f, 9.472f, 249.916f, 23.422f, 254.786f)
+            horizontalLineTo(84.372f)
+            lineTo(83.512f, 243.876f)
             close()
         }
         path(
@@ -653,11 +675,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(232.52f, 80.99f)
-            curveTo(253.21f, 80.99f, 269.99f, 64.21f, 269.99f, 43.52f)
-            curveTo(269.99f, 22.83f, 253.21f, 6.05f, 232.52f, 6.05f)
-            curveTo(211.83f, 6.05f, 195.05f, 22.83f, 195.05f, 43.52f)
-            curveTo(195.05f, 64.21f, 211.83f, 80.99f, 232.52f, 80.99f)
+            moveTo(234.092f, 82.056f)
+            curveTo(255.151f, 82.056f, 272.222f, 64.993f, 272.222f, 43.946f)
+            curveTo(272.222f, 22.898f, 255.151f, 5.836f, 234.092f, 5.836f)
+            curveTo(213.034f, 5.836f, 195.962f, 22.898f, 195.962f, 43.946f)
+            curveTo(195.962f, 64.993f, 213.034f, 82.056f, 234.092f, 82.056f)
             close()
         }
         path(
@@ -665,159 +687,159 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(40.54f, 29.52f)
-            curveTo(47.77f, 29.52f, 53.63f, 23.66f, 53.63f, 16.43f)
-            curveTo(53.63f, 9.2f, 47.77f, 3.34f, 40.54f, 3.34f)
-            curveTo(33.31f, 3.34f, 27.45f, 9.2f, 27.45f, 16.43f)
-            curveTo(27.45f, 23.66f, 33.31f, 29.52f, 40.54f, 29.52f)
+            moveTo(38.712f, 29.696f)
+            curveTo(46.069f, 29.696f, 52.032f, 23.736f, 52.032f, 16.386f)
+            curveTo(52.032f, 9.035f, 46.069f, 3.076f, 38.712f, 3.076f)
+            curveTo(31.356f, 3.076f, 25.392f, 9.035f, 25.392f, 16.386f)
+            curveTo(25.392f, 23.736f, 31.356f, 29.696f, 38.712f, 29.696f)
             close()
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFF0B7C)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(24.16f, 51.4f)
-            horizontalLineTo(52.11f)
+            moveTo(22.042f, 51.946f)
+            horizontalLineTo(50.492f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF08DCA5)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(14.44f, 65.93f)
-            horizontalLineTo(50.1f)
+            moveTo(12.152f, 66.726f)
+            horizontalLineTo(48.442f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFF0B7C)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(258.03f, 149.83f)
-            horizontalLineTo(276.5f)
+            moveTo(260.042f, 152.066f)
+            horizontalLineTo(278.842f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF08DCA5)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(261.32f, 172.1f)
-            horizontalLineTo(276.5f)
+            moveTo(263.392f, 174.706f)
+            horizontalLineTo(278.842f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF581FB2)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(112.27f, 246.74f)
-            horizontalLineTo(130.95f)
+            moveTo(111.712f, 250.626f)
+            horizontalLineTo(130.722f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF13A8FC)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(239.39f, 127.87f)
-            horizontalLineTo(276.5f)
+            moveTo(241.082f, 129.726f)
+            horizontalLineTo(278.842f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFE9900)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(245.3f, 110.4f)
-            horizontalLineTo(276.5f)
+            moveTo(247.092f, 111.956f)
+            horizontalLineTo(278.842f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF08DCA5)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(206.38f, 96.66f)
-            horizontalLineTo(223.37f)
+            moveTo(207.482f, 97.986f)
+            horizontalLineTo(224.772f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF581FB2)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(11.42f, 132.81f)
-            horizontalLineTo(61.93f)
+            moveTo(9.082f, 134.756f)
+            horizontalLineTo(60.482f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF13A8FC)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(11.42f, 149.83f)
-            horizontalLineTo(36.67f)
+            moveTo(9.082f, 152.066f)
+            horizontalLineTo(34.782f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFBA000)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(9.74f, 171.13f)
-            horizontalLineTo(60.1f)
+            moveTo(7.362f, 173.726f)
+            horizontalLineTo(58.622f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF08DCA5)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(58.47f, 263.67f)
-            horizontalLineTo(247.83f)
+            moveTo(56.962f, 267.846f)
+            horizontalLineTo(249.662f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFBA000)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(36.67f, 263.67f)
-            horizontalLineTo(76.55f)
+            moveTo(34.782f, 267.846f)
+            horizontalLineTo(75.362f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF581FB2)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(30.46f, 246.74f)
-            horizontalLineTo(84.8f)
+            moveTo(28.462f, 250.626f)
+            horizontalLineTo(83.762f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF08DCA5)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(126.65f, 246.74f)
-            horizontalLineTo(256.98f)
+            moveTo(126.342f, 250.626f)
+            horizontalLineTo(258.972f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF13A8FC)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(195.05f, 246.59f)
-            horizontalLineTo(225.38f)
+            moveTo(195.952f, 250.476f)
+            horizontalLineTo(226.822f)
         }
         path(
             fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFF0B7C)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(115.87f, 263.67f)
-            horizontalLineTo(196.61f)
+            moveTo(115.372f, 267.846f)
+            horizontalLineTo(197.542f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFBA000)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFD511B)),
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(35.33f, 103.76f)
-            curveTo(40.2f, 103.76f, 44.14f, 99.82f, 44.14f, 94.95f)
-            curveTo(44.14f, 90.08f, 40.2f, 86.14f, 35.33f, 86.14f)
-            curveTo(30.46f, 86.14f, 26.52f, 90.08f, 26.52f, 94.95f)
-            curveTo(26.52f, 99.82f, 30.46f, 103.76f, 35.33f, 103.76f)
+            moveTo(33.412f, 105.196f)
+            curveTo(38.361f, 105.196f, 42.372f, 101.184f, 42.372f, 96.236f)
+            curveTo(42.372f, 91.287f, 38.361f, 87.276f, 33.412f, 87.276f)
+            curveTo(28.464f, 87.276f, 24.452f, 91.287f, 24.452f, 96.236f)
+            curveTo(24.452f, 101.184f, 28.464f, 105.196f, 33.412f, 105.196f)
             close()
         }
         path(
@@ -825,11 +847,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(226.05f, 114.86f)
-            curveTo(227.76f, 114.86f, 229.15f, 113.47f, 229.15f, 111.76f)
-            curveTo(229.15f, 110.05f, 227.76f, 108.66f, 226.05f, 108.66f)
-            curveTo(224.34f, 108.66f, 222.95f, 110.05f, 222.95f, 111.76f)
-            curveTo(222.95f, 113.47f, 224.34f, 114.86f, 226.05f, 114.86f)
+            moveTo(227.502f, 116.496f)
+            curveTo(229.247f, 116.496f, 230.662f, 115.081f, 230.662f, 113.336f)
+            curveTo(230.662f, 111.59f, 229.247f, 110.176f, 227.502f, 110.176f)
+            curveTo(225.757f, 110.176f, 224.342f, 111.59f, 224.342f, 113.336f)
+            curveTo(224.342f, 115.081f, 225.757f, 116.496f, 227.502f, 116.496f)
             close()
         }
         path(
@@ -837,11 +859,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(281.72f, 193.16f)
-            curveTo(283.81f, 193.16f, 285.5f, 191.47f, 285.5f, 189.38f)
-            curveTo(285.5f, 187.29f, 283.81f, 185.6f, 281.72f, 185.6f)
-            curveTo(279.63f, 185.6f, 277.94f, 187.29f, 277.94f, 189.38f)
-            curveTo(277.94f, 191.47f, 279.63f, 193.16f, 281.72f, 193.16f)
+            moveTo(284.162f, 196.126f)
+            curveTo(286.283f, 196.126f, 288.002f, 194.406f, 288.002f, 192.286f)
+            curveTo(288.002f, 190.165f, 286.283f, 188.446f, 284.162f, 188.446f)
+            curveTo(282.041f, 188.446f, 280.322f, 190.165f, 280.322f, 192.286f)
+            curveTo(280.322f, 194.406f, 282.041f, 196.126f, 284.162f, 196.126f)
             close()
         }
         path(
@@ -849,11 +871,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(21.32f, 42.32f)
-            curveTo(22.88f, 42.32f, 24.15f, 41.05f, 24.15f, 39.49f)
-            curveTo(24.15f, 37.93f, 22.88f, 36.66f, 21.32f, 36.66f)
-            curveTo(19.76f, 36.66f, 18.49f, 37.93f, 18.49f, 39.49f)
-            curveTo(18.49f, 41.05f, 19.76f, 42.32f, 21.32f, 42.32f)
+            moveTo(19.162f, 42.716f)
+            curveTo(20.753f, 42.716f, 22.042f, 41.426f, 22.042f, 39.836f)
+            curveTo(22.042f, 38.245f, 20.753f, 36.956f, 19.162f, 36.956f)
+            curveTo(17.572f, 36.956f, 16.282f, 38.245f, 16.282f, 39.836f)
+            curveTo(16.282f, 41.426f, 17.572f, 42.716f, 19.162f, 42.716f)
             close()
         }
         path(
@@ -861,15 +883,15 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(17.15f, 111.79f)
-            lineTo(13.45f, 113.81f)
-            lineTo(11.42f, 117.51f)
-            lineTo(9.4f, 113.81f)
-            lineTo(5.7f, 111.79f)
-            lineTo(9.4f, 109.76f)
-            lineTo(11.42f, 106.06f)
-            lineTo(13.45f, 109.76f)
-            lineTo(17.15f, 111.79f)
+            moveTo(14.912f, 113.366f)
+            lineTo(11.142f, 115.426f)
+            lineTo(9.082f, 119.186f)
+            lineTo(7.022f, 115.426f)
+            lineTo(3.262f, 113.366f)
+            lineTo(7.022f, 111.306f)
+            lineTo(9.082f, 107.546f)
+            lineTo(11.142f, 111.306f)
+            lineTo(14.912f, 113.366f)
             close()
         }
         path(
@@ -877,15 +899,15 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(61.93f, 111.79f)
-            lineTo(59.24f, 113.26f)
-            lineTo(57.77f, 115.94f)
-            lineTo(56.3f, 113.26f)
-            lineTo(53.61f, 111.79f)
-            lineTo(56.3f, 110.32f)
-            lineTo(57.77f, 107.63f)
-            lineTo(59.24f, 110.32f)
-            lineTo(61.93f, 111.79f)
+            moveTo(60.482f, 113.366f)
+            lineTo(57.742f, 114.866f)
+            lineTo(56.252f, 117.596f)
+            lineTo(54.752f, 114.866f)
+            lineTo(52.022f, 113.366f)
+            lineTo(54.752f, 111.876f)
+            lineTo(56.252f, 109.136f)
+            lineTo(57.742f, 111.876f)
+            lineTo(60.482f, 113.366f)
             close()
         }
         path(
@@ -893,15 +915,15 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(61.93f, 150.31f)
-            lineTo(58.73f, 152.06f)
-            lineTo(56.99f, 155.25f)
-            lineTo(55.24f, 152.06f)
-            lineTo(52.05f, 150.31f)
-            lineTo(55.24f, 148.57f)
-            lineTo(56.99f, 145.37f)
-            lineTo(58.73f, 148.57f)
-            lineTo(61.93f, 150.31f)
+            moveTo(60.482f, 152.556f)
+            lineTo(57.232f, 154.326f)
+            lineTo(55.452f, 157.576f)
+            lineTo(53.672f, 154.326f)
+            lineTo(50.422f, 152.556f)
+            lineTo(53.672f, 150.776f)
+            lineTo(55.452f, 147.526f)
+            lineTo(57.232f, 150.776f)
+            lineTo(60.482f, 152.556f)
             close()
         }
         path(
@@ -909,48 +931,48 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(263.67f, 88.54f)
-            lineTo(259.97f, 90.56f)
-            lineTo(257.95f, 94.26f)
-            lineTo(255.92f, 90.56f)
-            lineTo(252.22f, 88.54f)
-            lineTo(255.92f, 86.52f)
-            lineTo(257.95f, 82.82f)
-            lineTo(259.97f, 86.52f)
-            lineTo(263.67f, 88.54f)
+            moveTo(265.792f, 89.726f)
+            lineTo(262.022f, 91.786f)
+            lineTo(259.962f, 95.546f)
+            lineTo(257.902f, 91.786f)
+            lineTo(254.142f, 89.726f)
+            lineTo(257.902f, 87.666f)
+            lineTo(259.962f, 83.906f)
+            lineTo(262.022f, 87.666f)
+            lineTo(265.792f, 89.726f)
             close()
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFE9900)),
-            strokeLineWidth = 8.49f, strokeLineCap = Round, strokeLineJoin = Miter,
+            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFD511B)),
+            strokeLineWidth = 8.64f, strokeLineCap = Round, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
-            moveTo(167.51f, 263.67f)
-            horizontalLineTo(197.84f)
+            moveTo(167.932f, 267.846f)
+            horizontalLineTo(198.792f)
         }
         path(
             fill = SolidColor(Color(0xFF08DCA5)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(157.3f, 209.09f)
-            lineTo(109.93f, 226.64f)
-            lineTo(91.84f, 222.46f)
-            lineTo(84.8f, 228.01f)
-            lineTo(38.9f, 219.69f)
-            lineTo(35.21f, 214.39f)
-            lineTo(18.29f, 211.26f)
-            lineTo(15.76f, 212.7f)
-            lineTo(19.13f, 204.27f)
-            lineTo(43.47f, 192.58f)
-            lineTo(43.96f, 196.81f)
-            lineTo(47.21f, 199.93f)
-            horizontalLineTo(90.22f)
-            lineTo(90.68f, 204.39f)
-            lineTo(94.44f, 206.32f)
-            lineTo(140.08f, 207.04f)
-            lineTo(145.26f, 204.27f)
-            lineTo(157.3f, 209.09f)
+            moveTo(157.532f, 212.326f)
+            lineTo(109.332f, 230.186f)
+            lineTo(90.912f, 225.936f)
+            lineTo(83.762f, 231.566f)
+            lineTo(37.042f, 223.116f)
+            lineTo(33.292f, 217.726f)
+            lineTo(16.072f, 214.536f)
+            lineTo(13.502f, 216.006f)
+            lineTo(16.932f, 207.426f)
+            lineTo(41.702f, 195.536f)
+            lineTo(42.192f, 199.846f)
+            lineTo(45.502f, 203.016f)
+            horizontalLineTo(89.272f)
+            lineTo(89.742f, 207.546f)
+            lineTo(93.572f, 209.506f)
+            lineTo(140.012f, 210.246f)
+            lineTo(145.282f, 207.426f)
+            lineTo(157.532f, 212.326f)
             close()
         }
         path(
@@ -958,11 +980,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(39.77f, 222.81f)
-            lineTo(84.08f, 230.09f)
-            verticalLineTo(234.67f)
-            lineTo(39.77f, 227.39f)
-            verticalLineTo(222.81f)
+            moveTo(37.932f, 226.286f)
+            lineTo(83.022f, 233.696f)
+            verticalLineTo(238.356f)
+            lineTo(37.932f, 230.936f)
+            verticalLineTo(226.286f)
             close()
         }
         path(
@@ -970,13 +992,13 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(105.97f, 230.9f)
-            lineTo(92.69f, 227.77f)
-            lineTo(89.08f, 230.66f)
-            lineTo(92.27f, 243.01f)
-            lineTo(97.76f, 246.74f)
-            lineTo(103.08f, 245.2f)
-            lineTo(105.97f, 230.9f)
+            moveTo(105.302f, 234.516f)
+            lineTo(91.792f, 231.326f)
+            lineTo(88.112f, 234.266f)
+            lineTo(91.362f, 246.826f)
+            lineTo(96.942f, 250.626f)
+            lineTo(102.352f, 249.056f)
+            lineTo(105.302f, 234.516f)
             close()
         }
         path(
@@ -984,13 +1006,13 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(32.93f, 218.79f)
-            lineTo(20.02f, 215.8f)
-            lineTo(16.24f, 219.65f)
-            lineTo(19.7f, 231.22f)
-            lineTo(27.25f, 235.0f)
-            lineTo(30.46f, 233.67f)
-            lineTo(32.93f, 218.79f)
+            moveTo(30.972f, 222.196f)
+            lineTo(17.832f, 219.156f)
+            lineTo(13.992f, 223.076f)
+            lineTo(17.502f, 234.836f)
+            lineTo(25.192f, 238.676f)
+            lineTo(28.462f, 237.326f)
+            lineTo(30.972f, 222.196f)
             close()
         }
         path(
@@ -998,12 +1020,12 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(105.97f, 230.9f)
-            lineTo(102.68f, 234.11f)
-            lineTo(103.08f, 245.2f)
-            curveTo(103.08f, 245.2f, 105.93f, 245.12f, 107.02f, 241.5f)
-            curveTo(108.11f, 237.88f, 105.98f, 230.9f, 105.98f, 230.9f)
-            horizontalLineTo(105.97f)
+            moveTo(105.302f, 234.516f)
+            lineTo(101.952f, 237.786f)
+            lineTo(102.362f, 249.056f)
+            curveTo(102.362f, 249.056f, 105.262f, 248.976f, 106.372f, 245.296f)
+            curveTo(107.482f, 241.616f, 105.312f, 234.516f, 105.312f, 234.516f)
+            horizontalLineTo(105.302f)
             close()
         }
         path(
@@ -1011,12 +1033,12 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(30.46f, 233.67f)
-            verticalLineTo(222.46f)
-            lineTo(32.93f, 218.78f)
-            curveTo(32.93f, 218.78f, 34.98f, 221.85f, 34.98f, 226.73f)
-            curveTo(34.98f, 231.61f, 31.81f, 232.48f, 30.46f, 233.66f)
-            verticalLineTo(233.67f)
+            moveTo(28.462f, 237.326f)
+            verticalLineTo(225.926f)
+            lineTo(30.972f, 222.186f)
+            curveTo(30.972f, 222.186f, 33.052f, 225.316f, 33.052f, 230.276f)
+            curveTo(33.052f, 235.236f, 29.822f, 236.126f, 28.452f, 237.326f)
+            horizontalLineTo(28.462f)
             close()
         }
         path(
@@ -1024,11 +1046,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(38.89f, 219.69f)
-            lineTo(84.8f, 228.01f)
-            lineTo(84.08f, 230.09f)
-            lineTo(39.77f, 222.82f)
-            lineTo(38.89f, 219.69f)
+            moveTo(37.032f, 223.116f)
+            lineTo(83.762f, 231.566f)
+            lineTo(83.022f, 233.696f)
+            lineTo(37.932f, 226.296f)
+            lineTo(37.032f, 223.116f)
             close()
         }
         path(
@@ -1036,13 +1058,13 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(21.14f, 203.42f)
-            lineTo(100.51f, 217.48f)
-            lineTo(109.93f, 218.61f)
-            lineTo(133.68f, 213.63f)
-            lineTo(109.93f, 220.21f)
-            lineTo(18.49f, 206.16f)
-            lineTo(21.14f, 203.42f)
+            moveTo(18.972f, 206.566f)
+            lineTo(99.742f, 220.866f)
+            lineTo(109.332f, 222.016f)
+            lineTo(133.502f, 216.946f)
+            lineTo(109.332f, 223.646f)
+            lineTo(16.272f, 209.346f)
+            lineTo(18.972f, 206.566f)
             close()
         }
         path(
@@ -1050,11 +1072,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(40.22f, 204.15f)
-            curveTo(43.28f, 204.15f, 45.76f, 203.07f, 45.76f, 201.74f)
-            curveTo(45.76f, 200.41f, 43.28f, 199.33f, 40.22f, 199.33f)
-            curveTo(37.16f, 199.33f, 34.68f, 200.41f, 34.68f, 201.74f)
-            curveTo(34.68f, 203.07f, 37.16f, 204.15f, 40.22f, 204.15f)
+            moveTo(38.392f, 207.306f)
+            curveTo(41.507f, 207.306f, 44.032f, 206.209f, 44.032f, 204.856f)
+            curveTo(44.032f, 203.503f, 41.507f, 202.406f, 38.392f, 202.406f)
+            curveTo(35.277f, 202.406f, 32.752f, 203.503f, 32.752f, 204.856f)
+            curveTo(32.752f, 206.209f, 35.277f, 207.306f, 38.392f, 207.306f)
             close()
         }
         path(
@@ -1062,11 +1084,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(39.9f, 202.46f)
-            curveTo(42.24f, 202.46f, 44.13f, 201.68f, 44.13f, 200.71f)
-            curveTo(44.13f, 199.74f, 42.24f, 198.96f, 39.9f, 198.96f)
-            curveTo(37.56f, 198.96f, 35.67f, 199.74f, 35.67f, 200.71f)
-            curveTo(35.67f, 201.68f, 37.56f, 202.46f, 39.9f, 202.46f)
+            moveTo(38.072f, 205.596f)
+            curveTo(40.452f, 205.596f, 42.382f, 204.799f, 42.382f, 203.816f)
+            curveTo(42.382f, 202.833f, 40.452f, 202.036f, 38.072f, 202.036f)
+            curveTo(35.692f, 202.036f, 33.762f, 202.833f, 33.762f, 203.816f)
+            curveTo(33.762f, 204.799f, 35.692f, 205.596f, 38.072f, 205.596f)
             close()
         }
         path(
@@ -1074,11 +1096,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(54.56f, 205.9f)
-            curveTo(57.62f, 205.9f, 60.1f, 204.82f, 60.1f, 203.49f)
-            curveTo(60.1f, 202.16f, 57.62f, 201.08f, 54.56f, 201.08f)
-            curveTo(51.5f, 201.08f, 49.02f, 202.16f, 49.02f, 203.49f)
-            curveTo(49.02f, 204.82f, 51.5f, 205.9f, 54.56f, 205.9f)
+            moveTo(52.982f, 209.076f)
+            curveTo(56.097f, 209.076f, 58.622f, 207.979f, 58.622f, 206.626f)
+            curveTo(58.622f, 205.272f, 56.097f, 204.176f, 52.982f, 204.176f)
+            curveTo(49.867f, 204.176f, 47.342f, 205.272f, 47.342f, 206.626f)
+            curveTo(47.342f, 207.979f, 49.867f, 209.076f, 52.982f, 209.076f)
             close()
         }
         path(
@@ -1086,11 +1108,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(54.24f, 204.21f)
-            curveTo(56.58f, 204.21f, 58.47f, 203.43f, 58.47f, 202.46f)
-            curveTo(58.47f, 201.49f, 56.58f, 200.71f, 54.24f, 200.71f)
-            curveTo(51.9f, 200.71f, 50.01f, 201.49f, 50.01f, 202.46f)
-            curveTo(50.01f, 203.43f, 51.9f, 204.21f, 54.24f, 204.21f)
+            moveTo(52.662f, 207.366f)
+            curveTo(55.042f, 207.366f, 56.972f, 206.569f, 56.972f, 205.586f)
+            curveTo(56.972f, 204.603f, 55.042f, 203.806f, 52.662f, 203.806f)
+            curveTo(50.282f, 203.806f, 48.352f, 204.603f, 48.352f, 205.586f)
+            curveTo(48.352f, 206.569f, 50.282f, 207.366f, 52.662f, 207.366f)
             close()
         }
         path(
@@ -1098,25 +1120,25 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(106.25f, 206.5f)
-            lineTo(99.26f, 208.32f)
-            curveTo(98.62f, 208.49f, 98.18f, 209.07f, 98.2f, 209.73f)
-            lineTo(98.22f, 210.54f)
-            lineTo(101.43f, 213.33f)
-            lineTo(103.03f, 211.62f)
-            lineTo(101.68f, 214.12f)
-            lineTo(105.85f, 215.97f)
-            lineTo(110.74f, 213.91f)
-            lineTo(114.17f, 215.54f)
-            lineTo(119.59f, 215.06f)
-            lineTo(120.46f, 213.05f)
-            lineTo(123.92f, 212.45f)
-            lineTo(124.19f, 209.24f)
-            curveTo(124.0f, 208.58f, 123.14f, 208.14f, 122.46f, 208.04f)
-            lineTo(119.1f, 207.65f)
-            lineTo(119.04f, 206.71f)
-            lineTo(106.21f, 206.5f)
-            horizontalLineTo(106.25f)
+            moveTo(105.582f, 209.696f)
+            lineTo(98.472f, 211.556f)
+            curveTo(97.822f, 211.726f, 97.382f, 212.316f, 97.392f, 212.986f)
+            lineTo(97.412f, 213.816f)
+            lineTo(100.682f, 216.656f)
+            lineTo(102.312f, 214.916f)
+            lineTo(100.942f, 217.456f)
+            lineTo(105.192f, 219.336f)
+            lineTo(110.172f, 217.236f)
+            lineTo(113.662f, 218.886f)
+            lineTo(119.182f, 218.396f)
+            lineTo(120.072f, 216.356f)
+            lineTo(123.592f, 215.746f)
+            lineTo(123.872f, 212.486f)
+            curveTo(123.682f, 211.816f, 122.802f, 211.366f, 122.112f, 211.256f)
+            lineTo(118.692f, 210.856f)
+            lineTo(118.632f, 209.906f)
+            lineTo(105.572f, 209.696f)
+            horizontalLineTo(105.582f)
             close()
         }
         path(
@@ -1124,11 +1146,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(71.46f, 207.34f)
-            curveTo(74.27f, 207.34f, 76.55f, 206.38f, 76.55f, 205.2f)
-            curveTo(76.55f, 204.02f, 74.27f, 203.06f, 71.46f, 203.06f)
-            curveTo(68.65f, 203.06f, 66.37f, 204.02f, 66.37f, 205.2f)
-            curveTo(66.37f, 206.38f, 68.65f, 207.34f, 71.46f, 207.34f)
+            moveTo(70.182f, 210.556f)
+            curveTo(73.043f, 210.556f, 75.362f, 209.58f, 75.362f, 208.376f)
+            curveTo(75.362f, 207.172f, 73.043f, 206.196f, 70.182f, 206.196f)
+            curveTo(67.321f, 206.196f, 65.002f, 207.172f, 65.002f, 208.376f)
+            curveTo(65.002f, 209.58f, 67.321f, 210.556f, 70.182f, 210.556f)
             close()
         }
         path(
@@ -1136,11 +1158,11 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(86.4f, 210.17f)
-            curveTo(89.21f, 210.17f, 91.49f, 209.21f, 91.49f, 208.03f)
-            curveTo(91.49f, 206.85f, 89.21f, 205.89f, 86.4f, 205.89f)
-            curveTo(83.59f, 205.89f, 81.31f, 206.85f, 81.31f, 208.03f)
-            curveTo(81.31f, 209.21f, 83.59f, 210.17f, 86.4f, 210.17f)
+            moveTo(85.382f, 213.436f)
+            curveTo(88.243f, 213.436f, 90.562f, 212.46f, 90.562f, 211.256f)
+            curveTo(90.562f, 210.052f, 88.243f, 209.076f, 85.382f, 209.076f)
+            curveTo(82.521f, 209.076f, 80.202f, 210.052f, 80.202f, 211.256f)
+            curveTo(80.202f, 212.46f, 82.521f, 213.436f, 85.382f, 213.436f)
             close()
         }
         path(
@@ -1148,43 +1170,151 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(109.93f, 206.5f)
-            lineTo(111.49f, 207.34f)
-            lineTo(114.02f, 206.5f)
-            lineTo(117.33f, 206.92f)
-            lineTo(113.36f, 209.21f)
-            lineTo(119.08f, 211.98f)
-            lineTo(114.5f, 213.55f)
-            lineTo(111.01f, 211.14f)
-            lineTo(106.25f, 213.0f)
-            lineTo(103.66f, 211.14f)
-            lineTo(108.42f, 209.21f)
-            lineTo(105.5f, 206.98f)
-            lineTo(109.93f, 206.5f)
+            moveTo(109.332f, 209.696f)
+            lineTo(110.922f, 210.556f)
+            lineTo(113.492f, 209.696f)
+            lineTo(116.862f, 210.126f)
+            lineTo(112.822f, 212.456f)
+            lineTo(118.642f, 215.266f)
+            lineTo(113.982f, 216.866f)
+            lineTo(110.432f, 214.416f)
+            lineTo(105.582f, 216.316f)
+            lineTo(102.952f, 214.416f)
+            lineTo(107.792f, 212.456f)
+            lineTo(104.822f, 210.186f)
+            lineTo(109.332f, 209.696f)
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF8102)), stroke = null, strokeLineWidth = 0.0f,
+            fill = SolidColor(Color(0xFFFD511B)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(102.03f, 210.94f)
-            curveTo(103.94f, 210.94f, 105.49f, 210.29f, 105.49f, 209.49f)
-            curveTo(105.49f, 208.69f, 103.94f, 208.04f, 102.03f, 208.04f)
-            curveTo(100.12f, 208.04f, 98.57f, 208.69f, 98.57f, 209.49f)
-            curveTo(98.57f, 210.29f, 100.12f, 210.94f, 102.03f, 210.94f)
+            moveTo(101.292f, 214.216f)
+            curveTo(103.236f, 214.216f, 104.812f, 213.553f, 104.812f, 212.736f)
+            curveTo(104.812f, 211.918f, 103.236f, 211.256f, 101.292f, 211.256f)
+            curveTo(99.348f, 211.256f, 97.772f, 211.918f, 97.772f, 212.736f)
+            curveTo(97.772f, 213.553f, 99.348f, 214.216f, 101.292f, 214.216f)
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF8102)), stroke = null, strokeLineWidth = 0.0f,
+            fill = SolidColor(Color(0xFFFD511B)), stroke = null, strokeLineWidth = 0.0f,
             strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
-            moveTo(120.5f, 210.94f)
-            curveTo(122.41f, 210.94f, 123.96f, 210.29f, 123.96f, 209.49f)
-            curveTo(123.96f, 208.69f, 122.41f, 208.04f, 120.5f, 208.04f)
-            curveTo(118.59f, 208.04f, 117.04f, 208.69f, 117.04f, 209.49f)
-            curveTo(117.04f, 210.29f, 118.59f, 210.94f, 120.5f, 210.94f)
+            moveTo(120.082f, 214.216f)
+            curveTo(122.026f, 214.216f, 123.602f, 213.553f, 123.602f, 212.736f)
+            curveTo(123.602f, 211.918f, 122.026f, 211.256f, 120.082f, 211.256f)
+            curveTo(118.138f, 211.256f, 116.562f, 211.918f, 116.562f, 212.736f)
+            curveTo(116.562f, 213.553f, 118.138f, 214.216f, 120.082f, 214.216f)
+            close()
+        }
+        path(
+            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
+            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
+        ) {
+            moveTo(114.492f, 21.176f)
+            verticalLineTo(53.856f)
+            curveTo(114.492f, 53.856f, 114.362f, 59.276f, 119.112f, 59.276f)
+            curveTo(123.862f, 59.276f, 124.142f, 53.856f, 124.142f, 53.856f)
+            lineTo(124.092f, 20.866f)
+            curveTo(121.032f, 20.726f, 117.832f, 20.846f, 114.502f, 21.176f)
+            horizontalLineTo(114.492f)
+            close()
+        }
+        path(
+            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
+            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
+        ) {
+            moveTo(102.602f, 24.246f)
+            verticalLineTo(43.916f)
+            curveTo(102.602f, 43.916f, 102.522f, 47.246f, 105.442f, 47.246f)
+            curveTo(108.362f, 47.246f, 108.532f, 43.916f, 108.532f, 43.916f)
+            lineTo(108.502f, 22.456f)
+            curveTo(108.502f, 22.456f, 102.602f, 24.286f, 102.602f, 24.236f)
+            verticalLineTo(24.246f)
+            close()
+        }
+        path(
+            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
+            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
+        ) {
+            moveTo(130.142f, 21.396f)
+            verticalLineTo(42.736f)
+            curveTo(130.142f, 42.736f, 130.062f, 46.066f, 132.982f, 46.066f)
+            curveTo(135.902f, 46.066f, 136.072f, 42.736f, 136.072f, 42.736f)
+            lineTo(135.952f, 22.436f)
+            curveTo(134.482f, 22.106f, 132.392f, 21.626f, 130.142f, 21.396f)
+            close()
+        }
+        path(
+            fill = SolidColor(Color(0xFF603E93)), stroke = null, strokeLineWidth = 0.0f,
+            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
+        ) {
+            moveTo(196.882f, 112.636f)
+            curveTo(196.552f, 114.526f, 195.812f, 117.486f, 193.872f, 120.696f)
+            curveTo(192.162f, 123.536f, 190.152f, 125.496f, 188.652f, 126.736f)
+            curveTo(188.032f, 127.246f, 187.552f, 127.936f, 187.382f, 128.726f)
+            curveTo(187.112f, 129.986f, 187.382f, 131.286f, 188.172f, 132.206f)
+            curveTo(189.552f, 133.836f, 192.312f, 134.096f, 194.242f, 132.466f)
+            curveTo(195.982f, 131.066f, 198.462f, 128.736f, 200.572f, 125.246f)
+            curveTo(202.312f, 122.366f, 203.212f, 119.796f, 203.712f, 117.826f)
+            lineTo(196.882f, 112.636f)
+            close()
+        }
+        path(
+            fill = SolidColor(Color(0xFF603E93)), stroke = null, strokeLineWidth = 0.0f,
+            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
+        ) {
+            moveTo(208.282f, 121.016f)
+            curveTo(207.952f, 122.906f, 207.212f, 125.866f, 205.272f, 129.076f)
+            curveTo(203.562f, 131.916f, 201.552f, 133.876f, 200.052f, 135.116f)
+            curveTo(199.432f, 135.626f, 198.952f, 136.316f, 198.782f, 137.106f)
+            curveTo(198.512f, 138.366f, 198.782f, 139.666f, 199.572f, 140.586f)
+            curveTo(200.952f, 142.216f, 203.712f, 142.476f, 205.642f, 140.846f)
+            curveTo(207.382f, 139.446f, 209.862f, 137.116f, 211.972f, 133.626f)
+            curveTo(213.712f, 130.746f, 214.812f, 127.586f, 215.312f, 125.616f)
+            lineTo(208.282f, 121.006f)
+            verticalLineTo(121.016f)
+            close()
+        }
+        path(
+            fill = SolidColor(Color(0xFFFD9D00)), stroke = null, strokeLineWidth = 0.0f,
+            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
+        ) {
+            moveTo(215.892f, 125.996f)
+            curveTo(214.342f, 131.266f, 212.142f, 134.826f, 210.412f, 137.116f)
+            curveTo(207.782f, 140.606f, 204.902f, 143.276f, 204.902f, 143.276f)
+            curveTo(200.912f, 146.976f, 198.092f, 148.206f, 197.912f, 150.996f)
+            curveTo(197.902f, 151.196f, 197.802f, 153.116f, 199.002f, 154.096f)
+            curveTo(201.172f, 155.846f, 205.872f, 153.146f, 207.522f, 152.196f)
+            curveTo(213.032f, 149.026f, 216.012f, 144.476f, 217.832f, 141.626f)
+            curveTo(219.382f, 139.196f, 221.392f, 135.526f, 222.892f, 130.626f)
+            curveTo(220.622f, 129.056f, 218.282f, 127.516f, 215.882f, 125.996f)
+            horizontalLineTo(215.892f)
+            close()
+        }
+        path(
+            fill = SolidColor(Color(0xFF603E93)), stroke = null, strokeLineWidth = 0.0f,
+            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
+        ) {
+            moveTo(235.932f, 142.186f)
+            curveTo(235.912f, 142.236f, 235.892f, 142.296f, 235.872f, 142.346f)
+            curveTo(234.332f, 146.116f, 232.252f, 148.806f, 230.742f, 150.456f)
+            curveTo(229.092f, 152.366f, 226.322f, 152.536f, 224.712f, 151.146f)
+            curveTo(223.792f, 150.356f, 223.322f, 149.116f, 223.392f, 147.826f)
+            curveTo(223.442f, 147.016f, 223.792f, 146.266f, 224.332f, 145.666f)
+            curveTo(225.632f, 144.206f, 227.302f, 141.966f, 228.552f, 138.886f)
+            curveTo(228.992f, 137.816f, 229.312f, 136.786f, 229.562f, 135.816f)
+            curveTo(230.532f, 136.666f, 231.512f, 137.576f, 232.492f, 138.546f)
+            curveTo(233.572f, 139.616f, 234.732f, 140.826f, 235.932f, 142.186f)
             close()
         }
     }

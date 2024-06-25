@@ -1,6 +1,7 @@
 package ua.frist008.action.record.ui.screen.device
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -10,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
@@ -34,12 +36,14 @@ import ua.frist008.action.record.util.extension.ui.clickable
     showSystemUi = true,
     showBackground = true,
     backgroundColor = Palette.PURPLE_LIGHT_LONG,
-) @Composable
+)
+@Composable
 fun DevicesLoadingScreen(
     @PreviewParameter(DeviceProgressProvider::class) state: DeviceLoadingState,
     innerPadding: PaddingValues = PaddingValues(),
     onSurfaceClick: (DeviceLoadingState) -> Unit = {},
 ) {
+    // Example of use ConstraintLayout. Can be optimized to Column
     ConstraintLayout(
         modifier = Modifier
             .padding(innerPadding)
@@ -47,24 +51,18 @@ fun DevicesLoadingScreen(
             .padding(horizontal = 16.dp)
             .fillMaxSize(),
     ) {
-        val (image, description, timer, link) = createRefs()
+        val (descriptionAndImage, timer, link) = createRefs()
 
-        createVerticalChain(image, description, timer, link, chainStyle = ChainStyle.SpreadInside)
+        createVerticalChain(descriptionAndImage, timer, link, chainStyle = ChainStyle.SpreadInside)
 
-        DevicesLoadingHeader(image = image) {
+        DevicesLoadingHeader(descriptionAndImage = descriptionAndImage) {
             top.linkTo(parent.top)
-            start.linkTo(parent.start)
-            end.linkTo(parent.end)
-            bottom.linkTo(description.top)
-        }
-        DevicesLoadingMessage(description = description) {
-            top.linkTo(image.top)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
             bottom.linkTo(timer.top)
         }
         DevicesLoadingTimer(timer = timer, state = state) {
-            top.linkTo(description.top)
+            top.linkTo(descriptionAndImage.top)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
             bottom.linkTo(link.top)
@@ -80,31 +78,28 @@ fun DevicesLoadingScreen(
 
 @Composable
 private fun ConstraintLayoutScope.DevicesLoadingHeader(
-    image: ConstrainedLayoutReference,
+    descriptionAndImage: ConstrainedLayoutReference,
     constrainBlock: ConstrainScope.() -> Unit,
 ) {
-    Image(
-        imageVector = Icons.DevicesNotAvailable,
-        contentDescription = stringResource(R.string.device_error_not_found),
-        modifier = Modifier.Companion
-            .constrainAs(image, constrainBlock)
-            .padding(horizontal = 20.dp)
-            .padding(top = 30.dp),
-    )
+    Column(modifier = Modifier.Companion.constrainAs(descriptionAndImage, constrainBlock)) {
+        Text(
+            text = stringResource(R.string.device_error_not_found),
+            style = Typography.headlineSmall,
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(top = 60.dp),
+        )
+        Image(
+            imageVector = Icons.DevicesNotAvailable,
+            contentDescription = stringResource(R.string.device_error_not_found),
+            modifier = Modifier.Companion
+                .padding(horizontal = 24.dp)
+                .padding(top = 56.dp),
+        )
+    }
 }
 
-@Composable
-private fun ConstraintLayoutScope.DevicesLoadingMessage(
-    description: ConstrainedLayoutReference,
-    constrainBlock: ConstrainScope.() -> Unit,
-) {
-    Text(
-        text = stringResource(R.string.device_error_not_found),
-        style = Typography.headlineSmall,
-        modifier = Modifier.Companion.constrainAs(description, constrainBlock),
-    )
-}
-
+// TODO Add swipe to refresh
 @Composable
 private fun ConstraintLayoutScope.DevicesLoadingTimer(
     timer: ConstrainedLayoutReference,
@@ -117,7 +112,7 @@ private fun ConstraintLayoutScope.DevicesLoadingTimer(
 
     if (state.isLoading) {
         CircularProgressIndicator(
-            modifier = timerModifier.width(64.dp),
+            modifier = timerModifier.width(56.dp),
             color = Palette.WHITE_LIGHT,
             trackColor = Palette.WHITE_DARK,
         )
@@ -141,7 +136,7 @@ private fun ConstraintLayoutScope.DevicesLoadingFooter(
         style = Typography.link,
         modifier = Modifier.Companion
             .constrainAs(link, constrainBlock)
-            .padding(bottom = 30.dp),
+            .padding(bottom = 16.dp),
     ) {
         // TODO open chrome tabs with link
     }
