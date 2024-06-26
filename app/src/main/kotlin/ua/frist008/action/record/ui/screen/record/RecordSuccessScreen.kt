@@ -7,12 +7,12 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import ua.frist008.action.record.R
 import ua.frist008.action.record.ui.component.DefaultScaffold
 import ua.frist008.action.record.ui.entity.RecordSuccessState
-import ua.frist008.action.record.ui.theme.color.Palette
+import ua.frist008.action.record.ui.theme.color.PreviewPalette
 
 @Preview(
     showBackground = true,
     showSystemUi = true,
-    backgroundColor = Palette.PURPLE_LIGHT_LONG,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
 )
 @Composable
 fun RecordSuccessScreen(

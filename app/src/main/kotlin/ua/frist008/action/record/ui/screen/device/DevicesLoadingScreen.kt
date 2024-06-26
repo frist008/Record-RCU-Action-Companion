@@ -25,15 +25,14 @@ import ua.frist008.action.record.R
 import ua.frist008.action.record.ui.component.ColoredCircularProgressIndicator
 import ua.frist008.action.record.ui.entity.device.DeviceLoadingState
 import ua.frist008.action.record.ui.svg.DevicesNotAvailable
-import ua.frist008.action.record.ui.theme.color.Palette
-import ua.frist008.action.record.ui.theme.typography.Typography
-import ua.frist008.action.record.ui.theme.typography.link
+import ua.frist008.action.record.ui.theme.AppTheme
+import ua.frist008.action.record.ui.theme.color.PreviewPalette
 import ua.frist008.action.record.util.extension.ui.clickable
 
 @Preview(
     showSystemUi = true,
     showBackground = true,
-    backgroundColor = Palette.PURPLE_LIGHT_LONG,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
 )
 @Composable
 fun DevicesLoadingScreen(
@@ -87,7 +86,7 @@ private fun ConstraintLayoutScope.DevicesLoadingHeader(
     Column(modifier = Modifier.Companion.constrainAs(descriptionAndImage, constrainBlock)) {
         Text(
             text = text,
-            style = Typography.headlineSmall,
+            style = AppTheme.typography.headlineSmall,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 60.dp),
@@ -120,7 +119,7 @@ private fun ConstraintLayoutScope.DevicesLoadingTimer(
             text = state.timerValue,
             modifier = timerModifier,
             maxLines = 1,
-            style = Typography.headlineSmall,
+            style = AppTheme.typography.headlineSmall,
         )
     }
 }
@@ -132,7 +131,7 @@ private fun ConstraintLayoutScope.DevicesLoadingFooter(
 ) {
     ClickableText(
         text = AnnotatedString(stringResource(R.string.device_error_more)),
-        style = Typography.link,
+        style = AppTheme.typography.link,
         modifier = Modifier.Companion
             .constrainAs(link, constrainBlock)
             .padding(bottom = 16.dp),
