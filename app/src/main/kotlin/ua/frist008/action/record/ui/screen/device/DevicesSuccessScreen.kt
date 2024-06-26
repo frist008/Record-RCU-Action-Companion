@@ -3,7 +3,6 @@ package ua.frist008.action.record.ui.screen.device
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,7 +21,9 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import kotlinx.collections.immutable.persistentListOf
+import ua.frist008.action.record.R
 import ua.frist008.action.record.ui.component.CircleStatusComponent
+import ua.frist008.action.record.ui.component.DefaultScaffold
 import ua.frist008.action.record.ui.component.item.TextColumnItemComponent
 import ua.frist008.action.record.ui.entity.device.DeviceSuccessState
 import ua.frist008.action.record.ui.entity.device.DevicesSuccessState
@@ -31,26 +32,26 @@ import ua.frist008.action.record.ui.theme.color.Palette
 @Preview(
     showSystemUi = true,
     showBackground = true,
-    backgroundColor = Palette.PURPLE_LIGHT_LONG,
 )
 @Composable
 fun DevicesSuccessScreen(
     @PreviewParameter(DevicesProvider::class) state: DevicesSuccessState,
-    innerPadding: PaddingValues = PaddingValues(),
     onItemClick: (DeviceSuccessState) -> Unit = {},
 ) {
-    LazyColumn(
-        modifier = Modifier
-            .padding(innerPadding)
-            .padding(vertical = 16.dp),
-    ) {
-        items(
-            items = state.list,
-            key = {
-                // TODO Replace to id from DB
-                it.address
-            },
-        ) { DeviceComponent(it, onItemClick) }
+    DefaultScaffold(titleRes = R.string.devices_title) { innerPadding ->
+        LazyColumn(
+            modifier = Modifier
+                .padding(innerPadding)
+                .padding(vertical = 16.dp),
+        ) {
+            items(
+                items = state.list,
+                key = {
+                    // TODO Replace to id from DB
+                    it.address
+                },
+            ) { DeviceComponent(it, onItemClick) }
+        }
     }
 }
 

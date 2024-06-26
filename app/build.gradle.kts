@@ -93,6 +93,7 @@ dependencies {
     // Compose
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
+    debugImplementation(libs.compose.tooling)
 
     // UI
     implementation(libs.bundles.common)

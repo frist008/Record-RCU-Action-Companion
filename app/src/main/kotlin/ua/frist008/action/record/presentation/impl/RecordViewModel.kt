@@ -10,6 +10,12 @@ import javax.inject.Inject
     dependencies: PresentationDependenciesDelegate,
 ) : BaseViewModel(dependencies) {
 
+    fun onInit(pcId: Long) {
+        launch {
+            // TODO Connection
+        }
+    }
+
     override fun onFailure(cause: Throwable) {
         Timber.e(cause)
     }
