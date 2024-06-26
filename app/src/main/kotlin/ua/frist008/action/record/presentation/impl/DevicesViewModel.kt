@@ -75,10 +75,9 @@ import kotlin.time.Duration.Companion.seconds
     }
 
     fun onItemClicked(device: DeviceSuccessState) {
-        // TODO will impl after all repository code is completed
         launch(Dispatchers.Main.immediate) {
             Timber.i("open RecordScreen")
-            navigator.emit(NavCommand.RecordScreen)
+            navigator.emit(NavCommand.RecordScreen(device.id))
         }
     }
 

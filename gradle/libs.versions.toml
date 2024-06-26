@@ -3,7 +3,7 @@
 plugin-gradle-android = "8.5.0"
 plugin-ben-manes = "0.51.0"
 plugin-google-services = "4.4.2"
-plugin-firebase-crashlytics = "3.0.1"
+plugin-firebase-crashlytics = "3.0.2"
 plugin-firebase-perf = "1.4.2"
 plugin-ksp = "2.0.0-1.0.22"
 # project
@@ -36,11 +36,11 @@ compose-bom = "2024.06.00"
 compose-activity = "1.9.0"
 compose-constraintlayout = "1.0.1"
 # navigation
-compose-navigation = "2.7.7"
+compose-navigation = "2.8.0-beta03"
 
 ## frameworks
 # firebase
-firebase-bom = "33.1.0"
+firebase-bom = "33.1.1"
 # database
 room = "2.6.1"
 # di
@@ -83,6 +83,7 @@ compose-ui = { module = "androidx.compose.ui:ui" }
 compose-material = { module = "androidx.compose.material:material" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
 compose-tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "compose-activity" }
 compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "compose-constraintlayout" }
 # navigation
@@ -156,7 +157,7 @@ compose = [
     "compose-foundation",
     "compose-material3",
     "compose-ui",
-    "compose-tooling",
+    "compose-tooling-preview",
 ]
 
 # framework
