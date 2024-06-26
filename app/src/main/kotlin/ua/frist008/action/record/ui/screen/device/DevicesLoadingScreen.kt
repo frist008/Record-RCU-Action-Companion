@@ -2,13 +2,10 @@ package ua.frist008.action.record.ui.screen.device
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -25,6 +22,7 @@ import androidx.constraintlayout.compose.ConstrainedLayoutReference
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintLayoutScope
 import ua.frist008.action.record.R
+import ua.frist008.action.record.ui.component.ColoredCircularProgressIndicator
 import ua.frist008.action.record.ui.entity.device.DeviceLoadingState
 import ua.frist008.action.record.ui.svg.DevicesNotAvailable
 import ua.frist008.action.record.ui.theme.color.Palette
@@ -40,13 +38,11 @@ import ua.frist008.action.record.util.extension.ui.clickable
 @Composable
 fun DevicesLoadingScreen(
     @PreviewParameter(DeviceProgressProvider::class) state: DeviceLoadingState,
-    innerPadding: PaddingValues = PaddingValues(),
     onSurfaceClick: (DeviceLoadingState) -> Unit = {},
 ) {
     // Example of use ConstraintLayout. Can be optimized to Column
     ConstraintLayout(
         modifier = Modifier
-            .padding(innerPadding)
             .clickable(isRippleEnabled = false) { onSurfaceClick(state) }
             .padding(horizontal = 16.dp)
             .fillMaxSize(),
@@ -118,11 +114,7 @@ private fun ConstraintLayoutScope.DevicesLoadingTimer(
         .padding(4.dp)
 
     if (state.isLoading) {
-        CircularProgressIndicator(
-            modifier = timerModifier.size(56.dp),
-            color = Palette.WHITE_LIGHT,
-            trackColor = Palette.WHITE_DARK,
-        )
+        ColoredCircularProgressIndicator(modifier = timerModifier, sizeDp = 56)
     } else {
         Text(
             text = state.timerValue,

@@ -10,11 +10,11 @@ class Router(private val navController: NavHostController) {
         when (command) {
             is NavCommand.BackCommand -> {
                 val popped =
-                    if (command.route.isEmpty()) {
+                    if (command.screen == null) {
                         navController.popBackStack()
                     } else {
                         navController.popBackStack(
-                            route = command.route,
+                            route = command,
                             inclusive = true,
                         )
                     }
@@ -27,7 +27,7 @@ class Router(private val navController: NavHostController) {
                 }
             }
 
-            else -> navController.navigate(command.route) {
+            else -> navController.navigate(command) {
                 val route = navController.currentBackStackEntry?.destination?.route
                 popUpTo(route ?: return@navigate) {
                     inclusive = command.replaceScreen

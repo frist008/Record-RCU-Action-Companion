@@ -1,6 +1,5 @@
 package ua.frist008.action.record.ui.screen.device
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
@@ -17,8 +16,7 @@ import ua.frist008.action.record.util.ui.preview.ErrorPreviewProvider
 @Composable
 fun DevicesErrorScreen(
     @PreviewParameter(ErrorPreviewProvider::class) cause: UIState.Error,
-    innerPadding: PaddingValues = PaddingValues(),
     onSurfaceClick: (DeviceLoadingState) -> Unit = {},
 ) {
-    DevicesLoadingScreen(DeviceLoadingState(""), innerPadding, onSurfaceClick)
+    DevicesLoadingScreen(DeviceLoadingState(""), onSurfaceClick)
 }

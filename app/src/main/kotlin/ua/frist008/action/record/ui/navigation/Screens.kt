@@ -1,24 +1,19 @@
 package ua.frist008.action.record.ui.navigation
 
+import kotlinx.serialization.Serializable
+import kotlinx.serialization.Transient
+
+@Suppress("ConvertObjectToDataObject")
+@Serializable
 sealed class NavCommand(
-    val replaceScreen: Boolean = false,
-    route: String? = null,
+    @Transient val replaceScreen: Boolean = false,
 ) {
 
-    val route by lazy(LazyThreadSafetyMode.NONE) { route ?: getStubRoute() }
+    class BackCommand(val screen: NavCommand? = null) : NavCommand()
 
-    open fun getStubRoute() = this::class.simpleName!!
-
-    override fun toString() = route
-
-    class BackCommand(screen: NavCommand? = null) : NavCommand(route = screen?.route) {
-
-        override fun getStubRoute() = ""
-    }
-
-    object DevicesScreen : NavCommand()
-    object RecordScreen : NavCommand()
-    object SettingsScreen : NavCommand()
+    @Serializable object DevicesScreen : NavCommand()
+    @Serializable data class RecordScreen(val pcId: Long) : NavCommand()
+    @Serializable object SettingsScreen : NavCommand()
 
     companion object {
 
