@@ -7,7 +7,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import ua.frist008.action.record.ui.theme.color.Palette
+import ua.frist008.action.record.ui.theme.AppTheme
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
@@ -25,4 +25,4 @@ fun DefaultTopAppBar(
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 private fun defaultTopAppBarColors(): TopAppBarColors =
-    TopAppBarDefaults.topAppBarColors(containerColor = Palette.PURPLE_DARK)
+    TopAppBarDefaults.topAppBarColors(containerColor = AppTheme.colors.primary)

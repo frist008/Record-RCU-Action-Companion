@@ -1,6 +1,8 @@
 package ua.frist008.action.record.presentation.impl
 
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.atomicfu.atomic
+import kotlinx.atomicfu.getAndUpdate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
@@ -24,8 +26,8 @@ import kotlin.time.Duration.Companion.seconds
     private val devicesRepository: DeviceRadarRepository,
 ) : BaseViewModel(dependencies) {
 
-    @Volatile private var restartScanWithDelayJob: Job? = null
-    @Volatile private var scanJob: Job? = null
+    private var restartScanWithDelayJob = atomic<Job?>(null)
+    private var scanJob = atomic<Job?>(null)
 
     fun onInit() {
         restartScan()
@@ -33,39 +35,42 @@ import kotlin.time.Duration.Companion.seconds
 
     // TODO For version 1.2: move work with Repository to ForegroundService
     private fun restartScan() {
-        scanJob?.cancel()
-        restartScanWithDelayJob?.cancel()
+        scanJob.getAndUpdate { oldRadarJob ->
+            oldRadarJob?.cancel()
+            restartScanWithDelayJob.value?.cancel()
 
-        val oldRadarJob = scanJob
-        scanJob = launch {
-            mutableState.emit(DeviceLoadingState())
-            oldRadarJob?.join()
+            launch {
+                mutableState.emit(DeviceLoadingState())
+                oldRadarJob?.join()
 
-            Timber.i("start Scan")
+                Timber.i("start Scan")
 
-            devicesRepository.get().collectLatest { list ->
-                if (list.none { it.isAvailableStatus }) {
-                    restartScanWithDelay()
-                } else {
-                    restartScanWithDelayJob?.cancelAndJoin()
-                    if (isActive) mutableState.emit(DevicesSuccessState(list.toUI()))
+                devicesRepository.get().collectLatest { list ->
+                    if (list.none { it.isAvailableStatus }) {
+                        restartScanWithDelay()
+                    } else {
+                        restartScanWithDelayJob.value?.cancelAndJoin()
+                        if (isActive) mutableState.emit(DevicesSuccessState(list.toUI()))
+                    }
                 }
             }
         }
     }
 
     private fun restartScanWithDelay() {
-        if (restartScanWithDelayJob?.isActive == true) return
+        restartScanWithDelayJob.getAndUpdate {
+            if (it?.isActive == true) return
 
-        restartScanWithDelayJob = launch {
-            timer(
-                durationMs = TIMER_MS,
-                delayEventMs = 1.seconds.inWholeMilliseconds,
-                onNextEvent = {
-                    mutableState.emit(DeviceLoadingState(it.inWholeSeconds.toString()))
-                },
-                onFinished = ::restartScan,
-            )
+            launch {
+                timer(
+                    durationMs = TIMER_MS,
+                    delayEventMs = 1.seconds.inWholeMilliseconds,
+                    onNextEvent = { durationLeft ->
+                        mutableState.emit(DeviceLoadingState(durationLeft.inWholeSeconds.toString()))
+                    },
+                    onFinished = ::restartScan,
+                )
+            }
         }
     }
 
@@ -83,14 +88,14 @@ import kotlin.time.Duration.Companion.seconds
 
     fun onRefreshClicked(state: DeviceLoadingState) {
         if (!state.isLoading) {
-            restartScanWithDelayJob?.cancel()
+            restartScanWithDelayJob.value?.cancel()
             restartScan()
         }
     }
 
     fun onDispose() {
-        scanJob?.cancel()
-        restartScanWithDelayJob?.cancel()
+        scanJob.value?.cancel()
+        restartScanWithDelayJob.value?.cancel()
     }
 
     companion object {

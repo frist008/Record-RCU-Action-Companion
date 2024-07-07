@@ -27,7 +27,7 @@ import ua.frist008.action.record.ui.component.DefaultScaffold
 import ua.frist008.action.record.ui.component.item.TextColumnItemComponent
 import ua.frist008.action.record.ui.entity.device.DeviceSuccessState
 import ua.frist008.action.record.ui.entity.device.DevicesSuccessState
-import ua.frist008.action.record.ui.theme.color.Palette
+import ua.frist008.action.record.ui.theme.AppTheme
 
 @Preview(
     showSystemUi = true,
@@ -50,13 +50,13 @@ fun DevicesSuccessScreen(
                     // TODO Replace to id from DB
                     it.address
                 },
-            ) { DeviceComponent(it, onItemClick) }
+            ) { DeviceItem(it, onItemClick) }
         }
     }
 }
 
 @Composable
-private fun DeviceComponent(
+private fun DeviceItem(
     device: DeviceSuccessState,
     onItemClick: (DeviceSuccessState) -> Unit,
 ) {
@@ -65,7 +65,7 @@ private fun DeviceComponent(
             .fillMaxWidth()
             .padding(vertical = 8.dp)
             .shadow(1.dp)
-            .background(Palette.PURPLE_DARK)
+            .background(AppTheme.colors.primaryContainer)
             .clickable { onItemClick(device) }
             .padding(horizontal = 16.dp, vertical = 24.dp),
         verticalAlignment = Alignment.CenterVertically,
