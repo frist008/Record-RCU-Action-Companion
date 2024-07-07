@@ -15,7 +15,7 @@ import ua.frist008.action.record.R
 import ua.frist008.action.record.presentation.impl.SettingsViewModel
 import ua.frist008.action.record.ui.component.DefaultScaffold
 import ua.frist008.action.record.ui.entity.SettingsSuccessState
-import ua.frist008.action.record.ui.theme.color.Palette
+import ua.frist008.action.record.ui.theme.color.PreviewPalette
 import ua.frist008.action.record.util.exception.unsupportedUI
 
 @Composable
@@ -33,7 +33,7 @@ fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
 @Preview(
     showBackground = true,
     showSystemUi = true,
-    backgroundColor = Palette.PURPLE_LIGHT_LONG,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
 )
 @Composable
 private fun SettingsSuccessScreen(

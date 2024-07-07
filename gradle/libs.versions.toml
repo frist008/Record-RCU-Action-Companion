@@ -12,16 +12,16 @@ version-name = "1.0.0"
 build-tools-version = "34.0.0"
 sdk-min = "26"
 sdk-compile = "34"
-sdk-compile-Extension = "12" # for compileSdk 34
+sdk-compile-extension = "12" # for compileSdk 34
 sdk-target = "34"
 jvm-target = "17"
 jvm-target-kotlin = "17"
 # kotlin
 kotlin = "2.0.0"
-kotlin-atomic = "0.24.0"
+kotlin-atomic = "0.25.0"
 kotlin-coroutines = "1.9.0-RC"
 kotlin-immutable-collections = "0.3.7"
-kotlin-serialization-json = "1.7.0"
+kotlin-serialization-json = "1.7.1"
 
 # jetpack
 jetpack-core = "1.13.1"
@@ -29,14 +29,14 @@ jetpack-activity = "1.9.0"
 jetpack-annotation = "1.8.0"
 jetpack-appcompat = "1.7.0"
 jetpack-browser = "1.8.0"
-jetpack-lifecycle = "2.8.2"
+jetpack-lifecycle = "2.8.3"
 jetpack-splash = "1.0.1"
 # compose
 compose-bom = "2024.06.00"
 compose-activity = "1.9.0"
 compose-constraintlayout = "1.0.1"
 # navigation
-compose-navigation = "2.8.0-beta03"
+compose-navigation = "2.8.0-beta04"
 
 ## frameworks
 # firebase
@@ -80,7 +80,6 @@ jetpack-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmode
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 compose-foundation = { module = "androidx.compose.foundation:foundation" }
 compose-ui = { module = "androidx.compose.ui:ui" }
-compose-material = { module = "androidx.compose.material:material" }
 compose-material3 = { module = "androidx.compose.material3:material3" }
 compose-tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }

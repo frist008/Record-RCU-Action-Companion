@@ -12,8 +12,8 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import ua.frist008.action.record.ui.theme.AppTheme
 import ua.frist008.action.record.ui.theme.RootTheme
-import ua.frist008.action.record.ui.theme.typography.Typography
 
 @Composable
 fun TextColumnItemComponent(text: String?, subtext: String, modifier: Modifier = Modifier) {
@@ -21,7 +21,7 @@ fun TextColumnItemComponent(text: String?, subtext: String, modifier: Modifier =
         if (!text.isNullOrEmpty()) {
             Text(
                 text = text,
-                style = Typography.bodyLarge,
+                style = AppTheme.typography.bodyLarge,
                 overflow = TextOverflow.Ellipsis,
                 softWrap = false,
                 maxLines = 1,
@@ -33,7 +33,7 @@ fun TextColumnItemComponent(text: String?, subtext: String, modifier: Modifier =
         if (subtext.isNotEmpty()) {
             Text(
                 text = subtext,
-                style = Typography.bodyLarge,
+                style = AppTheme.typography.bodyLarge,
                 overflow = TextOverflow.Ellipsis,
                 softWrap = false,
                 maxLines = 1,

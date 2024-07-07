@@ -7,12 +7,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import ua.frist008.action.record.ui.component.ColoredCircularProgressIndicator
-import ua.frist008.action.record.ui.theme.color.Palette
+import ua.frist008.action.record.ui.theme.color.PreviewPalette
 
 @Preview(
     showBackground = true,
     showSystemUi = true,
-    backgroundColor = Palette.PURPLE_LIGHT_LONG,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
 )
 @Composable
 fun RecordProgressScreen() {
