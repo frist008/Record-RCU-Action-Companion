@@ -2,6 +2,7 @@ package ua.frist008.action.record.presentation.base
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
@@ -11,31 +12,36 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import ua.frist008.action.record.presentation.base.dependency.PresentationDependenciesDelegate
+import ua.frist008.action.record.presentation.base.dependency.StateOwner
 import ua.frist008.action.record.ui.entity.base.UIState
 import kotlin.coroutines.CoroutineContext
 
 abstract class BaseViewModel(
     dependencies: PresentationDependenciesDelegate,
 ) : ViewModel(),
-    PresentationDependenciesDelegate by dependencies {
+    PresentationDependenciesDelegate by dependencies,
+    StateOwner {
 
     private val coroutineExceptionHandler = CoroutineExceptionHandler { _, cause ->
-        runCatching { onFailure(cause) }
+        runCatching { if (cause !is CancellationException) launch { onFailure(cause) } }
             .onSuccess { Timber.i(cause) }
-            .onFailure { innerCause -> Timber.e(cause, innerCause.stackTraceToString()) }
+            .onFailure { innerCause ->
+                if (cause !is CancellationException) {
+                    Timber.e(innerCause.stackTraceToString(), cause)
+                }
+            }
     }
 
     protected val scope by lazy(LazyThreadSafetyMode.NONE) { viewModelScope }
 
     protected val mutableState = MutableStateFlow<UIState>(UIState.Progress())
-    val state by lazy(LazyThreadSafetyMode.NONE) { mutableState.asStateFlow() }
+    override val state by lazy(LazyThreadSafetyMode.NONE) { mutableState.asStateFlow() }
 
-    protected fun launch(
+    protected fun BaseViewModel.launch(
         context: CoroutineContext = backgroundDispatcher,
         start: CoroutineStart = CoroutineStart.DEFAULT,
         block: suspend CoroutineScope.() -> Unit,
-    ): Job =
-        scope.launch(context + coroutineExceptionHandler, start, block)
+    ): Job = scope.launch(context + coroutineExceptionHandler, start, block)
 
-    protected abstract fun onFailure(cause: Throwable)
+    protected abstract suspend fun onFailure(cause: Throwable)
 }

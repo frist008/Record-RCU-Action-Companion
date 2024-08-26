@@ -4,8 +4,8 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map
 import ua.frist008.action.record.data.infrastructure.source.database.DeviceDAO
-import ua.frist008.action.record.data.infrastructure.source.network.DeviceRadarNetworkSource
 import ua.frist008.action.record.data.repository.DeviceRadarRepository
+import ua.frist008.action.record.data.source.DeviceRadarNetworkSource
 import ua.frist008.action.record.domain.entity.DeviceDomainEntity
 import javax.inject.Inject
 

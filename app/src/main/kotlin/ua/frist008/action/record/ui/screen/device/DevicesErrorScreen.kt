@@ -16,7 +16,12 @@ import ua.frist008.action.record.util.ui.preview.ErrorPreviewProvider
 @Composable
 fun DevicesErrorScreen(
     @PreviewParameter(ErrorPreviewProvider::class) cause: UIState.Error,
-    onSurfaceClick: (DeviceLoadingState) -> Unit = {},
+    onSurfaceClick: () -> Unit = {},
+    onLinkCLick: () -> Unit = {},
 ) {
-    DevicesLoadingScreen(DeviceLoadingState(""), onSurfaceClick)
+    DevicesLoadingScreen(
+        state = DeviceLoadingState(""),
+        onSurfaceClick = onSurfaceClick,
+        onLinkCLick = onLinkCLick,
+    )
 }

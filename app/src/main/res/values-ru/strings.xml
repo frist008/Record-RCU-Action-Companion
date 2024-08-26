@@ -13,9 +13,15 @@
 
     <!-- Record -->
 
-    <string name="record_title_recording_screen">Запись Экрана</string>
-    <string name="record_title_recording_game">Запись Игры</string>
-    <string name="record_title_streaming">Прямая Трансляция</string>
+    <string name="record_title_record">Запись</string>
+    <string name="record_title_stream">Трансляция</string>
+    <string name="record_action_record">Запись</string>
+    <string name="record_action_pause">Пауза</string>
+    <string name="record_action_stop">Стоп</string>
+    <string name="record_inactive_title_record">ЗАПИСЬ</string>
+    <string name="record_inactive_title_stream">ТРАНСЛЯЦИЯ</string>
+    <string name="record_inactive_subtitle">АКТИВНАЯ ИГРА НЕ НАЙДЕНА</string>
+    <string name="record_inactive_message">ЗАПУСТИТЕ ИГРУ НА СВОЕМ КОМПЬЮТЕРЕ</string>
 
     <!-- Settings -->
 
