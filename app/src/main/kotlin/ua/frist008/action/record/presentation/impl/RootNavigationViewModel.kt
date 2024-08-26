@@ -10,7 +10,7 @@ import javax.inject.Inject
     dependencies: PresentationDependenciesDelegate,
 ) : BaseViewModel(dependencies) {
 
-    override fun onFailure(cause: Throwable) {
+    override suspend fun onFailure(cause: Throwable) {
         Timber.e(cause)
     }
 }

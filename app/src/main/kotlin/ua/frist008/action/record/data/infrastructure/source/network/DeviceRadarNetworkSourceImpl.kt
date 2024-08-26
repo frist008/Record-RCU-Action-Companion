@@ -16,6 +16,7 @@ import ua.frist008.action.record.data.infrastructure.entity.dto.RadarRequestData
 import ua.frist008.action.record.data.infrastructure.mapper.ByteArrayToIpMapper
 import ua.frist008.action.record.data.infrastructure.mapper.ByteArrayToNameMapper
 import ua.frist008.action.record.data.infrastructure.mapper.ByteArrayToPortMapper
+import ua.frist008.action.record.data.source.DeviceRadarNetworkSource
 import ua.frist008.action.record.di.qualifier.execute.IO
 import ua.frist008.action.record.util.extension.concurrent.onCancel
 import java.io.IOException
@@ -27,25 +28,23 @@ import java.net.NetworkInterface
 import java.net.SocketTimeoutException
 import javax.inject.Inject
 
-class DeviceRadarNetworkSource @Inject constructor(
+class DeviceRadarNetworkSourceImpl @Inject constructor(
     @IO private val ioDispatcher: CoroutineDispatcher,
-    val byteArrayToIpMapper: ByteArrayToIpMapper,
-    val byteArrayToPortMapper: ByteArrayToPortMapper,
-    val byteArrayToNameMapper: ByteArrayToNameMapper,
-) {
+) : DeviceRadarNetworkSource {
 
     private val socketMutex = Mutex()
     private val packetMutex = Mutex()
 
     private val radarUdpClientSocketState = MutableStateFlow<DatagramSocket?>(null)
 
-    suspend fun get(): Flow<DeviceDTO?> {
+    override suspend fun get(): Flow<DeviceDTO?> {
         val requestDataHolder = RadarRequestDataHolder.newInstance()
         val udpClientSocket = getOrCreateUdpClientSocket()
         val clientDataList = getClientDataList(requestDataHolder)
 
         return ticker(
-            delayMillis = TIMEOUT_MS,
+            delayMillis = TIMEOUT_PING_MS,
+            initialDelayMillis = 0L,
             context = ioDispatcher,
             mode = TickerMode.FIXED_DELAY,
         )
@@ -98,7 +97,7 @@ class DeviceRadarNetworkSource @Inject constructor(
         val resultUdpClientSocket = DatagramSocket(SERVER_PORT, SERVER_INET_ADDRESS)
 
         Timber.i("init socket")
-        resultUdpClientSocket.setSoTimeout(TIMEOUT_MS.toInt())
+        resultUdpClientSocket.setSoTimeout(TIMEOUT_PONG_MS)
 
         radarUdpClientSocketState.emit(resultUdpClientSocket)
 
@@ -138,12 +137,12 @@ class DeviceRadarNetworkSource @Inject constructor(
         val clientDataArr = datagramPacket.data
 
         return if (requestDataHolder.isResponseValid(clientDataArr)) { // clientDataArr[0-3]
-            val ip = byteArrayToIpMapper(clientDataArr) // clientDataArr[4-7]
-            val port = byteArrayToPortMapper(clientDataArr) // clientDataArr[8-9]
+            val ip = ByteArrayToIpMapper(clientDataArr) // clientDataArr[4-7]
+            val port = ByteArrayToPortMapper(clientDataArr) // clientDataArr[8-9]
             val namePC =
                 if (clientDataArr[10].toInt() == 1) { // clientDataArr[10] is true
                     val size = datagramPacket.length
-                    byteArrayToNameMapper(clientDataArr, size) // clientDataArr[11-15]
+                    ByteArrayToNameMapper(clientDataArr, size) // clientDataArr[11-15]
                 } else {
                     null
                 }
@@ -156,7 +155,8 @@ class DeviceRadarNetworkSource @Inject constructor(
 
     companion object {
 
-        private const val TIMEOUT_MS = 1000L
+        private const val TIMEOUT_PING_MS = 1000L
+        private const val TIMEOUT_PONG_MS = 1500
 
         private const val RESPONSE_SIZE = 1024
 

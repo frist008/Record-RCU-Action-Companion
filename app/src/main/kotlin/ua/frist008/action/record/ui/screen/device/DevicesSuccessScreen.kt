@@ -73,7 +73,9 @@ private fun DeviceItem(
         Image(
             imageVector = device.deviceType.image,
             contentDescription = stringResource(id = device.deviceType.description),
-            modifier = Modifier.height(48.dp),
+            modifier = Modifier
+                .height(48.dp)
+                .padding(horizontal = 16.dp),
         )
         Spacer(modifier = Modifier.width(16.dp))
 

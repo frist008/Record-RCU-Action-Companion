@@ -12,5 +12,6 @@ import kotlin.math.pow
     val MAX_UBYTE_LONG: Long = MAX_UBYTE.toLong() // 255
     val MAX_BYTES_VALUE: Int = MAX_UBYTE + 1 // 256
 
-    val MAX_BYTES_POW_3: Long = MAX_BYTES_VALUE.toDouble().pow(3.0).toLong() // 16 777 216
+    val MAX_BYTES_POW_3: Double = MAX_BYTES_VALUE.toDouble().pow(3.0) // 16 777 216 (16777216)
+    val MAX_BYTES_POW_3_LONG: Long = MAX_BYTES_POW_3.toLong() // 16 777 216 (16777216)
 }

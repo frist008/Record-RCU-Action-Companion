@@ -43,6 +43,7 @@ import ua.frist008.action.record.ui.theme.RootTheme
     val inverseSurface: Color = Palette.PURPLE_LIGHT
     val inverseOnSurface: Color = Palette.WHITE_LIGHT
     val error: Color = Palette.RED_LIGHT
+    val warning = Palette.YELLOW_LIGHT
     val onError: Color = Palette.WHITE_LIGHT
     val errorContainer: Color = Palette.RED_LIGHT
     val onErrorContainer: Color = Palette.WHITE_LIGHT
@@ -62,6 +63,15 @@ import ua.frist008.action.record.ui.theme.RootTheme
     val link = Palette.BLUE_LIGHT
     val online = Palette.GREEN_LIGHT
     val offline = error
+
+    val fps = Palette.WHITE_NEUTRAL
+
+    val hint = Palette.WHITE_NEUTRAL
+
+    val record = Palette.GREEN_LIGHT
+    val pause = Palette.YELLOW_LIGHT
+    val stop = Palette.RED_LIGHT
+    val stopDisabled = Palette.RED_DARK
 
     val windowBackground = BrushPalette.PURPLE
 

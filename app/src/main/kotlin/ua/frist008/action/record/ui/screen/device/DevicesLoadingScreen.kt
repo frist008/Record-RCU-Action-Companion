@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Text
@@ -37,14 +38,16 @@ import ua.frist008.action.record.util.extension.ui.clickable
 @Composable
 fun DevicesLoadingScreen(
     @PreviewParameter(DeviceProgressProvider::class) state: DeviceLoadingState,
-    onSurfaceClick: (DeviceLoadingState) -> Unit = {},
+    onSurfaceClick: () -> Unit = {},
+    onLinkCLick: () -> Unit = {},
 ) {
     // Example of use ConstraintLayout. Can be optimized to Column
     ConstraintLayout(
         modifier = Modifier
-            .clickable(isRippleEnabled = false) { onSurfaceClick(state) }
+            .clickable(isRippleEnabled = false) { onSurfaceClick() }
             .padding(horizontal = 16.dp)
-            .fillMaxSize(),
+            .fillMaxSize()
+            .safeContentPadding(),
     ) {
         val (descriptionAndImage, timer, link) = createRefs()
 
@@ -65,7 +68,7 @@ fun DevicesLoadingScreen(
             end.linkTo(parent.end)
             bottom.linkTo(link.top)
         }
-        DevicesLoadingFooter(link = link) {
+        DevicesLoadingFooter(link = link, onCLick = onLinkCLick) {
             top.linkTo(timer.top)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
@@ -127,6 +130,7 @@ private fun ConstraintLayoutScope.DevicesLoadingTimer(
 @Composable
 private fun ConstraintLayoutScope.DevicesLoadingFooter(
     link: ConstrainedLayoutReference,
+    onCLick: () -> Unit,
     constrainBlock: ConstrainScope.() -> Unit,
 ) {
     ClickableText(
@@ -135,9 +139,8 @@ private fun ConstraintLayoutScope.DevicesLoadingFooter(
         modifier = Modifier.Companion
             .constrainAs(link, constrainBlock)
             .padding(bottom = 16.dp),
-    ) {
-        // TODO open chrome tabs with link
-    }
+        onClick = { onCLick() },
+    )
 }
 
 private class DeviceProgressProvider : PreviewParameterProvider<DeviceLoadingState> {

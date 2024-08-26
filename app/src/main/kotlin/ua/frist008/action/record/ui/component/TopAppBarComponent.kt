@@ -25,4 +25,9 @@ fun DefaultTopAppBar(
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
 private fun defaultTopAppBarColors(): TopAppBarColors =
-    TopAppBarDefaults.topAppBarColors(containerColor = AppTheme.colors.primary)
+    TopAppBarDefaults.topAppBarColors(
+        titleContentColor = AppTheme.colors.onPrimary,
+        navigationIconContentColor = AppTheme.colors.onPrimary,
+        actionIconContentColor = AppTheme.colors.onPrimary,
+        containerColor = AppTheme.colors.primary,
+    )

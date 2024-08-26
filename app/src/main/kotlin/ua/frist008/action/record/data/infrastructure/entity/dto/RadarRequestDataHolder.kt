@@ -10,8 +10,8 @@ class RadarRequestDataHolder private constructor(androidIdArr: ByteArray?) {
 
     init {
         val randomInt = (Math.random() * Short.MAX_VALUE).toInt()
-        clientDataArr[0] = 65
-        clientDataArr[1] = 72
+        clientDataArr[0] = NetworkDataConst.KEY_0
+        clientDataArr[1] = NetworkDataConst.KEY_1
         clientDataArr[2] = ((randomInt shr ByteConst.BITS_1) and ByteConst.MAX_UBYTE).toByte()
         clientDataArr[3] = (randomInt and ByteConst.MAX_UBYTE).toByte()
 
