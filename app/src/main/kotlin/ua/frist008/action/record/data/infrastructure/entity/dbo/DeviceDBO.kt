@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import ua.frist008.action.record.data.infrastructure.entity.dto.DeviceDTO
 import ua.frist008.action.record.domain.entity.DeviceDomainEntity
 import ua.frist008.action.record.util.extension.network.toIPStr
 
@@ -29,6 +30,13 @@ data class DeviceDBO(
             isAvailableStatus = isAvailable,
             name = name,
             address = "${ip.toIPStr}:$port",
+        )
+
+    fun toDTO(): DeviceDTO =
+        DeviceDTO(
+            name = name,
+            ip = ip,
+            port = port,
         )
 
     companion object {

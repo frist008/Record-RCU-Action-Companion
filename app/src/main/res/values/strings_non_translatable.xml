@@ -3,4 +3,15 @@
 
     <string name="app_name" translatable="false">Record RCU</string>
 
+    <!-- Record -->
+
+    <string name="record_fps" translatable="false">FPS</string>
+    <string name="record_header_engine" translatable="false">3D Engine</string>
+    <string name="record_header_live" translatable="false">Live</string>
+    <string name="record_header_live_on" translatable="false">ON</string>
+    <string name="record_header_live_off" translatable="false">OFF</string>
+    <string name="record_header_storage" translatable="false">Storage</string>
+    <string name="record_header_storage_gb_pattern" translatable="false">%1$.1f GB</string>
+    <string name="record_header_storage_mb_pattern" translatable="false">%1$.0f MB</string>
+
 </resources>

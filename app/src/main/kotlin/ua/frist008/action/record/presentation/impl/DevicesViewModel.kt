@@ -7,12 +7,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.isActive
 import timber.log.Timber
 import ua.frist008.action.record.data.repository.DeviceRadarRepository
 import ua.frist008.action.record.domain.entity.DeviceDomainEntity.Companion.toUI
 import ua.frist008.action.record.presentation.base.BaseViewModel
 import ua.frist008.action.record.presentation.base.dependency.PresentationDependenciesDelegate
+import ua.frist008.action.record.presentation.base.dependency.StateOwner.Companion.state
 import ua.frist008.action.record.ui.entity.device.DeviceLoadingState
 import ua.frist008.action.record.ui.entity.device.DeviceSuccessState
 import ua.frist008.action.record.ui.entity.device.DevicesSuccessState
@@ -28,6 +28,7 @@ import kotlin.time.Duration.Companion.seconds
 
     private var restartScanWithDelayJob = atomic<Job?>(null)
     private var scanJob = atomic<Job?>(null)
+    private var isAutoFirstNavigate = false
 
     fun onInit() {
         restartScan()
@@ -50,7 +51,14 @@ import kotlin.time.Duration.Companion.seconds
                         restartScanWithDelay()
                     } else {
                         restartScanWithDelayJob.value?.cancelAndJoin()
-                        if (isActive) mutableState.emit(DevicesSuccessState(list.toUI()))
+
+                        val uiList = list.toUI()
+                        mutableState.emit(DevicesSuccessState(uiList))
+
+                        if (!isAutoFirstNavigate && uiList.size == 1) {
+                            isAutoFirstNavigate = true
+                            onItemClicked(uiList.first())
+                        }
                     }
                 }
             }
@@ -74,7 +82,7 @@ import kotlin.time.Duration.Companion.seconds
         }
     }
 
-    override fun onFailure(cause: Throwable) {
+    override suspend fun onFailure(cause: Throwable) {
         Timber.e(cause)
         restartScanWithDelay()
     }
@@ -86,10 +94,16 @@ import kotlin.time.Duration.Companion.seconds
         }
     }
 
-    fun onRefreshClicked(state: DeviceLoadingState) {
+    fun onRefreshClicked(state: DeviceLoadingState = state()) {
         if (!state.isLoading) {
             restartScanWithDelayJob.value?.cancel()
             restartScan()
+        }
+    }
+
+    fun onLinkCLick() {
+        launch(Dispatchers.Main.immediate) {
+            navigator.emit(NavCommand.Link("https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683"))
         }
     }
 

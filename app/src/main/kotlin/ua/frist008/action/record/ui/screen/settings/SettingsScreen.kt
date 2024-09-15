@@ -14,7 +14,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import ua.frist008.action.record.R
 import ua.frist008.action.record.presentation.impl.SettingsViewModel
 import ua.frist008.action.record.ui.component.DefaultScaffold
-import ua.frist008.action.record.ui.entity.SettingsSuccessState
+import ua.frist008.action.record.ui.entity.settings.SettingsSuccessState
 import ua.frist008.action.record.ui.theme.color.PreviewPalette
 import ua.frist008.action.record.util.exception.unsupportedUI
 

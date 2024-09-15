@@ -5,11 +5,11 @@ import androidx.compose.runtime.Stable
 
 @Stable sealed interface UIState {
 
-    open class Success : UIState
+    @Stable open class Success : UIState
 
     @Immutable open class Progress : UIState
 
-    @Stable open class Error(message: String? = null, cause: Throwable? = null) :
+    @Immutable open class Error(message: String? = null, cause: Throwable? = null) :
         Exception(message, cause),
         UIState
 }

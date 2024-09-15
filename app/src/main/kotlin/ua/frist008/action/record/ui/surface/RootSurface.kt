@@ -27,7 +27,7 @@ fun RootSurface(navigatorViewModel: RootNavigationViewModel = hiltViewModel()) {
         LaunchedEffect(NavCommand.ROOT_LAYER) {
             navigatorViewModel
                 .navigator
-                .onEach(router::handleCommand)
+                .onEach(router)
                 .launchIn(this)
         }
 

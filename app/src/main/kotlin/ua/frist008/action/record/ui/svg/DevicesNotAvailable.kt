@@ -14,7 +14,7 @@ import androidx.compose.ui.unit.dp
 
 val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
     Builder(
-        name = "NoDevicesAvailable", defaultWidth = 288.0.dp,
+        name = "DevicesNotAvailable", defaultWidth = 288.0.dp,
         defaultHeight = 274.0.dp, viewportWidth = 288.0f, viewportHeight = 274.0f,
     ).apply {
         path(
@@ -1317,6 +1317,5 @@ val Icons.DevicesNotAvailable: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             curveTo(233.572f, 139.616f, 234.732f, 140.826f, 235.932f, 142.186f)
             close()
         }
-    }
-        .build()
+    }.build()
 }

@@ -29,6 +29,7 @@ fun DevicesScreen(viewModel: DevicesViewModel = hiltViewModel()) {
         is DeviceLoadingState -> DevicesLoadingScreen(
             state = currentState,
             onSurfaceClick = viewModel::onRefreshClicked,
+            onLinkCLick = viewModel::onLinkCLick,
         )
 
         is UIState.Progress -> {

@@ -13,12 +13,14 @@ private val LocalTypography = Typography()
 // Display
 private val DisplayLargeStyle: TextStyle = LocalTypography.displayLarge.copy(
     color = AppTheme.colors.onBackground,
+    fontSize = 96.sp,
 )
 private val DisplayMediumStyle: TextStyle = LocalTypography.displayMedium.copy(
     color = AppTheme.colors.onBackground,
 )
 private val DisplaySmallStyle: TextStyle = LocalTypography.displaySmall.copy(
     color = AppTheme.colors.onBackground,
+    fontSize = 48.sp,
 )
 
 // Headline
@@ -60,6 +62,7 @@ private val BodySmallStyle: TextStyle = LocalTypography.bodySmall.copy(
 )
 
 // Label
+// Button -> Text
 private val LabelLargeStyle: TextStyle = LocalTypography.labelLarge.copy(
     color = AppTheme.colors.onBackground,
 )
