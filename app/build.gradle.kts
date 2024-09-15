@@ -1,3 +1,6 @@
+import kotlin.time.Duration.Companion.days
+import kotlin.time.Duration.Companion.milliseconds
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.di.hilt)
@@ -13,8 +16,10 @@ plugins {
 }
 
 android {
+    val currentTime = System.currentTimeMillis().milliseconds
+
     compileSdk = libs.versions.sdk.compile.asProvider().get().toInt()
-    compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt()
+    // compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt() wait for sdk 35
     buildToolsVersion = libs.versions.build.tools.version.get()
 
     defaultConfig {
@@ -22,7 +27,7 @@ android {
         namespace = applicationId
         minSdk = libs.versions.sdk.min.get().toInt()
         targetSdk = libs.versions.sdk.target.get().toInt()
-        versionCode = libs.versions.version.asProvider().get().toInt()
+        versionCode = (currentTime - (365 * 54).days).inWholeMinutes.toInt()
         versionName = libs.versions.version.name.get()
 
         // https://developer.android.com/guide/topics/resources/app-languages#gradle-config
@@ -33,8 +38,24 @@ android {
         }
     }
 
+    signingConfigs {
+        getByName(libs.versions.build.type.debug.get()) {
+            storeFile = file("../keystore/${libs.versions.build.type.debug.get()}.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+        create(libs.versions.build.type.release.get()) {
+            storeFile = file("../../keystore/${libs.versions.build.type.release.get()}.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
     buildTypes {
         debug {
+            signingConfig = signingConfigs.getByName(libs.versions.build.type.debug.get())
             isMinifyEnabled = false
             isShrinkResources = false
             isDebuggable = true
@@ -44,6 +65,7 @@ android {
 
         }
         release {
+            signingConfig = signingConfigs.getByName(libs.versions.build.type.release.get())
             isMinifyEnabled = true
             isShrinkResources = true
             isDebuggable = false
@@ -108,6 +130,7 @@ dependencies {
     ksp(libs.bundles.database.compiler)
     implementation(libs.bundles.database)
     ksp(libs.bundles.di.compiler)
+    implementation(libs.ads)
     implementation(libs.bundles.multithreading)
     implementation(libs.bundles.network)
 

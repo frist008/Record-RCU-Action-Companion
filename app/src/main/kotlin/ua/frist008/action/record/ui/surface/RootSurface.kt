@@ -7,7 +7,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.toRoute
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ua.frist008.action.record.presentation.impl.RootNavigationViewModel
@@ -36,7 +35,7 @@ fun RootSurface(navigatorViewModel: RootNavigationViewModel = hiltViewModel()) {
                 DevicesScreen()
             }
             composable<NavCommand.RecordScreen> {
-                RecordScreen(pcId = it.toRoute<NavCommand.RecordScreen>().pcId)
+                RecordScreen()
             }
             composable<NavCommand.SettingsScreen> {
                 SettingsScreen()

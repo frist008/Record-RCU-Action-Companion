@@ -12,10 +12,7 @@ import ua.frist008.action.record.ui.entity.record.RecordSuccessState
 import ua.frist008.action.record.util.exception.unsupportedUI
 
 @Composable
-fun RecordScreen(
-    viewModel: RecordViewModel = hiltViewModel(),
-    pcId: Long,
-) {
+fun RecordScreen(viewModel: RecordViewModel = hiltViewModel()) {
     val view = LocalView.current
     val state by viewModel.state.collectAsState()
 
@@ -39,7 +36,6 @@ fun RecordScreen(
     }
 
     DisposableEffect(viewModel) {
-        viewModel.onInit(pcId)
         view.keepScreenOn = true
         onDispose { view.keepScreenOn = false }
     }
