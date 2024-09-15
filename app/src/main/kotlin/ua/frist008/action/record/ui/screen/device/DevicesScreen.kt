@@ -1,10 +1,10 @@
 package ua.frist008.action.record.ui.screen.device
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.LifecycleResumeEffect
 import ua.frist008.action.record.presentation.impl.DevicesViewModel
 import ua.frist008.action.record.ui.entity.base.UIState
 import ua.frist008.action.record.ui.entity.device.DeviceLoadingState
@@ -39,8 +39,8 @@ fun DevicesScreen(viewModel: DevicesViewModel = hiltViewModel()) {
         else -> unsupportedUI()
     }
 
-    DisposableEffect(viewModel) {
+    LifecycleResumeEffect(viewModel) {
         viewModel.onInit()
-        onDispose { viewModel.onDispose() }
+        onPauseOrDispose { viewModel.onDispose() }
     }
 }

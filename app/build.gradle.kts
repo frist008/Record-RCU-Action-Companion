@@ -14,7 +14,7 @@ plugins {
 
 android {
     compileSdk = libs.versions.sdk.compile.asProvider().get().toInt()
-    compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt()
+    // compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt() wait for sdk 35
     buildToolsVersion = libs.versions.build.tools.version.get()
 
     defaultConfig {
@@ -33,8 +33,24 @@ android {
         }
     }
 
+    signingConfigs {
+        getByName(libs.versions.build.type.debug.get()) {
+            storeFile = file("../keystore/${libs.versions.build.type.debug.get()}.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+        create(libs.versions.build.type.release.get()) {
+            storeFile = file("../../keystore/${libs.versions.build.type.release.get()}.keystore")
+            storePassword = "android"
+            keyAlias = "androiddebugkey"
+            keyPassword = "android"
+        }
+    }
+
     buildTypes {
         debug {
+            signingConfig = signingConfigs.getByName(libs.versions.build.type.debug.get())
             isMinifyEnabled = false
             isShrinkResources = false
             isDebuggable = true
@@ -44,6 +60,7 @@ android {
 
         }
         release {
+            signingConfig = signingConfigs.getByName(libs.versions.build.type.release.get())
             isMinifyEnabled = true
             isShrinkResources = true
             isDebuggable = false
@@ -108,6 +125,7 @@ dependencies {
     ksp(libs.bundles.database.compiler)
     implementation(libs.bundles.database)
     ksp(libs.bundles.di.compiler)
+    implementation(libs.ads)
     implementation(libs.bundles.multithreading)
     implementation(libs.bundles.network)
 

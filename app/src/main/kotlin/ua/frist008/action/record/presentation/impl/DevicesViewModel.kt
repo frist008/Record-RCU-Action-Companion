@@ -67,7 +67,7 @@ import kotlin.time.Duration.Companion.seconds
 
     private fun restartScanWithDelay() {
         restartScanWithDelayJob.getAndUpdate {
-            if (it?.isActive == true) return
+            if (it?.isActive == true) return@getAndUpdate it
 
             launch {
                 timer(

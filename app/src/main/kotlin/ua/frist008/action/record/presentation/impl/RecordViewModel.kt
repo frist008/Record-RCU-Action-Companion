@@ -1,5 +1,7 @@
 package ua.frist008.action.record.presentation.impl
 
+import androidx.lifecycle.SavedStateHandle
+import androidx.navigation.toRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.isActive
@@ -18,13 +20,16 @@ import java.net.SocketTimeoutException
 import javax.inject.Inject
 
 @HiltViewModel class RecordViewModel @Inject constructor(
+    savedStateHandle: SavedStateHandle,
     dependencies: PresentationDependenciesDelegate,
     private val recordRepository: RecordRepository,
 ) : BaseViewModel(dependencies) {
 
-    fun onInit(pcId: Long) {
+    init {
+        val pcId = savedStateHandle.toRoute<NavCommand.RecordScreen>().pcId
+
         launch {
-            while (isActive) {
+            while (scope.isActive) {
                 try {
                     recordRepository.connect(pcId)
                 } catch (e: SocketTimeoutException) {
@@ -75,11 +80,6 @@ import javax.inject.Inject
                 recordRepository.sendCommand(StreamingRecordCommand.STOP)
             }
         }
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-        Timber.d("onCleared")
     }
 
     override suspend fun onFailure(cause: Throwable) {

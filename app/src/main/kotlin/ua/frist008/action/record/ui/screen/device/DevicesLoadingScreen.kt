@@ -138,7 +138,7 @@ private fun ConstraintLayoutScope.DevicesLoadingFooter(
         style = AppTheme.typography.link,
         modifier = Modifier.Companion
             .constrainAs(link, constrainBlock)
-            .padding(bottom = 16.dp),
+            .padding(bottom = 20.dp),
         onClick = { onCLick() },
     )
 }

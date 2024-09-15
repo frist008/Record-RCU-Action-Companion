@@ -2,6 +2,8 @@
 
 package ua.frist008.action.record.ui.screen.record
 
+import android.graphics.Color
+import android.view.View
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -13,6 +15,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -28,11 +31,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdSize
+import com.google.android.gms.ads.AdView
+import ua.frist008.action.record.BuildConfig
 import ua.frist008.action.record.R
 import ua.frist008.action.record.ui.component.DefaultScaffold
 import ua.frist008.action.record.ui.entity.record.EngineState
@@ -353,6 +362,41 @@ private fun ColumnScope.FooterActions(
 
 @Composable
 private fun ColumnScope.Ads() {
+    val isInEditMode = BuildConfig.DEBUG && LocalView.current.isInEditMode
+    // https://developers.google.com/admob/android/banner/fixed-size
+    AndroidView(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(60.dp),
+        factory = { context ->
+            if (isInEditMode) {
+                View(context).apply {
+                    setBackgroundColor(Color.WHITE)
+                }
+            } else {
+                AdView(context).apply {
+                    setAdSize(AdSize.BANNER)
+                    adUnitId = context.getString(R.string.ad)
+                    loadAd(
+                        AdRequest.Builder()
+                            .addKeyword("game")
+                            .addKeyword("games")
+                            .addKeyword("gamer")
+                            .addKeyword("gameplay")
+                            .addKeyword("steam")
+                            .addKeyword("windows")
+                            .addKeyword("controller")
+                            .addKeyword("playstation")
+                            .addKeyword("xbox")
+                            .addKeyword("pc")
+                            .addKeyword("phone")
+                            .addKeyword("power bank")
+                            .build(),
+                    )
+                }
+            }
+        },
+    )
 }
 
 private class RecordProvider : PreviewParameterProvider<RecordSuccessState> {

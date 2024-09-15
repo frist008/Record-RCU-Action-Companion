@@ -118,7 +118,7 @@ data class RecordDomainEntity(
     ): RecordButtonsState {
         val isRecording = recordModeType == RecordModeType.RECORD
         return RecordButtonsState(
-            isRecordingVisible = isRecording && !isStream,
+            isRecordingVisible = !isRecording || !isStream,
             isRecording = isRecording,
             isStopEnabled = isRecording || recordModeType == RecordModeType.PAUSE,
         )

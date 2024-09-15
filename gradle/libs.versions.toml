@@ -7,8 +7,8 @@ plugin-firebase-crashlytics = "3.0.2"
 plugin-firebase-perf = "1.4.2"
 plugin-ksp = "2.0.20-1.0.25"
 # project
-version = "1"
-version-name = "1.0.0"
+version = "3"
+version-name = "0.1.0"
 build-tools-version = "34.0.0"
 sdk-min = "26"
 sdk-compile = "35"
@@ -16,6 +16,9 @@ sdk-compile-extension = "12" # for compileSdk 34
 sdk-target = "35"
 jvm-target = "17"
 jvm-target-kotlin = "17"
+# buildType
+build-type-debug = "debug"
+build-type-release = "release"
 # kotlin
 kotlin = "2.0.20"
 kotlin-atomic = "0.25.0"
@@ -42,6 +45,8 @@ compose-navigation = "2.8.0"
 ## frameworks
 # firebase
 firebase-bom = "33.3.0"
+# ad
+ads = "23.3.0"
 # database
 room = "2.6.1"
 # di
@@ -74,9 +79,8 @@ jetpack-annotation = { module = "androidx.annotation:annotation", version.ref = 
 jetpack-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "jetpack-appcompat" }
 jetpack-browser = { module = "androidx.browser:browser", version.ref = "jetpack-browser" }
 jetpack-common = { module = "androidx.lifecycle:lifecycle-common-java8", version.ref = "jetpack-lifecycle" }
-jetpack-runtime = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "jetpack-lifecycle" }
 jetpack-splash = { module = "androidx.core:core-splashscreen", version.ref = "jetpack-splash" }
-jetpack-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-ktx", version.ref = "jetpack-lifecycle" }
+jetpack-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "jetpack-lifecycle" }
 jetpack-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "jetpack-lifecycle" }
 # compose
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
@@ -95,6 +99,8 @@ firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "fir
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 firebase-perf = { module = "com.google.firebase:firebase-perf" }
+# ad
+ads = { module = "com.google.android.gms:play-services-ads", version.ref = "ads" }
 # database
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
@@ -143,7 +149,6 @@ common = [
     "jetpack-common",
     "jetpack-viewmodel",
     "jetpack-viewmodel-savedstate",
-    "jetpack-runtime",
 ]
 ui = [
     "jetpack-activity",

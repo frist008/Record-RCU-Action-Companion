@@ -47,7 +47,7 @@ fun RecordInactiveGameScreen(
     ) {
         val subtitle = stringResource(R.string.record_inactive_subtitle)
 
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(56.dp))
         Text(
             text = stringResource(
                 if (isLive) {
