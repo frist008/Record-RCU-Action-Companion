@@ -26,7 +26,8 @@
             android:exported="true"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"
-            android:theme="@style/Theme.App.Splash">
+            android:theme="@style/Theme.App.Splash"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -39,7 +40,7 @@
 
         <meta-data
             android:name="google_analytics_automatic_screen_reporting_enabled"
-            android:value="@bool/firebase_analytics_logcat_enabled" />
+            android:value="@bool/firebase_analytics_enabled" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"

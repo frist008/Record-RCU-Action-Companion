@@ -5,8 +5,8 @@ import com.google.firebase.Firebase
 import com.google.firebase.crashlytics.crashlytics
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
-import ua.frist008.action.record.util.logger.CrashlyticsTree
-import ua.frist008.action.record.util.logger.TagDebugTree
+import ua.frist008.action.record.core.util.logger.CrashlyticsTree
+import ua.frist008.action.record.core.util.logger.TagDebugTree
 
 @HiltAndroidApp class App : Application() {
 

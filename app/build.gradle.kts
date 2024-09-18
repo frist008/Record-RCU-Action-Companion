@@ -3,23 +3,24 @@ import kotlin.time.Duration.Companion.milliseconds
 
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.google.services)
     alias(libs.plugins.di.hilt)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.compose.compiler)
-    alias(libs.plugins.ksp)
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.firebase.perf)
     alias(libs.plugins.room)
-    alias(libs.plugins.google.services)
 }
 
 android {
     val currentTime = System.currentTimeMillis().milliseconds
 
     compileSdk = libs.versions.sdk.compile.asProvider().get().toInt()
-    // compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt() wait for sdk 35
+    // TODO wait support for compileSdk 35
+    //  compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt() wait for sdk 35
     buildToolsVersion = libs.versions.build.tools.version.get()
 
     defaultConfig {
@@ -55,13 +56,14 @@ android {
 
     buildTypes {
         debug {
+            versionNameSuffix = "-${libs.versions.build.type.debug.get()}"
             signingConfig = signingConfigs.getByName(libs.versions.build.type.debug.get())
             isMinifyEnabled = false
             isShrinkResources = false
             isDebuggable = true
 
             resValue("bool", "firebase_performance_logcat_enabled", "true")
-            resValue("bool", "firebase_analytics_logcat_enabled", "true")
+            resValue("bool", "firebase_analytics_enabled", "false")
 
         }
         release {
@@ -76,7 +78,7 @@ android {
             )
 
             resValue("bool", "firebase_performance_logcat_enabled", "false")
-            resValue("bool", "firebase_analytics_logcat_enabled", "false")
+            resValue("bool", "firebase_analytics_enabled", "true")
         }
     }
 
@@ -88,6 +90,13 @@ android {
 
     kotlinOptions {
         jvmTarget = libs.versions.jvm.target.kotlin.get()
+        freeCompilerArgs += listOf(
+            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
+            "-opt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi",
+            "-opt-in=androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi",
+            "-opt-in=kotlinx.coroutines.ObsoleteCoroutinesApi",
+        )
+        freeCompilerArgs += "-Xcontext-receivers"
     }
 
     buildFeatures {
@@ -114,7 +123,7 @@ dependencies {
     // Compose
     implementation(platform(libs.compose.bom))
     implementation(libs.bundles.compose)
-    debugImplementation(libs.compose.tooling)
+    debugImplementation(libs.bundles.compose.tooling)
 
     // UI
     implementation(libs.bundles.common)
@@ -132,7 +141,7 @@ dependencies {
     ksp(libs.bundles.di.compiler)
     implementation(libs.ads)
     implementation(libs.bundles.multithreading)
-    implementation(libs.bundles.network)
+    implementation(libs.data.store)
 
     // Util
     coreLibraryDesugaring(libs.jdk.desugar)

@@ -1,4 +1,6 @@
 [versions]
+
+## project
 # plugin
 plugin-gradle-android = "8.6.1"
 plugin-ben-manes = "0.51.0"
@@ -6,18 +8,21 @@ plugin-google-services = "4.4.2"
 plugin-firebase-crashlytics = "3.0.2"
 plugin-firebase-perf = "1.4.2"
 plugin-ksp = "2.0.20-1.0.25"
-# project
-version-name = "0.1.1"
-build-tools-version = "34.0.0"
+
+## common
+# buildType
+build-type-debug = "debug"
+build-type-release = "release"
+# build
+version-name = "0.1.2"
+build-tools-version = "35.0.0"
 sdk-min = "26"
 sdk-compile = "35"
 sdk-compile-extension = "12" # for compileSdk 34
 sdk-target = "35"
 jvm-target = "17"
 jvm-target-kotlin = "17"
-# buildType
-build-type-debug = "debug"
-build-type-release = "release"
+
 # kotlin
 kotlin = "2.0.20"
 kotlin-atomic = "0.25.0"
@@ -26,6 +31,7 @@ kotlin-immutable-collections = "0.3.8"
 kotlin-serialization-json = "1.7.2"
 kotlin-time = "0.6.1"
 
+# ui
 # jetpack
 jetpack-core = "1.13.1"
 jetpack-activity = "1.9.2"
@@ -51,8 +57,8 @@ room = "2.6.1"
 # di
 di-hilt = "2.52"
 di-hilt-navigation-compose = "1.2.0"
-# image
-compose-coil = "2.7.0"
+# io
+data-store = "1.1.1"
 # utils
 jdk-desugar = "2.1.2"
 leakcanary = "2.14"
@@ -71,6 +77,7 @@ kotlin-immutable-collections = { module = "org.jetbrains.kotlinx:kotlinx-collect
 kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization-json" }
 kotlin-time = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlin-time" }
 
+## ui
 # jetpack
 jetpack-core = { module = "androidx.core:core-ktx", version.ref = "jetpack-core" }
 jetpack-activity = { module = "androidx.activity:activity", version.ref = "jetpack-activity" }
@@ -93,6 +100,7 @@ compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayou
 # navigation
 compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
 
+## frameworks
 # firebase
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
@@ -107,8 +115,8 @@ room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 di-hilt = { module = "com.google.dagger:hilt-android", version.ref = "di-hilt" }
 di-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "di-hilt-navigation-compose" }
 di-hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "di-hilt" }
-# image
-compose-coil = { module = "io.coil-kt:coil-compose", version.ref = "compose-coil" }
+# io
+data-store = { module = "androidx.datastore:datastore-preferences", version.ref = "data-store" }
 # util
 jdk-desugar = { module = "com.android.tools:desugar_jdk_libs", version.ref = "jdk-desugar" }
 leakcanary = { module = "com.squareup.leakcanary:plumber-android", version.ref = "leakcanary" }
@@ -116,18 +124,33 @@ leakcanary-debug = { module = "com.squareup.leakcanary:leakcanary-android", vers
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 
 [plugins]
-android-application = { id = "com.android.application", version.ref = "plugin-gradle-android" }
+
+# common
 ben-manes = { id = "com.github.ben-manes.versions", version.ref = "plugin-ben-manes" }
+
+# kotlin
+kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "plugin-ksp" }
+
+# modules
+android-application = { id = "com.android.application", version.ref = "plugin-gradle-android" }
+android-library = { id = "com.android.library" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+
+# ui
+kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+
+# di
 di-hilt = { id = "com.google.dagger.hilt.android", version.ref = "di-hilt" }
+
+# google / firebase
 google-services = { id = "com.google.gms.google-services", version.ref = "plugin-google-services" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "plugin-firebase-crashlytics" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "plugin-firebase-perf" }
+
+# database
 room = { id = "androidx.room", version.ref = "room" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
-kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
-kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
-kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
-ksp = { id = "com.google.devtools.ksp", version.ref = "plugin-ksp" }
 
 [bundles]
 
@@ -165,6 +188,9 @@ compose = [
     "compose-ui",
     "compose-tooling-preview",
 ]
+compose-tooling = [
+    "compose-tooling",
+]
 
 # framework
 firebase-bom = [
@@ -181,4 +207,3 @@ multithreading = [
     "kotlin-coroutines-android",
     "kotlin-coroutines-play-services",
 ]
-network = ["compose-coil"]
