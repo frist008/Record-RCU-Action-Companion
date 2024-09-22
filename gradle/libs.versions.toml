@@ -14,7 +14,7 @@ plugin-ksp = "2.0.20-1.0.25"
 build-type-debug = "debug"
 build-type-release = "release"
 # build
-version-name = "0.1.2"
+version-name = "1.0.0"
 build-tools-version = "35.0.0"
 sdk-min = "26"
 sdk-compile = "35"
@@ -38,14 +38,14 @@ jetpack-activity = "1.9.2"
 jetpack-annotation = "1.8.2"
 jetpack-appcompat = "1.7.0"
 jetpack-browser = "1.8.0"
-jetpack-lifecycle = "2.8.5"
+jetpack-lifecycle = "2.8.6"
 jetpack-splash = "1.0.1"
 # compose
-compose-bom = "2024.09.01"
+compose-bom = "2024.09.02"
 compose-activity = "1.9.2"
 compose-constraintlayout = "1.0.1"
 # navigation
-compose-navigation = "2.8.0"
+compose-navigation = "2.8.1"
 
 ## frameworks
 # firebase

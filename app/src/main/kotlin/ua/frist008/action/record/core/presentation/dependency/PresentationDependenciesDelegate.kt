@@ -1,6 +1,7 @@
 package ua.frist008.action.record.core.presentation.dependency
 
 import kotlinx.coroutines.CoroutineDispatcher
+import ua.frist008.action.record.core.ui.component.toast.ToastFlow
 import ua.frist008.action.record.core.ui.navigation.Navigator
 
 interface PresentationDependenciesDelegate {
@@ -8,4 +9,6 @@ interface PresentationDependenciesDelegate {
     val backgroundDispatcher: CoroutineDispatcher
 
     val navigator: Navigator
+
+    val toastFlow: ToastFlow
 }

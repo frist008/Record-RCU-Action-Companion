@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Devices -->
+    <!-- Common -->
 
     <string name="back">Назад</string>
+    <string name="error_unknown_error">Неизвестная ошибка</string>
 
     <!-- Devices -->
 
@@ -26,6 +27,7 @@
     <string name="record_inactive_title_stream">ТРАНСЛЯЦИЯ</string>
     <string name="record_inactive_subtitle">АКТИВНАЯ ИГРА НЕ НАЙДЕНА</string>
     <string name="record_inactive_message">ЗАПУСТИТЕ ИГРУ НА СВОЕМ КОМПЬЮТЕРЕ</string>
+    <string name="record_error_already_used">Ваш ПК подключен к другому приложению</string>
 
     <!-- Settings -->
 
