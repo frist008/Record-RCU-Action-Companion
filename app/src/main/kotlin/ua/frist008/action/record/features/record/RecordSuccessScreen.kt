@@ -70,11 +70,13 @@ fun RecordSuccessScreen(
     onStopClick: () -> Unit = {},
 ) {
     DefaultScaffold(
-        titleRes = if (state.live.isLive) {
-            R.string.record_title_stream
-        } else {
-            R.string.record_title_record
-        },
+        title = stringResource(
+            id = if (state.live.isLive) {
+                R.string.record_title_stream
+            } else {
+                R.string.record_title_record
+            },
+        ),
     ) { innerPadding ->
         Column(
             modifier = Modifier

@@ -1,6 +1,7 @@
 package ua.frist008.action.record.features.record
 
 import androidx.lifecycle.SavedStateHandle
+import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -28,7 +29,7 @@ import javax.inject.Inject
         val pcId = savedStateHandle.toRoute<NavCommand.RecordScreen>().pcId
 
         launch {
-            while (scope.isActive) {
+            while (viewModelScope.isActive) {
                 try {
                     recordRepository.connect(pcId)
                 } catch (e: SocketTimeoutException) {

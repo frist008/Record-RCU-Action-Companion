@@ -38,7 +38,7 @@ fun DevicesSuccessScreen(
     @PreviewParameter(DevicesProvider::class) state: DevicesSuccessState,
     onItemClick: (DeviceSuccessState) -> Unit = {},
 ) {
-    DefaultScaffold(titleRes = R.string.devices_title) { innerPadding ->
+    DefaultScaffold(title = stringResource(R.string.devices_title)) { innerPadding ->
         LazyColumn(
             modifier = Modifier
                 .padding(innerPadding)

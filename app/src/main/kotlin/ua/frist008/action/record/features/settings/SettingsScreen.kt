@@ -7,18 +7,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.hilt.navigation.compose.hiltViewModel
 import ua.frist008.action.record.R
-import ua.frist008.action.record.core.ui.component.DefaultScaffold
+import ua.frist008.action.record.core.ui.component.root.DefaultScaffold
 import ua.frist008.action.record.core.ui.component.unsupportedUI
 import ua.frist008.action.record.core.ui.theme.color.PreviewPalette
 
 @Composable
 fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
-    DefaultScaffold(titleRes = R.string.settings_title) { innerPadding ->
+    DefaultScaffold(title = stringResource(R.string.settings_title)) { innerPadding ->
         val state by viewModel.state.collectAsState()
 
         when (val currentState = state) {

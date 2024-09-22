@@ -11,12 +11,9 @@ sealed class NavCommand(
     @Transient val isReplaceScreen: Boolean = false,
 ) {
 
-    @Immutable class BackCommand(val backToScreen: NavCommand? = null) : NavCommand()
+    @Serializable @Immutable class BackCommand(val backToScreen: NavCommand? = null) : NavCommand()
 
-    @Immutable data class Link(val url: String) : NavCommand()
-
-    @Serializable @Immutable
-    class NewRoot(val newRootScreen: NavCommand) : NavCommand(false)
+    @Serializable @Immutable data class Link(val url: String) : NavCommand()
 
     @Serializable @Immutable object DevicesScreen : NavCommand()
     @Serializable @Immutable data class RecordScreen(val pcId: Long) : NavCommand()

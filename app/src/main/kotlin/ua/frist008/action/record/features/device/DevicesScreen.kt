@@ -31,10 +31,7 @@ fun DevicesScreen(viewModel: DevicesViewModel = hiltViewModel()) {
             onLinkCLick = viewModel::onLinkCLick,
         )
 
-        is UIState.Progress -> {
-            DevicesLoadingScreen(DeviceLoadingState())
-        }
-
+        is UIState.Progress -> DevicesLoadingScreen(DeviceLoadingState())
         else -> unsupportedUI()
     }
 

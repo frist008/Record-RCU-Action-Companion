@@ -6,6 +6,8 @@ import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.Immutable
@@ -73,6 +75,15 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
     val stopDisabled = Palette.RED_DARK
 
     val windowBackground = BrushPalette.PURPLE
+
+    val topAppBarColors: TopAppBarColors
+        @Composable
+        get() = TopAppBarDefaults.topAppBarColors(
+            titleContentColor = onPrimary,
+            navigationIconContentColor = onPrimary,
+            actionIconContentColor = onPrimary,
+            containerColor = primary,
+        )
 
     private val materialColors: ColorScheme = darkColorScheme(
         primary = primary,

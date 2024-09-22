@@ -31,18 +31,12 @@ class Router(private val navController: NavHostController) : (NavCommand) -> Uni
             }
 
             is NavCommand.Link -> {
-                val intent = CustomTabsIntent
+                val customTabsIntent = CustomTabsIntent
                     .Builder()
                     .setShowTitle(true)
                     .build()
 
-                intent.launchUrl(navController.context, Uri.parse(command.url))
-            }
-
-            is NavCommand.NewRoot -> navController.navigate(command.newRootScreen) {
-                popUpTo(navController.graph.id) {
-                    inclusive = command.isReplaceScreen
-                }
+                customTabsIntent.launchUrl(navController.context, Uri.parse(command.url))
             }
 
             else -> navController.navigate(command) {

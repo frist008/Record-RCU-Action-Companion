@@ -10,6 +10,7 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import ua.frist008.action.record.core.presentation.RootNavigationViewModel
+import ua.frist008.action.record.core.ui.navigation.ProvideNavigators
 import ua.frist008.action.record.core.ui.navigation.Router
 import ua.frist008.action.record.core.ui.theme.RootTheme
 import ua.frist008.action.record.features.device.DevicesScreen
@@ -29,15 +30,20 @@ fun RootSurface(navigatorViewModel: RootNavigationViewModel = hiltViewModel()) {
                 .launchIn(this)
         }
 
-        NavHost(navController = navController, startDestination = NavCommand.DevicesScreen::class) {
-            composable<NavCommand.DevicesScreen> {
-                DevicesScreen()
-            }
-            composable<NavCommand.RecordScreen> {
-                RecordScreen()
-            }
-            composable<NavCommand.SettingsScreen> {
-                SettingsScreen()
+        ProvideNavigators(router) {
+            NavHost(
+                navController = navController,
+                startDestination = NavCommand.DevicesScreen::class,
+            ) {
+                composable<NavCommand.DevicesScreen> {
+                    DevicesScreen()
+                }
+                composable<NavCommand.RecordScreen> {
+                    RecordScreen()
+                }
+                composable<NavCommand.SettingsScreen> {
+                    SettingsScreen()
+                }
             }
         }
     }

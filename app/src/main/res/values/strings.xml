@@ -3,6 +3,10 @@
 
     <!-- Devices -->
 
+    <string name="back">Back</string>
+
+    <!-- Devices -->
+
     <string name="devices_title">Devices</string>
     <string name="device_available">Available</string>
     <string name="device_not_available">Not Available</string>
