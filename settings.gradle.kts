@@ -28,4 +28,6 @@ dependencyResolutionManagement {
 }
 
 rootProject.name = rootProject.projectDir.name
+
+// Android
 include(":app")

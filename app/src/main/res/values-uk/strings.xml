@@ -3,6 +3,10 @@
 
     <!-- Devices -->
 
+    <string name="back">Назад</string>
+
+    <!-- Devices -->
+
     <string name="devices_title">Пристрої</string>
     <string name="device_available">Доступний</string>
     <string name="device_not_available">Недоступний</string>
