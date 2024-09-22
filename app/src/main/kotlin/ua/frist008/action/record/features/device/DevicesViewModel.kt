@@ -112,9 +112,9 @@ import kotlin.time.Duration.Companion.seconds
         }
     }
 
-    fun onLinkCLick() {
+    fun onLinkCLick(link: String) {
         launch(Dispatchers.Main.immediate) {
-            navigator.emit(NavCommand.Link("https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683"))
+            navigator.emit(NavCommand.Link(link))
         }
     }
 

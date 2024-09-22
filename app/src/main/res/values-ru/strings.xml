@@ -15,6 +15,7 @@
     <string name="device_searching">Идёт поиск устройств…</string>
     <string name="device_error_not_found">Устройства не найдены…</string>
     <string name="device_error_more">Как исправить?</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3336114877</string>
 
     <!-- Record -->
 
