@@ -1,8 +1,10 @@
 package ua.frist008.action.record.features
 
+import android.widget.Toast
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -23,10 +25,21 @@ fun RootSurface(navigatorViewModel: RootNavigationViewModel = hiltViewModel()) {
     val router = remember { Router(navController) }
 
     RootTheme {
-        LaunchedEffect(NavCommand.ROOT_LAYER) {
-            navigatorViewModel
-                .navigator
+        val context = LocalContext.current
+
+        LaunchedEffect(navigatorViewModel) {
+            navigatorViewModel.navigator
                 .onEach(router)
+                .launchIn(this)
+
+            var lastToast: Toast? = null
+
+            navigatorViewModel.toastFlow
+                .onEach {
+                    lastToast?.cancel()
+                    lastToast = Toast.makeText(context, it, Toast.LENGTH_SHORT)
+                    lastToast?.show()
+                }
                 .launchIn(this)
         }
 

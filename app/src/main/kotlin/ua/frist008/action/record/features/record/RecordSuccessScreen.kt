@@ -5,7 +5,7 @@ package ua.frist008.action.record.features.record
 import android.graphics.Color
 import android.view.View
 import androidx.annotation.StringRes
-import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,15 +13,15 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
@@ -46,6 +47,7 @@ import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.component.root.DefaultScaffold
 import ua.frist008.action.record.core.ui.resource.svg.Pause
 import ua.frist008.action.record.core.ui.resource.svg.Play
+import ua.frist008.action.record.core.ui.resource.svg.PlayBold
 import ua.frist008.action.record.core.ui.resource.svg.Stop
 import ua.frist008.action.record.core.ui.theme.AppTheme
 import ua.frist008.action.record.core.ui.theme.color.PreviewPalette
@@ -91,11 +93,7 @@ fun RecordSuccessScreen(
                 isPaused = state.buttonsData.isPaused,
                 isRecording = state.buttonsData.isRecording,
             )
-            TimeComponent(
-                timeState = state.timeState,
-                isPaused = state.buttonsData.isPaused,
-                isRecording = state.buttonsData.isRecording,
-            )
+            TimeComponent(timeState = state.timeState)
             FooterActions(
                 buttonsState = state.buttonsData,
                 onStartClick = onStartClick,
@@ -236,6 +234,7 @@ private fun ColumnScope.FpsContainer(
             .padding(vertical = 8.dp),
         contentAlignment = Alignment.Center,
     ) {
+        // TODO add Chart
         Row(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
@@ -250,7 +249,11 @@ private fun ColumnScope.FpsContainer(
                     isRecording -> AppTheme.colors.record
                     else -> AppTheme.colors.fps
                 },
-                modifier = Modifier.padding(start = 32.dp),
+                textAlign = TextAlign.End,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .weight(1f)
+                    .padding(end = (if (fps.length == 1) 25 else 0).dp),
             )
             FpsSuffix(isPaused, isRecording)
         }
@@ -268,27 +271,20 @@ private fun RowScope.FpsSuffix(isPaused: Boolean, isRecording: Boolean) {
             else -> AppTheme.colors.fps
         },
         modifier = Modifier
-            .padding(12.dp)
+            .padding(start = 8.dp, end = 64.dp)
+            .padding(vertical = 12.dp)
             .align(Alignment.Bottom),
     )
 }
 
 @Composable
-private fun ColumnScope.TimeComponent(
-    timeState: MutableState<String>,
-    isPaused: Boolean,
-    isRecording: Boolean,
-) {
+private fun ColumnScope.TimeComponent(timeState: MutableState<String>) {
     val time by remember { timeState }
 
     Text(
         text = time,
         style = AppTheme.typography.displaySmall,
-        color = when {
-            isPaused -> AppTheme.colors.pause
-            isRecording -> AppTheme.colors.record
-            else -> AppTheme.colors.onBackground
-        },
+        color = AppTheme.colors.onBackground,
         modifier = Modifier.padding(22.dp),
     )
 }
@@ -301,62 +297,38 @@ private fun ColumnScope.FooterActions(
     onPauseClick: () -> Unit = {},
     onStopClick: () -> Unit,
 ) {
-    Row {
+    Row(modifier = Modifier.padding(20.dp)) {
+        val circleModifier = Modifier.clip(CircleShape)
+
         if (buttonsState.isRecordingVisible) {
-            IconButton(
-                onClick = when {
-                    !buttonsState.isStopEnabled -> onStartClick
-                    buttonsState.isRecording -> onPauseClick
-                    else -> onResumeClick
-                },
-                modifier = Modifier
-                    .padding(horizontal = 16.dp, vertical = 20.dp)
-                    .size(72.dp)
-                    .clip(RoundedCornerShape(64.dp))
-                    .background(
-                        color = if (buttonsState.isRecording) {
-                            AppTheme.colors.pause
+            if (buttonsState.isRecording) {
+                Icon(
+                    imageVector = Icons.Pause,
+                    contentDescription = stringResource(R.string.record_action_pause),
+                    modifier = circleModifier.clickable(onClick = onPauseClick),
+                )
+            } else {
+                Icon(
+                    imageVector = if (buttonsState.isStopVisible) Icons.Play else Icons.PlayBold,
+                    contentDescription = stringResource(R.string.record_action_record),
+                    modifier = circleModifier.clickable(
+                        onClick = if (buttonsState.isStopVisible) {
+                            onResumeClick
                         } else {
-                            AppTheme.colors.record
+                            onStartClick
                         },
                     ),
-            ) {
-                if (buttonsState.isRecording) {
-                    Icon(
-                        imageVector = Icons.Pause,
-                        contentDescription = stringResource(R.string.record_action_pause),
-                        tint = AppTheme.colors.onBackground,
-                    )
-                } else {
-                    Icon(
-                        imageVector = Icons.Play,
-                        contentDescription = stringResource(R.string.record_action_record),
-                        tint = AppTheme.colors.onBackground,
-                        modifier = Modifier.padding(start = 7.dp),
-                    )
-                }
+                )
             }
         }
 
-        IconButton(
-            onClick = onStopClick,
-            enabled = buttonsState.isStopEnabled,
-            modifier = Modifier
-                .padding(16.dp)
-                .size(72.dp)
-                .clip(RoundedCornerShape(64.dp))
-                .background(
-                    color = if (buttonsState.isStopEnabled) {
-                        AppTheme.colors.stop
-                    } else {
-                        AppTheme.colors.stopDisabled
-                    },
-                ),
-        ) {
+        if (buttonsState.isStopVisible) {
+            if (buttonsState.isRecordingVisible) Spacer(modifier = Modifier.width(50.dp))
+
             Icon(
                 imageVector = Icons.Stop,
                 contentDescription = stringResource(R.string.record_action_stop),
-                tint = AppTheme.colors.onBackground,
+                modifier = circleModifier.clickable(onClick = onStopClick),
             )
         }
     }
@@ -369,7 +341,7 @@ private fun ColumnScope.Ads() {
     AndroidView(
         modifier = Modifier
             .fillMaxWidth()
-            .height(60.dp),
+            .height(50.dp),
         factory = { context ->
             if (isInEditMode) {
                 View(context).apply {

@@ -24,6 +24,10 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
     val gameActive: Boolean,
 ) : UIState.Success() {
 
+    init {
+        fpsState.value = fps.toString()
+    }
+
     companion object {
 
         fun previewStop() = RecordSuccessState(
@@ -40,6 +44,7 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
         )
 
         fun previewRecording() = previewStop().copy(
+            fps = 100,
             maxFps = 60,
             engine = EngineState.previewStopWarning(),
             live = LiveState.previewRecord(),
@@ -50,6 +55,7 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
         )
 
         fun previewPaused() = previewStop().copy(
+            fps = 6,
             maxFps = 30,
             engine = EngineState.previewStopError(),
             live = LiveState.previewRecord(),
@@ -135,36 +141,36 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
 
 @Immutable data class RecordButtonsState(
     val isRecordingVisible: Boolean,
+    val isStopVisible: Boolean,
     val isRecording: Boolean,
-    val isStopEnabled: Boolean,
 ) {
 
-    val isPaused = !isRecording && isStopEnabled
+    val isPaused = !isRecording && isStopVisible
 
     companion object {
 
         fun previewStop() = RecordButtonsState(
             isRecordingVisible = true,
             isRecording = false,
-            isStopEnabled = false,
+            isStopVisible = false,
         )
 
         fun previewRecording() = RecordButtonsState(
             isRecordingVisible = true,
             isRecording = true,
-            isStopEnabled = true,
+            isStopVisible = true,
         )
 
         fun previewPaused() = RecordButtonsState(
             isRecordingVisible = true,
             isRecording = false,
-            isStopEnabled = true,
+            isStopVisible = true,
         )
 
         fun previewStream() = RecordButtonsState(
             isRecordingVisible = false,
             isRecording = true,
-            isStopEnabled = true,
+            isStopVisible = true,
         )
     }
 }

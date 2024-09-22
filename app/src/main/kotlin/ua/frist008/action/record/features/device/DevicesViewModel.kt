@@ -121,8 +121,8 @@ import kotlin.time.Duration.Companion.seconds
     override suspend fun onFailure(cause: Throwable) {
         when (cause) {
             is BindException -> {
-                Timber.w(cause)
-                // TODO message already used
+                Timber.e(cause)
+                // TODO remove on next release
             }
 
             is SocketTimeoutException,

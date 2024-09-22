@@ -13,9 +13,9 @@ import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
-val Icons.Stop: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
+val Icons.PlayBold: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
     ImageVector.Builder(
-        name = "Stop",
+        name = "Play Bold",
         defaultWidth = 71.dp,
         defaultHeight = 71.dp,
         viewportWidth = 71f,
@@ -23,18 +23,18 @@ val Icons.Stop: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
     ).apply {
         path(
             stroke = SolidColor(Color(0xFFFFFFFF)),
-            strokeLineWidth = 2f,
+            strokeLineWidth = 4f,
         ) {
             moveTo(35.5f, 35.5f)
-            moveToRelative(-34.5f, 0f)
-            arcToRelative(34.5f, 34.5f, 0f, isMoreThanHalf = true, isPositiveArc = true, 69f, 0f)
-            arcToRelative(34.5f, 34.5f, 0f, isMoreThanHalf = true, isPositiveArc = true, -69f, 0f)
+            moveToRelative(-33.5f, 0f)
+            arcToRelative(33.5f, 33.5f, 0f, isMoreThanHalf = true, isPositiveArc = true, 67f, 0f)
+            arcToRelative(33.5f, 33.5f, 0f, isMoreThanHalf = true, isPositiveArc = true, -67f, 0f)
         }
         path(fill = SolidColor(Color(0xFFFFFFFF))) {
-            moveTo(24f, 24f)
-            horizontalLineToRelative(24f)
-            verticalLineToRelative(24f)
-            horizontalLineToRelative(-24f)
+            moveTo(27f, 48f)
+            verticalLineTo(24f)
+            lineTo(51f, 36f)
+            lineTo(27f, 48f)
             close()
         }
     }.build()
@@ -42,8 +42,8 @@ val Icons.Stop: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
 
 @Preview
 @Composable
-private fun StopPreview() {
+private fun PlayBoldPreview() {
     Box(modifier = Modifier.padding(12.dp)) {
-        Image(imageVector = Icons.Stop, contentDescription = null)
+        Image(imageVector = Icons.PlayBold, contentDescription = null)
     }
 }

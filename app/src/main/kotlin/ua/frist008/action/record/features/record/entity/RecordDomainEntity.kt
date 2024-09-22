@@ -3,6 +3,8 @@ package ua.frist008.action.record.features.record.entity
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
+import com.google.firebase.Firebase
+import com.google.firebase.analytics.analytics
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.util.common.round
 import ua.frist008.action.record.core.util.date.DateUtils
@@ -55,7 +57,6 @@ data class RecordDomainEntity(
                 // TODO webCamDataList = webCamDataList,
             )
         } else {
-            recordSuccessState.fpsState.value = fps.toString()
             recordSuccessState.timeState.value = mapDuration(duration)
             recordSuccessState.copy(
                 buttonsData = mapRecordType(recordModeType, isStream),
@@ -102,9 +103,22 @@ data class RecordDomainEntity(
     private fun mapDuration(duration: Duration) =
         DateUtils.formatTime(DateUtils.fromDuration(duration))
 
-    private fun mapEngine(engine: String) =
-        // TODO
-        EngineState(name = engine, errorType = ErrorType.DEFAULT)
+    private fun mapEngine(engine: String): EngineState {
+        val trimmedEngine = engine.trim()
+
+        return when (trimmedEngine.lowercase()) {
+            "aero" -> EngineState(name = trimmedEngine, errorType = ErrorType.ERROR)
+
+            "dx9",
+            "dx10",
+            "dx11",
+            "dx12",
+            "opengl",
+            -> EngineState(name = trimmedEngine, errorType = ErrorType.ERROR)
+
+            else -> EngineState(name = trimmedEngine, errorType = ErrorType.DEFAULT)
+        }
+    }
 
     private fun mapRecordType(
         recordModeType: RecordModeType,
@@ -114,7 +128,12 @@ data class RecordDomainEntity(
         return RecordButtonsState(
             isRecordingVisible = !isRecording || !isStream,
             isRecording = isRecording,
-            isStopEnabled = isRecording || recordModeType == RecordModeType.PAUSE,
+            isStopVisible = isRecording || recordModeType == RecordModeType.PAUSE,
         )
+    }
+
+    companion object {
+
+        private val analytics by lazy(LazyThreadSafetyMode.NONE) { Firebase.analytics }
     }
 }

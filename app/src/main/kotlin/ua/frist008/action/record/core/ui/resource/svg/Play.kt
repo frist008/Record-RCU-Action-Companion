@@ -1,31 +1,49 @@
 package ua.frist008.action.record.core.ui.resource.svg
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
-import androidx.compose.ui.graphics.StrokeCap.Companion.Butt
-import androidx.compose.ui.graphics.StrokeJoin.Companion.Miter
 import androidx.compose.ui.graphics.vector.ImageVector
-import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 val Icons.Play: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
-    Builder(
-        name = "Play", defaultWidth = 24.0.dp, defaultHeight = 24.0.dp,
-        viewportWidth = 24.0f, viewportHeight = 24.0f,
+    ImageVector.Builder(
+        name = "Play",
+        defaultWidth = 71.dp,
+        defaultHeight = 71.dp,
+        viewportWidth = 71f,
+        viewportHeight = 71f,
     ).apply {
         path(
-            fill = SolidColor(Color(0xFFffffff)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
-            pathFillType = NonZero,
+            stroke = SolidColor(Color(0xFFFFFFFF)),
+            strokeLineWidth = 2f,
         ) {
-            moveTo(0.0f, 24.0f)
-            verticalLineTo(0.0f)
-            lineTo(24.0f, 12.0f)
-            lineTo(0.0f, 24.0f)
+            moveTo(35.5f, 35.5f)
+            moveToRelative(-34.5f, 0f)
+            arcToRelative(34.5f, 34.5f, 0f, isMoreThanHalf = true, isPositiveArc = true, 69f, 0f)
+            arcToRelative(34.5f, 34.5f, 0f, isMoreThanHalf = true, isPositiveArc = true, -69f, 0f)
+        }
+        path(fill = SolidColor(Color(0xFFFFFFFF))) {
+            moveTo(27f, 48f)
+            verticalLineTo(24f)
+            lineTo(51f, 36f)
+            lineTo(27f, 48f)
             close()
         }
     }.build()
+}
+
+@Preview
+@Composable
+private fun PlayPreview() {
+    Box(modifier = Modifier.padding(12.dp)) {
+        Image(imageVector = Icons.Play, contentDescription = null)
+    }
 }

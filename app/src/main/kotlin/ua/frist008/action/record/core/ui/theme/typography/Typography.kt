@@ -20,7 +20,7 @@ private val DisplayMediumStyle: TextStyle = LocalTypography.displayMedium.copy(
 )
 private val DisplaySmallStyle: TextStyle = LocalTypography.displaySmall.copy(
     color = AppTheme.colors.onBackground,
-    fontSize = 48.sp,
+    fontSize = 44.sp,
 )
 
 // Headline

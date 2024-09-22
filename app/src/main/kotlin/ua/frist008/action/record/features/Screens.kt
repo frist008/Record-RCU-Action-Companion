@@ -18,9 +18,4 @@ sealed class NavCommand(
     @Serializable @Immutable object DevicesScreen : NavCommand()
     @Serializable @Immutable data class RecordScreen(val pcId: Long) : NavCommand()
     @Serializable @Immutable object SettingsScreen : NavCommand()
-
-    companion object {
-
-        const val ROOT_LAYER = "ROOT_LAYER"
-    }
 }
