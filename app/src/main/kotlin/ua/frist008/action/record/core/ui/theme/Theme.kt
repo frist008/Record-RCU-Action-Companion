@@ -3,13 +3,12 @@ package ua.frist008.action.record.core.ui.theme
 import androidx.activity.ComponentActivity
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.annotation.StringRes
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Shapes
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
@@ -18,13 +17,12 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import ua.frist008.action.record.R
+import ua.frist008.action.record.core.ui.component.root.DefaultScaffold
 import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
 import ua.frist008.action.record.core.ui.theme.typography.AppTypography
 
 @Composable
-fun RootTheme(
-    content: @Composable () -> Unit,
-) {
+fun RootTheme(content: @Composable () -> Unit) {
     val view = LocalView.current
 
     if (!view.isInEditMode) {
@@ -54,24 +52,23 @@ internal object AppTheme {
     val shapes = Shapes()
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-)
+@Preview(showBackground = true, showSystemUi = true)
 @Composable
-private fun RootThemePreview() {
-    RootTheme {
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    title = {
-                        Text(text = stringResource(id = R.string.devices_title))
-                    },
-                )
-            },
-            modifier = Modifier.fillMaxSize(),
-        ) {
-            Text(text = "Hello World", modifier = Modifier.padding(it))
+fun RootThemePreview(content: @Composable () -> Unit = { Text("Hello World") }) {
+    RootTheme { content() }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun RootThemeScaffoldPreview(
+    @StringRes titleRes: Int = R.string.app_name,
+    content: @Composable (innerPadding: PaddingValues) -> Unit = {
+        Text(text = "Hello World", modifier = Modifier.padding(it))
+    },
+) {
+    RootThemePreview {
+        DefaultScaffold(stringResource(id = titleRes)) {
+            content(it)
         }
     }
 }

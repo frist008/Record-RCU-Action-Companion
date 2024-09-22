@@ -1,5 +1,6 @@
 package ua.frist008.action.record.core.presentation
 
+import androidx.annotation.CallSuper
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.atomicfu.AtomicRef
@@ -39,13 +40,13 @@ abstract class BaseViewModel(
     protected val mutableState = MutableStateFlow<UIState>(UIState.Progress())
     override val state by lazy(LazyThreadSafetyMode.NONE) { mutableState.asStateFlow() }
 
-    protected fun BaseViewModel.launch(
+    protected fun launch(
         context: CoroutineContext = EmptyCoroutineContext,
         start: CoroutineStart = CoroutineStart.DEFAULT,
         block: suspend CoroutineScope.() -> Unit,
     ): Job = viewModelScope.launch(context + coroutineExceptionHandler, start, block)
 
-    fun BaseViewModel.safeLaunch(
+    protected fun launch(
         jobController: AtomicRef<Job?>,
         context: CoroutineContext = EmptyCoroutineContext,
         start: CoroutineStart = CoroutineStart.DEFAULT,
@@ -53,11 +54,13 @@ abstract class BaseViewModel(
     ): Job? = jobController.updateAndGet { job ->
         job?.cancel()
 
-        launch(context, start) {
+        this.launch(context, start) {
             job?.join()
             block()
         }
     }
 
-    protected abstract suspend fun onFailure(cause: Throwable)
+    @CallSuper protected open suspend fun onFailure(cause: Throwable) {
+        Timber.e(cause)
+    }
 }

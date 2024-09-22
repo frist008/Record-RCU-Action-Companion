@@ -2,6 +2,8 @@ package ua.frist008.action.record.core.ui.theme.color
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -34,7 +36,7 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
     val onTertiary: Color = Palette.WHITE_LIGHT
     val tertiaryContainer: Color = Palette.PURPLE_LIGHT
     val onTertiaryContainer: Color = Palette.WHITE_LIGHT
-    val background: Color = Palette.TRANSPARENT
+    val background: Color = Color.Transparent
     val onBackground: Color = Palette.WHITE_LIGHT
     val surface: Color = Palette.PURPLE_DARK
     val onSurface: Color = Palette.WHITE_LIGHT
@@ -48,8 +50,8 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
     val onError: Color = Palette.WHITE_LIGHT
     val errorContainer: Color = Palette.RED_LIGHT
     val onErrorContainer: Color = Palette.WHITE_LIGHT
-    val outline: Color = Palette.TRANSPARENT
-    val outlineVariant: Color = Palette.TRANSPARENT
+    val outline: Color = Color.Transparent
+    val outlineVariant: Color = Color.Transparent
     val scrim: Color = Palette.PURPLE_DARK
     val surfaceBright: Color = Palette.PURPLE_LIGHT
     val surfaceDim: Color = Palette.PURPLE_LIGHT
@@ -60,7 +62,7 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
     val surfaceContainerLowest: Color = Palette.PURPLE_DARK
 
     val statusBar = primary
-    val navigationBar = Palette.TRANSPARENT
+    val navigationBar = Color.Transparent
     val link = Palette.BLUE_LIGHT
     val online = Palette.GREEN_LIGHT
     val offline = error
@@ -84,6 +86,14 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
             actionIconContentColor = onPrimary,
             containerColor = primary,
         )
+
+    val buttonColors: ButtonColors
+        @Composable
+        get() = ButtonDefaults.buttonColors()
+
+    val transparentButtonColors: ButtonColors
+        @Composable
+        get() = buttonColors.copy(containerColor = Color.Transparent)
 
     private val materialColors: ColorScheme = darkColorScheme(
         primary = primary,
@@ -134,8 +144,6 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
 }
 
 @Immutable private object Palette {
-
-    val TRANSPARENT = Color(0x00000000)
 
     val WHITE_LIGHT = Color(0xFFFFFFFF)
     val WHITE_NEUTRAL = Color(0xB2FFFFFF)

@@ -9,8 +9,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalView
+import androidx.compose.ui.tooling.preview.Preview
+import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.navigation.Router
 import ua.frist008.action.record.core.ui.theme.AppTheme
+import ua.frist008.action.record.core.ui.theme.RootThemeScaffoldPreview
 import ua.frist008.action.record.features.NavCommand
 
 @Composable
@@ -41,4 +44,10 @@ fun DefaultScaffold(
             contentColorFor(containerColor)
         },
     )
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun ScaffoldPreview() {
+    RootThemeScaffoldPreview(R.string.devices_title) {}
 }

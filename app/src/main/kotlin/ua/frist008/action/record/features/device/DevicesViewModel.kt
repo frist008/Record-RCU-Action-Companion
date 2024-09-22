@@ -2,22 +2,26 @@ package ua.frist008.action.record.features.device
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.atomicfu.atomic
-import kotlinx.atomicfu.getAndUpdate
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collectLatest
 import timber.log.Timber
 import ua.frist008.action.record.core.presentation.BaseViewModel
 import ua.frist008.action.record.core.presentation.dependency.PresentationDependenciesDelegate
-import ua.frist008.action.record.core.presentation.dependency.StateOwner.Companion.state
 import ua.frist008.action.record.core.util.concurrent.timer
 import ua.frist008.action.record.features.NavCommand
 import ua.frist008.action.record.features.device.entity.DeviceDomainEntity.Companion.toUI
-import ua.frist008.action.record.features.device.entity.DeviceLoadingState
 import ua.frist008.action.record.features.device.entity.DeviceSuccessState
+import ua.frist008.action.record.features.device.entity.DevicesProgressState
 import ua.frist008.action.record.features.device.entity.DevicesSuccessState
+import java.net.BindException
+import java.net.SocketException
+import java.net.SocketTimeoutException
 import javax.inject.Inject
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
 @HiltViewModel class DevicesViewModel @Inject constructor(
@@ -25,65 +29,80 @@ import kotlin.time.Duration.Companion.seconds
     private val devicesRepository: DeviceRadarRepository,
 ) : BaseViewModel(dependencies) {
 
-    private var restartScanWithDelayJob = atomic<Job?>(null)
-    private var scanJob = atomic<Job?>(null)
+    private var ignoreError = false
+
+    private val timerJob = atomic<Job?>(null)
+    private val scanJob = atomic<Job?>(null)
+
     private var isAutoFirstNavigate = false
 
     fun onInit() {
+        restartTimer()
         restartScan()
     }
 
     // TODO For version 1.2: move work with Repository to ForegroundService
     private fun restartScan() {
-        scanJob.getAndUpdate { oldRadarJob ->
-            oldRadarJob?.cancel()
-            restartScanWithDelayJob.value?.cancel()
+        Timber.i("start Scan")
 
-            launch {
-                mutableState.emit(DeviceLoadingState())
-                oldRadarJob?.join()
-
-                Timber.i("start Scan")
-
-                devicesRepository.get().collectLatest { list ->
-                    if (list.none { it.isAvailableStatus }) {
-                        restartScanWithDelay()
-                    } else {
-                        restartScanWithDelayJob.value?.cancelAndJoin()
-
+        launch(scanJob) {
+            devicesRepository
+                .get()
+                .catch { onScanError { } }
+                .collectLatest { list ->
+                    if (list.any { it.isAvailableStatus }) {
                         val uiList = list.toUI()
-                        mutableState.emit(DevicesSuccessState(uiList))
 
                         if (!isAutoFirstNavigate && uiList.size == 1) {
                             isAutoFirstNavigate = true
-                            onItemClicked(uiList.first())
+                            navigator.emit(NavCommand.RecordScreen(uiList.first().id))
+                        } else {
+                            mutableState.emit(DevicesSuccessState(uiList))
                         }
+
+                        ignoreError = true
+                    } else {
+                        val oldIgnoreError = ignoreError
+                        onScanError { if (!oldIgnoreError) restartScan() }
                     }
                 }
-            }
         }
     }
 
-    private fun restartScanWithDelay() {
-        restartScanWithDelayJob.getAndUpdate {
-            if (it?.isActive == true) return@getAndUpdate it
-
-            launch {
-                timer(
-                    durationMs = TIMER_MS,
-                    delayEventMs = 1.seconds.inWholeMilliseconds,
-                    onNextEvent = { durationLeft ->
-                        mutableState.emit(DeviceLoadingState(durationLeft.inWholeSeconds.toString()))
-                    },
-                    onFinished = ::restartScan,
-                )
-            }
+    private suspend fun onScanError(onAction: () -> Unit) {
+        if (ignoreError) {
+            ignoreError = false
+            Timber.d("Ignore error")
+            delay(1.seconds)
+        } else if (mutableState.value !is DevicesProgressState) {
+            Timber.d("Start Progress")
+            mutableState.emit(DevicesProgressState())
         }
+
+        onAction()
     }
 
-    override suspend fun onFailure(cause: Throwable) {
-        Timber.e(cause)
-        restartScanWithDelay()
+    private fun restartTimer(durationDelay: Duration = 0.milliseconds) {
+        val emit: suspend (DevicesProgressState) -> Unit = { state ->
+            if (mutableState.value is DevicesProgressState) {
+                Timber.d("Emit Progress - $state")
+                mutableState.emit(state)
+            }
+        }
+
+        launch(timerJob) {
+            delay(durationDelay)
+            timer(
+                durationMs = TIMER_MS,
+                delayEventMs = 1.seconds.inWholeMilliseconds,
+                onNextEvent = { durationLeft -> emit(DevicesProgressState(durationLeft)) },
+                onFinished = {
+                    emit(DevicesProgressState())
+                    Timber.d("Restart Progress")
+                    restartTimer(2.seconds)
+                },
+            )
+        }
     }
 
     fun onItemClicked(device: DeviceSuccessState) {
@@ -93,22 +112,30 @@ import kotlin.time.Duration.Companion.seconds
         }
     }
 
-    fun onRefreshClicked(state: DeviceLoadingState = state()) {
-        if (!state.isLoading) {
-            restartScanWithDelayJob.value?.cancel()
-            restartScan()
-        }
-    }
-
     fun onLinkCLick() {
         launch(Dispatchers.Main.immediate) {
             navigator.emit(NavCommand.Link("https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683"))
         }
     }
 
+    override suspend fun onFailure(cause: Throwable) {
+        when (cause) {
+            is BindException -> {
+                Timber.w(cause)
+                // TODO message already used
+            }
+
+            is SocketTimeoutException,
+            is SocketException,
+            -> Timber.v(cause)
+
+            else -> super.onFailure(cause)
+        }
+    }
+
     fun onDispose() {
         scanJob.value?.cancel()
-        restartScanWithDelayJob.value?.cancel()
+        timerJob.value?.cancel()
     }
 
     companion object {

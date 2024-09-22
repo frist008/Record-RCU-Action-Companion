@@ -3,16 +3,15 @@ package ua.frist008.action.record.features.device
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
@@ -23,12 +22,13 @@ import androidx.constraintlayout.compose.ConstrainedLayoutReference
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.ConstraintLayoutScope
 import ua.frist008.action.record.R
-import ua.frist008.action.record.core.ui.component.modifier.clickable
+import ua.frist008.action.record.core.ui.component.button.ButtonComponent
 import ua.frist008.action.record.core.ui.component.progress.ColoredCircularProgressIndicator
 import ua.frist008.action.record.core.ui.resource.svg.DevicesNotAvailable
 import ua.frist008.action.record.core.ui.theme.AppTheme
 import ua.frist008.action.record.core.ui.theme.color.PreviewPalette
-import ua.frist008.action.record.features.device.entity.DeviceLoadingState
+import ua.frist008.action.record.features.device.entity.DevicesProgressState
+import kotlin.time.Duration.Companion.seconds
 
 @Preview(
     showSystemUi = true,
@@ -36,15 +36,13 @@ import ua.frist008.action.record.features.device.entity.DeviceLoadingState
     backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
 )
 @Composable
-fun DevicesLoadingScreen(
-    @PreviewParameter(DeviceProgressProvider::class) state: DeviceLoadingState,
-    onSurfaceClick: () -> Unit = {},
+fun DevicesProgressScreen(
+    @PreviewParameter(DeviceProgressProvider::class) state: DevicesProgressState,
     onLinkCLick: () -> Unit = {},
 ) {
     // Example of use ConstraintLayout. Can be optimized to Column
     ConstraintLayout(
         modifier = Modifier
-            .clickable(isRippleEnabled = false) { onSurfaceClick() }
             .padding(horizontal = 16.dp)
             .fillMaxSize()
             .safeContentPadding(),
@@ -53,7 +51,7 @@ fun DevicesLoadingScreen(
 
         createVerticalChain(descriptionAndImage, timer, link, chainStyle = ChainStyle.SpreadInside)
 
-        DevicesLoadingHeader(
+        DevicesProgressHeader(
             descriptionAndImage = descriptionAndImage,
             isLoading = state.isLoading,
         ) {
@@ -62,13 +60,13 @@ fun DevicesLoadingScreen(
             end.linkTo(parent.end)
             bottom.linkTo(timer.top)
         }
-        DevicesLoadingTimer(timer = timer, state = state) {
+        DevicesProgressTimer(timer = timer, state = state) {
             top.linkTo(descriptionAndImage.top)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
             bottom.linkTo(link.top)
         }
-        DevicesLoadingFooter(link = link, onCLick = onLinkCLick) {
+        DevicesProgressFooter(link = link, onCLick = onLinkCLick) {
             top.linkTo(timer.top)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
@@ -78,7 +76,7 @@ fun DevicesLoadingScreen(
 }
 
 @Composable
-private fun ConstraintLayoutScope.DevicesLoadingHeader(
+private fun ConstraintLayoutScope.DevicesProgressHeader(
     descriptionAndImage: ConstrainedLayoutReference,
     isLoading: Boolean,
     constrainBlock: ConstrainScope.() -> Unit,
@@ -104,51 +102,49 @@ private fun ConstraintLayoutScope.DevicesLoadingHeader(
     }
 }
 
-// TODO Add swipe to refresh
 @Composable
-private fun ConstraintLayoutScope.DevicesLoadingTimer(
+private fun ConstraintLayoutScope.DevicesProgressTimer(
     timer: ConstrainedLayoutReference,
-    state: DeviceLoadingState,
+    state: DevicesProgressState,
     constrainBlock: ConstrainScope.() -> Unit,
 ) {
+    val height = 56.dp
     val timerModifier = Modifier.Companion
         .constrainAs(timer, constrainBlock)
         .padding(4.dp)
 
     if (state.isLoading) {
-        ColoredCircularProgressIndicator(modifier = timerModifier, sizeDp = 56)
+        ColoredCircularProgressIndicator(modifier = timerModifier, size = height)
     } else {
         Text(
             text = state.timerValue,
-            modifier = timerModifier,
-            maxLines = 1,
+            modifier = timerModifier.height(height),
             style = AppTheme.typography.headlineSmall,
         )
     }
 }
 
 @Composable
-private fun ConstraintLayoutScope.DevicesLoadingFooter(
+private fun ConstraintLayoutScope.DevicesProgressFooter(
     link: ConstrainedLayoutReference,
     onCLick: () -> Unit,
     constrainBlock: ConstrainScope.() -> Unit,
 ) {
-    ClickableText(
-        text = AnnotatedString(stringResource(R.string.device_error_more)),
+    ButtonComponent(
+        text = stringResource(R.string.device_error_more),
         style = AppTheme.typography.link,
-        modifier = Modifier.Companion
+        colors = AppTheme.colors.transparentButtonColors,
+        onClick = onCLick,
+        modifier = Modifier
             .constrainAs(link, constrainBlock)
             .padding(bottom = 20.dp),
-        onClick = { onCLick() },
     )
 }
 
-private class DeviceProgressProvider : PreviewParameterProvider<DeviceLoadingState> {
+private class DeviceProgressProvider : PreviewParameterProvider<DevicesProgressState> {
 
     override val values = sequenceOf(
-        DeviceLoadingState("5", false),
-        DeviceLoadingState("5", true),
-        DeviceLoadingState("", false),
-        DeviceLoadingState(),
+        DevicesProgressState(5.seconds),
+        DevicesProgressState(),
     )
 }

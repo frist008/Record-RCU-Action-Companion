@@ -82,7 +82,7 @@ class DeviceRadarNetworkSourceImpl @Inject constructor(
             Timber.v(e)
             null
         } catch (e: IOException) {
-            Timber.e(e)
+            Timber.w(e)
             null
         }
 

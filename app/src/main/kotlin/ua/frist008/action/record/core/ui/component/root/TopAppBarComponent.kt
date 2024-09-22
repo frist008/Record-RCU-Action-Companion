@@ -10,10 +10,15 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import ua.frist008.action.record.BuildConfig
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.navigation.LocalNavigator
 import ua.frist008.action.record.core.ui.navigation.Router
+import ua.frist008.action.record.core.ui.theme.RootThemeScaffoldPreview
 import ua.frist008.action.record.features.NavCommand
 
 @Composable
@@ -28,7 +33,11 @@ fun DefaultTopAppBar(
         title = { Text(title) },
         actions = actions,
         colors = colors,
-        navigationIcon = @Composable { if (backIcon != null) BackArrowIcon(backIcon, onBackClick) },
+        navigationIcon = @Composable {
+            if (backIcon != null) {
+                BackArrowIcon(backIcon = backIcon, onBackClick = onBackClick)
+            }
+        },
     )
 }
 
@@ -37,11 +46,23 @@ private inline fun BackArrowIcon(
     backIcon: ImageVector,
     crossinline onBackClick: (navigator: Router) -> Unit,
 ) {
-    val navigator = LocalNavigator
+    val navigator =
+        if (BuildConfig.DEBUG && LocalView.current.isEnabled) {
+            Router(rememberNavController())
+        } else {
+            LocalNavigator
+        }
+
     IconButton(onClick = { onBackClick(navigator) }) {
         Icon(
             imageVector = backIcon,
             contentDescription = stringResource(id = R.string.app_name),
         )
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun TopAppBarPreview() {
+    RootThemeScaffoldPreview(R.string.devices_title) {}
 }

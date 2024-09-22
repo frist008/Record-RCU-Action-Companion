@@ -6,6 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import ua.frist008.action.record.core.ui.component.progress.ColoredCircularProgressIndicator
 import ua.frist008.action.record.core.ui.theme.color.PreviewPalette
 
@@ -20,6 +21,6 @@ fun RecordProgressScreen() {
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
     ) {
-        ColoredCircularProgressIndicator(sizeDp = 56)
+        ColoredCircularProgressIndicator(size = 56.dp)
     }
 }

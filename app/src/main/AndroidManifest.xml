@@ -22,7 +22,7 @@
         tools:targetApi="tiramisu">
 
         <activity
-            android:name=".ui.SingleActivity"
+            android:name=".SingleActivity"
             android:exported="true"
             android:hardwareAccelerated="true"
             android:launchMode="singleTop"

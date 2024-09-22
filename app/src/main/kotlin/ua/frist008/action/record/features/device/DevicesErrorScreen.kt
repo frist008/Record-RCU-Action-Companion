@@ -6,7 +6,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import ua.frist008.action.record.core.ui.UIState
 import ua.frist008.action.record.core.ui.component.preview.ErrorPreviewProvider
 import ua.frist008.action.record.core.ui.theme.color.PreviewPalette
-import ua.frist008.action.record.features.device.entity.DeviceLoadingState
+import ua.frist008.action.record.features.device.entity.DevicesProgressState
 
 @Preview(
     showSystemUi = true,
@@ -16,12 +16,10 @@ import ua.frist008.action.record.features.device.entity.DeviceLoadingState
 @Composable
 fun DevicesErrorScreen(
     @PreviewParameter(ErrorPreviewProvider::class) cause: UIState.Error,
-    onSurfaceClick: () -> Unit = {},
     onLinkCLick: () -> Unit = {},
 ) {
-    DevicesLoadingScreen(
-        state = DeviceLoadingState(""),
-        onSurfaceClick = onSurfaceClick,
+    DevicesProgressScreen(
+        state = DevicesProgressState(),
         onLinkCLick = onLinkCLick,
     )
 }

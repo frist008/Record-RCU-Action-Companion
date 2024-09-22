@@ -87,7 +87,7 @@ import javax.inject.Inject
             is DisconnectException -> navigator.emit(NavCommand.BackCommand())
             else -> {
                 navigator.emit(NavCommand.BackCommand())
-                Timber.e(cause)
+                super.onFailure(cause)
             }
         }
     }
