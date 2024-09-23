@@ -114,7 +114,8 @@ data class RecordDomainEntity(
             "dx11",
             "dx12",
             "opengl",
-            -> EngineState(name = trimmedEngine, errorType = ErrorType.ERROR)
+            "vulkan",
+            -> EngineState(name = trimmedEngine, errorType = ErrorType.DEFAULT)
 
             else -> EngineState(name = trimmedEngine, errorType = ErrorType.DEFAULT)
         }
