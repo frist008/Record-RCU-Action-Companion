@@ -107,7 +107,7 @@ data class RecordDomainEntity(
         val trimmedEngine = engine.trim()
 
         return when (trimmedEngine.lowercase()) {
-            "aero" -> EngineState(name = trimmedEngine, errorType = ErrorType.ERROR)
+            "aero" -> EngineState(name = "Desktop", errorType = ErrorType.ERROR)
 
             "dx9",
             "dx10",
