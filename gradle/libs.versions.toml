@@ -14,7 +14,7 @@ plugin-ksp = "2.0.20-1.0.25"
 build-type-debug = "debug"
 build-type-release = "release"
 # build
-version-name = "1.0.1"
+version-name = "1.0.2"
 build-tools-version = "35.0.0"
 sdk-min = "26"
 sdk-compile = "35"

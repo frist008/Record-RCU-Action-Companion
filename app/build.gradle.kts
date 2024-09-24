@@ -32,7 +32,7 @@ android {
         versionName = libs.versions.version.name.get()
 
         // https://developer.android.com/guide/topics/resources/app-languages#gradle-config
-        resourceConfigurations += listOf("en", "ru", "ua")
+        resourceConfigurations += listOf("en", "ru", "uk")
 
         vectorDrawables {
             useSupportLibrary = true
