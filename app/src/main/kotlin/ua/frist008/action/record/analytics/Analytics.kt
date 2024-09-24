@@ -5,6 +5,7 @@ import com.google.firebase.analytics.analytics
 import com.google.firebase.analytics.logEvent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.mapNotNull
+import timber.log.Timber
 import ua.frist008.action.record.core.util.common.takeIfNotEmpty
 import ua.frist008.action.record.features.record.entity.RecordSuccessState
 
@@ -22,7 +23,8 @@ object Analytics {
 
     suspend fun subscribe() {
         engineFlow.mapNotNull { it.takeIfNotEmpty() }.collect { engine ->
-            analytics.logEvent(RECORD_DATA_EVENT) { param("Engine", engine) }
+            Timber.tag("Engine").d(engine)
+            analytics.logEvent(RECORD_DATA_EVENT) { param("Engine", engine.replace(' ', '_')) }
         }
     }
 

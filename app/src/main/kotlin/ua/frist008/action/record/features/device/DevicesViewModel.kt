@@ -16,7 +16,6 @@ import ua.frist008.action.record.features.device.entity.DeviceDomainEntity.Compa
 import ua.frist008.action.record.features.device.entity.DeviceSuccessState
 import ua.frist008.action.record.features.device.entity.DevicesProgressState
 import ua.frist008.action.record.features.device.entity.DevicesSuccessState
-import java.net.BindException
 import java.net.SocketException
 import java.net.SocketTimeoutException
 import javax.inject.Inject
@@ -120,11 +119,6 @@ import kotlin.time.Duration.Companion.seconds
 
     override suspend fun onFailure(cause: Throwable) {
         when (cause) {
-            is BindException -> {
-                Timber.e(cause)
-                // TODO remove on next release
-            }
-
             is SocketTimeoutException,
             is SocketException,
             -> Timber.v(cause)

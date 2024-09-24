@@ -132,9 +132,4 @@ data class RecordDomainEntity(
             isStopVisible = isRecording || recordModeType == RecordModeType.PAUSE,
         )
     }
-
-    companion object {
-
-        private val analytics by lazy(LazyThreadSafetyMode.NONE) { Firebase.analytics }
-    }
 }

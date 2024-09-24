@@ -5,6 +5,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.toRoute
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.isActive
 import timber.log.Timber
@@ -58,7 +59,7 @@ import javax.inject.Inject
             }
         }
 
-        launch {
+        launch(Dispatchers.IO) {
             Analytics.subscribe()
         }
     }
