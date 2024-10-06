@@ -23,6 +23,7 @@ import ua.frist008.action.record.features.record.entity.FixedRecordCommand
 import ua.frist008.action.record.features.record.entity.RecordSuccessState
 import ua.frist008.action.record.features.record.entity.StreamingRecordCommand
 import java.net.BindException
+import java.net.ConnectException
 import java.net.SocketTimeoutException
 import javax.inject.Inject
 
@@ -108,8 +109,9 @@ import javax.inject.Inject
         when (cause) {
             is DisconnectException -> navigator.emit(NavCommand.BackCommand())
 
-            is BindException -> {
-                // TODO add timeout on device screen for reconnect
+            is ConnectException,
+            is BindException,
+                -> {
                 toastFlow.emit(R.string.record_error_already_used)
                 navigator.emit(NavCommand.BackCommand())
             }

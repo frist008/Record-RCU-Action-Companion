@@ -32,10 +32,12 @@ import kotlin.time.Duration.Companion.seconds
 
     private val timerJob = atomic<Job?>(null)
     private val scanJob = atomic<Job?>(null)
+    private val disposeJob = atomic<Job?>(null)
 
     private var isAutoFirstNavigate = false
 
     fun onInit() {
+        disposeJob.value?.cancel()
         restartTimer()
         restartScan()
     }
@@ -47,7 +49,7 @@ import kotlin.time.Duration.Companion.seconds
         launch(scanJob) {
             devicesRepository
                 .get()
-                .catch { onScanError { } }
+                .catch { onScanError() }
                 .collectLatest { list ->
                     if (list.any { it.isAvailableStatus }) {
                         val uiList = list.toUI()
@@ -68,7 +70,7 @@ import kotlin.time.Duration.Companion.seconds
         }
     }
 
-    private suspend fun onScanError(onAction: () -> Unit) {
+    private suspend fun onScanError(onAction: () -> Unit = {}) {
         if (ignoreError) {
             ignoreError = false
             Timber.d("Ignore error")
@@ -121,7 +123,7 @@ import kotlin.time.Duration.Companion.seconds
         when (cause) {
             is SocketTimeoutException,
             is SocketException,
-            -> Timber.v(cause)
+                -> Timber.v(cause)
 
             else -> super.onFailure(cause)
         }
@@ -130,6 +132,11 @@ import kotlin.time.Duration.Companion.seconds
     fun onDispose() {
         scanJob.value?.cancel()
         timerJob.value?.cancel()
+
+        launch(disposeJob) {
+            delay(1.seconds)
+            mutableState.emit(DevicesProgressState())
+        }
     }
 
     companion object {

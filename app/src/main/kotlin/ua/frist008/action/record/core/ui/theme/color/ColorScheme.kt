@@ -74,7 +74,6 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
     val record = Palette.GREEN_LIGHT
     val pause = Palette.YELLOW_LIGHT
     val stop = Palette.RED_LIGHT
-    val stopDisabled = Palette.RED_DARK
 
     val windowBackground = BrushPalette.PURPLE
 
@@ -84,7 +83,7 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
             titleContentColor = onPrimary,
             navigationIconContentColor = onPrimary,
             actionIconContentColor = onPrimary,
-            containerColor = primary,
+            containerColor = Color.Transparent,
         )
 
     val buttonColors: ButtonColors
@@ -157,8 +156,6 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
     val YELLOW_LIGHT = Color(0xFFF6BD60)
 
     val RED_LIGHT = Color(0xFFE74C3C)
-    val RED_NEUTRAL = Color(0xB2E74C3C)
-    val RED_DARK = Color(0xFF89271D)
     val RED_TRANSPARENT = Color(0x00E74C3C)
 
     val BLUE_LIGHT = Color(0xFF7AEFFF)
