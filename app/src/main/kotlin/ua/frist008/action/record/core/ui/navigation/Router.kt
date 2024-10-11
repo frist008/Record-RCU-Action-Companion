@@ -43,7 +43,9 @@ class Router(private val navController: NavHostController) : (NavCommand) -> Uni
                 val route = navController.currentBackStackEntry?.destination?.route
                 popUpTo(route ?: return@navigate) {
                     inclusive = command.isReplaceScreen
+                    saveState = true
                 }
+                restoreState = true
             }
         }
     }

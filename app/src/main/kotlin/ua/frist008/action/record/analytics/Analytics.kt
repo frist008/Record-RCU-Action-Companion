@@ -21,7 +21,7 @@ object Analytics {
         engineFlow.emit(engine)
     }
 
-    suspend fun subscribe() {
+    suspend fun subscribeAndBlock() {
         engineFlow.mapNotNull { it.takeIfNotEmpty() }.collect { engine ->
             Timber.tag("Engine").d(engine)
             analytics.logEvent(RECORD_DATA_EVENT) { param("Engine", engine.replace(' ', '_')) }

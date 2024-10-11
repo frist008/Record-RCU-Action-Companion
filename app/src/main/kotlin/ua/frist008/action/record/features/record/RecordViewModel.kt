@@ -61,7 +61,7 @@ import javax.inject.Inject
         }
 
         launch(Dispatchers.IO) {
-            Analytics.subscribe()
+            Analytics.subscribeAndBlock()
         }
     }
 

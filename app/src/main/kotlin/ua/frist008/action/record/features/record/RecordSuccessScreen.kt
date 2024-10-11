@@ -5,6 +5,7 @@ package ua.frist008.action.record.features.record
 import android.graphics.Color
 import android.view.View
 import androidx.annotation.StringRes
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -13,7 +14,6 @@ import androidx.compose.foundation.layout.ColumnScope
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -253,7 +253,7 @@ private fun ColumnScope.FpsContainer(
                 modifier = Modifier
                     .fillMaxWidth()
                     .weight(1f)
-                    .padding(end = (if (fps.length == 1) 25 else 0).dp),
+                    .padding(end = (if (fps.length == 1) 21 else 0).dp),
             )
             FpsSuffix(isPaused, isRecording)
         }
@@ -299,8 +299,9 @@ private fun ColumnScope.FooterActions(
 ) {
     Row(modifier = Modifier.padding(20.dp)) {
         val circleModifier = Modifier.clip(CircleShape)
+        val isRecordingVisible = buttonsState.isRecordingVisible
 
-        if (buttonsState.isRecordingVisible) {
+        AnimatedVisibility(isRecordingVisible) {
             if (buttonsState.isRecording) {
                 Icon(
                     imageVector = Icons.Pause,
@@ -322,14 +323,15 @@ private fun ColumnScope.FooterActions(
             }
         }
 
-        if (buttonsState.isStopVisible) {
-            if (buttonsState.isRecordingVisible) Spacer(modifier = Modifier.width(50.dp))
-
-            Icon(
-                imageVector = Icons.Stop,
-                contentDescription = stringResource(R.string.record_action_stop),
-                modifier = circleModifier.clickable(onClick = onStopClick),
-            )
+        AnimatedVisibility(buttonsState.isStopVisible) {
+            val widthStop = (if (isRecordingVisible) 50 else 0).dp + Icons.Stop.defaultWidth
+            Row(modifier = Modifier.width(widthStop), horizontalArrangement = Arrangement.End) {
+                Icon(
+                    imageVector = Icons.Stop,
+                    contentDescription = stringResource(R.string.record_action_stop),
+                    modifier = circleModifier.clickable(onClick = onStopClick),
+                )
+            }
         }
     }
 }
@@ -338,6 +340,7 @@ private fun ColumnScope.FooterActions(
 private fun ColumnScope.Ads() {
     val isInEditMode = BuildConfig.DEBUG && LocalView.current.isInEditMode
     // https://developers.google.com/admob/android/banner/fixed-size
+
     AndroidView(
         modifier = Modifier
             .fillMaxWidth()
@@ -351,6 +354,19 @@ private fun ColumnScope.Ads() {
                 AdView(context).apply {
                     setAdSize(AdSize.BANNER)
                     adUnitId = context.getString(R.string.ad)
+                    // adListener = object : AdListener() {
+                    //     override fun onAdLoaded() {
+                    //         super.onAdLoaded()
+                    //     }
+                    //
+                    //     override fun onAdFailedToLoad(p0: LoadAdError) {
+                    //         super.onAdFailedToLoad(p0)
+                    //     }
+                    //
+                    //     override fun onAdClosed() {
+                    //         super.onAdClosed()
+                    //     }
+                    // }
                     loadAd(
                         AdRequest.Builder()
                             .addKeyword("game")
