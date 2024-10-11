@@ -14,7 +14,7 @@ plugin-ksp = "2.0.20-1.0.25"
 build-type-debug = "debug"
 build-type-release = "release"
 # build
-version-name = "1.0.2"
+version-name = "1.0.3"
 build-tools-version = "35.0.0"
 sdk-min = "26"
 sdk-compile = "35"
@@ -107,7 +107,7 @@ firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 firebase-perf = { module = "com.google.firebase:firebase-perf" }
 # ad
-ads = { module = "com.google.android.gms:play-services-ads", version.ref = "ads" }
+ads = { module = "com.google.android.gms:play-services-ads-lite", version.ref = "ads" }
 # database
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
