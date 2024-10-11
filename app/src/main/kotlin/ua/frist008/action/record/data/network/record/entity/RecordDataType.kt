@@ -62,7 +62,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val newFps = newData.toInt()
             log(old.fps, newFps)
-            return old.copy(fps = newFps)
+            return old.copy(connected = true, fps = newFps)
         }
     }
 

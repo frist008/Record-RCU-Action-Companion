@@ -16,7 +16,6 @@ import ua.frist008.action.record.features.device.entity.DeviceDomainEntity.Compa
 import ua.frist008.action.record.features.device.entity.DeviceSuccessState
 import ua.frist008.action.record.features.device.entity.DevicesProgressState
 import ua.frist008.action.record.features.device.entity.DevicesSuccessState
-import java.net.BindException
 import java.net.SocketException
 import java.net.SocketTimeoutException
 import javax.inject.Inject
@@ -33,10 +32,12 @@ import kotlin.time.Duration.Companion.seconds
 
     private val timerJob = atomic<Job?>(null)
     private val scanJob = atomic<Job?>(null)
+    private val disposeJob = atomic<Job?>(null)
 
     private var isAutoFirstNavigate = false
 
     fun onInit() {
+        disposeJob.value?.cancel()
         restartTimer()
         restartScan()
     }
@@ -48,7 +49,7 @@ import kotlin.time.Duration.Companion.seconds
         launch(scanJob) {
             devicesRepository
                 .get()
-                .catch { onScanError { } }
+                .catch { onScanError() }
                 .collectLatest { list ->
                     if (list.any { it.isAvailableStatus }) {
                         val uiList = list.toUI()
@@ -69,7 +70,7 @@ import kotlin.time.Duration.Companion.seconds
         }
     }
 
-    private suspend fun onScanError(onAction: () -> Unit) {
+    private suspend fun onScanError(onAction: () -> Unit = {}) {
         if (ignoreError) {
             ignoreError = false
             Timber.d("Ignore error")
@@ -120,14 +121,9 @@ import kotlin.time.Duration.Companion.seconds
 
     override suspend fun onFailure(cause: Throwable) {
         when (cause) {
-            is BindException -> {
-                Timber.e(cause)
-                // TODO remove on next release
-            }
-
             is SocketTimeoutException,
             is SocketException,
-            -> Timber.v(cause)
+                -> Timber.v(cause)
 
             else -> super.onFailure(cause)
         }
@@ -136,6 +132,11 @@ import kotlin.time.Duration.Companion.seconds
     fun onDispose() {
         scanJob.value?.cancel()
         timerJob.value?.cancel()
+
+        launch(disposeJob) {
+            delay(1.seconds)
+            mutableState.emit(DevicesProgressState())
+        }
     }
 
     companion object {

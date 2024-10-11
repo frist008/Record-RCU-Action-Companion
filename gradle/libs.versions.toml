@@ -2,7 +2,7 @@
 
 ## project
 # plugin
-plugin-gradle-android = "8.6.1"
+plugin-gradle-android = "8.7.0"
 plugin-ben-manes = "0.51.0"
 plugin-google-services = "4.4.2"
 plugin-firebase-crashlytics = "3.0.2"
@@ -14,7 +14,7 @@ plugin-ksp = "2.0.20-1.0.25"
 build-type-debug = "debug"
 build-type-release = "release"
 # build
-version-name = "1.0.1"
+version-name = "1.0.2"
 build-tools-version = "35.0.0"
 sdk-min = "26"
 sdk-compile = "35"
@@ -28,7 +28,7 @@ kotlin = "2.0.20"
 kotlin-atomic = "0.25.0"
 kotlin-coroutines = "1.9.0"
 kotlin-immutable-collections = "0.3.8"
-kotlin-serialization-json = "1.7.2"
+kotlin-serialization-json = "1.7.3"
 kotlin-time = "0.6.1"
 
 # ui
@@ -41,17 +41,17 @@ jetpack-browser = "1.8.0"
 jetpack-lifecycle = "2.8.6"
 jetpack-splash = "1.0.1"
 # compose
-compose-bom = "2024.09.02"
+compose-bom = "2024.09.03"
 compose-activity = "1.9.2"
 compose-constraintlayout = "1.0.1"
 # navigation
-compose-navigation = "2.8.1"
+compose-navigation = "2.8.2"
 
 ## frameworks
 # firebase
-firebase-bom = "33.3.0"
+firebase-bom = "33.4.0"
 # ad
-ads = "23.3.0"
+ads = "23.4.0"
 # database
 room = "2.6.1"
 # di

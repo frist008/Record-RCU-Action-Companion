@@ -24,6 +24,8 @@ class DeviceRadarRepositoryImpl @Inject constructor(
 
             val actualDboList = databaseSource.getAll().firstOrNull() ?: emptyList()
 
-            actualDboList.map { actual -> actual.toDomain(newIp == actual.ip) }
+            actualDboList.map { actual ->
+                actual.toDomain(isAvailable = newIp == actual.ip)
+            }
         }
 }

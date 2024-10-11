@@ -3,8 +3,6 @@ package ua.frist008.action.record.features.record.entity
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
-import com.google.firebase.Firebase
-import com.google.firebase.analytics.analytics
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.util.common.round
 import ua.frist008.action.record.core.util.date.DateUtils
@@ -45,13 +43,13 @@ data class RecordDomainEntity(
                 fps = fps,
                 maxFps = maxFps,
                 timeState = mutableStateOf(mapDuration(duration)),
-                // TODO maxDuration = maxDuration
+                // TODO maxDuration = maxDuration IMPORTANT
                 // TODO recTooltip = recTooltip
                 engine = mapEngine(engine),
                 storage = mapStorage(null, freeSpace),
                 live = mapLiveState(streamType, isStream),
-                isWebCam = isWebCam,
-                isMic = isMic,
+                isWebCam = isWebCam, // TODO show cam IMPORTANT
+                isMic = isMic, // TODO show mic IMPORTANT
                 gameActive = gameActive,
                 // TODO webCamType = webCamType,
                 // TODO webCamDataList = webCamDataList,
@@ -62,13 +60,13 @@ data class RecordDomainEntity(
                 buttonsData = mapRecordType(recordModeType, isStream),
                 fps = fps,
                 maxFps = maxFps,
-                // TODO maxDuration = maxDuration
+                // TODO maxDuration = maxDuration IMPORTANT
                 // TODO recTooltip = recTooltip
                 engine = mapEngine(engine),
                 storage = mapStorage(recordSuccessState.storage.freeSpaceState, freeSpace),
                 live = mapLiveState(streamType, isStream),
-                isWebCam = isWebCam,
-                isMic = isMic,
+                isWebCam = isWebCam, // TODO show cam IMPORTANT
+                isMic = isMic, // TODO show mic IMPORTANT
                 gameActive = gameActive,
                 // TODO webCamType = webCamType,
                 // TODO webCamDataList = webCamDataList,
@@ -107,7 +105,7 @@ data class RecordDomainEntity(
         val trimmedEngine = engine.trim()
 
         return when (trimmedEngine.lowercase()) {
-            "aero" -> EngineState(name = trimmedEngine, errorType = ErrorType.ERROR)
+            "aero" -> EngineState(name = "Desktop", errorType = ErrorType.ERROR)
 
             "dx9",
             "dx10",
@@ -115,7 +113,7 @@ data class RecordDomainEntity(
             "dx12",
             "opengl",
             "vulkan",
-            -> EngineState(name = trimmedEngine, errorType = ErrorType.DEFAULT)
+                -> EngineState(name = trimmedEngine, errorType = ErrorType.DEFAULT)
 
             else -> EngineState(name = trimmedEngine, errorType = ErrorType.DEFAULT)
         }
@@ -126,15 +124,11 @@ data class RecordDomainEntity(
         isStream: Boolean,
     ): RecordButtonsState {
         val isRecording = recordModeType == RecordModeType.RECORD
+        val isPaused = recordModeType == RecordModeType.PAUSE
         return RecordButtonsState(
             isRecordingVisible = !isRecording || !isStream,
             isRecording = isRecording,
-            isStopVisible = isRecording || recordModeType == RecordModeType.PAUSE,
+            isStopVisible = isRecording || isPaused,
         )
-    }
-
-    companion object {
-
-        private val analytics by lazy(LazyThreadSafetyMode.NONE) { Firebase.analytics }
     }
 }
