@@ -6,6 +6,9 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
+import com.google.android.gms.ads.AdSize
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.UIState
 import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
@@ -22,6 +25,7 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
     val isWebCam: Boolean,
     val isMic: Boolean,
     val gameActive: Boolean,
+    val adSize: AdSize = AdSize.BANNER,
 ) : UIState.Success() {
 
     init {
@@ -114,25 +118,30 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
 
 @Immutable data class StorageState(
     val freeSpaceState: MutableState<Float>,
+    val timeRemainingState: MutableState<String>,
     @StringRes val pattern: Int,
     val errorType: ErrorType,
+    val freeSpaceWithTimestampList: ImmutableList<Pair<Long, Long>> = persistentListOf(),
 ) {
 
     companion object {
         fun previewDefault() = StorageState(
             freeSpaceState = mutableFloatStateOf(30.4f),
+            timeRemainingState = mutableStateOf(""),
             pattern = R.string.record_header_storage_gb_pattern,
             errorType = ErrorType.DEFAULT,
         )
 
         fun previewWarning() = StorageState(
             freeSpaceState = mutableFloatStateOf(9.72f),
+            timeRemainingState = mutableStateOf("00:00:00"),
             pattern = R.string.record_header_storage_gb_pattern,
             errorType = ErrorType.WARNING,
         )
 
         fun previewError() = StorageState(
             freeSpaceState = mutableFloatStateOf(30f),
+            timeRemainingState = mutableStateOf("01:22:55"),
             pattern = R.string.record_header_storage_mb_pattern,
             errorType = ErrorType.ERROR,
         )

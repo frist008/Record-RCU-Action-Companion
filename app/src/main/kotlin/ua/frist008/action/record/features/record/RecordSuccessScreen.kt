@@ -39,6 +39,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
+import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
@@ -66,6 +67,7 @@ import ua.frist008.action.record.features.record.entity.StorageState
 @Composable
 fun RecordSuccessScreen(
     @PreviewParameter(RecordProvider::class) state: RecordSuccessState,
+    adListener: AdListener = object : AdListener() {},
     onStartClick: () -> Unit = {},
     onResumeClick: () -> Unit = {},
     onPauseClick: () -> Unit = {},
@@ -101,7 +103,7 @@ fun RecordSuccessScreen(
                 onPauseClick = onPauseClick,
                 onStopClick = onStopClick,
             )
-            Ads()
+            Ads(adListener, state.adSize)
         }
     }
 }
@@ -113,7 +115,7 @@ private fun ColumnScope.HeaderInfo(engine: EngineState, live: LiveState, storage
             .fillMaxWidth()
             .padding(vertical = 16.dp),
         horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.Top,
     ) {
         EngineComponent(engine)
         LiveComponent(live)
@@ -189,6 +191,7 @@ private fun RowScope.StorageComponent(storage: StorageState) {
         StorageValueText(
             paddingValues = PaddingValues(4.dp),
             sizeState = storage.freeSpaceState,
+            timeState = storage.timeRemainingState,
             pattern = storage.pattern,
             errorType = storage.errorType,
         )
@@ -208,16 +211,24 @@ fun StorageTitleText(paddingValues: PaddingValues) {
 fun StorageValueText(
     paddingValues: PaddingValues,
     sizeState: State<Float>,
+    timeState: State<String>,
     @StringRes pattern: Int,
     errorType: ErrorType,
 ) {
     val size by remember { sizeState }
+    val time by remember { timeState }
+    val color = errorType.getColor(AppTheme.colors)
 
     Text(
         text = stringResource(pattern, size),
         style = AppTheme.typography.titleLarge,
-        color = errorType.getColor(AppTheme.colors),
+        color = color,
         modifier = Modifier.padding(paddingValues),
+    )
+    Text(
+        text = time,
+        style = AppTheme.typography.labelSmall,
+        color = color,
     )
 }
 
@@ -337,36 +348,22 @@ private fun ColumnScope.FooterActions(
 }
 
 @Composable
-private fun ColumnScope.Ads() {
+private fun ColumnScope.Ads(adListener: AdListener, adSize: AdSize) {
     val isInEditMode = BuildConfig.DEBUG && LocalView.current.isInEditMode
     // https://developers.google.com/admob/android/banner/fixed-size
 
     AndroidView(
         modifier = Modifier
             .fillMaxWidth()
-            .height(50.dp),
+            .height(if (adSize == AdSize.BANNER) 50.dp else 100.dp),
         factory = { context ->
             if (isInEditMode) {
-                View(context).apply {
-                    setBackgroundColor(Color.WHITE)
-                }
+                View(context).apply { setBackgroundColor(Color.WHITE) }
             } else {
                 AdView(context).apply {
-                    setAdSize(AdSize.BANNER)
+                    setAdSize(adSize)
                     adUnitId = context.getString(R.string.ad)
-                    // adListener = object : AdListener() {
-                    //     override fun onAdLoaded() {
-                    //         super.onAdLoaded()
-                    //     }
-                    //
-                    //     override fun onAdFailedToLoad(p0: LoadAdError) {
-                    //         super.onAdFailedToLoad(p0)
-                    //     }
-                    //
-                    //     override fun onAdClosed() {
-                    //         super.onAdClosed()
-                    //     }
-                    // }
+                    this.adListener = adListener
                     loadAd(
                         AdRequest.Builder()
                             .addKeyword("taxi")

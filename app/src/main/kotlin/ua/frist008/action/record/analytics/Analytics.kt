@@ -13,7 +13,7 @@ object Analytics {
 
     private val analytics by lazy(LazyThreadSafetyMode.NONE) { Firebase.analytics }
 
-    private const val RECORD_DATA_EVENT = "Record Data"
+    private const val RECORD_DATA_EVENT = "record_data"
 
     private val engineFlow = MutableStateFlow<String?>(null)
 
@@ -24,7 +24,7 @@ object Analytics {
     suspend fun subscribeAndBlock() {
         engineFlow.mapNotNull { it.takeIfNotEmpty() }.collect { engine ->
             Timber.tag("Engine").d(engine)
-            analytics.logEvent(RECORD_DATA_EVENT) { param("Engine", engine.replace(' ', '_')) }
+            analytics.logEvent(RECORD_DATA_EVENT) { param("engine", engine.replace(' ', '_')) }
         }
     }
 

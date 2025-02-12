@@ -96,6 +96,7 @@ fun RecordInactiveGameScreen(
         StorageValueText(
             paddingValues = PaddingValues(8.dp),
             sizeState = storage.freeSpaceState,
+            timeState = storage.timeRemainingState,
             pattern = storage.pattern,
             errorType = storage.errorType,
         )

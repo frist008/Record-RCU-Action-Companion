@@ -13,14 +13,21 @@ plugins {
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.firebase.perf)
     alias(libs.plugins.room)
+    alias(libs.plugins.licensee)
+}
+
+licensee {
+    allow("Apache-2.0")
+    allow("MIT")
+    allow("BSD-3-Clause") // TODO Add screen in settings with https://github.com/google/play-services-plugins/tree/main/oss-licenses-plugin
+    allowUrl("https://developer.android.com/studio/terms.html")
 }
 
 android {
     val currentTime = System.currentTimeMillis().milliseconds
 
     compileSdk = libs.versions.sdk.compile.asProvider().get().toInt()
-    // TODO wait support for compileSdk 35
-    //  compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt() wait for sdk 35
+    compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt()
     buildToolsVersion = libs.versions.build.tools.version.get()
 
     defaultConfig {
@@ -62,8 +69,9 @@ android {
             isShrinkResources = false
             isDebuggable = true
 
-            resValue("bool", "firebase_performance_logcat_enabled", "true")
+            resValue("bool", "firebase_performance_enabled", "true")
             resValue("bool", "firebase_analytics_enabled", "false")
+            resValue("bool", "firebase_crashlytics_enabled", "false")
 
         }
         release {
@@ -74,11 +82,12 @@ android {
 
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                "proguard-rules.pro",
             )
 
-            resValue("bool", "firebase_performance_logcat_enabled", "false")
+            resValue("bool", "firebase_performance_enabled", "false")
             resValue("bool", "firebase_analytics_enabled", "true")
+            resValue("bool", "firebase_crashlytics_enabled", "true")
         }
     }
 
@@ -141,7 +150,8 @@ dependencies {
     implementation(libs.bundles.database)
     ksp(libs.bundles.di.compiler)
     implementation(libs.ads)
-    implementation(libs.bundles.multithreading)
+    implementation(platform(libs.kotlin.coroutines.bom))
+    implementation(libs.bundles.coroutines.bom)
     implementation(libs.data.store)
 
     // Util

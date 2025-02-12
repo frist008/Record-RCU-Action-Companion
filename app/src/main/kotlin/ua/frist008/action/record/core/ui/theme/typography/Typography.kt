@@ -42,6 +42,9 @@ private val TitleLargeStyle: TextStyle = LocalTypography.titleLarge.copy(
     color = AppTheme.colors.onBackground,
     fontSize = 22.sp,
 )
+private val TitleLargeBoldStyle: TextStyle = TitleLargeStyle.copy(
+    fontWeight = FontWeight.Bold,
+)
 private val TitleMediumStyle: TextStyle = LocalTypography.titleMedium.copy(
     color = AppTheme.colors.onBackground,
 )
@@ -100,6 +103,7 @@ private val LabelSmallStyle: TextStyle = LocalTypography.labelSmall.copy(
     val headlineMedium: TextStyle = materialTypography.headlineMedium
     val headlineSmall: TextStyle = materialTypography.headlineSmall
     val titleLarge: TextStyle = materialTypography.titleLarge
+    val titleLargeBold: TextStyle = TitleLargeBoldStyle
     val titleMedium: TextStyle = materialTypography.titleMedium
     val titleSmall: TextStyle = materialTypography.titleSmall
     val bodyLarge: TextStyle = materialTypography.bodyLarge
