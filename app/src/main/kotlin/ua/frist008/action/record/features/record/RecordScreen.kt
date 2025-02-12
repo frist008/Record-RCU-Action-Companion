@@ -2,6 +2,7 @@ package ua.frist008.action.record.features.record
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalView
@@ -33,6 +34,10 @@ fun RecordScreen(viewModel: RecordViewModel = hiltViewModel()) {
 
         is UIState.Progress -> RecordProgressScreen()
         else -> unsupportedUI()
+    }
+
+    SideEffect {
+        view.keepScreenOn = true
     }
 
     DisposableEffect(viewModel) {

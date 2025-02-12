@@ -27,8 +27,7 @@ android {
     val currentTime = System.currentTimeMillis().milliseconds
 
     compileSdk = libs.versions.sdk.compile.asProvider().get().toInt()
-    // TODO wait support for compileSdk 35
-    //  compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt() wait for sdk 35
+    compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt()
     buildToolsVersion = libs.versions.build.tools.version.get()
 
     defaultConfig {

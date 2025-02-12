@@ -3,12 +3,12 @@
 ## project
 # plugin
 plugin-gradle-android = "8.7.3"
-plugin-ben-manes = "0.51.0"
+plugin-ben-manes = "0.52.0"
 plugin-licensee = "1.12.0"
 plugin-google-services = "4.4.2"
-plugin-firebase-crashlytics = "3.0.2"
+plugin-firebase-crashlytics = "3.0.3"
 plugin-firebase-perf = "1.4.2"
-plugin-ksp = "2.1.0-1.0.29"
+plugin-ksp = "2.1.10-1.0.29"
 
 ## common
 # buildType
@@ -19,47 +19,47 @@ version-name = "1.0.3"
 build-tools-version = "35.0.0"
 sdk-min = "26"
 sdk-compile = "35"
-sdk-compile-extension = "12" # for compileSdk 34
+sdk-compile-extension = "14" # for compileSdk 35
 sdk-target = "35"
 jvm-target = "17"
 jvm-target-kotlin = "17"
 
 # kotlin
-kotlin = "2.1.0"
-kotlin-atomic = "0.26.1"
+kotlin = "2.1.10"
+kotlin-atomic = "0.27.0"
 kotlin-coroutines = "1.10.1"
 kotlin-immutable-collections = "0.3.8"
-kotlin-serialization-json = "1.7.3"
-kotlin-time = "0.6.1"
+kotlin-serialization-json = "1.8.0"
+kotlin-time = "0.6.2"
 
 # ui
 # jetpack
 jetpack-core = "1.15.0"
-jetpack-activity = "1.9.3"
+jetpack-activity = "1.10.0"
 jetpack-annotation = "1.9.1"
 jetpack-appcompat = "1.7.0"
 jetpack-browser = "1.8.0"
 jetpack-lifecycle = "2.8.7"
 jetpack-splash = "1.0.1"
 # compose
-compose-bom = "2024.12.01"
-compose-activity = "1.9.3"
+compose-bom = "2025.01.01"
+compose-activity = "1.10.0"
 compose-constraintlayout = "1.1.0"
 # navigation
-compose-navigation = "2.8.5"
+compose-navigation = "2.8.6"
 
 ## frameworks
 # firebase
-firebase-bom = "33.7.0"
+firebase-bom = "33.9.0"
 # ad
 ads = "23.6.0"
 # database
 room = "2.6.1"
 # di
-di-hilt = "2.54"
+di-hilt = "2.55"
 di-hilt-navigation-compose = "1.2.0"
 # io
-data-store = "1.1.1"
+data-store = "1.1.2"
 # utils
 jdk-desugar = "2.1.4"
 leakcanary = "2.14"

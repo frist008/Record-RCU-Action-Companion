@@ -19,6 +19,7 @@
 
     <!-- Record -->
 
+    <string name="record_connection">CONNECTION</string>
     <string name="record_title_record">Record</string>
     <string name="record_title_stream">Stream</string>
     <string name="record_action_record">Play</string>

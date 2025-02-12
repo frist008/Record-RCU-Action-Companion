@@ -3,6 +3,10 @@ package ua.frist008.action.record.features.record.entity
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
+import kotlinx.datetime.Clock
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.util.common.round
 import ua.frist008.action.record.core.util.date.DateUtils
@@ -11,7 +15,9 @@ import ua.frist008.action.record.core.util.io.gb
 import ua.frist008.action.record.data.network.record.entity.RecordModeType
 import ua.frist008.action.record.data.network.record.entity.StreamType
 import ua.frist008.action.record.data.network.record.entity.WebCamData
+import kotlin.math.abs
 import kotlin.time.Duration
+import kotlin.time.Duration.Companion.milliseconds
 
 data class RecordDomainEntity(
     val deviceId: Long,
@@ -46,7 +52,12 @@ data class RecordDomainEntity(
                 // TODO maxDuration = maxDuration IMPORTANT
                 // TODO recTooltip = recTooltip
                 engine = mapEngine(engine),
-                storage = mapStorage(null, freeSpace),
+                storage = mapStorage(
+                    freeSpaceState = null,
+                    timeRemainingState = null,
+                    freeSpaceWithTimestampList = persistentListOf(),
+                    freeSpace = freeSpace,
+                ),
                 live = mapLiveState(streamType, isStream),
                 isWebCam = isWebCam, // TODO show cam IMPORTANT
                 isMic = isMic, // TODO show mic IMPORTANT
@@ -55,15 +66,29 @@ data class RecordDomainEntity(
                 // TODO webCamDataList = webCamDataList,
             )
         } else {
+            val storage = recordSuccessState.storage
+            val buttonsData = mapRecordType(recordModeType, isStream)
+            val lastFreeSpaceWithTimestampList =
+                if (buttonsData.isRecording) {
+                    storage.freeSpaceWithTimestampList
+                } else {
+                    persistentListOf()
+                }
+
             recordSuccessState.timeState.value = mapDuration(duration)
             recordSuccessState.copy(
-                buttonsData = mapRecordType(recordModeType, isStream),
+                buttonsData = buttonsData,
                 fps = fps,
                 maxFps = maxFps,
                 // TODO maxDuration = maxDuration IMPORTANT
                 // TODO recTooltip = recTooltip
                 engine = mapEngine(engine),
-                storage = mapStorage(recordSuccessState.storage.freeSpaceState, freeSpace),
+                storage = mapStorage(
+                    freeSpaceState = storage.freeSpaceState,
+                    timeRemainingState = storage.timeRemainingState,
+                    freeSpaceWithTimestampList = lastFreeSpaceWithTimestampList,
+                    freeSpace = freeSpace,
+                ),
                 live = mapLiveState(streamType, isStream),
                 isWebCam = isWebCam, // TODO show cam IMPORTANT
                 isMic = isMic, // TODO show mic IMPORTANT
@@ -77,26 +102,70 @@ data class RecordDomainEntity(
     private fun mapLiveState(streamType: StreamType, isStream: Boolean) =
         LiveState(isOnline = streamType != StreamType.OFF, isLive = isStream)
 
-    private fun mapStorage(freeSpaceState: MutableState<Float>?, space: Space): StorageState =
-        if (space < 1.gb) {
-            val freeMB = space.mb.toInt().toFloat()
+    private fun mapStorage(
+        freeSpaceState: MutableState<Float>?,
+        timeRemainingState: MutableState<String>?,
+        freeSpaceWithTimestampList: ImmutableList<Pair<Long, Long>>,
+        freeSpace: Space,
+    ): StorageState {
+        val newFreeSpaceWithTimestampList =
+            createFreeSpaceWithTimestampList(freeSpaceWithTimestampList, freeSpace)
+        timeRemainingState?.value = calculateTimeRemaining(newFreeSpaceWithTimestampList, freeSpace)
+
+        return if (freeSpace < 1.gb) {
+            val freeMB = freeSpace.mb.toInt().toFloat()
             freeSpaceState?.value = freeMB
 
             StorageState(
                 freeSpaceState = freeSpaceState ?: mutableFloatStateOf(freeMB),
+                timeRemainingState = timeRemainingState ?: mutableStateOf(""),
                 pattern = R.string.record_header_storage_mb_pattern,
                 errorType = ErrorType.ERROR,
+                freeSpaceWithTimestampList = newFreeSpaceWithTimestampList,
             )
         } else {
-            val freeGB = space.gb.round(1).toFloat()
+            val freeGB = freeSpace.gb.round(1).toFloat()
             freeSpaceState?.value = freeGB
 
             StorageState(
                 freeSpaceState = freeSpaceState ?: mutableFloatStateOf(freeGB),
+                timeRemainingState = timeRemainingState ?: mutableStateOf(""),
                 pattern = R.string.record_header_storage_gb_pattern,
                 errorType = if (freeGB < 10f) ErrorType.WARNING else ErrorType.DEFAULT,
+                freeSpaceWithTimestampList = newFreeSpaceWithTimestampList,
             )
         }
+    }
+
+    private fun calculateTimeRemaining(
+        lastFreeSpaceWithTimestamp: ImmutableList<Pair<Long, Long>>,
+        freeSpace: Space,
+    ): String {
+        if (lastFreeSpaceWithTimestamp.size < 5) return ""
+
+        val (firstBytes, firstTimeMs) = lastFreeSpaceWithTimestamp.last()
+        val (lastBytes, lastTimeMs) = lastFreeSpaceWithTimestamp.first()
+
+        val differenceBetweenSpace = abs(firstBytes - lastBytes)
+        val differenceBetweenTime = abs(firstTimeMs - lastTimeMs)
+
+        val countTimesUntilSpaceEnded = freeSpace.bytes / differenceBetweenSpace
+        val timeUntilSpaceEndedMs = countTimesUntilSpaceEnded * differenceBetweenTime
+
+        return mapDuration(timeUntilSpaceEndedMs.milliseconds)
+    }
+
+    private fun createFreeSpaceWithTimestampList(
+        list: ImmutableList<Pair<Long, Long>>,
+        freeSpace: Space,
+    ): ImmutableList<Pair<Long, Long>> {
+        if (freeSpace.bytes == 0L || freeSpace.bytes == list.lastOrNull()?.first) return list
+
+        val newValue = freeSpace.bytes to Clock.System.now().toEpochMilliseconds()
+        val trimmedList = (if (list.size > 15) list.subList(1, list.size) else list)
+
+        return (trimmedList.asSequence() + newValue).toImmutableList()
+    }
 
     private fun mapDuration(duration: Duration) =
         DateUtils.formatTime(DateUtils.fromDuration(duration))

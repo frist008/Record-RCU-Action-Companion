@@ -19,6 +19,7 @@
 
     <!-- Record -->
 
+    <string name="record_connection">ПІДКЛЮЧЕННЯ</string>
     <string name="record_title_record">Запис</string>
     <string name="record_title_stream">Трансляція</string>
     <string name="record_action_record">Запис</string>

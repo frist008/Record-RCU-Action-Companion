@@ -115,7 +115,7 @@ private fun ColumnScope.HeaderInfo(engine: EngineState, live: LiveState, storage
             .fillMaxWidth()
             .padding(vertical = 16.dp),
         horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.Top,
     ) {
         EngineComponent(engine)
         LiveComponent(live)
@@ -191,6 +191,7 @@ private fun RowScope.StorageComponent(storage: StorageState) {
         StorageValueText(
             paddingValues = PaddingValues(4.dp),
             sizeState = storage.freeSpaceState,
+            timeState = storage.timeRemainingState,
             pattern = storage.pattern,
             errorType = storage.errorType,
         )
@@ -210,16 +211,24 @@ fun StorageTitleText(paddingValues: PaddingValues) {
 fun StorageValueText(
     paddingValues: PaddingValues,
     sizeState: State<Float>,
+    timeState: State<String>,
     @StringRes pattern: Int,
     errorType: ErrorType,
 ) {
     val size by remember { sizeState }
+    val time by remember { timeState }
+    val color = errorType.getColor(AppTheme.colors)
 
     Text(
         text = stringResource(pattern, size),
         style = AppTheme.typography.titleLarge,
-        color = errorType.getColor(AppTheme.colors),
+        color = color,
         modifier = Modifier.padding(paddingValues),
+    )
+    Text(
+        text = time,
+        style = AppTheme.typography.labelSmall,
+        color = color,
     )
 }
 
