@@ -1,14 +1,21 @@
 package ua.frist008.action.record.core.util.date
 
-import kotlinx.datetime.Clock
 import kotlinx.datetime.LocalTime
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
+import kotlin.time.Clock
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.ExperimentalTime
 
+@OptIn(ExperimentalTime::class)
 inline val timeNow get() = Clock.System.now()
+
+@OptIn(ExperimentalTime::class)
 inline val timeNowMs get() = timeNow.toEpochMilliseconds()
+
 inline val durationNow get() = timeNowMs.milliseconds
+
+@OptIn(ExperimentalTime::class)
 inline val localDateTimeNow get() = timeNow.toLocalDateTime(TimeZone.UTC)
 inline val localTimeNow get() = localDateTimeNow.time
 

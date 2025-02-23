@@ -26,7 +26,7 @@ import java.net.SocketTimeoutException
 import javax.inject.Inject
 
 class RecordNetworkSourceImpl @Inject constructor(
-    @IO private val ioDispatcher: CoroutineDispatcher,
+    @param:IO private val ioDispatcher: CoroutineDispatcher,
 ) : RecordNetworkSource {
 
     private val socketMutex = Mutex()

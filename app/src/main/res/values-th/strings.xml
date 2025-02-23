@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">ย้อนกลับ</string>
+    <string name="error_unknown_error">ข้อผิดพลาดที่ไม่รู้จัก</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">อุปกรณ์</string>
+    <string name="device_available">พร้อมใช้งาน</string>
+    <string name="device_not_available">ไม่พร้อมใช้</string>
+    <string name="device_not_available_message">อุปกรณ์ไม่พร้อมใช้งาน</string>
+    <string name="device_searching">กำลังค้นหาอุปกรณ์…</string>
+    <string name="device_error_not_found">ไม่พบอุปกรณ์…</string>
+    <string name="device_error_more">วิธีแก้ไข?</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">กำลังเชื่อมต่อ</string>
+    <string name="record_title_record">บันทึก</string>
+    <string name="record_title_stream">สตรีม</string>
+    <string name="record_action_record">เล่น</string>
+    <string name="record_action_pause">หยุดชั่วคราว</string>
+    <string name="record_action_stop">หยุด</string>
+    <string name="record_inactive_title_record">บันทึก</string>
+    <string name="record_inactive_title_stream">สตรีม</string>
+    <string name="record_inactive_subtitle">ไม่พบเกมที่กำลังเล่น</string>
+    <string name="record_inactive_message">เปิดเกมบนคอมพิวเตอร์ของคุณ</string>
+    <string name="record_error_already_used">PC ของคุณเชื่อมต่อกับแอปอื่นอยู่</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">การตั้งค่า</string>
+
+</resources>

@@ -60,6 +60,12 @@ abstract class BaseViewModel(
         }
     }
 
+    @CallSuper
+    override fun onCleared() {
+        super.onCleared()
+        Timber.d("${this::class.simpleName} onCleared")
+    }
+
     @CallSuper protected open suspend fun onFailure(cause: Throwable) {
         Timber.e(cause)
     }

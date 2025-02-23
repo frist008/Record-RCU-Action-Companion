@@ -20,7 +20,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -35,8 +34,6 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.google.android.gms.ads.AdListener
@@ -46,6 +43,7 @@ import com.google.android.gms.ads.AdView
 import ua.frist008.action.record.BuildConfig
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.component.root.DefaultScaffold
+import ua.frist008.action.record.core.ui.resource.Icons
 import ua.frist008.action.record.core.ui.resource.svg.Pause
 import ua.frist008.action.record.core.ui.resource.svg.Play
 import ua.frist008.action.record.core.ui.resource.svg.PlayBold
@@ -59,14 +57,9 @@ import ua.frist008.action.record.features.record.entity.RecordButtonsState
 import ua.frist008.action.record.features.record.entity.RecordSuccessState
 import ua.frist008.action.record.features.record.entity.StorageState
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
-)
 @Composable
 fun RecordSuccessScreen(
-    @PreviewParameter(RecordProvider::class) state: RecordSuccessState,
+    state: RecordSuccessState,
     adListener: AdListener = object : AdListener() {},
     onStartClick: () -> Unit = {},
     onResumeClick: () -> Unit = {},
@@ -361,55 +354,69 @@ private fun ColumnScope.Ads(adListener: AdListener, adSize: AdSize) {
                 View(context).apply { setBackgroundColor(Color.WHITE) }
             } else {
                 AdView(context).apply {
-                    setAdSize(adSize)
                     adUnitId = context.getString(R.string.ad)
                     this.adListener = adListener
-                    loadAd(
-                        AdRequest.Builder()
-                            .addKeyword("taxi")
-                            .addKeyword("twitch")
-                            .addKeyword("youtube")
-                            .addKeyword("instagram")
-                            .addKeyword("facebook")
-                            .addKeyword("remote")
-                            .addKeyword("game")
-                            .addKeyword("games")
-                            .addKeyword("gamer")
-                            .addKeyword("gameplay")
-                            .addKeyword("steam")
-                            .addKeyword("stream")
-                            .addKeyword("streaming")
-                            .addKeyword("windows")
-                            .addKeyword("controller")
-                            .addKeyword("sony")
-                            .addKeyword("playstation")
-                            .addKeyword("nvidia")
-                            .addKeyword("radeon")
-                            .addKeyword("amd")
-                            .addKeyword("intel")
-                            .addKeyword("msi")
-                            .addKeyword("samsung")
-                            .addKeyword("iphone")
-                            .addKeyword("android")
-                            .addKeyword("asus")
-                            .addKeyword("xbox")
-                            .addKeyword("pc")
-                            .addKeyword("phone")
-                            .addKeyword("power bank")
-                            .build(),
-                    )
+                    setAdSize(adSize)
+                    loadAd(buildAdRequest())
                 }
+            }
+        },
+        update = { view ->
+            val adView = view as? AdView ?: return@AndroidView
+            if (adView.adSize != adSize) {
+                adView.setAdSize(adSize)
+                adView.loadAd(buildAdRequest())
             }
         },
     )
 }
 
-private class RecordProvider : PreviewParameterProvider<RecordSuccessState> {
+private fun buildAdRequest() = AdRequest.Builder()
+    .addKeyword("game recording")
+    .addKeyword("screen capture")
+    .addKeyword("streaming")
+    .addKeyword("twitch")
+    .addKeyword("gameplay")
+    .addKeyword("esports")
+    .addKeyword("gaming pc")
+    .build()
 
-    override val values = sequenceOf(
-        RecordSuccessState.previewStop(),
-        RecordSuccessState.previewRecording(),
-        RecordSuccessState.previewPaused(),
-        RecordSuccessState.previewLive(),
-    )
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
+)
+@Composable
+private fun RecordSuccessScreenStopPreview() {
+    RecordSuccessScreen(RecordSuccessState.previewStop())
+}
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
+)
+@Composable
+private fun RecordSuccessScreenRecordingPreview() {
+    RecordSuccessScreen(RecordSuccessState.previewRecording())
+}
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
+)
+@Composable
+private fun RecordSuccessScreenPausedPreview() {
+    RecordSuccessScreen(RecordSuccessState.previewPaused())
+}
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
+)
+@Composable
+private fun RecordSuccessScreenLivePreview() {
+    RecordSuccessScreen(RecordSuccessState.previewLive())
 }

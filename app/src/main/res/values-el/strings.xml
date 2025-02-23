@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">Πίσω</string>
+    <string name="error_unknown_error">Άγνωστο σφάλμα</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">Συσκευές</string>
+    <string name="device_available">Διαθέσιμο</string>
+    <string name="device_not_available">Μη διαθέσιμο</string>
+    <string name="device_not_available_message">Η συσκευή δεν είναι διαθέσιμη</string>
+    <string name="device_searching">Αναζήτηση συσκευών…</string>
+    <string name="device_error_not_found">Δεν βρέθηκαν συσκευές…</string>
+    <string name="device_error_more">Πώς να διορθωθεί;</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">ΣΥΝΔΕΣΗ</string>
+    <string name="record_title_record">Εγγραφή</string>
+    <string name="record_title_stream">Stream</string>
+    <string name="record_action_record">Play</string>
+    <string name="record_action_pause">Παύση</string>
+    <string name="record_action_stop">Διακοπή</string>
+    <string name="record_inactive_title_record">ΕΓΓΡΑΦΗ</string>
+    <string name="record_inactive_title_stream">STREAM</string>
+    <string name="record_inactive_subtitle">ΔΕΝ ΒΡΕΘΗΚΕ ΕΝΕΡΓΟ ΠΑΙΧΝΙΔΙ</string>
+    <string name="record_inactive_message">ΕΚΚΙΝΗΣΤΕ ΤΟ ΠΑΙΧΝΙΔΙ ΣΤΟ PC</string>
+    <string name="record_error_already_used">Ο υπολογιστής σας είναι συνδεδεμένος με άλλη εφαρμογή</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">Ρυθμίσεις</string>
+
+</resources>

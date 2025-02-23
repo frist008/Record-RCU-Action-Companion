@@ -2,8 +2,6 @@ package ua.frist008.action.record.core.ui.component.root
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarColors
 import androidx.compose.material3.contentColorFor
@@ -15,6 +13,8 @@ import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.tooling.preview.Preview
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.navigation.Router
+import ua.frist008.action.record.core.ui.resource.Icons
+import ua.frist008.action.record.core.ui.resource.svg.ArrowBack
 import ua.frist008.action.record.core.ui.theme.AppTheme
 import ua.frist008.action.record.core.ui.theme.RootThemeScaffoldPreview
 import ua.frist008.action.record.features.NavCommand
@@ -25,7 +25,7 @@ fun DefaultScaffold(
     modifier: Modifier = Modifier,
     topAppBarColors: TopAppBarColors = AppTheme.colors.topAppBarColors,
     containerColor: Color = topAppBarColors.containerColor,
-    backIcon: ImageVector? = Icons.AutoMirrored.Filled.ArrowBack,
+    backIcon: ImageVector? = Icons.ArrowBack,
     onBackClick: (navigator: Router) -> Unit = { navigator -> navigator(NavCommand.BackCommand()) },
     actions: @Composable RowScope.() -> Unit = {},
     content: @Composable (PaddingValues) -> Unit,

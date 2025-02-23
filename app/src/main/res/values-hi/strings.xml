@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">वापस</string>
+    <string name="error_unknown_error">अज्ञात त्रुटि</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">डिवाइस</string>
+    <string name="device_available">उपलब्ध</string>
+    <string name="device_not_available">अनुपलब्ध</string>
+    <string name="device_not_available_message">डिवाइस उपलब्ध नहीं</string>
+    <string name="device_searching">डिवाइस खोजा जा रहा है…</string>
+    <string name="device_error_not_found">कोई डिवाइस नहीं मिला…</string>
+    <string name="device_error_more">कैसे ठीक करें?</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">कनेक्ट हो रहा है</string>
+    <string name="record_title_record">रिकॉर्ड</string>
+    <string name="record_title_stream">स्ट्रीम</string>
+    <string name="record_action_record">प्ले</string>
+    <string name="record_action_pause">रोकें</string>
+    <string name="record_action_stop">बंद</string>
+    <string name="record_inactive_title_record">रिकॉर्ड</string>
+    <string name="record_inactive_title_stream">स्ट्रीम</string>
+    <string name="record_inactive_subtitle">कोई सक्रिय गेम नहीं मिला</string>
+    <string name="record_inactive_message">PC पर गेम शुरू करें</string>
+    <string name="record_error_already_used">आपका PC किसी अन्य ऐप से जुड़ा है</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">सेटिंग्स</string>
+
+</resources>

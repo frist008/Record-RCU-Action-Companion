@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">返回</string>
+    <string name="error_unknown_error">未知錯誤</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">裝置</string>
+    <string name="device_available">可用</string>
+    <string name="device_not_available">不可用</string>
+    <string name="device_not_available_message">裝置不可用</string>
+    <string name="device_searching">正在搜尋裝置…</string>
+    <string name="device_error_not_found">未找到裝置…</string>
+    <string name="device_error_more">如何修復？</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">正在連接</string>
+    <string name="record_title_record">錄製</string>
+    <string name="record_title_stream">直播</string>
+    <string name="record_action_record">播放</string>
+    <string name="record_action_pause">暫停</string>
+    <string name="record_action_stop">停止</string>
+    <string name="record_inactive_title_record">錄製</string>
+    <string name="record_inactive_title_stream">直播</string>
+    <string name="record_inactive_subtitle">未找到活躍遊戲</string>
+    <string name="record_inactive_message">請在電腦上啟動遊戲</string>
+    <string name="record_error_already_used">您的電腦已連接到其他應用程式</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">設定</string>
+
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">Tillbaka</string>
+    <string name="error_unknown_error">Okänt fel</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">Enheter</string>
+    <string name="device_available">Tillgänglig</string>
+    <string name="device_not_available">Ej tillgänglig</string>
+    <string name="device_not_available_message">Enheten är inte tillgänglig</string>
+    <string name="device_searching">Söker efter enheter…</string>
+    <string name="device_error_not_found">Inga enheter hittades…</string>
+    <string name="device_error_more">Hur fixar man?</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">ANSLUTER</string>
+    <string name="record_title_record">Spela in</string>
+    <string name="record_title_stream">Stream</string>
+    <string name="record_action_record">Play</string>
+    <string name="record_action_pause">Paus</string>
+    <string name="record_action_stop">Stopp</string>
+    <string name="record_inactive_title_record">INSPELNING</string>
+    <string name="record_inactive_title_stream">STREAM</string>
+    <string name="record_inactive_subtitle">INGET AKTIVT SPEL HITTADES</string>
+    <string name="record_inactive_message">STARTA SPELET PÅ DIN PC</string>
+    <string name="record_error_already_used">Din PC är ansluten till en annan app</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">Inställningar</string>
+
+</resources>

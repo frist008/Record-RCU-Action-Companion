@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">رجوع</string>
+    <string name="error_unknown_error">خطأ غير معروف</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">الأجهزة</string>
+    <string name="device_available">متاح</string>
+    <string name="device_not_available">غير متاح</string>
+    <string name="device_not_available_message">الجهاز غير متاح</string>
+    <string name="device_searching">جارٍ البحث عن الأجهزة…</string>
+    <string name="device_error_not_found">لم يتم العثور على أجهزة…</string>
+    <string name="device_error_more">كيفية الإصلاح؟</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">جارٍ الاتصال</string>
+    <string name="record_title_record">تسجيل</string>
+    <string name="record_title_stream">بث</string>
+    <string name="record_action_record">تشغيل</string>
+    <string name="record_action_pause">إيقاف مؤقت</string>
+    <string name="record_action_stop">إيقاف</string>
+    <string name="record_inactive_title_record">تسجيل</string>
+    <string name="record_inactive_title_stream">بث</string>
+    <string name="record_inactive_subtitle">لم يتم العثور على لعبة نشطة</string>
+    <string name="record_inactive_message">شغّل اللعبة على جهاز الكمبيوتر</string>
+    <string name="record_error_already_used">جهاز الكمبيوتر متصل بتطبيق آخر</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">الإعدادات</string>
+
+</resources>

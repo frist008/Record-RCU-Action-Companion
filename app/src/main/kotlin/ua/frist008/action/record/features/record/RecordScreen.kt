@@ -6,13 +6,18 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalView
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import ua.frist008.action.record.core.ui.UIState
 import ua.frist008.action.record.core.ui.component.unsupportedUI
 import ua.frist008.action.record.features.record.entity.RecordSuccessState
 
 @Composable
-fun RecordScreen(viewModel: RecordViewModel = hiltViewModel()) {
+fun RecordScreen(
+    pcId: Long,
+    viewModel: RecordViewModel = hiltViewModel<RecordViewModel, RecordViewModel.Factory> {
+        it.create(pcId)
+    },
+) {
     val view = LocalView.current
     val state by viewModel.state.collectAsState()
 

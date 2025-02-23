@@ -6,15 +6,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ChainStyle
 import androidx.constraintlayout.compose.ConstrainScope
@@ -24,20 +21,16 @@ import androidx.constraintlayout.compose.ConstraintLayoutScope
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.component.button.ButtonComponent
 import ua.frist008.action.record.core.ui.component.progress.ColoredCircularProgressIndicator
+import ua.frist008.action.record.core.ui.resource.Icons
 import ua.frist008.action.record.core.ui.resource.svg.DevicesNotAvailable
 import ua.frist008.action.record.core.ui.theme.AppTheme
 import ua.frist008.action.record.core.ui.theme.color.PreviewPalette
 import ua.frist008.action.record.features.device.entity.DevicesProgressState
 import kotlin.time.Duration.Companion.seconds
 
-@Preview(
-    showSystemUi = true,
-    showBackground = true,
-    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
-)
 @Composable
 fun DevicesProgressScreen(
-    @PreviewParameter(DeviceProgressProvider::class) state: DevicesProgressState,
+    state: DevicesProgressState,
     onLinkCLick: () -> Unit = {},
 ) {
     // Example of use ConstraintLayout. Can be optimized to Column
@@ -141,10 +134,22 @@ private fun ConstraintLayoutScope.DevicesProgressFooter(
     )
 }
 
-private class DeviceProgressProvider : PreviewParameterProvider<DevicesProgressState> {
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
+)
+@Composable
+private fun DevicesProgressScreenLoadingPreview() {
+    DevicesProgressScreen(DevicesProgressState())
+}
 
-    override val values = sequenceOf(
-        DevicesProgressState(5.seconds),
-        DevicesProgressState(),
-    )
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
+)
+@Composable
+private fun DevicesProgressScreenNotFoundPreview() {
+    DevicesProgressScreen(DevicesProgressState(5.seconds))
 }
