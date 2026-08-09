@@ -1,82 +1,75 @@
 package ua.frist008.action.record.core.ui.navigation
 
-import android.net.Uri
-import androidx.activity.ComponentActivity
+import android.content.Context
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
-import androidx.navigation.NavHostController
+import androidx.core.net.toUri
+import androidx.navigation3.runtime.NavKey
 import timber.log.Timber
 import ua.frist008.action.record.core.util.media.MimeType
 import ua.frist008.action.record.features.NavCommand
 import ua.frist008.action.record.features.NewRoot
 
-class Router(private val navController: NavHostController) : (NavCommand) -> Unit {
+class Router(
+    private val backStack: MutableList<NavKey>,
+    private val context: Context,
+) : (NavCommand) -> Unit {
 
     override operator fun invoke(command: NavCommand) {
         when (command) {
-            is NavCommand.BackCommand -> {
-                val isPopped =
-                    if (command.backToScreen == null) {
-                        navController.popBackStack()
-                    } else {
-                        navController.popBackStack(
-                            route = command,
-                            inclusive = true,
-                        )
-                    }
-
-                if (!isPopped) {
-                    // For enableOnBackInvokedCallback=true from Manifest
-                    val activity = navController.context as? ComponentActivity
-                    activity?.onBackPressedDispatcher?.onBackPressed()
-                        ?: Timber.e("Can't handle command $command")
-                }
+            is NavCommand.BackCommand -> back(command)
+            is NewRoot -> {
+                backStack.clear()
+                backStack.add(command.newRootScreen)
             }
 
-            is NewRoot -> navController.navigate(command.newRootScreen) {
-                popUpTo(navController.graph.id) {
-                    inclusive = command.isReplaceScreen
-                }
-            }
-
-            is NavCommand.Link -> {
-                val customTabsIntent = CustomTabsIntent
-                    .Builder()
-                    .setShareState(CustomTabsIntent.SHARE_STATE_ON)
-                    .setShowTitle(true)
-                    .build()
-
-                customTabsIntent.launchUrl(navController.context, Uri.parse(command.url))
-            }
-
-            is NavCommand.App -> {
-                val intent = CustomTabsIntent.Builder()
-                    .setShareState(CustomTabsIntent.SHARE_STATE_ON)
-                    .build()
-                intent.intent.setPackage(command.appPackage)
-
-                intent.launchUrl(navController.context, Uri.parse(command.url))
-            }
-
-            is NavCommand.Share -> {
-                val context = navController.context
-                val subject = context.getString(command.messageRes)
-
-                val intent = ShareCompat.IntentBuilder(navController.context)
-                    .setType((MimeType.PLAIN_TEXT))
-                    .setSubject(subject)
-                    .setText(command.url)
-                    .intent
-
-                context.startActivity(intent)
-            }
-
-            else -> navController.navigate(command) {
-                val route = navController.currentBackStackEntry?.destination?.route
-                popUpTo(route ?: return@navigate) {
-                    inclusive = command.isReplaceScreen
-                }
+            is NavCommand.Link -> openLink(command.url)
+            is NavCommand.App -> openApp(command.appPackage, command.url)
+            is NavCommand.Share -> share(command)
+            else -> {
+                if (command.isReplaceScreen) backStack.removeLastOrNull()
+                backStack.add(command)
             }
         }
+    }
+
+    private fun back(command: NavCommand.BackCommand) {
+        if (command.backToScreen == null) {
+            backStack.removeLastOrNull()
+        } else {
+            val targetClass = command.backToScreen::class
+            val idx = backStack.indexOfLast { it::class == targetClass }
+            if (idx >= 0) {
+                backStack.subList(idx + 1, backStack.size).clear()
+            } else {
+                Timber.d("BackCommand: ${targetClass.simpleName} not found in back stack")
+            }
+        }
+    }
+
+    private fun openLink(url: String) {
+        CustomTabsIntent.Builder()
+            .setShareState(CustomTabsIntent.SHARE_STATE_ON)
+            .setShowTitle(true)
+            .build()
+            .launchUrl(context, url.toUri())
+    }
+
+    private fun openApp(appPackage: String, url: String) {
+        CustomTabsIntent.Builder()
+            .setShareState(CustomTabsIntent.SHARE_STATE_ON)
+            .build()
+            .also { it.intent.setPackage(appPackage) }
+            .launchUrl(context, url.toUri())
+    }
+
+    private fun share(command: NavCommand.Share) {
+        val subject = context.getString(command.messageRes)
+        ShareCompat.IntentBuilder(context)
+            .setType(MimeType.PLAIN_TEXT)
+            .setSubject(subject)
+            .setText(command.url)
+            .intent
+            .also { context.startActivity(it) }
     }
 }

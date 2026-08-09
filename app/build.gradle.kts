@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.milliseconds
 
@@ -27,7 +28,8 @@ android {
     val currentTime = System.currentTimeMillis().milliseconds
 
     compileSdk = libs.versions.sdk.compile.asProvider().get().toInt()
-    compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt()
+    // uncomment for 37
+    // compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt()
     buildToolsVersion = libs.versions.build.tools.version.get()
 
     defaultConfig {
@@ -39,7 +41,17 @@ android {
         versionName = libs.versions.version.name.get()
 
         // https://developer.android.com/guide/topics/resources/app-languages#gradle-config
-        resourceConfigurations += listOf("en", "ru", "uk")
+        androidResources.localeFilters += listOf(
+            "en", "ru", "uk",
+            "de", "nl", "fr", "es", "it", "pl", "sv",
+            "tr", "el", "lv",
+            "pt-rBR",
+            "th", "hi", "fil",
+            "ar",
+            "zh-rCN", "zh-rTW",
+        )
+
+        testInstrumentationRunner = "com.google.dagger.hilt.android.testing.HiltTestRunner"
 
         vectorDrawables {
             useSupportLibrary = true
@@ -97,16 +109,18 @@ android {
         sourceCompatibility(libs.versions.jvm.target.asProvider().get().toInt())
     }
 
-    kotlinOptions {
-        jvmTarget = libs.versions.jvm.target.kotlin.get()
-        freeCompilerArgs += listOf(
-            "-opt-in=androidx.compose.material3.ExperimentalMaterial3Api",
-            "-opt-in=androidx.compose.foundation.ExperimentalFoundationApi",
-            "-opt-in=androidx.compose.foundation.layout.ExperimentalLayoutApi",
-            "-opt-in=androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi",
-            "-opt-in=kotlinx.coroutines.ObsoleteCoroutinesApi",
-        )
-        freeCompilerArgs += "-Xcontext-receivers"
+    kotlin {
+        compilerOptions {
+            jvmTarget.set(JvmTarget.fromTarget(libs.versions.jvm.target.kotlin.get()))
+
+            optIn.addAll(
+                "androidx.compose.material3.ExperimentalMaterial3Api",
+                "androidx.compose.foundation.ExperimentalFoundationApi",
+                "androidx.compose.foundation.layout.ExperimentalLayoutApi",
+                "androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi",
+                "kotlinx.coroutines.ObsoleteCoroutinesApi",
+            )
+        }
     }
 
     buildFeatures {
@@ -115,6 +129,10 @@ android {
 
     room {
         schemaDirectory("$projectDir/schemas")
+    }
+
+    testOptions {
+        animationsDisabled = true
     }
 
     packaging {
@@ -159,4 +177,14 @@ dependencies {
     implementation(libs.leakcanary)
     debugImplementation(libs.leakcanary.debug)
     implementation(libs.timber)
+
+    // Test
+    testImplementation(platform(libs.kotlin.coroutines.bom))
+    testImplementation(libs.bundles.test)
+
+    // AndroidTest
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.bundles.android.test)
+    kspAndroidTest(libs.di.hilt.compiler)
+    debugImplementation(libs.compose.test.manifest)
 }

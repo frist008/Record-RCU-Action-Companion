@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,23 +18,17 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import androidx.compose.ui.unit.dp
 import ua.frist008.action.record.R
+import ua.frist008.action.record.core.ui.resource.Icons
 import ua.frist008.action.record.core.ui.resource.svg.RecordNoConnection
 import ua.frist008.action.record.core.ui.theme.AppTheme
 import ua.frist008.action.record.core.ui.theme.color.PreviewPalette
 import ua.frist008.action.record.features.record.entity.StorageState
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
-)
 @Composable
 fun RecordInactiveGameScreen(
-    @PreviewParameter(StorageProvider::class) storage: StorageState,
+    storage: StorageState,
     isLive: Boolean = false,
 ) {
     Column(
@@ -104,11 +97,32 @@ fun RecordInactiveGameScreen(
     }
 }
 
-private class StorageProvider : PreviewParameterProvider<StorageState> {
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
+)
+@Composable
+private fun RecordInactiveGameScreenDefaultPreview() {
+    RecordInactiveGameScreen(StorageState.previewDefault())
+}
 
-    override val values = sequenceOf(
-        StorageState.previewDefault(),
-        StorageState.previewError(),
-        StorageState.previewWarning(),
-    )
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
+)
+@Composable
+private fun RecordInactiveGameScreenWarningPreview() {
+    RecordInactiveGameScreen(StorageState.previewWarning())
+}
+
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
+)
+@Composable
+private fun RecordInactiveGameScreenErrorPreview() {
+    RecordInactiveGameScreen(StorageState.previewError())
 }

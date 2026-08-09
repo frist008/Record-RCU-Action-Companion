@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">Geri</string>
+    <string name="error_unknown_error">Bilinmeyen hata</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">Cihazlar</string>
+    <string name="device_available">Mevcut</string>
+    <string name="device_not_available">Mevcut değil</string>
+    <string name="device_not_available_message">Cihaz mevcut değil</string>
+    <string name="device_searching">Cihazlar aranıyor…</string>
+    <string name="device_error_not_found">Cihaz bulunamadı…</string>
+    <string name="device_error_more">Nasıl düzeltilir?</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">BAĞLANIYOR</string>
+    <string name="record_title_record">Kayıt</string>
+    <string name="record_title_stream">Yayın</string>
+    <string name="record_action_record">Oynat</string>
+    <string name="record_action_pause">Duraklat</string>
+    <string name="record_action_stop">Durdur</string>
+    <string name="record_inactive_title_record">KAYIT</string>
+    <string name="record_inactive_title_stream">YAYIN</string>
+    <string name="record_inactive_subtitle">AKTİF OYUN BULUNAMADI</string>
+    <string name="record_inactive_message">PC\'DE OYUNU BAŞLATIN</string>
+    <string name="record_error_already_used">PC\'niz başka bir uygulamaya bağlı</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">Ayarlar</string>
+
+</resources>

@@ -29,7 +29,7 @@ object Analytics {
     }
 
     suspend fun log(state: RecordSuccessState) {
-        if (state.engine.name.isNotEmpty()) {
+        if (state.engine.name.trim().isNotEmpty()) {
             logEngine(state.engine.name)
         }
     }

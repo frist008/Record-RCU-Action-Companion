@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">Retour</string>
+    <string name="error_unknown_error">Erreur inconnue</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">Appareils</string>
+    <string name="device_available">Disponible</string>
+    <string name="device_not_available">Indisponible</string>
+    <string name="device_not_available_message">Appareil indisponible</string>
+    <string name="device_searching">Recherche d\'appareils…</string>
+    <string name="device_error_not_found">Aucun appareil trouvé…</string>
+    <string name="device_error_more">Comment résoudre ?</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">CONNEXION</string>
+    <string name="record_title_record">Enregistrer</string>
+    <string name="record_title_stream">Stream</string>
+    <string name="record_action_record">Play</string>
+    <string name="record_action_pause">Pause</string>
+    <string name="record_action_stop">Stop</string>
+    <string name="record_inactive_title_record">ENREG.</string>
+    <string name="record_inactive_title_stream">STREAM</string>
+    <string name="record_inactive_subtitle">AUCUN JEU ACTIF TROUVÉ</string>
+    <string name="record_inactive_message">LANCEZ LE JEU SUR VOTRE PC</string>
+    <string name="record_error_already_used">Votre PC est connecté à une autre app</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">Paramètres</string>
+
+</resources>

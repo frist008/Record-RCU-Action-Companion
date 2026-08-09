@@ -1,26 +1,17 @@
 package ua.frist008.action.record.core.util.date
 
-import kotlinx.datetime.LocalTime
-import kotlinx.datetime.format
-import kotlinx.datetime.format.DateTimeFormat
 import kotlin.time.Duration
-import kotlin.time.Duration.Companion.seconds
 
 object DateUtils {
 
-    /**
-     * 99:99:99
-     */
-    private val SIMPLE_TIME_FORMATTER: DateTimeFormat<LocalTime> by lazy {
-        LocalTime.Format { time(LocalTime.Formats.ISO) }
+    fun formatFullTime(time: Duration): String {
+        val seconds = time.inWholeSeconds % 60
+        val secondsStr = if (seconds > 9) "$seconds" else "0$seconds"
+        val minutes = time.inWholeMinutes % 60
+        val minutesStr = if (minutes > 9) "$minutes" else "0$minutes"
+        val hours = time.inWholeHours
+        val hoursStr = if (hours > 9) "$hours" else "0$hours"
+        val secondsWithSuffix = if (hours > 99) "$secondsStr+" else secondsStr
+        return "$hoursStr:$minutesStr:$secondsWithSuffix"
     }
-
-    fun fromDuration(time: Duration): LocalTime =
-        LocalTime.fromSecondOfDay(time.inWholeSeconds.toInt())
-
-    fun toDuration(time: LocalTime): Duration =
-        time.toSecondOfDay().seconds
-
-    fun formatTime(time: LocalTime): String =
-        time.format(SIMPLE_TIME_FORMATTER)
 }

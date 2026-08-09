@@ -17,9 +17,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import androidx.compose.ui.tooling.preview.datasource.LoremIpsum
 import androidx.compose.ui.unit.dp
 import kotlinx.collections.immutable.persistentListOf
 import ua.frist008.action.record.R
@@ -30,13 +27,9 @@ import ua.frist008.action.record.core.ui.theme.AppTheme
 import ua.frist008.action.record.features.device.entity.DeviceSuccessState
 import ua.frist008.action.record.features.device.entity.DevicesSuccessState
 
-@Preview(
-    showSystemUi = true,
-    showBackground = true,
-)
 @Composable
 fun DevicesSuccessScreen(
-    @PreviewParameter(DevicesProvider::class) state: DevicesSuccessState,
+    state: DevicesSuccessState,
     onItemClick: (DeviceSuccessState) -> Unit = {},
 ) {
     DefaultScaffold(
@@ -96,34 +89,32 @@ private fun DeviceItem(
     }
 }
 
-private class DevicesProvider : PreviewParameterProvider<DevicesSuccessState> {
-
-    override val values = sequenceOf(
+@Preview(
+    showSystemUi = true,
+    showBackground = true,
+)
+@Composable
+private fun DevicesSuccessScreenPreview() {
+    DevicesSuccessScreen(
         DevicesSuccessState(
             persistentListOf(
                 DeviceSuccessState(
                     id = 0,
                     isAvailableStatus = true,
-                    name = LoremIpsum(6).values.first(),
+                    name = "Gaming PC",
                     address = "192.168.0.1:2555",
                 ),
                 DeviceSuccessState(
-                    id = 0,
+                    id = 1,
                     isAvailableStatus = true,
-                    name = "Name PC",
+                    name = "Work PC",
                     address = "192.168.0.2:2555",
                 ),
                 DeviceSuccessState(
-                    id = 0,
+                    id = 2,
                     isAvailableStatus = false,
-                    name = "Name PC",
+                    name = "Old PC",
                     address = "192.168.0.3:2555",
-                ),
-                DeviceSuccessState(
-                    id = 0,
-                    isAvailableStatus = false,
-                    name = "Name PC",
-                    address = "192.168.0.4:2555",
                 ),
             ),
         ),

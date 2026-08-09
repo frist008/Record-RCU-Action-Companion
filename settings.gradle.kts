@@ -29,5 +29,9 @@ dependencyResolutionManagement {
 
 rootProject.name = rootProject.projectDir.name
 
+if (gradle.startParameter.taskNames.any { it.contains("dependencyUpdates") }) {
+    gradle.startParameter.isParallelProjectExecutionEnabled = false
+}
+
 // Android
 include(":app")

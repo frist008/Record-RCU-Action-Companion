@@ -1,14 +1,17 @@
 package ua.frist008.action.record.features.record
 
 import android.os.Vibrator
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
-import androidx.navigation.toRoute
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.LoadAdError
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.sync.Mutex
@@ -30,15 +33,22 @@ import ua.frist008.action.record.features.record.entity.StreamingRecordCommand
 import java.net.BindException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
-import javax.inject.Inject
+import kotlin.time.Duration.Companion.seconds
 
-@HiltViewModel class RecordViewModel @Inject constructor(
-    savedStateHandle: SavedStateHandle,
+@HiltViewModel(assistedFactory = RecordViewModel.Factory::class)
+class RecordViewModel @AssistedInject constructor(
+    @Assisted val pcId: Long,
     dependencies: PresentationDependenciesDelegate,
     private val recordRepository: RecordRepository,
     private val vibrator: Vibrator,
 ) : BaseViewModel(dependencies) {
 
+    @AssistedFactory
+    interface Factory {
+        fun create(pcId: Long): RecordViewModel
+    }
+
+    private var autoBack: Job? = null
     private val stateMutex = Mutex()
 
     val adListener = object : AdListener() {
@@ -60,14 +70,15 @@ import javax.inject.Inject
     }
 
     init {
-        val pcId = savedStateHandle.toRoute<NavCommand.RecordScreen>().pcId
-
         launch {
             while (viewModelScope.isActive) {
                 try {
                     recordRepository.connect(pcId)
                 } catch (e: SocketTimeoutException) {
-                    stateMutex.withLock { mutableState.emit(UIState.Progress()) }
+                    stateMutex.withLock {
+                        mutableState.emit(UIState.Progress())
+                        startAutoBack()
+                    }
                     Timber.d(e)
                 }
             }
@@ -79,9 +90,12 @@ import javax.inject.Inject
                     if (it.connected) {
                         val state = it.toUI(state.value as? RecordSuccessState?)
                         mutableState.emit(state)
+                        autoBack?.cancel()
+                        autoBack = null
                         Analytics.log(state)
                     } else {
                         mutableState.emit(UIState.Progress())
+                        startAutoBack()
                     }
                 }
             }
@@ -129,6 +143,13 @@ import javax.inject.Inject
             } else {
                 recordRepository.sendCommand(StreamingRecordCommand.STOP)
             }
+        }
+    }
+
+    private fun startAutoBack() {
+        autoBack = launch {
+            delay(10.seconds)
+            navigator.emit(NavCommand.BackCommand())
         }
     }
 

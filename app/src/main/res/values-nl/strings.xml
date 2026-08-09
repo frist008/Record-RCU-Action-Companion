@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">Terug</string>
+    <string name="error_unknown_error">Onbekende fout</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">Apparaten</string>
+    <string name="device_available">Beschikbaar</string>
+    <string name="device_not_available">Niet beschikbaar</string>
+    <string name="device_not_available_message">Apparaat niet beschikbaar</string>
+    <string name="device_searching">Zoeken naar apparaten…</string>
+    <string name="device_error_not_found">Geen apparaten gevonden…</string>
+    <string name="device_error_more">Hoe op te lossen?</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">VERBINDING</string>
+    <string name="record_title_record">Opname</string>
+    <string name="record_title_stream">Stream</string>
+    <string name="record_action_record">Play</string>
+    <string name="record_action_pause">Pauze</string>
+    <string name="record_action_stop">Stop</string>
+    <string name="record_inactive_title_record">OPNAME</string>
+    <string name="record_inactive_title_stream">STREAM</string>
+    <string name="record_inactive_subtitle">GEEN ACTIEF SPEL GEVONDEN</string>
+    <string name="record_inactive_message">START HET SPEL OP JE PC</string>
+    <string name="record_error_already_used">Je pc is verbonden met een andere app</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">Instellingen</string>
+
+</resources>

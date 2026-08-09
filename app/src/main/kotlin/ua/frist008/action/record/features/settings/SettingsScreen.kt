@@ -9,9 +9,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.PreviewParameter
-import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.component.root.DefaultScaffold
 import ua.frist008.action.record.core.ui.component.unsupportedUI
@@ -29,14 +27,9 @@ fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
     }
 }
 
-@Preview(
-    showBackground = true,
-    showSystemUi = true,
-    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
-)
 @Composable
 private fun SettingsSuccessScreen(
-    @PreviewParameter(SettingsProvider::class) entry: SettingsSuccessState,
+    entry: SettingsSuccessState,
     innerPadding: PaddingValues = PaddingValues(),
 ) {
     Text(
@@ -45,7 +38,12 @@ private fun SettingsSuccessScreen(
     )
 }
 
-private class SettingsProvider : PreviewParameterProvider<SettingsSuccessState> {
-
-    override val values = sequenceOf(SettingsSuccessState())
+@Preview(
+    showBackground = true,
+    showSystemUi = true,
+    backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
+)
+@Composable
+private fun SettingsSuccessScreenPreview() {
+    SettingsSuccessScreen(SettingsSuccessState())
 }

@@ -3,7 +3,6 @@ package ua.frist008.action.record.core.ui.resource.svg
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -12,6 +11,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import ua.frist008.action.record.core.ui.resource.Icons
 
 val Icons.PlayBold: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
     ImageVector.Builder(

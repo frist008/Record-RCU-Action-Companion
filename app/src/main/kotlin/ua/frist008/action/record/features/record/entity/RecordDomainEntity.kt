@@ -6,7 +6,6 @@ import androidx.compose.runtime.mutableStateOf
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
-import kotlinx.datetime.Clock
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.util.common.round
 import ua.frist008.action.record.core.util.date.DateUtils
@@ -16,8 +15,10 @@ import ua.frist008.action.record.data.network.record.entity.RecordModeType
 import ua.frist008.action.record.data.network.record.entity.StreamType
 import ua.frist008.action.record.data.network.record.entity.WebCamData
 import kotlin.math.abs
+import kotlin.time.Clock
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
+import kotlin.time.ExperimentalTime
 
 data class RecordDomainEntity(
     val deviceId: Long,
@@ -48,7 +49,7 @@ data class RecordDomainEntity(
                 buttonsData = mapRecordType(recordModeType, isStream),
                 fps = fps,
                 maxFps = maxFps,
-                timeState = mutableStateOf(mapDuration(duration)),
+                timeState = mutableStateOf(DateUtils.formatFullTime(duration)),
                 // TODO maxDuration = maxDuration IMPORTANT
                 // TODO recTooltip = recTooltip
                 engine = mapEngine(engine),
@@ -75,7 +76,7 @@ data class RecordDomainEntity(
                     persistentListOf()
                 }
 
-            recordSuccessState.timeState.value = mapDuration(duration)
+            recordSuccessState.timeState.value = DateUtils.formatFullTime(duration)
             recordSuccessState.copy(
                 buttonsData = buttonsData,
                 fps = fps,
@@ -149,12 +150,14 @@ data class RecordDomainEntity(
         val differenceBetweenSpace = abs(firstBytes - lastBytes)
         val differenceBetweenTime = abs(firstTimeMs - lastTimeMs)
 
-        val countTimesUntilSpaceEnded = freeSpace.bytes / differenceBetweenSpace
+        val countTimesUntilSpaceEnded =
+            if (differenceBetweenSpace > 0) freeSpace.bytes / differenceBetweenSpace else 0
         val timeUntilSpaceEndedMs = countTimesUntilSpaceEnded * differenceBetweenTime
 
-        return mapDuration(timeUntilSpaceEndedMs.milliseconds)
+        return DateUtils.formatFullTime(timeUntilSpaceEndedMs.milliseconds)
     }
 
+    @OptIn(ExperimentalTime::class)
     private fun createFreeSpaceWithTimestampList(
         list: ImmutableList<Pair<Long, Long>>,
         freeSpace: Space,
@@ -166,9 +169,6 @@ data class RecordDomainEntity(
 
         return (trimmedList.asSequence() + newValue).toImmutableList()
     }
-
-    private fun mapDuration(duration: Duration) =
-        DateUtils.formatTime(DateUtils.fromDuration(duration))
 
     private fun mapEngine(engine: String): EngineState {
         val trimmedEngine = engine.trim()

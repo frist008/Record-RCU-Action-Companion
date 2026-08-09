@@ -37,6 +37,7 @@ import kotlin.time.Duration.Companion.seconds
     private var isAutoFirstNavigate = false
 
     fun onInit() {
+        Timber.d("onInit")
         disposeJob.value?.cancel()
         restartTimer()
         restartScan()
@@ -54,11 +55,11 @@ import kotlin.time.Duration.Companion.seconds
                     if (list.any { it.isAvailableStatus }) {
                         val uiList = list.toUI()
 
+                        mutableState.emit(DevicesSuccessState(uiList))
+
                         if (!isAutoFirstNavigate && uiList.size == 1) {
                             isAutoFirstNavigate = true
-                            navigator.emit(NavCommand.RecordScreen(uiList.first().id))
-                        } else {
-                            mutableState.emit(DevicesSuccessState(uiList))
+                            onItemClicked(uiList.first())
                         }
 
                         ignoreError = true
@@ -130,6 +131,7 @@ import kotlin.time.Duration.Companion.seconds
     }
 
     fun onDispose() {
+        Timber.d("onDispose")
         scanJob.value?.cancel()
         timerJob.value?.cancel()
 

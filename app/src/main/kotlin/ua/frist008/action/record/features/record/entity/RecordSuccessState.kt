@@ -119,7 +119,7 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
 @Immutable data class StorageState(
     val freeSpaceState: MutableState<Float>,
     val timeRemainingState: MutableState<String>,
-    @StringRes val pattern: Int,
+    @get:StringRes val pattern: Int,
     val errorType: ErrorType,
     val freeSpaceWithTimestampList: ImmutableList<Pair<Long, Long>> = persistentListOf(),
 ) {

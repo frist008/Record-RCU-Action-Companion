@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">Bumalik</string>
+    <string name="error_unknown_error">Hindi kilalang error</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">Mga Device</string>
+    <string name="device_available">Available</string>
+    <string name="device_not_available">Hindi available</string>
+    <string name="device_not_available_message">Hindi available ang device</string>
+    <string name="device_searching">Naghahanap ng mga device…</string>
+    <string name="device_error_not_found">Walang nahanap na device…</string>
+    <string name="device_error_more">Paano ayusin?</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">NAGKOKONEKTA</string>
+    <string name="record_title_record">I-record</string>
+    <string name="record_title_stream">Stream</string>
+    <string name="record_action_record">Play</string>
+    <string name="record_action_pause">I-pause</string>
+    <string name="record_action_stop">Itigil</string>
+    <string name="record_inactive_title_record">RECORD</string>
+    <string name="record_inactive_title_stream">STREAM</string>
+    <string name="record_inactive_subtitle">WALANG AKTIBONG LARO</string>
+    <string name="record_inactive_message">SIMULAN ANG LARO SA IYONG PC</string>
+    <string name="record_error_already_used">Ang iyong PC ay konektado sa ibang app</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">Mga Setting</string>
+
+</resources>

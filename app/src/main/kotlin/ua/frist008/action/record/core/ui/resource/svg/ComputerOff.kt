@@ -1,6 +1,5 @@
 package ua.frist008.action.record.core.ui.resource.svg
 
-import androidx.compose.material.icons.Icons
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathFillType.Companion.NonZero
 import androidx.compose.ui.graphics.SolidColor
@@ -12,6 +11,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.graphics.vector.ImageVector.Builder
 import androidx.compose.ui.graphics.vector.path
 import androidx.compose.ui.unit.dp
+import ua.frist008.action.record.core.ui.resource.Icons
 
 val Icons.ComputerOff: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
     Builder(

@@ -2,6 +2,7 @@ package ua.frist008.action.record.features
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
+import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.Transient
 
@@ -13,7 +14,7 @@ class NewRoot(val newRootScreen: NavCommand) : NavCommand(false)
 @Serializable
 sealed class NavCommand(
     @Transient val isReplaceScreen: Boolean = false,
-) {
+) : NavKey {
 
     @Serializable @Immutable class BackCommand(val backToScreen: NavCommand? = null) : NavCommand()
 
@@ -21,7 +22,7 @@ sealed class NavCommand(
     @Serializable @Immutable data class App(val appPackage: String, val url: String) : NavCommand()
 
     @Serializable @Immutable
-    data class Share(val url: String, @StringRes val messageRes: Int) : NavCommand()
+    data class Share(val url: String, @get:StringRes val messageRes: Int) : NavCommand()
 
     @Serializable @Immutable object DevicesScreen : NavCommand()
     @Serializable @Immutable data class RecordScreen(val pcId: Long) : NavCommand()

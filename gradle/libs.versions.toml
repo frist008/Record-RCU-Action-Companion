@@ -2,68 +2,74 @@
 
 ## project
 # plugin
-plugin-gradle-android = "8.7.3"
-plugin-ben-manes = "0.52.0"
-plugin-licensee = "1.12.0"
-plugin-google-services = "4.4.2"
-plugin-firebase-crashlytics = "3.0.3"
-plugin-firebase-perf = "1.4.2"
-plugin-ksp = "2.1.10-1.0.29"
+plugin-gradle-android = "9.3.1"
+plugin-ben-manes = "0.61.0"
+plugin-licensee = "1.14.1"
+plugin-google-services = "4.5.0"
+plugin-firebase-crashlytics = "3.0.7"
+plugin-firebase-perf = "2.0.2"
+plugin-ksp = "2.3.11"
 
 ## common
 # buildType
 build-type-debug = "debug"
 build-type-release = "release"
 # build
-version-name = "1.0.3"
-build-tools-version = "35.0.0"
+version-name = "1.0.4"
+build-tools-version = "37.0.0"
 sdk-min = "26"
-sdk-compile = "35"
-sdk-compile-extension = "14" # for compileSdk 35
-sdk-target = "35"
+sdk-compile = "37"
+sdk-compile-extension = "15" # for compileSdk 35
+sdk-target = "36"
 jvm-target = "17"
 jvm-target-kotlin = "17"
 
 # kotlin
-kotlin = "2.1.10"
-kotlin-atomic = "0.27.0"
-kotlin-coroutines = "1.10.1"
-kotlin-immutable-collections = "0.3.8"
-kotlin-serialization-json = "1.8.0"
-kotlin-time = "0.6.2"
+kotlin = "2.4.10"
+kotlin-atomic = "0.33.0"
+kotlin-coroutines = "1.11.0"
+kotlin-immutable-collections = "0.5.1"
+kotlin-serialization-json = "1.11.0"
+kotlin-time = "0.8.0"
 
 # ui
 # jetpack
-jetpack-core = "1.15.0"
-jetpack-activity = "1.10.0"
-jetpack-annotation = "1.9.1"
-jetpack-appcompat = "1.7.0"
-jetpack-browser = "1.8.0"
-jetpack-lifecycle = "2.8.7"
-jetpack-splash = "1.0.1"
+jetpack-core = "1.19.0"
+jetpack-activity = "1.13.0"
+jetpack-annotation = "1.10.0"
+jetpack-appcompat = "1.7.1"
+jetpack-browser = "1.10.0"
+jetpack-lifecycle = "2.11.0"
+jetpack-splash = "1.2.0"
 # compose
-compose-bom = "2025.01.01"
-compose-activity = "1.10.0"
-compose-constraintlayout = "1.1.0"
+compose-bom = "2026.06.01"
+compose-activity = "1.13.0"
+compose-constraintlayout = "1.1.2"
 # navigation
-compose-navigation = "2.8.6"
+compose-navigation = "1.1.5"
 
 ## frameworks
 # firebase
-firebase-bom = "33.9.0"
+firebase-bom = "34.17.0"
 # ad
-ads = "23.6.0"
+ads = "25.0.0"
 # database
-room = "2.6.1"
+room = "2.8.4"
 # di
-di-hilt = "2.55"
-di-hilt-navigation-compose = "1.2.0"
+di-hilt = "2.60.1"
+di-hilt-navigation-compose = "1.4.0"
 # io
-data-store = "1.1.2"
+data-store = "1.2.1"
 # utils
-jdk-desugar = "2.1.4"
+jdk-desugar = "2.1.5"
 leakcanary = "2.14"
 timber = "5.0.1"
+# test
+junit4 = "4.13.2"
+mockk = "1.14.11"
+# androidTest
+androidx-test = "1.7.0"
+androidx-test-ext-junit = "1.3.0"
 
 [libraries]
 
@@ -101,7 +107,8 @@ compose-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose-activity = { module = "androidx.activity:activity-compose", version.ref = "compose-activity" }
 compose-constraintlayout = { module = "androidx.constraintlayout:constraintlayout-compose", version.ref = "compose-constraintlayout" }
 # navigation
-compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "compose-navigation" }
+compose-navigation-ui = { module = "androidx.navigation3:navigation3-ui", version.ref = "compose-navigation" }
+compose-navigation-runtime = { module = "androidx.navigation3:navigation3-runtime", version.ref = "compose-navigation" }
 
 ## frameworks
 # firebase
@@ -125,6 +132,16 @@ jdk-desugar = { module = "com.android.tools:desugar_jdk_libs", version.ref = "jd
 leakcanary = { module = "com.squareup.leakcanary:plumber-android", version.ref = "leakcanary" }
 leakcanary-debug = { module = "com.squareup.leakcanary:leakcanary-android", version.ref = "leakcanary" }
 timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+# test
+junit4 = { module = "junit:junit", version.ref = "junit4" }
+mockk = { module = "io.mockk:mockk", version.ref = "mockk" }
+kotlin-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test" }
+# androidTest
+compose-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
+compose-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+androidx-test-runner = { module = "androidx.test:runner", version.ref = "androidx-test" }
+androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-ext-junit" }
+hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", version.ref = "di-hilt" }
 
 [plugins]
 
@@ -181,7 +198,10 @@ ui = [
     "jetpack-browser",
     "jetpack-splash",
 ]
-navigation = ["compose-navigation"]
+navigation = [
+    "compose-navigation-ui",
+    "compose-navigation-runtime",
+]
 
 # compose
 compose = [
@@ -211,4 +231,18 @@ coroutines-bom = [
     "kotlin-coroutines",
     "kotlin-coroutines-android",
     "kotlin-coroutines-play-services",
+]
+
+# test
+test = [
+    "junit4",
+    "mockk",
+    "kotlin-coroutines-test",
+]
+# androidTest
+android-test = [
+    "compose-test-junit4",
+    "androidx-test-runner",
+    "androidx-test-ext-junit",
+    "hilt-android-testing",
 ]

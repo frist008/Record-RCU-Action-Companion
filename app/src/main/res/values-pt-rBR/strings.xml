@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common -->
+
+    <string name="back">Voltar</string>
+    <string name="error_unknown_error">Erro desconhecido</string>
+
+    <!-- Devices -->
+
+    <string name="devices_title">Dispositivos</string>
+    <string name="device_available">Disponível</string>
+    <string name="device_not_available">Indisponível</string>
+    <string name="device_not_available_message">Dispositivo indisponível</string>
+    <string name="device_searching">Procurando dispositivos…</string>
+    <string name="device_error_not_found">Nenhum dispositivo encontrado…</string>
+    <string name="device_error_more">Como resolver?</string>
+    <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
+
+    <!-- Record -->
+
+    <string name="record_connection">CONEXÃO</string>
+    <string name="record_title_record">Gravar</string>
+    <string name="record_title_stream">Stream</string>
+    <string name="record_action_record">Play</string>
+    <string name="record_action_pause">Pausar</string>
+    <string name="record_action_stop">Parar</string>
+    <string name="record_inactive_title_record">GRAVAÇÃO</string>
+    <string name="record_inactive_title_stream">STREAM</string>
+    <string name="record_inactive_subtitle">NENHUM JOGO ATIVO</string>
+    <string name="record_inactive_message">ABRA O JOGO NO SEU PC</string>
+    <string name="record_error_already_used">Seu PC está conectado a outro app</string>
+
+    <!-- Settings -->
+
+    <string name="settings_title">Configurações</string>
+
+</resources>

@@ -27,7 +27,7 @@ import java.net.SocketTimeoutException
 import javax.inject.Inject
 
 class DeviceRadarNetworkSourceImpl @Inject constructor(
-    @IO private val ioDispatcher: CoroutineDispatcher,
+    @param:IO private val ioDispatcher: CoroutineDispatcher,
 ) : DeviceRadarNetworkSource {
 
     private val socketMutex = Mutex()
