@@ -11,7 +11,9 @@ object ByteArrayToNameMapper : (ByteArray, Int) -> String? {
             ((dataArr[11].toLong() shl ByteConst.BITS_3) and -ByteConst.MAX_BYTES_POW_3_LONG) or
             ((dataArr[12].toLong() shl ByteConst.BITS_2) and NetworkConst.FFFF_MINUS_1) or
             ((dataArr[13].toLong() shl ByteConst.BITS_1) and NetworkConst.FF00_LONG)
-        val namePCByteSize = (if (15 + namePCLong <= size) namePCLong else size).toInt()
+        val namePCByteSize = (if (15 + namePCLong <= size) namePCLong else size - 15L)
+            .coerceAtLeast(0L)
+            .toInt()
         val namePCByteArr = ByteArray(namePCByteSize + 1)
         namePCByteArr[namePCByteSize] = 0
 

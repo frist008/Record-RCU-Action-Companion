@@ -2,13 +2,13 @@
 
 ## project
 # plugin
-plugin-gradle-android = "9.3.1"
-plugin-ben-manes = "0.61.0"
+plugin-gradle-android = "9.5.1"
+plugin-ben-manes = "0.67.0"
 plugin-licensee = "1.14.1"
-plugin-google-services = "4.5.0"
-plugin-firebase-crashlytics = "3.0.7"
+plugin-google-services = "4.6.0"
+plugin-firebase-crashlytics = "3.0.8"
 plugin-firebase-perf = "2.0.2"
-plugin-ksp = "2.3.11"
+plugin-ksp = "2.3.13"
 
 ## common
 # buildType
@@ -19,54 +19,55 @@ version-name = "1.0.4"
 build-tools-version = "37.0.0"
 sdk-min = "26"
 sdk-compile = "37"
+sdk-compile-minor = "2"
 sdk-compile-extension = "15" # for compileSdk 35
 sdk-target = "36"
 jvm-target = "17"
 jvm-target-kotlin = "17"
 
 # kotlin
-kotlin = "2.4.10"
+kotlin = "2.4.21"
 kotlin-atomic = "0.33.0"
 kotlin-coroutines = "1.11.0"
-kotlin-immutable-collections = "0.5.1"
-kotlin-serialization-json = "1.11.0"
+kotlin-immutable-collections = "0.5.2"
+kotlin-serialization-json = "1.13.0"
 kotlin-time = "0.8.0"
 
 # ui
 # jetpack
-jetpack-core = "1.19.0"
+jetpack-core = "1.19.1"
 jetpack-activity = "1.13.0"
-jetpack-annotation = "1.10.0"
-jetpack-appcompat = "1.7.1"
+jetpack-annotation = "1.11.0"
+jetpack-appcompat = "1.8.0"
 jetpack-browser = "1.10.0"
 jetpack-lifecycle = "2.11.0"
 jetpack-splash = "1.2.0"
 # compose
-compose-bom = "2026.06.01"
+compose-bom = "2026.09.00"
 compose-activity = "1.13.0"
 compose-constraintlayout = "1.1.2"
 # navigation
-compose-navigation = "1.1.5"
+compose-navigation = "1.2.1"
 
 ## frameworks
 # firebase
-firebase-bom = "34.17.0"
+firebase-bom = "35.2.0"
 # ad
-ads = "25.0.0"
+ads = "1.6.0"
 # database
-room = "2.8.4"
+room = "2.8.5"
 # di
 di-hilt = "2.60.1"
 di-hilt-navigation-compose = "1.4.0"
 # io
-data-store = "1.2.1"
+data-store = "1.3.0"
 # utils
 jdk-desugar = "2.1.5"
 leakcanary = "2.14"
 timber = "5.0.1"
 # test
 junit4 = "4.13.2"
-mockk = "1.14.11"
+mockk = "1.14.12"
 # androidTest
 androidx-test = "1.7.0"
 androidx-test-ext-junit = "1.3.0"
@@ -117,7 +118,7 @@ firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 firebase-perf = { module = "com.google.firebase:firebase-perf" }
 # ad
-ads = { module = "com.google.android.gms:play-services-ads-lite", version.ref = "ads" }
+ads = { module = "com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk", version.ref = "ads" }
 # database
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
@@ -146,7 +147,7 @@ hilt-android-testing = { module = "com.google.dagger:hilt-android-testing", vers
 [plugins]
 
 # common
-ben-manes = { id = "com.github.ben-manes.versions", version.ref = "plugin-ben-manes" }
+ben-manes = { id = "io.github.ben-manes.versions", version.ref = "plugin-ben-manes" }
 licensee = { id = "app.cash.licensee", version.ref = "plugin-licensee" }
 
 # kotlin
@@ -157,7 +158,6 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "plugin-ksp" }
 # modules
 android-application = { id = "com.android.application", version.ref = "plugin-gradle-android" }
 android-library = { id = "com.android.library" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 
 # ui
 kotlin-compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

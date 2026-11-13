@@ -26,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,10 +37,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.AdView
+import com.google.android.libraries.ads.mobile.sdk.banner.AdSize
+import com.google.android.libraries.ads.mobile.sdk.banner.AdView
+import com.google.android.libraries.ads.mobile.sdk.banner.BannerAd
+import com.google.android.libraries.ads.mobile.sdk.banner.BannerAdRequest
+import com.google.android.libraries.ads.mobile.sdk.common.AdLoadCallback
 import ua.frist008.action.record.BuildConfig
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.component.root.DefaultScaffold
@@ -60,7 +62,7 @@ import ua.frist008.action.record.features.record.entity.StorageState
 @Composable
 fun RecordSuccessScreen(
     state: RecordSuccessState,
-    adListener: AdListener = object : AdListener() {},
+    bannerLoadCallback: AdLoadCallback<BannerAd> = object : AdLoadCallback<BannerAd> {},
     onStartClick: () -> Unit = {},
     onResumeClick: () -> Unit = {},
     onPauseClick: () -> Unit = {},
@@ -96,7 +98,7 @@ fun RecordSuccessScreen(
                 onPauseClick = onPauseClick,
                 onStopClick = onStopClick,
             )
-            Ads(adListener, state.adSize)
+            Ads(bannerLoadCallback, state.adSize)
         }
     }
 }
@@ -341,37 +343,31 @@ private fun ColumnScope.FooterActions(
 }
 
 @Composable
-private fun ColumnScope.Ads(adListener: AdListener, adSize: AdSize) {
+private fun ColumnScope.Ads(bannerLoadCallback: AdLoadCallback<BannerAd>, adSize: AdSize) {
     val isInEditMode = BuildConfig.DEBUG && LocalView.current.isInEditMode
-    // https://developers.google.com/admob/android/banner/fixed-size
+    // https://developers.google.com/admob/android/next-gen/banner/fixed-size
 
-    AndroidView(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(if (adSize == AdSize.BANNER) 50.dp else 100.dp),
-        factory = { context ->
-            if (isInEditMode) {
-                View(context).apply { setBackgroundColor(Color.WHITE) }
-            } else {
-                AdView(context).apply {
-                    adUnitId = context.getString(R.string.ad)
-                    this.adListener = adListener
-                    setAdSize(adSize)
-                    loadAd(buildAdRequest())
+    // A new size is a new AdView: the Next-Gen SDK takes the size with the request, and the old view is destroyed.
+    key(adSize) {
+        AndroidView(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(if (adSize == AdSize.BANNER) 50.dp else 100.dp),
+            factory = { context ->
+                if (isInEditMode) {
+                    View(context).apply { setBackgroundColor(Color.WHITE) }
+                } else {
+                    AdView(context).apply {
+                        loadAd(buildAdRequest(context.getString(R.string.ad), adSize), bannerLoadCallback)
+                    }
                 }
-            }
-        },
-        update = { view ->
-            val adView = view as? AdView ?: return@AndroidView
-            if (adView.adSize != adSize) {
-                adView.setAdSize(adSize)
-                adView.loadAd(buildAdRequest())
-            }
-        },
-    )
+            },
+            onRelease = { view -> (view as? AdView)?.destroy() },
+        )
+    }
 }
 
-private fun buildAdRequest() = AdRequest.Builder()
+private fun buildAdRequest(adUnitId: String, adSize: AdSize) = BannerAdRequest.Builder(adUnitId, adSize)
     .addKeyword("game recording")
     .addKeyword("screen capture")
     .addKeyword("streaming")

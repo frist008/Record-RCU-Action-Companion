@@ -62,7 +62,6 @@ abstract class BaseViewModel(
 
     @CallSuper
     override fun onCleared() {
-        super.onCleared()
         Timber.d("${this::class.simpleName} onCleared")
     }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="ad_app_id" translatable="false">ca-app-pub-4662269970423926~2559362180</string>
     <string name="ad" translatable="false">ca-app-pub-4662269970423926/7620117175</string>
 
 </resources>

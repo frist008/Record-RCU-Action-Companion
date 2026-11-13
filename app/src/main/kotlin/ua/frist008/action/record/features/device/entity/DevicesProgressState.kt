@@ -4,7 +4,7 @@ import androidx.compose.runtime.Immutable
 import ua.frist008.action.record.core.ui.UIState
 import kotlin.time.Duration
 
-@Suppress("DataClassPrivateConstructor")
+@ConsistentCopyVisibility
 @Immutable
 data class DevicesProgressState private constructor(
     val timerValue: String,
