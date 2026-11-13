@@ -3,7 +3,6 @@
 
     <!-- Common -->
 
-    <string name="back">Indietro</string>
     <string name="error_unknown_error">Errore sconosciuto</string>
 
     <!-- Devices -->
@@ -11,7 +10,6 @@
     <string name="devices_title">Dispositivi</string>
     <string name="device_available">Disponibile</string>
     <string name="device_not_available">Non disponibile</string>
-    <string name="device_not_available_message">Dispositivo non disponibile</string>
     <string name="device_searching">Ricerca dispositivi…</string>
     <string name="device_error_not_found">Nessun dispositivo trovato…</string>
     <string name="device_error_more">Come risolvere?</string>

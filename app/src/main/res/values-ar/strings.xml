@@ -3,7 +3,6 @@
 
     <!-- Common -->
 
-    <string name="back">رجوع</string>
     <string name="error_unknown_error">خطأ غير معروف</string>
 
     <!-- Devices -->
@@ -11,7 +10,6 @@
     <string name="devices_title">الأجهزة</string>
     <string name="device_available">متاح</string>
     <string name="device_not_available">غير متاح</string>
-    <string name="device_not_available_message">الجهاز غير متاح</string>
     <string name="device_searching">جارٍ البحث عن الأجهزة…</string>
     <string name="device_error_not_found">لم يتم العثور على أجهزة…</string>
     <string name="device_error_more">كيفية الإصلاح؟</string>

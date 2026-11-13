@@ -3,7 +3,6 @@
 
     <!-- Common -->
 
-    <string name="back">Πίσω</string>
     <string name="error_unknown_error">Άγνωστο σφάλμα</string>
 
     <!-- Devices -->
@@ -11,7 +10,6 @@
     <string name="devices_title">Συσκευές</string>
     <string name="device_available">Διαθέσιμο</string>
     <string name="device_not_available">Μη διαθέσιμο</string>
-    <string name="device_not_available_message">Η συσκευή δεν είναι διαθέσιμη</string>
     <string name="device_searching">Αναζήτηση συσκευών…</string>
     <string name="device_error_not_found">Δεν βρέθηκαν συσκευές…</string>
     <string name="device_error_more">Πώς να διορθωθεί;</string>

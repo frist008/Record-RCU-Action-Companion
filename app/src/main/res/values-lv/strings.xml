@@ -3,7 +3,6 @@
 
     <!-- Common -->
 
-    <string name="back">Atpakaļ</string>
     <string name="error_unknown_error">Nezināma kļūda</string>
 
     <!-- Devices -->
@@ -11,7 +10,6 @@
     <string name="devices_title">Ierīces</string>
     <string name="device_available">Pieejams</string>
     <string name="device_not_available">Nav pieejams</string>
-    <string name="device_not_available_message">Ierīce nav pieejama</string>
     <string name="device_searching">Meklē ierīces…</string>
     <string name="device_error_not_found">Ierīces nav atrastas…</string>
     <string name="device_error_more">Kā novērst?</string>
