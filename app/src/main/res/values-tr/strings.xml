@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">AKTİF OYUN BULUNAMADI</string>
     <string name="record_inactive_message">PC\'DE OYUNU BAŞLATIN</string>
     <string name="record_error_already_used">PC\'niz başka bir uygulamaya bağlı</string>
+    <string name="record_error_not_connected">PC\'nizle bağlantı yok</string>
+    <string name="record_error_port_busy">Bu telefondaki başka bir uygulama PC\'nizle bağlantıyı zaten kullanıyor</string>
 
     <!-- Settings -->
 

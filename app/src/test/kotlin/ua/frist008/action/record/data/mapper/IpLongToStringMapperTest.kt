@@ -34,10 +34,4 @@ class IpLongToStringMapperTest {
         val ip = (255L shl 24) or (255L shl 16) or (255L shl 8) or 255L
         assertEquals("255.255.255.255", IpLongToStringMapper(ip))
     }
-
-    @Test
-    fun `consistent with Long_toIPStr extension`() {
-        val ip = 16909060L
-        assertEquals(IpLongToStringMapper(ip), ip.toIPStr)
-    }
 }

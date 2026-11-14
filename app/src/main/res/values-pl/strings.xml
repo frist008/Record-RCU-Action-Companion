@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">NIE ZNALEZIONO AKTYWNEJ GRY</string>
     <string name="record_inactive_message">URUCHOM GRĘ NA SWOIM PC</string>
     <string name="record_error_already_used">Twój PC jest połączony z inną aplikacją</string>
+    <string name="record_error_not_connected">Brak połączenia z Twoim PC</string>
+    <string name="record_error_port_busy">Inna aplikacja na tym telefonie już używa połączenia z Twoim PC</string>
 
     <!-- Settings -->
 

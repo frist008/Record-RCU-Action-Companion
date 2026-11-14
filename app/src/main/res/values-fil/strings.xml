@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">WALANG AKTIBONG LARO</string>
     <string name="record_inactive_message">SIMULAN ANG LARO SA IYONG PC</string>
     <string name="record_error_already_used">Ang iyong PC ay konektado sa ibang app</string>
+    <string name="record_error_not_connected">Walang koneksyon sa iyong PC</string>
+    <string name="record_error_port_busy">May ibang app sa teleponong ito na gumagamit na ng koneksyon sa iyong PC</string>
 
     <!-- Settings -->
 

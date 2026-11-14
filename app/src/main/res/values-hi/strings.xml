@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">कोई सक्रिय गेम नहीं मिला</string>
     <string name="record_inactive_message">PC पर गेम शुरू करें</string>
     <string name="record_error_already_used">आपका PC किसी अन्य ऐप से जुड़ा है</string>
+    <string name="record_error_not_connected">आपके PC से कोई कनेक्शन नहीं है</string>
+    <string name="record_error_port_busy">इस फ़ोन पर कोई अन्य ऐप पहले से आपके PC के कनेक्शन का उपयोग कर रहा है</string>
 
     <!-- Settings -->
 

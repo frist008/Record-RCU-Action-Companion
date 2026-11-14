@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">ΔΕΝ ΒΡΕΘΗΚΕ ΕΝΕΡΓΟ ΠΑΙΧΝΙΔΙ</string>
     <string name="record_inactive_message">ΕΚΚΙΝΗΣΤΕ ΤΟ ΠΑΙΧΝΙΔΙ ΣΤΟ PC</string>
     <string name="record_error_already_used">Ο υπολογιστής σας είναι συνδεδεμένος με άλλη εφαρμογή</string>
+    <string name="record_error_not_connected">Δεν υπάρχει σύνδεση με τον υπολογιστή σας</string>
+    <string name="record_error_port_busy">Μια άλλη εφαρμογή σε αυτό το τηλέφωνο χρησιμοποιεί ήδη τη σύνδεση με τον υπολογιστή σας</string>
 
     <!-- Settings -->
 

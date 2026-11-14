@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">GEEN ACTIEF SPEL GEVONDEN</string>
     <string name="record_inactive_message">START HET SPEL OP JE PC</string>
     <string name="record_error_already_used">Je pc is verbonden met een andere app</string>
+    <string name="record_error_not_connected">Geen verbinding met je pc</string>
+    <string name="record_error_port_busy">Een andere app op deze telefoon gebruikt de verbinding met je pc al</string>
 
     <!-- Settings -->
 

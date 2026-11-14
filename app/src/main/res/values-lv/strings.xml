@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">AKTĪVA SPĒLE NAV ATRASTA</string>
     <string name="record_inactive_message">PALAIDIET SPĒLI DATORĀ</string>
     <string name="record_error_already_used">Jūsu dators ir savienots ar citu lietotni</string>
+    <string name="record_error_not_connected">Nav savienojuma ar jūsu datoru</string>
+    <string name="record_error_port_busy">Cita lietotne šajā tālrunī jau izmanto savienojumu ar jūsu datoru</string>
 
     <!-- Settings -->
 

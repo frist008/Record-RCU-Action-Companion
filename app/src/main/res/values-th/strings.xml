@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">ไม่พบเกมที่กำลังเล่น</string>
     <string name="record_inactive_message">เปิดเกมบนคอมพิวเตอร์ของคุณ</string>
     <string name="record_error_already_used">PC ของคุณเชื่อมต่อกับแอปอื่นอยู่</string>
+    <string name="record_error_not_connected">ไม่มีการเชื่อมต่อกับ PC ของคุณ</string>
+    <string name="record_error_port_busy">แอปอื่นในโทรศัพท์เครื่องนี้กำลังใช้การเชื่อมต่อกับ PC ของคุณอยู่</string>
 
     <!-- Settings -->
 

@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">NO SE ENCONTRÓ JUEGO ACTIVO</string>
     <string name="record_inactive_message">INICIA EL JUEGO EN TU PC</string>
     <string name="record_error_already_used">Tu PC está conectado a otra app</string>
+    <string name="record_error_not_connected">Sin conexión con tu PC</string>
+    <string name="record_error_port_busy">Otra app de este teléfono ya está usando la conexión con tu PC</string>
 
     <!-- Settings -->
 

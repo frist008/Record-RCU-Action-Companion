@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">АКТИВНОЇ ГРИ НЕ ЗНАЙДЕНО</string>
     <string name="record_inactive_message">ЗАПУСТІТЬ ГРУ НА КОМП\'ЮТЕРІ</string>
     <string name="record_error_already_used">Ваш ПК підключено до іншого додатку</string>
+    <string name="record_error_not_connected">Немає з\'єднання з ПК</string>
+    <string name="record_error_port_busy">Інший додаток на цьому телефоні вже використовує з\'єднання з ПК</string>
 
     <!-- Settings -->
 

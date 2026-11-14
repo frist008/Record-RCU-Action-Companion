@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">未找到活跃游戏</string>
     <string name="record_inactive_message">请在电脑上启动游戏</string>
     <string name="record_error_already_used">您的电脑已连接到其他应用</string>
+    <string name="record_error_not_connected">未连接到您的电脑</string>
+    <string name="record_error_port_busy">此手机上的另一个应用已在使用与您电脑的连接</string>
 
     <!-- Settings -->
 

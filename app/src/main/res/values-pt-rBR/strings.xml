@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">NENHUM JOGO ATIVO</string>
     <string name="record_inactive_message">ABRA O JOGO NO SEU PC</string>
     <string name="record_error_already_used">Seu PC está conectado a outro app</string>
+    <string name="record_error_not_connected">Sem conexão com seu PC</string>
+    <string name="record_error_port_busy">Outro app neste celular já está usando a conexão com seu PC</string>
 
     <!-- Settings -->
 

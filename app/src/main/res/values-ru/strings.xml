@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">АКТИВНАЯ ИГРА НЕ НАЙДЕНА</string>
     <string name="record_inactive_message">ЗАПУСТИТЕ ИГРУ НА СВОЕМ КОМПЬЮТЕРЕ</string>
     <string name="record_error_already_used">Ваш ПК подключен к другому приложению</string>
+    <string name="record_error_not_connected">Нет соединения с ПК</string>
+    <string name="record_error_port_busy">Другое приложение на этом телефоне уже использует соединение с ПК</string>
 
     <!-- Settings -->
 

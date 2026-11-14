@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">لم يتم العثور على لعبة نشطة</string>
     <string name="record_inactive_message">شغّل اللعبة على جهاز الكمبيوتر</string>
     <string name="record_error_already_used">جهاز الكمبيوتر متصل بتطبيق آخر</string>
+    <string name="record_error_not_connected">لا يوجد اتصال بجهاز الكمبيوتر</string>
+    <string name="record_error_port_busy">تطبيق آخر على هذا الهاتف يستخدم الاتصال بجهاز الكمبيوتر بالفعل</string>
 
     <!-- Settings -->
 

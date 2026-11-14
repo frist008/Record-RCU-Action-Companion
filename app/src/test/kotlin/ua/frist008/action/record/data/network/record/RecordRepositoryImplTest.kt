@@ -16,7 +16,9 @@ import org.junit.Test
 import ua.frist008.action.record.data.local.device.DeviceDAO
 import ua.frist008.action.record.data.local.device.DeviceDBO
 import ua.frist008.action.record.data.network.DisconnectException
+import ua.frist008.action.record.data.network.NotConnectedException
 import ua.frist008.action.record.data.network.record.entity.RecordDTO
+import ua.frist008.action.record.features.record.entity.FixedRecordCommand
 
 class RecordRepositoryImplTest {
 
@@ -78,5 +80,28 @@ class RecordRepositoryImplTest {
     fun `recordFlow is not null on creation`() {
         every { recordNetworkSource.recordFlow } returns flowOf(null)
         assertNotNull(repository.recordFlow)
+    }
+
+    @Test
+    fun `sendCommand passes the command to networkSource`() = runTest {
+        coJustRun { recordNetworkSource.sendCommand(any()) }
+
+        repository.sendCommand(FixedRecordCommand.STOP)
+
+        coVerify { recordNetworkSource.sendCommand(FixedRecordCommand.STOP) }
+    }
+
+    @Test
+    fun `sendCommand throws NotConnectedException without a session`() = runTest {
+        coEvery { recordNetworkSource.sendCommand(any()) } throws NotConnectedException()
+
+        var thrown: Throwable? = null
+        try {
+            repository.sendCommand(FixedRecordCommand.START)
+        } catch (e: NotConnectedException) {
+            thrown = e
+        }
+
+        assertTrue(thrown is NotConnectedException)
     }
 }

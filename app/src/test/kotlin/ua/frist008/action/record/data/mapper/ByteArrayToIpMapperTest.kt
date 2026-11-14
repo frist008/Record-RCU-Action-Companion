@@ -44,4 +44,11 @@ class ByteArrayToIpMapperTest {
         val ip = ByteArrayToIpMapper(byteArrayWithIp(b4 = 1, b5 = 0, b6 = 168, b7 = 192))
         assertEquals("192.168.0.1", IpLongToStringMapper(ip))
     }
+
+    @Test
+    fun `reads the address unsigned`() {
+        // 192.168.0.1 = 0xC0A80001 = 3232235521
+        val ip = ByteArrayToIpMapper(byteArrayWithIp(b4 = 1, b5 = 0, b6 = 168, b7 = 192))
+        assertEquals(3232235521L, ip)
+    }
 }

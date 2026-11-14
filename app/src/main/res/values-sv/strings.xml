@@ -28,6 +28,8 @@
     <string name="record_inactive_subtitle">INGET AKTIVT SPEL HITTADES</string>
     <string name="record_inactive_message">STARTA SPELET PÅ DIN PC</string>
     <string name="record_error_already_used">Din PC är ansluten till en annan app</string>
+    <string name="record_error_not_connected">Ingen anslutning till din PC</string>
+    <string name="record_error_port_busy">En annan app på den här telefonen använder redan anslutningen till din PC</string>
 
     <!-- Settings -->
 
