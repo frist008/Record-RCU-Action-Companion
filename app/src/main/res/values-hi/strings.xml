@@ -7,9 +7,6 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">डिवाइस</string>
-    <string name="device_available">उपलब्ध</string>
-    <string name="device_not_available">अनुपलब्ध</string>
     <string name="device_searching">डिवाइस खोजा जा रहा है…</string>
     <string name="device_error_not_found">कोई डिवाइस नहीं मिला…</string>
     <string name="device_error_more">कैसे ठीक करें?</string>

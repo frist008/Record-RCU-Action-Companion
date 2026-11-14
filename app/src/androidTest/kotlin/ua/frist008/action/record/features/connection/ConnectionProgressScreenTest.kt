@@ -1,4 +1,4 @@
-package ua.frist008.action.record.features.device
+package ua.frist008.action.record.features.connection
 
 import androidx.activity.ComponentActivity
 import androidx.compose.ui.test.assertIsDisplayed
@@ -11,34 +11,34 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import ua.frist008.action.record.R
-import ua.frist008.action.record.features.device.entity.DevicesProgressState
+import ua.frist008.action.record.features.connection.entity.ConnectionProgressState
 import kotlin.time.Duration.Companion.seconds
 
 /**
- * Tests for [DevicesProgressScreen] – the screen shown while the app scans for devices
+ * Tests for [ConnectionProgressScreen] – the screen shown while the app scans for the PC
  * or after the scan timer has expired with no results found.
  *
  * These are pure composable tests: no ViewModels, no Hilt.
  * We pass state directly to the composable and assert on what is rendered.
  */
 @RunWith(AndroidJUnit4::class)
-class DevicesProgressScreenTest {
+class ConnectionProgressScreenTest {
 
     @get:Rule
     val composeTestRule = createAndroidComposeRule<ComponentActivity>()
 
     // ──────────────────────────────────────────────
-    // Loading state (DevicesProgressState with no duration)
+    // Loading state (ConnectionProgressState with no duration)
     // ──────────────────────────────────────────────
 
     /**
-     * While the device scanner is actively searching (isLoading = true),
+     * While the scanner is actively searching (isLoading = true),
      * the screen shows the "Searching for devices…" headline.
      */
     @Test
     fun showsSearchingText_whenLoading() {
         composeTestRule.setContent {
-            DevicesProgressScreen(state = DevicesProgressState())
+            ConnectionProgressScreen(state = ConnectionProgressState())
         }
 
         val expected = composeTestRule.activity.getString(R.string.device_searching)
@@ -46,17 +46,17 @@ class DevicesProgressScreenTest {
     }
 
     // ──────────────────────────────────────────────
-    // Not-found state (DevicesProgressState with a duration)
+    // Not-found state (ConnectionProgressState with a duration)
     // ──────────────────────────────────────────────
 
     /**
-     * After the scan timer elapses without finding any device (isLoading = false),
+     * After the scan timer elapses without finding any PC (isLoading = false),
      * the headline switches to "Device not found".
      */
     @Test
     fun showsNotFoundText_whenSearchTimeout() {
         composeTestRule.setContent {
-            DevicesProgressScreen(state = DevicesProgressState(5.seconds))
+            ConnectionProgressScreen(state = ConnectionProgressState(5.seconds))
         }
 
         val expected = composeTestRule.activity.getString(R.string.device_error_not_found)
@@ -70,10 +70,10 @@ class DevicesProgressScreenTest {
     @Test
     fun showsTimerCountdown_whenSearchTimeout() {
         composeTestRule.setContent {
-            DevicesProgressScreen(state = DevicesProgressState(5.seconds))
+            ConnectionProgressScreen(state = ConnectionProgressState(5.seconds))
         }
 
-        // DevicesProgressState(5.seconds) → timerValue = "6"
+        // ConnectionProgressState(5.seconds) → timerValue = "6"
         composeTestRule.onNodeWithText("6").assertIsDisplayed()
     }
 
@@ -87,18 +87,19 @@ class DevicesProgressScreenTest {
      */
     @Test
     fun invokesCallback_whenHelpLinkClicked() {
-        var clicked = false
+        var isClicked = false
 
         composeTestRule.setContent {
-            DevicesProgressScreen(
-                state = DevicesProgressState(),
-                onLinkCLick = { clicked = true },
+            ConnectionProgressScreen(
+                state = ConnectionProgressState(),
+                onLinkCLick = { isClicked = true },
             )
         }
 
         val buttonText = composeTestRule.activity.getString(R.string.device_error_more)
+
         composeTestRule.onNodeWithText(buttonText).performClick()
 
-        assertTrue("Help link callback was not invoked", clicked)
+        assertTrue("Help link callback was not invoked", isClicked)
     }
 }

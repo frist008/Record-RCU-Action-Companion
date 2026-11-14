@@ -7,9 +7,6 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Συσκευές</string>
-    <string name="device_available">Διαθέσιμο</string>
-    <string name="device_not_available">Μη διαθέσιμο</string>
     <string name="device_searching">Αναζήτηση συσκευών…</string>
     <string name="device_error_not_found">Δεν βρέθηκαν συσκευές…</string>
     <string name="device_error_more">Πώς να διορθωθεί;</string>
