@@ -24,7 +24,7 @@ sealed class NavCommand(
     @Serializable @Immutable
     data class Share(val url: String, @get:StringRes val messageRes: Int) : NavCommand()
 
-    @Serializable @Immutable object DevicesScreen : NavCommand()
-    @Serializable @Immutable data class RecordScreen(val pcId: Long) : NavCommand()
+    @Serializable @Immutable object ConnectionScreen : NavCommand()
+    @Serializable @Immutable object RecordScreen : NavCommand()
     @Serializable @Immutable object SettingsScreen : NavCommand()
 }

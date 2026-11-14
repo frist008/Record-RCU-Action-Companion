@@ -21,7 +21,6 @@ import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.ExperimentalTime
 
 data class RecordDomainEntity(
-    val deviceId: Long,
     val connected: Boolean,
     val recordModeType: RecordModeType,
     val fps: Int,

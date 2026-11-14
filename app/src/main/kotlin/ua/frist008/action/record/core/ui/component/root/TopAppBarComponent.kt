@@ -57,5 +57,5 @@ private fun BackArrowIcon(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun TopAppBarPreview() {
-    RootThemeScaffoldPreview(R.string.devices_title) {}
+    RootThemeScaffoldPreview(R.string.settings_title) {}
 }

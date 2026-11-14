@@ -30,8 +30,7 @@ data class RecordDTO(
     ),
 ) {
 
-    fun toDomain(deviceId: Long) = RecordDomainEntity(
-        deviceId = deviceId,
+    fun toDomain() = RecordDomainEntity(
         connected = connected,
         recordModeType = recordModeType,
         fps = fps,

@@ -7,9 +7,6 @@ import com.google.android.libraries.ads.mobile.sdk.banner.BannerAd
 import com.google.android.libraries.ads.mobile.sdk.banner.BannerAdEventCallback
 import com.google.android.libraries.ads.mobile.sdk.common.AdLoadCallback
 import com.google.android.libraries.ads.mobile.sdk.common.LoadAdError
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.Dispatchers
@@ -31,28 +28,23 @@ import ua.frist008.action.record.core.util.sound.vibrate
 import ua.frist008.action.record.data.network.DisconnectException
 import ua.frist008.action.record.data.network.NotConnectedException
 import ua.frist008.action.record.features.NavCommand
+import ua.frist008.action.record.features.NewRoot
 import ua.frist008.action.record.features.record.entity.FixedRecordCommand
 import ua.frist008.action.record.features.record.entity.RecordSuccessState
 import ua.frist008.action.record.features.record.entity.StreamingRecordCommand
 import java.net.BindException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
+import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
 
-@HiltViewModel(assistedFactory = RecordViewModel.Factory::class)
-class RecordViewModel @AssistedInject constructor(
-    @Assisted val pcId: Long,
+@HiltViewModel class RecordViewModel @Inject constructor(
     dependencies: PresentationDependenciesDelegate,
     private val recordRepository: RecordRepository,
     private val vibrator: Vibrator,
 ) : BaseViewModel(dependencies) {
 
-    @AssistedFactory
-    interface Factory {
-        fun create(pcId: Long): RecordViewModel
-    }
-
-    private var autoBack: Job? = null
+    private val autoBackJob = atomic<Job?>(null)
     private val stateMutex = Mutex()
 
     /**
@@ -84,7 +76,7 @@ class RecordViewModel @AssistedInject constructor(
         launch {
             while (viewModelScope.isActive) {
                 try {
-                    recordRepository.connect(pcId)
+                    recordRepository.connect()
                 } catch (e: SocketTimeoutException) {
                     stateMutex.withLock {
                         mutableState.emit(UIState.Progress())
@@ -101,8 +93,7 @@ class RecordViewModel @AssistedInject constructor(
                     if (it.connected) {
                         val state = it.toUI(state.value as? RecordSuccessState?)
                         mutableState.emit(state)
-                        autoBack?.cancel()
-                        autoBack = null
+                        autoBackJob.value?.cancel()
                         Analytics.log(state)
                     } else {
                         mutableState.emit(UIState.Progress())
@@ -157,11 +148,18 @@ class RecordViewModel @AssistedInject constructor(
         }
     }
 
+    /** Opens the search when the PC stays out of reach for [AUTO_BACK_DELAY], keeping a countdown */
     private fun startAutoBack() {
-        autoBack = launch {
-            delay(10.seconds)
-            navigator.emit(NavCommand.BackCommand())
+        if (autoBackJob.value?.isActive != true) {
+            launch(autoBackJob) {
+                delay(AUTO_BACK_DELAY)
+                openConnection()
+            }
         }
+    }
+
+    private suspend fun openConnection() {
+        navigator.emit(NewRoot(NavCommand.ConnectionScreen))
     }
 
     private fun changeBannerSize() {
@@ -177,7 +175,7 @@ class RecordViewModel @AssistedInject constructor(
 
     override suspend fun onFailure(cause: Throwable) {
         when (cause) {
-            is DisconnectException -> navigator.emit(NavCommand.BackCommand())
+            is DisconnectException -> openConnection()
 
             is NotConnectedException,
             is SocketTimeoutException,
@@ -185,19 +183,30 @@ class RecordViewModel @AssistedInject constructor(
 
             is BindException -> {
                 toastFlow.emit(R.string.record_error_port_busy)
-                navigator.emit(NavCommand.BackCommand())
+                delay(RECONNECT_DELAY)
+                openConnection()
             }
 
             is ConnectException -> {
                 toastFlow.emit(R.string.record_error_already_used)
-                navigator.emit(NavCommand.BackCommand())
+                delay(RECONNECT_DELAY)
+                openConnection()
             }
 
             else -> {
                 toastFlow.emit(R.string.error_unknown_error)
-                navigator.emit(NavCommand.BackCommand())
                 super.onFailure(cause)
+                delay(RECONNECT_DELAY)
+                openConnection()
             }
         }
+    }
+
+    companion object {
+
+        private val AUTO_BACK_DELAY = 10.seconds
+
+        /** Pause before the search, which reconnects at once, against a loop of refusals */
+        private val RECONNECT_DELAY = 5.seconds
     }
 }

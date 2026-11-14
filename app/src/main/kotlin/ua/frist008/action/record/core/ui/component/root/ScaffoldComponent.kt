@@ -54,5 +54,5 @@ fun DefaultScaffold(
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 private fun ScaffoldPreview() {
-    RootThemeScaffoldPreview(R.string.devices_title) {}
+    RootThemeScaffoldPreview(R.string.settings_title) {}
 }

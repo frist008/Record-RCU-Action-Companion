@@ -54,8 +54,6 @@ compose-navigation = "1.2.1"
 firebase-bom = "35.2.0"
 # ad
 ads = "1.6.0"
-# database
-room = "2.8.5"
 # di
 di-hilt = "2.60.1"
 di-hilt-navigation-compose = "1.4.0"
@@ -99,6 +97,7 @@ jetpack-common = { module = "androidx.lifecycle:lifecycle-common-java8", version
 jetpack-splash = { module = "androidx.core:core-splashscreen", version.ref = "jetpack-splash" }
 jetpack-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "jetpack-lifecycle" }
 jetpack-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "jetpack-lifecycle" }
+jetpack-viewmodel-navigation = { module = "androidx.lifecycle:lifecycle-viewmodel-navigation3", version.ref = "jetpack-lifecycle" }
 # compose
 compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
 compose-foundation = { module = "androidx.compose.foundation:foundation" }
@@ -121,9 +120,6 @@ firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 firebase-perf = { module = "com.google.firebase:firebase-perf" }
 # ad
 ads = { module = "com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk", version.ref = "ads" }
-# database
-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 # di
 di-hilt = { module = "com.google.dagger:hilt-android", version.ref = "di-hilt" }
 di-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "di-hilt-navigation-compose" }
@@ -174,9 +170,6 @@ google-services = { id = "com.google.gms.google-services", version.ref = "plugin
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "plugin-firebase-crashlytics" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "plugin-firebase-perf" }
 
-# database
-room = { id = "androidx.room", version.ref = "room" }
-
 [bundles]
 
 # kotlin
@@ -205,6 +198,7 @@ ui = [
 navigation = [
     "compose-navigation-ui",
     "compose-navigation-runtime",
+    "jetpack-viewmodel-navigation",
 ]
 
 # compose
@@ -227,8 +221,6 @@ firebase-bom = [
     "firebase-crashlytics",
     "firebase-perf",
 ]
-database = ["room-runtime"]
-database-compiler = ["room-compiler"]
 di = ["di-hilt", "di-hilt-navigation-compose"]
 di-compiler = ["di-hilt-compiler"]
 coroutines-bom = [
