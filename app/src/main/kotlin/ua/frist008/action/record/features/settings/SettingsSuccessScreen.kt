@@ -60,6 +60,10 @@ fun SettingsSuccessScreen(
         SoundsSection(state, actions)
         DimmingSection(state, actions)
         AppSection(state, actions)
+
+        if (state.isAdsPrivacyVisible) {
+            PrivacySection(actions)
+        }
     }
 }
 
@@ -159,6 +163,17 @@ private fun ColumnScope.AppSection(state: SettingsSuccessState, actions: Setting
         summary = stringResource(R.string.settings_version_pattern, state.versionName),
         icon = Icons.ChevronRight,
         onClick = actions::onAboutClick,
+    )
+}
+
+@Composable
+private fun ColumnScope.PrivacySection(actions: SettingsActions) {
+    SectionHeader(stringResource(R.string.settings_section_privacy))
+    LinkRow(
+        title = stringResource(R.string.settings_ads),
+        summary = stringResource(R.string.settings_ads_summary),
+        icon = Icons.OpenInNew,
+        onClick = actions::onAdsPrivacyClick,
     )
 }
 
@@ -302,6 +317,7 @@ private fun SettingsSuccessScreenOffPreview() {
         state = SettingsSuccessState.preview().copy(
             isDurationSound = false,
             isLanguageVisible = false,
+            isAdsPrivacyVisible = false,
         ),
         actions = object : SettingsActions {},
     )

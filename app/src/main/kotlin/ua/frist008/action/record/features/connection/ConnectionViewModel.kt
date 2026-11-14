@@ -14,6 +14,7 @@ import ua.frist008.action.record.core.presentation.dependency.PresentationDepend
 import ua.frist008.action.record.core.util.concurrent.timer
 import ua.frist008.action.record.features.NavCommand
 import ua.frist008.action.record.features.NewRoot
+import ua.frist008.action.record.features.connection.entity.ConnectionPermissionState
 import ua.frist008.action.record.features.connection.entity.ConnectionProgressState
 import java.io.IOException
 import java.net.SocketException
@@ -31,10 +32,54 @@ import kotlin.time.Duration.Companion.seconds
     private val timerJob = atomic<Job?>(null)
     private val scanJob = atomic<Job?>(null)
     private val disposeJob = atomic<Job?>(null)
+    private val isPermissionDenied = atomic(false)
+
+    /** The permission the button of [ConnectionPermissionState] asks Android for */
+    val localNetworkPermission: String get() = connectionRepository.localNetworkPermission
 
     fun onInit() {
         Timber.d("onInit")
         disposeJob.value?.cancel()
+
+        if (connectionRepository.isLocalNetworkGranted()) {
+            startSearch()
+        } else {
+            launch {
+                mutableState.emit(ConnectionPermissionState(isPermissionDenied.value))
+            }
+        }
+    }
+
+    /**
+     * Starts the search once the user gave the access to the local network, and otherwise leaves
+     * only the settings of Android to give it.
+     *
+     * @param isGranted whether the user gave it.
+     */
+    fun onPermissionResult(isGranted: Boolean) {
+        Timber.i("local network permission: $isGranted")
+
+        if (isGranted) {
+            startSearch()
+        } else {
+            isPermissionDenied.value = true
+            launch {
+                mutableState.emit(ConnectionPermissionState(isDenied = true))
+            }
+        }
+    }
+
+    fun onSettingsClick() {
+        launch(Dispatchers.Main.immediate) {
+            navigator.emit(NavCommand.AppDetailsSettings)
+        }
+    }
+
+    private fun startSearch() {
+        if (mutableState.value is ConnectionPermissionState) {
+            launch { mutableState.emit(ConnectionProgressState()) }
+        }
+
         restartTimer()
         restartScan()
     }
@@ -124,7 +169,11 @@ import kotlin.time.Duration.Companion.seconds
 
         launch(disposeJob) {
             delay(1.seconds)
-            mutableState.emit(ConnectionProgressState())
+
+            // The ask for the permission stays on screen until the user is back from Android
+            if (mutableState.value !is ConnectionPermissionState) {
+                mutableState.emit(ConnectionProgressState())
+            }
         }
     }
 

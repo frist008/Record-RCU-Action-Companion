@@ -3,6 +3,8 @@ package ua.frist008.action.record.data.local.settings
 import android.app.LocaleManager
 import android.content.Context
 import android.os.Build
+import com.google.android.ump.ConsentInformation
+import com.google.android.ump.UserMessagingPlatform
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import ua.frist008.action.record.features.settings.SettingsRepository
@@ -30,4 +32,8 @@ class SettingsRepositoryImpl @Inject constructor(
 
         return locale.getDisplayName(locale).replaceFirstChar { it.titlecase(locale) }
     }
+
+    override fun isAdsPrivacyRequired(): Boolean =
+        UserMessagingPlatform.getConsentInformation(context).privacyOptionsRequirementStatus ==
+            ConsentInformation.PrivacyOptionsRequirementStatus.REQUIRED
 }

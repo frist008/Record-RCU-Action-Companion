@@ -25,11 +25,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
-import androidx.compose.runtime.getValue
 import androidx.compose.runtime.key
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -101,12 +97,12 @@ fun RecordSuccessScreen(
         ) {
             HeaderInfo(engine = state.engine, live = state.live, storage = state.storage)
             FpsContainer(
-                fpsState = state.fpsState,
+                fps = state.fps.toString(),
                 isPaused = state.buttonsData.isPaused,
                 isRecording = state.buttonsData.isRecording,
             )
             TimeComponent(
-                timeState = state.timeState,
+                time = state.time,
                 isWebCamVisible = state.isWebCamIndicatorVisible,
                 isMicVisible = state.isMicIndicatorVisible,
             )
@@ -231,8 +227,8 @@ private fun RowScope.StorageComponent(storage: StorageState) {
         StorageTitleText(PaddingValues(4.dp))
         StorageValueText(
             paddingValues = PaddingValues(4.dp),
-            sizeState = storage.freeSpaceState,
-            timeState = storage.timeRemainingState,
+            size = storage.freeSpace,
+            time = storage.timeRemaining,
             pattern = storage.pattern,
             errorType = storage.errorType,
         )
@@ -251,13 +247,11 @@ fun StorageTitleText(paddingValues: PaddingValues) {
 @Composable
 fun StorageValueText(
     paddingValues: PaddingValues,
-    sizeState: State<Float>,
-    timeState: State<String>,
+    size: Float,
+    time: String,
     @StringRes pattern: Int,
     errorType: ErrorType,
 ) {
-    val size by remember { sizeState }
-    val time by remember { timeState }
     val color = errorType.getColor(AppTheme.colors)
 
     Text(
@@ -275,7 +269,7 @@ fun StorageValueText(
 
 @Composable
 private fun ColumnScope.FpsContainer(
-    fpsState: State<String>,
+    fps: String,
     isPaused: Boolean,
     isRecording: Boolean,
 ) {
@@ -291,8 +285,6 @@ private fun ColumnScope.FpsContainer(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
         ) {
-            val fps by remember { fpsState }
-
             Text(
                 text = fps,
                 style = AppTheme.typography.displayLarge,
@@ -331,12 +323,10 @@ private fun RowScope.FpsSuffix(isPaused: Boolean, isRecording: Boolean) {
 
 @Composable
 private fun ColumnScope.TimeComponent(
-    timeState: MutableState<String>,
+    time: String,
     isWebCamVisible: Boolean,
     isMicVisible: Boolean,
 ) {
-    val time by remember { timeState }
-
     Row(
         modifier = Modifier.padding(vertical = 22.dp),
         verticalAlignment = Alignment.CenterVertically,

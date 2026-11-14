@@ -141,7 +141,6 @@ kotlin {
             "androidx.compose.foundation.ExperimentalFoundationApi",
             "androidx.compose.foundation.layout.ExperimentalLayoutApi",
             "androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi",
-            "kotlinx.coroutines.ObsoleteCoroutinesApi",
         )
     }
 }
@@ -169,7 +168,8 @@ dependencies {
     // Framework
     implementation(libs.bundles.di)
     ksp(libs.bundles.di.compiler)
-    implementation(libs.ads)
+    implementation(libs.ads.asProvider())
+    implementation(libs.ads.consent)
     implementation(platform(libs.kotlin.coroutines.bom))
     implementation(libs.bundles.coroutines.bom)
     implementation(libs.data.store)

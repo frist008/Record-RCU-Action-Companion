@@ -21,7 +21,7 @@ sdk-min = "26"
 sdk-compile = "37"
 sdk-compile-minor = "2"
 sdk-compile-extension = "15" # for compileSdk 35
-sdk-target = "36"
+sdk-target = "37"
 jvm-target = "17"
 jvm-target-kotlin = "17"
 
@@ -54,6 +54,7 @@ compose-navigation = "1.2.1"
 firebase-bom = "35.2.0"
 # ad
 ads = "1.6.0"
+ads-consent = "4.0.0"
 # di
 di-hilt = "2.60.1"
 di-hilt-navigation-compose = "1.4.0"
@@ -120,6 +121,7 @@ firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 firebase-perf = { module = "com.google.firebase:firebase-perf" }
 # ad
 ads = { module = "com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk", version.ref = "ads" }
+ads-consent = { module = "com.google.android.ump:user-messaging-platform", version.ref = "ads-consent" }
 # di
 di-hilt = { module = "com.google.dagger:hilt-android", version.ref = "di-hilt" }
 di-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "di-hilt-navigation-compose" }

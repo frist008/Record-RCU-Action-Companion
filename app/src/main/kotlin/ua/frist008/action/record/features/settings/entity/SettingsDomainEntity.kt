@@ -33,7 +33,12 @@ data class SettingsDomainEntity(
     val isFirstTouchOnlyWakes: Boolean = false,
 ) {
 
-    fun toUI(isLanguageVisible: Boolean, languageName: String?, versionName: String) =
+    fun toUI(
+        isLanguageVisible: Boolean,
+        languageName: String?,
+        versionName: String,
+        isAdsPrivacyVisible: Boolean,
+    ) =
         SettingsSuccessState(
             minFreeSpaceGb = minFreeSpace.gb.toInt(),
             isLowSpaceSound = isLowSpaceSound,
@@ -48,5 +53,6 @@ data class SettingsDomainEntity(
             isLanguageVisible = isLanguageVisible,
             languageName = languageName,
             versionName = versionName,
+            isAdsPrivacyVisible = isAdsPrivacyVisible,
         )
 }

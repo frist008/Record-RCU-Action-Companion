@@ -96,6 +96,11 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
         @Composable
         get() = buttonColors.copy(containerColor = Color.Transparent)
 
+    /** The filled button of the one step a screen asks the user for, such as giving a permission */
+    val accentButtonColors: ButtonColors
+        @Composable
+        get() = buttonColors.copy(containerColor = Palette.PURPLE_ACCENT, contentColor = onPrimary)
+
     val switchColors: SwitchColors
         @Composable
         get() = SwitchDefaults.colors(
@@ -178,8 +183,9 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
 
     val PURPLE_DARK = Color(PreviewPalette.PURPLE_DARK_LONG)
     val PURPLE_LIGHT = Color(PreviewPalette.PURPLE_LIGHT_LONG)
+    val PURPLE_ACCENT = Color(0xFF5E47D2)
 
-    val SWITCH_TRACK_ON = Color(0xFF5E47D2)
+    val SWITCH_TRACK_ON = PURPLE_ACCENT
     val SWITCH_THUMB_ON = Color(0xFF0F005D)
     val SWITCH_TRACK_OFF = Color(0xFFE6E0E9)
     val SWITCH_OUTLINE_OFF = Color(0xFF79747E)
