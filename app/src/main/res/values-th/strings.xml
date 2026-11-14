@@ -20,6 +20,10 @@
     <string name="record_action_record">เล่น</string>
     <string name="record_action_pause">หยุดชั่วคราว</string>
     <string name="record_action_stop">หยุด</string>
+    <string name="record_indicator_webcam">กล้องกำลังบันทึก</string>
+    <string name="record_indicator_mic">ไมโครโฟนกำลังบันทึก</string>
+    <string name="record_sound_on">เปิดเสียง</string>
+    <string name="record_sound_off">ปิดเสียง</string>
     <string name="record_inactive_title_record">บันทึก</string>
     <string name="record_inactive_title_stream">สตรีม</string>
     <string name="record_inactive_subtitle">ไม่พบเกมที่กำลังเล่น</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">การตั้งค่า</string>
+    <string name="settings_min_free_space">พื้นที่ขั้นต่ำ</string>
+    <string name="settings_min_free_space_summary">ต่ำกว่านี้ Storage จะเป็นสีแดง</string>
+    <string name="settings_section_sounds">เสียง</string>
+    <string name="settings_low_space">พื้นที่เหลือน้อย</string>
+    <string name="settings_low_space_summary">ส่งเสียงเมื่อพื้นที่ต่ำกว่าขั้นต่ำ</string>
+    <string name="settings_record_button">ปุ่ม “บันทึก”</string>
+    <string name="settings_pause_button">ปุ่ม “หยุดชั่วคราว”</string>
+    <string name="settings_stop_button">ปุ่ม “หยุด”</string>
+    <string name="settings_button_sound_summary">เสียงเมื่อกด</string>
+    <string name="settings_duration">เวลาบันทึก</string>
+    <string name="settings_duration_summary">ส่งเสียงเมื่อการบันทึกถึงเวลาด้านล่าง</string>
+    <string name="settings_duration_after">ส่งเสียงหลังจาก</string>
+    <string name="settings_duration_after_summary">ตามตัวจับเวลาการบันทึก</string>
+    <string name="settings_section_dimming">หรี่หน้าจอ</string>
+    <string name="settings_dim_after">หรี่หลังจาก</string>
+    <string name="settings_dim_after_summary">เมื่อไม่ได้แตะ</string>
+    <string name="settings_dim_to">หรี่ถึง</string>
+    <string name="settings_dim_to_summary">แตะเพื่อคืนความสว่าง</string>
+    <string name="settings_first_touch">การแตะครั้งแรก</string>
+    <string name="settings_first_touch_summary">คืนความสว่างเท่านั้น ไม่กดปุ่ม</string>
+    <string name="settings_section_app">แอป</string>
+    <string name="settings_language">ภาษาของแอป</string>
+    <string name="settings_language_system">ระบบ</string>
+    <string name="settings_about">เกี่ยวกับ</string>
+    <string name="settings_version_pattern">เวอร์ชัน %1$s</string>
+    <string name="settings_minutes_pattern">%1$d นาที</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">ลด: %1$s</string>
+    <string name="settings_increase_pattern">เพิ่ม: %1$s</string>
 
 </resources>

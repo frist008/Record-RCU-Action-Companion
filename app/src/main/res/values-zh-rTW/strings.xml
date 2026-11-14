@@ -20,6 +20,10 @@
     <string name="record_action_record">播放</string>
     <string name="record_action_pause">暫停</string>
     <string name="record_action_stop">停止</string>
+    <string name="record_indicator_webcam">攝影機正在錄製</string>
+    <string name="record_indicator_mic">麥克風正在錄製</string>
+    <string name="record_sound_on">聲音已開啟</string>
+    <string name="record_sound_off">聲音已關閉</string>
     <string name="record_inactive_title_record">錄製</string>
     <string name="record_inactive_title_stream">直播</string>
     <string name="record_inactive_subtitle">未找到活躍遊戲</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">設定</string>
+    <string name="settings_min_free_space">最小可用空間</string>
+    <string name="settings_min_free_space_summary">低於此值時 Storage 變紅</string>
+    <string name="settings_section_sounds">聲音</string>
+    <string name="settings_low_space">空間不足</string>
+    <string name="settings_low_space_summary">空間低於最小值時發出提示音</string>
+    <string name="settings_record_button">「錄製」按鈕</string>
+    <string name="settings_pause_button">「暫停」按鈕</string>
+    <string name="settings_stop_button">「停止」按鈕</string>
+    <string name="settings_button_sound_summary">按下時發聲</string>
+    <string name="settings_duration">錄製時長</string>
+    <string name="settings_duration_summary">錄製達到下方時長時發出提示音</string>
+    <string name="settings_duration_after">提示時間</string>
+    <string name="settings_duration_after_summary">依錄製計時</string>
+    <string name="settings_section_dimming">螢幕調暗</string>
+    <string name="settings_dim_after">調暗等待</string>
+    <string name="settings_dim_after_summary">無觸碰時</string>
+    <string name="settings_dim_to">調暗至</string>
+    <string name="settings_dim_to_summary">觸碰即恢復亮度</string>
+    <string name="settings_first_touch">首次觸碰</string>
+    <string name="settings_first_touch_summary">僅恢復亮度，不按下按鈕</string>
+    <string name="settings_section_app">應用程式</string>
+    <string name="settings_language">應用程式語言</string>
+    <string name="settings_language_system">跟隨系統</string>
+    <string name="settings_about">關於</string>
+    <string name="settings_version_pattern">版本 %1$s</string>
+    <string name="settings_minutes_pattern">%1$d 分鐘</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">減少：%1$s</string>
+    <string name="settings_increase_pattern">增加：%1$s</string>
 
 </resources>

@@ -20,6 +20,10 @@
     <string name="record_action_record">Запис</string>
     <string name="record_action_pause">Пауза</string>
     <string name="record_action_stop">Стоп</string>
+    <string name="record_indicator_webcam">Камера записує</string>
+    <string name="record_indicator_mic">Мікрофон записує</string>
+    <string name="record_sound_on">Звуки увімкнено</string>
+    <string name="record_sound_off">Звуки вимкнено</string>
     <string name="record_inactive_title_record">ЗАПИС</string>
     <string name="record_inactive_title_stream">ТРАНСЛЯЦІЯ</string>
     <string name="record_inactive_subtitle">АКТИВНОЇ ГРИ НЕ ЗНАЙДЕНО</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Налаштування</string>
+    <string name="settings_min_free_space">Мінімум місця</string>
+    <string name="settings_min_free_space_summary">Менше — Storage стане червоним</string>
+    <string name="settings_section_sounds">Звуки</string>
+    <string name="settings_low_space">Мало місця</string>
+    <string name="settings_low_space_summary">Сигнал, коли місця менше за мінімум</string>
+    <string name="settings_record_button">Кнопка «Запис»</string>
+    <string name="settings_pause_button">Кнопка «Пауза»</string>
+    <string name="settings_stop_button">Кнопка «Стоп»</string>
+    <string name="settings_button_sound_summary">Звук під час натискання</string>
+    <string name="settings_duration">Час запису</string>
+    <string name="settings_duration_summary">Сигнал, коли запис дійде до часу нижче</string>
+    <string name="settings_duration_after">Сигнал через</string>
+    <string name="settings_duration_after_summary">За таймером запису</string>
+    <string name="settings_section_dimming">Затемнення екрана</string>
+    <string name="settings_dim_after">Затемнити через</string>
+    <string name="settings_dim_after_summary">Без дотиків</string>
+    <string name="settings_dim_to">Затемнити до</string>
+    <string name="settings_dim_to_summary">Дотик поверне яскравість</string>
+    <string name="settings_first_touch">Перший дотик</string>
+    <string name="settings_first_touch_summary">Лише повернути яскравість, кнопку не натискати</string>
+    <string name="settings_section_app">Застосунок</string>
+    <string name="settings_language">Мова застосунку</string>
+    <string name="settings_language_system">Системна</string>
+    <string name="settings_about">Про застосунок</string>
+    <string name="settings_version_pattern">Версія %1$s</string>
+    <string name="settings_minutes_pattern">%1$d хв</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Зменшити: %1$s</string>
+    <string name="settings_increase_pattern">Збільшити: %1$s</string>
 
 </resources>

@@ -20,6 +20,10 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pausa</string>
     <string name="record_action_stop">Stop</string>
+    <string name="record_indicator_webcam">La videocamera sta registrando</string>
+    <string name="record_indicator_mic">Il microfono sta registrando</string>
+    <string name="record_sound_on">Suoni attivi</string>
+    <string name="record_sound_off">Suoni disattivati</string>
     <string name="record_inactive_title_record">REGISTRAZIONE</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">NESSUN GIOCO ATTIVO</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Impostazioni</string>
+    <string name="settings_min_free_space">Spazio minimo</string>
+    <string name="settings_min_free_space_summary">Sotto, Storage diventa rosso</string>
+    <string name="settings_section_sounds">Suoni</string>
+    <string name="settings_low_space">Spazio scarso</string>
+    <string name="settings_low_space_summary">Segnale quando lo spazio scende sotto il minimo</string>
+    <string name="settings_record_button">Pulsante «Registra»</string>
+    <string name="settings_pause_button">Pulsante «Pausa»</string>
+    <string name="settings_stop_button">Pulsante «Stop»</string>
+    <string name="settings_button_sound_summary">Suono alla pressione</string>
+    <string name="settings_duration">Durata registrazione</string>
+    <string name="settings_duration_summary">Segnale quando la registrazione raggiunge il tempo sotto</string>
+    <string name="settings_duration_after">Segnale dopo</string>
+    <string name="settings_duration_after_summary">Secondo il timer di registrazione</string>
+    <string name="settings_section_dimming">Oscuramento schermo</string>
+    <string name="settings_dim_after">Oscura dopo</string>
+    <string name="settings_dim_after_summary">Senza tocchi</string>
+    <string name="settings_dim_to">Oscura al</string>
+    <string name="settings_dim_to_summary">Un tocco ripristina la luminosità</string>
+    <string name="settings_first_touch">Primo tocco</string>
+    <string name="settings_first_touch_summary">Solo ripristinare la luminosità, senza premere il pulsante</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_language">Lingua dell’app</string>
+    <string name="settings_language_system">Sistema</string>
+    <string name="settings_about">Informazioni</string>
+    <string name="settings_version_pattern">Versione %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">Diminuisci: %1$s</string>
+    <string name="settings_increase_pattern">Aumenta: %1$s</string>
 
 </resources>

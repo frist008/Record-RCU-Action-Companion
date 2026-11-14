@@ -20,6 +20,10 @@
     <string name="record_action_record">تشغيل</string>
     <string name="record_action_pause">إيقاف مؤقت</string>
     <string name="record_action_stop">إيقاف</string>
+    <string name="record_indicator_webcam">الكاميرا تسجّل</string>
+    <string name="record_indicator_mic">الميكروفون يسجّل</string>
+    <string name="record_sound_on">الأصوات مفعّلة</string>
+    <string name="record_sound_off">الأصوات متوقفة</string>
     <string name="record_inactive_title_record">تسجيل</string>
     <string name="record_inactive_title_stream">بث</string>
     <string name="record_inactive_subtitle">لم يتم العثور على لعبة نشطة</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">الإعدادات</string>
+    <string name="settings_min_free_space">الحد الأدنى للمساحة</string>
+    <string name="settings_min_free_space_summary">أقل منه يصبح Storage أحمر</string>
+    <string name="settings_section_sounds">الأصوات</string>
+    <string name="settings_low_space">مساحة منخفضة</string>
+    <string name="settings_low_space_summary">تنبيه عندما تقل المساحة عن الحد الأدنى</string>
+    <string name="settings_record_button">زر «تسجيل»</string>
+    <string name="settings_pause_button">زر «إيقاف مؤقت»</string>
+    <string name="settings_stop_button">زر «إيقاف»</string>
+    <string name="settings_button_sound_summary">صوت عند الضغط</string>
+    <string name="settings_duration">مدة التسجيل</string>
+    <string name="settings_duration_summary">تنبيه عندما يصل التسجيل إلى الوقت أدناه</string>
+    <string name="settings_duration_after">تنبيه بعد</string>
+    <string name="settings_duration_after_summary">حسب مؤقت التسجيل</string>
+    <string name="settings_section_dimming">تعتيم الشاشة</string>
+    <string name="settings_dim_after">التعتيم بعد</string>
+    <string name="settings_dim_after_summary">بدون لمس</string>
+    <string name="settings_dim_to">التعتيم إلى</string>
+    <string name="settings_dim_to_summary">اللمس يعيد السطوع</string>
+    <string name="settings_first_touch">اللمسة الأولى</string>
+    <string name="settings_first_touch_summary">إعادة السطوع فقط دون ضغط الزر</string>
+    <string name="settings_section_app">التطبيق</string>
+    <string name="settings_language">لغة التطبيق</string>
+    <string name="settings_language_system">النظام</string>
+    <string name="settings_about">حول التطبيق</string>
+    <string name="settings_version_pattern">الإصدار %1$s</string>
+    <string name="settings_minutes_pattern">%1$d دقيقة</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">تقليل: %1$s</string>
+    <string name="settings_increase_pattern">زيادة: %1$s</string>
 
 </resources>

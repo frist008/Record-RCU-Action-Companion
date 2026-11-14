@@ -20,6 +20,10 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pauza</string>
     <string name="record_action_stop">Stop</string>
+    <string name="record_indicator_webcam">Kamera nagrywa</string>
+    <string name="record_indicator_mic">Mikrofon nagrywa</string>
+    <string name="record_sound_on">Dźwięki włączone</string>
+    <string name="record_sound_off">Dźwięki wyłączone</string>
     <string name="record_inactive_title_record">NAGRYWANIE</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">NIE ZNALEZIONO AKTYWNEJ GRY</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Ustawienia</string>
+    <string name="settings_min_free_space">Minimum miejsca</string>
+    <string name="settings_min_free_space_summary">Poniżej Storage zmieni kolor na czerwony</string>
+    <string name="settings_section_sounds">Dźwięki</string>
+    <string name="settings_low_space">Mało miejsca</string>
+    <string name="settings_low_space_summary">Sygnał, gdy miejsca jest mniej niż minimum</string>
+    <string name="settings_record_button">Przycisk „Nagrywaj”</string>
+    <string name="settings_pause_button">Przycisk „Pauza”</string>
+    <string name="settings_stop_button">Przycisk „Stop”</string>
+    <string name="settings_button_sound_summary">Dźwięk przy naciśnięciu</string>
+    <string name="settings_duration">Czas nagrania</string>
+    <string name="settings_duration_summary">Sygnał, gdy nagranie osiągnie czas poniżej</string>
+    <string name="settings_duration_after">Sygnał po</string>
+    <string name="settings_duration_after_summary">Według licznika nagrania</string>
+    <string name="settings_section_dimming">Przyciemnianie ekranu</string>
+    <string name="settings_dim_after">Przyciemnij po</string>
+    <string name="settings_dim_after_summary">Bez dotyku</string>
+    <string name="settings_dim_to">Przyciemnij do</string>
+    <string name="settings_dim_to_summary">Dotyk przywróci jasność</string>
+    <string name="settings_first_touch">Pierwszy dotyk</string>
+    <string name="settings_first_touch_summary">Tylko przywróć jasność, nie naciskaj przycisku</string>
+    <string name="settings_section_app">Aplikacja</string>
+    <string name="settings_language">Język aplikacji</string>
+    <string name="settings_language_system">Systemowy</string>
+    <string name="settings_about">O aplikacji</string>
+    <string name="settings_version_pattern">Wersja %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">Zmniejsz: %1$s</string>
+    <string name="settings_increase_pattern">Zwiększ: %1$s</string>
 
 </resources>

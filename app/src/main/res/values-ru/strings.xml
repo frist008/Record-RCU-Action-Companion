@@ -20,6 +20,10 @@
     <string name="record_action_record">Запись</string>
     <string name="record_action_pause">Пауза</string>
     <string name="record_action_stop">Стоп</string>
+    <string name="record_indicator_webcam">Камера пишет</string>
+    <string name="record_indicator_mic">Микрофон пишет</string>
+    <string name="record_sound_on">Звуки включены</string>
+    <string name="record_sound_off">Звуки выключены</string>
     <string name="record_inactive_title_record">ЗАПИСЬ</string>
     <string name="record_inactive_title_stream">ТРАНСЛЯЦИЯ</string>
     <string name="record_inactive_subtitle">АКТИВНАЯ ИГРА НЕ НАЙДЕНА</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Настройки</string>
+    <string name="settings_min_free_space">Минимум места</string>
+    <string name="settings_min_free_space_summary">Меньше — Storage станет красным</string>
+    <string name="settings_section_sounds">Звуки</string>
+    <string name="settings_low_space">Мало места</string>
+    <string name="settings_low_space_summary">Сигнал, когда места меньше минимума</string>
+    <string name="settings_record_button">Кнопка «Запись»</string>
+    <string name="settings_pause_button">Кнопка «Пауза»</string>
+    <string name="settings_stop_button">Кнопка «Стоп»</string>
+    <string name="settings_button_sound_summary">Звук при нажатии</string>
+    <string name="settings_duration">Время записи</string>
+    <string name="settings_duration_summary">Сигнал, когда запись дойдёт до времени ниже</string>
+    <string name="settings_duration_after">Сигнал через</string>
+    <string name="settings_duration_after_summary">По таймеру записи</string>
+    <string name="settings_section_dimming">Затемнение экрана</string>
+    <string name="settings_dim_after">Затемнить через</string>
+    <string name="settings_dim_after_summary">Без касаний</string>
+    <string name="settings_dim_to">Затемнить до</string>
+    <string name="settings_dim_to_summary">Касание вернёт яркость</string>
+    <string name="settings_first_touch">Первое касание</string>
+    <string name="settings_first_touch_summary">Только вернуть яркость, кнопку не нажимать</string>
+    <string name="settings_section_app">Приложение</string>
+    <string name="settings_language">Язык приложения</string>
+    <string name="settings_language_system">Системный</string>
+    <string name="settings_about">О приложении</string>
+    <string name="settings_version_pattern">Версия %1$s</string>
+    <string name="settings_minutes_pattern">%1$d мин</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Уменьшить: %1$s</string>
+    <string name="settings_increase_pattern">Увеличить: %1$s</string>
 
 </resources>
