@@ -1,19 +1,29 @@
 package ua.frist008.action.record.data.network
 
-import ua.frist008.action.record.core.util.common.ByteConst
-import ua.frist008.action.record.core.util.common.ShortConst
+/** Constants of the Mirillis Action! remote-control protocol the radar and the record session share */
+object NetworkConst {
 
-@Suppress("MemberVisibilityCanBePrivate") object NetworkConst {
+    /** First byte of every packet header, the letter `A` */
+    const val KEY_0: Byte = 65
 
-    val KEY_0: Byte = 65
-    val KEY_1: Byte = 72
+    /** Second byte of every packet header, the letter `H` */
+    const val KEY_1: Byte = 72
 
-    val FF00: Int = ShortConst.MAX_USHORT - ByteConst.MAX_UBYTE // 65 280 (65280)
-    val FF00_LONG: Long = FF00.toLong()
+    /** Packet type in byte 10 of a reply to the radar request */
+    const val TYPE_RADAR_REPLY: Byte = 1
 
-    val FFFF: Long = ByteConst.MAX_BYTES_POW_3_LONG - ShortConst.MAX_USHORT // 16 711 679 (16711679)
-    val FFFF_MINUS_1: Long = FFFF - 1 // 16 711 680 (16711680)
+    /** Packet type in byte 10 of a status packet of the record session */
+    const val TYPE_STATUS: Byte = 2
 
-    const val BYTES_IN_KB = 1024
-    const val BYTES_IN_MB = BYTES_IN_KB * BYTES_IN_KB // 1 048 576 (1048576)
+    const val ANY_HOST = "0.0.0.0"
+    const val BROADCAST_HOST = "255.255.255.255"
+
+    /** Port the phone receives the status packets of the record session on */
+    const val STATUS_PORT = 4197
+
+    /** Port the phone receives the replies to the radar request on */
+    const val RADAR_REPLY_PORT = 4198
+
+    /** Port the PC receives the radar request on */
+    const val RADAR_REQUEST_PORT = 4199
 }

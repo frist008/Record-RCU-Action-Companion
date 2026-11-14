@@ -2,20 +2,48 @@ package ua.frist008.action.record.data.network.record.entity
 
 import timber.log.Timber
 import ua.frist008.action.record.BuildConfig
-import ua.frist008.action.record.core.util.common.ByteConst
 import ua.frist008.action.record.core.util.io.mb
-import ua.frist008.action.record.data.network.NetworkConst
-import java.io.UnsupportedEncodingException
+import ua.frist008.action.record.data.mapper.ByteArrayToNumberMapper
+import ua.frist008.action.record.data.mapper.ByteArrayToTextMapper
 import kotlin.time.Duration.Companion.seconds
 
 sealed class RecordDataType<T>(val code: Byte) {
 
     abstract fun map(newData: T, old: RecordDTO): RecordDTO
 
+    /**
+     * Reads the value of the field from the status packet.
+     *
+     * @param dataArr the bytes of the status packet.
+     * @param offset the index of the first byte of the value.
+     * @param length the length of the value the packet declares, within the packet.
+     * @return the value of the field.
+     */
+    protected abstract fun read(dataArr: ByteArray, offset: Int, length: Int): T
+
+    /**
+     * Applies the field of a status packet to the last state.
+     *
+     * @param dataArr the bytes of the status packet.
+     * @param offset the index of the first byte of the value.
+     * @param length the length of the value the packet declares, within the packet.
+     * @param old the state before the field.
+     * @return the state with the field applied.
+     */
+    fun map(dataArr: ByteArray, offset: Int, length: Int, old: RecordDTO): RecordDTO =
+        map(read(dataArr, offset, length), old)
+
     protected fun <P> log(old: P, new: P) {
         if (BuildConfig.DEBUG && old != new) {
             Timber.d("$code - old=${old}, new=$new; ${this::class.simpleName}")
         }
+    }
+
+    /** A field whose value is a number of one, two or four bytes */
+    sealed class NumberDataType(code: Byte) : RecordDataType<Long>(code) {
+
+        override fun read(dataArr: ByteArray, offset: Int, length: Int): Long =
+            ByteArrayToNumberMapper(dataArr, offset, length)
     }
 
     companion object {
@@ -43,30 +71,30 @@ sealed class RecordDataType<T>(val code: Byte) {
         )
     }
 
-    data object UnknownDataType : RecordDataType<Long>(-1) {
+    data object UnknownDataType : NumberDataType(-1) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             Timber.e("$code - old=${old}, new=$newData; Unknown")
             return old
         }
     }
 
-    data object RecordModeDataType : RecordDataType<Long>(11) {
+    data object RecordModeDataType : NumberDataType(11) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val recordModeType = RecordModeType[newData.toInt()]
             log(old.recordModeType, recordModeType)
-            return old.copy(connected = true, webCamType = 0, recordModeType = recordModeType)
+            return old.copy(webCamType = 0, recordModeType = recordModeType)
         }
     }
 
-    data object FpsDataType : RecordDataType<Long>(12) {
+    data object FpsDataType : NumberDataType(12) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val newFps = newData.toInt()
             log(old.fps, newFps)
-            return old.copy(connected = true, fps = newFps)
+            return old.copy(fps = newFps)
         }
     }
 
-    data object MaxFpsDataType : RecordDataType<Long>(22) {
+    data object MaxFpsDataType : NumberDataType(22) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val maxFps = newData.toInt()
             log(old.maxFps, maxFps)
@@ -74,7 +102,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object DurationDataType : RecordDataType<Long>(13) {
+    data object DurationDataType : NumberDataType(13) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val duration = newData.seconds
             log(old.duration, duration)
@@ -82,7 +110,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object MaxDurationDataType : RecordDataType<Long>(14) {
+    data object MaxDurationDataType : NumberDataType(14) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val maxDuration = newData.seconds
             log(old.maxDuration.inWholeSeconds, maxDuration.inWholeSeconds)
@@ -90,35 +118,34 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object RecTooltipDataType : RecordDataType<ByteArray>(15) {
-        override fun map(newData: ByteArray, old: RecordDTO): RecordDTO {
-            try {
-                val recTooltip = String(newData)
-                log(old.recTooltip, recTooltip)
-                return old.copy(recTooltip = recTooltip)
-            } catch (e: UnsupportedEncodingException) {
-                Timber.e(e)
-                return old
-            }
+    data object RecTooltipDataType : RecordDataType<String>(15) {
+
+        override fun read(dataArr: ByteArray, offset: Int, length: Int): String {
+            val textLength = length.coerceAtMost(MAX_SIZE)
+
+            return ByteArrayToTextMapper(dataArr, offset, textLength, Charsets.UTF_8)
+        }
+
+        override fun map(newData: String, old: RecordDTO): RecordDTO {
+            log(old.recTooltip, newData)
+            return old.copy(recTooltip = newData)
+        }
+
+        private const val MAX_SIZE = 1023
+    }
+
+    data object EngineDataType : RecordDataType<String>(16) {
+
+        override fun read(dataArr: ByteArray, offset: Int, length: Int): String =
+            ByteArrayToTextMapper(dataArr, offset, length, Charsets.ISO_8859_1)
+
+        override fun map(newData: String, old: RecordDTO): RecordDTO {
+            log(old.engine, newData)
+            return old.copy(engine = newData)
         }
     }
 
-    data object EngineDataType : RecordDataType<Triple<ByteArray, Int, Int>>(16) {
-        override fun map(newData: Triple<ByteArray, Int, Int>, old: RecordDTO): RecordDTO {
-            val (data, position, typeParse) = newData
-            var i = 0
-            var engine = ""
-
-            while (i < typeParse) {
-                engine += Char(data[position + i++].toUShort())
-            }
-
-            log(old.engine, engine)
-            return old.copy(engine = engine)
-        }
-    }
-
-    data object StorageDataType : RecordDataType<Long>(17) {
+    data object StorageDataType : NumberDataType(17) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val freeSpace = newData.mb
             log(old.freeSpace.mb, freeSpace.mb)
@@ -126,7 +153,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object StreamTypeDataType : RecordDataType<Long>(18) {
+    data object StreamTypeDataType : NumberDataType(18) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val streamType = StreamType[newData.toInt()]
             log(old.streamType, streamType)
@@ -134,7 +161,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object RecordOrStreamDataType : RecordDataType<Long>(19) {
+    data object RecordOrStreamDataType : NumberDataType(19) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val isStream = newData == 3L
             log(old.isStream, isStream)
@@ -142,7 +169,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object WebCamDataType : RecordDataType<Long>(20) {
+    data object WebCamDataType : NumberDataType(20) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val isWebCam = newData != 0L
             log(old.isWebCam, isWebCam)
@@ -150,7 +177,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object MicDataType : RecordDataType<Long>(21) {
+    data object MicDataType : NumberDataType(21) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val isMic = newData != 0L
             log(old.isMic, isMic)
@@ -158,7 +185,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object GameActiveDataType : RecordDataType<Long>(23) {
+    data object GameActiveDataType : NumberDataType(23) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val gameActive = newData != 0L
             log(old.gameActive, gameActive)
@@ -166,7 +193,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object WebCamTypeDataType : RecordDataType<Long>(24) {
+    data object WebCamTypeDataType : NumberDataType(24) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val webCamType = newData.toInt()
             log(old.webCamType, webCamType)
@@ -174,26 +201,11 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object WebDataDataType : RecordDataType<Long>(25) {
-        override fun map(newData: Long, old: RecordDTO): RecordDTO = old
-    }
-}
+    /** A chunk of a web camera frame, skipped until the previews of version 1.2.0 */
+    data object WebDataDataType : RecordDataType<Unit>(25) {
 
-object Converter {
+        override fun read(dataArr: ByteArray, offset: Int, length: Int) = Unit
 
-    fun map(data: ByteArray, position: Int, typeParse: Int): Long {
-        return when (typeParse) {
-            1 -> data[position].toLong()
-
-            2 -> (((data[position].toInt() shl ByteConst.BITS_1) and NetworkConst.FF00) or
-                (data[position + 1].toInt() and ByteConst.MAX_UBYTE)).toLong()
-
-            4 -> ((data[position].toLong() shl ByteConst.BITS_3) and -ByteConst.MAX_BYTES_POW_3_LONG) or
-                ((data[position + 1].toLong() shl ByteConst.BITS_2) and NetworkConst.FFFF_MINUS_1) or
-                ((data[position + 2].toLong() shl ByteConst.BITS_1) and NetworkConst.FF00_LONG) or
-                (data[position + 3].toLong() and ByteConst.MAX_UBYTE_LONG)
-
-            else -> 0
-        }
+        override fun map(newData: Unit, old: RecordDTO): RecordDTO = old
     }
 }

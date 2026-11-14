@@ -11,17 +11,6 @@ enum class FixedRecordCommand(
     STOP(3),
 }
 
-enum class OriginalRecordCommand(
-    override val commandInt: Int,
-    override val commandArr: ByteArray = byteArrayOf(commandInt.toByte()),
-) : RecordCommand {
-
-    START(2),
-    RESUME(2),
-    PAUSE(1),
-    STOP(3),
-}
-
 enum class StreamingRecordCommand(
     override val commandInt: Int,
     override val commandArr: ByteArray = byteArrayOf(commandInt.toByte()),

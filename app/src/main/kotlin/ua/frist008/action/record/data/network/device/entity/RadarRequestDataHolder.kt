@@ -3,39 +3,47 @@ package ua.frist008.action.record.data.network.device.entity
 import ua.frist008.action.record.core.util.common.ByteConst
 import ua.frist008.action.record.data.network.FirebaseId
 import ua.frist008.action.record.data.network.NetworkConst
+import kotlin.random.Random
 
-class RadarRequestDataHolder private constructor(androidIdArr: ByteArray?) {
+/**
+ * Holds the radar request of the phone: the header with a sequence number below 32768, the port
+ * the PC replies to and the id of the phone, fixed for one scan.
+ */
+class RadarRequestDataHolder private constructor(phoneIdArr: ByteArray?) {
 
-    private val clientDataArr = ByteArray(32)
+    private val clientDataArr = ByteArray(REQUEST_SIZE)
 
     init {
-        val randomInt = (Math.random() * Short.MAX_VALUE).toInt()
+        val sequence = Random.nextInt(Short.MAX_VALUE.toInt())
+        val replyPort = NetworkConst.RADAR_REPLY_PORT
+
         clientDataArr[0] = NetworkConst.KEY_0
         clientDataArr[1] = NetworkConst.KEY_1
-        clientDataArr[2] = ((randomInt shr ByteConst.BITS_1) and ByteConst.MAX_UBYTE).toByte()
-        clientDataArr[3] = (randomInt and ByteConst.MAX_UBYTE).toByte()
-
-        clientDataArr[8] = 16
-        clientDataArr[9] = 102
-
-        if (androidIdArr != null) {
-            clientDataArr[10] = androidIdArr[0]
-            clientDataArr[11] = androidIdArr[1]
-            clientDataArr[12] = androidIdArr[2]
-            clientDataArr[13] = androidIdArr[3]
-        }
+        clientDataArr[2] = (sequence shr ByteConst.BITS_1).toByte()
+        clientDataArr[3] = sequence.toByte()
+        clientDataArr[8] = (replyPort shr ByteConst.BITS_1).toByte()
+        clientDataArr[9] = replyPort.toByte()
+        phoneIdArr?.copyInto(clientDataArr, destinationOffset = 10, endIndex = Int.SIZE_BYTES)
     }
 
-    fun newClientDataInstance(): ByteArray = clientDataArr.copyOf()
+    /**
+     * Builds the request sent from one address of the phone.
+     *
+     * @param localAddressArr the four bytes of the IPv4 address of the phone, in network order.
+     * @return the bytes of the request.
+     */
+    fun newClientDataInstance(localAddressArr: ByteArray): ByteArray {
+        val dataArr = clientDataArr.copyOf()
 
-    fun isResponseValid(clientDataArr: ByteArray): Boolean = // clientDataArr[0-3]
-        clientDataArr[0] == this.clientDataArr[0] &&
-            clientDataArr[1] == this.clientDataArr[1] &&
-            (((clientDataArr[2].toInt() shl Byte.SIZE_BITS) and NetworkConst.FF00) or
-                (clientDataArr[3].toInt() and ByteConst.MAX_UBYTE)) > Short.MAX_VALUE
+        localAddressArr.copyInto(dataArr, destinationOffset = 4) // dataArr[4-7]
+
+        return dataArr
+    }
 
     companion object {
 
         suspend fun newInstance() = RadarRequestDataHolder(FirebaseId.getIdMurmurHash3())
+
+        private const val REQUEST_SIZE = 32
     }
 }

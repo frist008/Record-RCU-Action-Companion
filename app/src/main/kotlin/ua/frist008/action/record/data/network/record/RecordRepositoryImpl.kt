@@ -5,9 +5,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterNotNull
-import kotlinx.coroutines.flow.firstOrNull
-import kotlinx.coroutines.flow.map
-import timber.log.Timber
 import ua.frist008.action.record.data.local.device.DeviceDAO
 import ua.frist008.action.record.data.network.DisconnectException
 import ua.frist008.action.record.features.record.RecordRepository
@@ -41,15 +38,8 @@ class RecordRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun sendCommand(command: RecordCommand) {
-        currentDeviceId
-            .filter { it != EMPTY_DEVICE_ID }
-            .map { databaseSource.get(it) }
-            .firstOrNull()
-            ?.let { dbo ->
-                recordNetworkSource.sendCommand(dbo.toDTO(), command)
-            } ?: Timber.e("$command")
-    }
+    override suspend fun sendCommand(command: RecordCommand) =
+        recordNetworkSource.sendCommand(command)
 
     companion object {
 
