@@ -24,7 +24,11 @@ sealed class NavCommand(
     @Serializable @Immutable
     data class Share(val url: String, @get:StringRes val messageRes: Int) : NavCommand()
 
+    /** The screen of Android where the user picks the language of the app, Android 13 and newer */
+    @Serializable @Immutable object AppLanguageSettings : NavCommand()
+
     @Serializable @Immutable object ConnectionScreen : NavCommand()
     @Serializable @Immutable object RecordScreen : NavCommand()
     @Serializable @Immutable object SettingsScreen : NavCommand()
+    @Serializable @Immutable object AboutScreen : NavCommand()
 }

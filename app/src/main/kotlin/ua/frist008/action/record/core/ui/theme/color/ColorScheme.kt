@@ -6,6 +6,8 @@ import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SwitchColors
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
@@ -94,6 +96,20 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
         @Composable
         get() = buttonColors.copy(containerColor = Color.Transparent)
 
+    val switchColors: SwitchColors
+        @Composable
+        get() = SwitchDefaults.colors(
+            checkedThumbColor = Palette.SWITCH_THUMB_ON,
+            checkedTrackColor = Palette.SWITCH_TRACK_ON,
+            checkedBorderColor = Color.Transparent,
+            uncheckedThumbColor = Palette.SWITCH_OUTLINE_OFF,
+            uncheckedTrackColor = Palette.SWITCH_TRACK_OFF,
+            uncheckedBorderColor = Palette.SWITCH_OUTLINE_OFF,
+            disabledUncheckedThumbColor = Palette.SWITCH_OUTLINE_OFF,
+            disabledUncheckedTrackColor = Palette.SWITCH_TRACK_OFF,
+            disabledUncheckedBorderColor = Palette.SWITCH_OUTLINE_OFF,
+        )
+
     private val materialColors: ColorScheme = darkColorScheme(
         primary = primary,
         onPrimary = onPrimary,
@@ -162,6 +178,11 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
 
     val PURPLE_DARK = Color(PreviewPalette.PURPLE_DARK_LONG)
     val PURPLE_LIGHT = Color(PreviewPalette.PURPLE_LIGHT_LONG)
+
+    val SWITCH_TRACK_ON = Color(0xFF5E47D2)
+    val SWITCH_THUMB_ON = Color(0xFF0F005D)
+    val SWITCH_TRACK_OFF = Color(0xFFE6E0E9)
+    val SWITCH_OUTLINE_OFF = Color(0xFF79747E)
 }
 
 @Immutable private object BrushPalette {

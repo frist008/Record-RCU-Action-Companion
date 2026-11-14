@@ -19,6 +19,7 @@ import ua.frist008.action.record.core.ui.navigation.Router
 import ua.frist008.action.record.core.ui.theme.RootTheme
 import ua.frist008.action.record.features.connection.ConnectionScreen
 import ua.frist008.action.record.features.record.RecordScreen
+import ua.frist008.action.record.features.settings.AboutScreen
 import ua.frist008.action.record.features.settings.SettingsScreen
 
 @Composable
@@ -58,6 +59,7 @@ fun RootSurface(navigatorViewModel: RootNavigationViewModel = hiltViewModel()) {
                             is NavCommand.ConnectionScreen -> ConnectionScreen()
                             is NavCommand.RecordScreen -> RecordScreen()
                             is NavCommand.SettingsScreen -> SettingsScreen()
+                            is NavCommand.AboutScreen -> AboutScreen()
                             else -> Unit
                         }
                     }

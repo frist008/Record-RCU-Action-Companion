@@ -6,11 +6,14 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.navigation.LocalNavigator
 import ua.frist008.action.record.core.ui.navigation.Router
@@ -23,13 +26,17 @@ import ua.frist008.action.record.features.NavCommand
 fun DefaultTopAppBar(
     title: String,
     colors: TopAppBarColors,
+    modifier: Modifier = Modifier,
     backIcon: ImageVector? = Icons.ArrowBack,
     onBackClick: (navigator: Router) -> Unit = { navigator -> navigator(NavCommand.BackCommand()) },
     actions: @Composable RowScope.() -> Unit = {},
+    height: Dp = TopAppBarDefaults.TopAppBarExpandedHeight,
 ) {
     TopAppBar(
         title = { Text(title) },
+        modifier = modifier,
         actions = actions,
+        expandedHeight = height,
         colors = colors,
         navigationIcon = {
             if (backIcon != null) {

@@ -39,7 +39,7 @@ data class RecordDomainEntity(
     val webCamDataList: List<WebCamData>,
 ) {
 
-    fun toUI(recordSuccessState: RecordSuccessState?): RecordSuccessState {
+    fun toUI(recordSuccessState: RecordSuccessState?, minFreeSpace: Space): RecordSuccessState {
         // Investigate what is it
         // val fps = min(fps, maxFps)
 
@@ -57,6 +57,7 @@ data class RecordDomainEntity(
                     timeRemainingState = null,
                     freeSpaceWithTimestampList = persistentListOf(),
                     freeSpace = freeSpace,
+                    minFreeSpace = minFreeSpace,
                 ),
                 live = mapLiveState(streamType, isStream),
                 isWebCam = isWebCam, // TODO show cam IMPORTANT
@@ -88,6 +89,7 @@ data class RecordDomainEntity(
                     timeRemainingState = storage.timeRemainingState,
                     freeSpaceWithTimestampList = lastFreeSpaceWithTimestampList,
                     freeSpace = freeSpace,
+                    minFreeSpace = minFreeSpace,
                 ),
                 live = mapLiveState(streamType, isStream),
                 isWebCam = isWebCam, // TODO show cam IMPORTANT
@@ -107,6 +109,7 @@ data class RecordDomainEntity(
         timeRemainingState: MutableState<String>?,
         freeSpaceWithTimestampList: ImmutableList<Pair<Long, Long>>,
         freeSpace: Space,
+        minFreeSpace: Space,
     ): StorageState {
         val newFreeSpaceWithTimestampList =
             createFreeSpaceWithTimestampList(freeSpaceWithTimestampList, freeSpace)
@@ -131,7 +134,11 @@ data class RecordDomainEntity(
                 freeSpaceState = freeSpaceState ?: mutableFloatStateOf(freeGB),
                 timeRemainingState = timeRemainingState ?: mutableStateOf(""),
                 pattern = R.string.record_header_storage_gb_pattern,
-                errorType = if (freeGB < 10f) ErrorType.WARNING else ErrorType.DEFAULT,
+                errorType = when {
+                    freeSpace < minFreeSpace -> ErrorType.ERROR
+                    freeGB < 10f -> ErrorType.WARNING
+                    else -> ErrorType.DEFAULT
+                },
                 freeSpaceWithTimestampList = newFreeSpaceWithTimestampList,
             )
         }

@@ -116,6 +116,11 @@ android {
         resValues = true
     }
 
+    // https://developer.android.com/guide/topics/resources/app-languages#auto-localeconfig
+    androidResources {
+        generateLocaleConfig = true
+    }
+
     testOptions {
         animationsDisabled = true
     }

@@ -26,7 +26,19 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
     val isMic: Boolean,
     val gameActive: Boolean,
     val adSize: AdSize = AdSize.BANNER,
+    val isSoundMuted: Boolean = false,
+    val dimBrightness: Float? = null,
+    val isFirstTouchOnlyWakes: Boolean = false,
 ) : UIState.Success() {
+
+    /** The red camera beside the time: shown only while the recording runs */
+    val isWebCamIndicatorVisible = isWebCam && buttonsData.isRecording
+
+    /** The red microphone beside the time: shown only while the recording runs */
+    val isMicIndicatorVisible = isMic && buttonsData.isRecording
+
+    /** Whether a touch now only restores the brightness of the dimmed screen, pressing nothing */
+    val isTouchOnlyWakes = dimBrightness != null && isFirstTouchOnlyWakes
 
     init {
         fpsState.value = fps.toString()
