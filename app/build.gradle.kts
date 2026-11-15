@@ -187,6 +187,7 @@ dependencies {
     ksp(libs.bundles.di.compiler)
     implementation(libs.ads.asProvider())
     implementation(libs.ads.consent)
+    implementation(libs.billing)
     implementation(platform(libs.kotlin.coroutines.bom))
     implementation(libs.bundles.coroutines.bom)
     implementation(libs.data.store)

@@ -72,6 +72,18 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
     val fps = Palette.WHITE_NEUTRAL
 
     val hint = Palette.WHITE_NEUTRAL
+    val hintDim = Palette.WHITE_DIM
+
+    /** The box behind an icon that stands for what a purchase gives */
+    val accent = Palette.PURPLE_ACCENT
+    val accentShadow = Palette.PURPLE_ACCENT_SHADOW
+    val badge = Palette.BLUE_LIGHT
+
+    /** The purple glow behind the logo of Premium, from its center out */
+    val glowAccent = listOf(Palette.PURPLE_ACCENT_GLOW, Palette.PURPLE_ACCENT_TRANSPARENT)
+
+    /** The blue glow behind the logo of Premium, over the purple one, from its center out */
+    val glowBadge = listOf(Palette.BLUE_LIGHT_GLOW, Palette.BLUE_LIGHT_TRANSPARENT)
 
     val record = Palette.GREEN_LIGHT
     val pause = Palette.YELLOW_LIGHT
@@ -168,6 +180,7 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
     val WHITE_LIGHT = Color(0xFFFFFFFF)
     val WHITE_NEUTRAL = Color(0xB2FFFFFF)
     val WHITE_DARK = Color(0x70FFFFFF)
+    val WHITE_DIM = Color(0x80FFFFFF)
 
     val GREEN_LIGHT = Color(0xFF1ABC9C)
     val GREEN_NEUTRAL = Color(0xB21ABC9C)
@@ -180,10 +193,15 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
     val RED_TRANSPARENT = Color(0x00E74C3C)
 
     val BLUE_LIGHT = Color(0xFF7AEFFF)
+    val BLUE_LIGHT_GLOW = Color(0x477AEFFF)
+    val BLUE_LIGHT_TRANSPARENT = Color(0x007AEFFF)
 
     val PURPLE_DARK = Color(PreviewPalette.PURPLE_DARK_LONG)
     val PURPLE_LIGHT = Color(PreviewPalette.PURPLE_LIGHT_LONG)
     val PURPLE_ACCENT = Color(0xFF5E47D2)
+    val PURPLE_ACCENT_GLOW = Color(0xB25E47D2)
+    val PURPLE_ACCENT_SHADOW = Color(0x8C5E47D2)
+    val PURPLE_ACCENT_TRANSPARENT = Color(0x005E47D2)
 
     val SWITCH_TRACK_ON = PURPLE_ACCENT
     val SWITCH_THUMB_ON = Color(0xFF0F005D)
