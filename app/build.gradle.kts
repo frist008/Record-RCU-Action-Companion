@@ -12,7 +12,6 @@ plugins {
     alias(libs.plugins.kotlin.compose.compiler)
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.firebase.perf)
-    alias(libs.plugins.room)
     alias(libs.plugins.licensee)
 }
 
@@ -117,10 +116,6 @@ android {
         resValues = true
     }
 
-    room {
-        schemaDirectory("$projectDir/schemas")
-    }
-
     testOptions {
         animationsDisabled = true
     }
@@ -168,8 +163,6 @@ dependencies {
 
     // Framework
     implementation(libs.bundles.di)
-    ksp(libs.bundles.database.compiler)
-    implementation(libs.bundles.database)
     ksp(libs.bundles.di.compiler)
     implementation(libs.ads)
     implementation(platform(libs.kotlin.coroutines.bom))

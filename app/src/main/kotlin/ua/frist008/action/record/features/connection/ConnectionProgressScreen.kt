@@ -1,4 +1,4 @@
-package ua.frist008.action.record.features.device
+package ua.frist008.action.record.features.connection
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -25,12 +25,12 @@ import ua.frist008.action.record.core.ui.resource.Icons
 import ua.frist008.action.record.core.ui.resource.svg.DevicesNotAvailable
 import ua.frist008.action.record.core.ui.theme.AppTheme
 import ua.frist008.action.record.core.ui.theme.color.PreviewPalette
-import ua.frist008.action.record.features.device.entity.DevicesProgressState
+import ua.frist008.action.record.features.connection.entity.ConnectionProgressState
 import kotlin.time.Duration.Companion.seconds
 
 @Composable
-fun DevicesProgressScreen(
-    state: DevicesProgressState,
+fun ConnectionProgressScreen(
+    state: ConnectionProgressState,
     onLinkCLick: () -> Unit = {},
 ) {
     // Example of use ConstraintLayout. Can be optimized to Column
@@ -44,7 +44,7 @@ fun DevicesProgressScreen(
 
         createVerticalChain(descriptionAndImage, timer, link, chainStyle = ChainStyle.SpreadInside)
 
-        DevicesProgressHeader(
+        ConnectionProgressHeader(
             descriptionAndImage = descriptionAndImage,
             isLoading = state.isLoading,
         ) {
@@ -53,13 +53,13 @@ fun DevicesProgressScreen(
             end.linkTo(parent.end)
             bottom.linkTo(timer.top)
         }
-        DevicesProgressTimer(timer = timer, state = state) {
+        ConnectionProgressTimer(timer = timer, state = state) {
             top.linkTo(descriptionAndImage.top)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
             bottom.linkTo(link.top)
         }
-        DevicesProgressFooter(link = link, onCLick = onLinkCLick) {
+        ConnectionProgressFooter(link = link, onCLick = onLinkCLick) {
             top.linkTo(timer.top)
             start.linkTo(parent.start)
             end.linkTo(parent.end)
@@ -69,7 +69,7 @@ fun DevicesProgressScreen(
 }
 
 @Composable
-private fun ConstraintLayoutScope.DevicesProgressHeader(
+private fun ConstraintLayoutScope.ConnectionProgressHeader(
     descriptionAndImage: ConstrainedLayoutReference,
     isLoading: Boolean,
     constrainBlock: ConstrainScope.() -> Unit,
@@ -96,9 +96,9 @@ private fun ConstraintLayoutScope.DevicesProgressHeader(
 }
 
 @Composable
-private fun ConstraintLayoutScope.DevicesProgressTimer(
+private fun ConstraintLayoutScope.ConnectionProgressTimer(
     timer: ConstrainedLayoutReference,
-    state: DevicesProgressState,
+    state: ConnectionProgressState,
     constrainBlock: ConstrainScope.() -> Unit,
 ) {
     val height = 56.dp
@@ -118,7 +118,7 @@ private fun ConstraintLayoutScope.DevicesProgressTimer(
 }
 
 @Composable
-private fun ConstraintLayoutScope.DevicesProgressFooter(
+private fun ConstraintLayoutScope.ConnectionProgressFooter(
     link: ConstrainedLayoutReference,
     onCLick: () -> Unit,
     constrainBlock: ConstrainScope.() -> Unit,
@@ -140,8 +140,8 @@ private fun ConstraintLayoutScope.DevicesProgressFooter(
     backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
 )
 @Composable
-private fun DevicesProgressScreenLoadingPreview() {
-    DevicesProgressScreen(DevicesProgressState())
+private fun ConnectionProgressScreenLoadingPreview() {
+    ConnectionProgressScreen(ConnectionProgressState())
 }
 
 @Preview(
@@ -150,6 +150,6 @@ private fun DevicesProgressScreenLoadingPreview() {
     backgroundColor = PreviewPalette.PURPLE_LIGHT_LONG,
 )
 @Composable
-private fun DevicesProgressScreenNotFoundPreview() {
-    DevicesProgressScreen(DevicesProgressState(5.seconds))
+private fun ConnectionProgressScreenNotFoundPreview() {
+    ConnectionProgressScreen(ConnectionProgressState(5.seconds))
 }

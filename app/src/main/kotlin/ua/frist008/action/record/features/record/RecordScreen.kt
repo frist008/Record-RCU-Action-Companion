@@ -12,12 +12,7 @@ import ua.frist008.action.record.core.ui.component.unsupportedUI
 import ua.frist008.action.record.features.record.entity.RecordSuccessState
 
 @Composable
-fun RecordScreen(
-    pcId: Long,
-    viewModel: RecordViewModel = hiltViewModel<RecordViewModel, RecordViewModel.Factory> {
-        it.create(pcId)
-    },
-) {
+fun RecordScreen(viewModel: RecordViewModel = hiltViewModel()) {
     val view = LocalView.current
     val state by viewModel.state.collectAsState()
 

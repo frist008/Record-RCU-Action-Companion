@@ -1,36 +1,19 @@
 package ua.frist008.action.record.data.local.device
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
-import ua.frist008.action.record.data.mapper.IpLongToStringMapper
 import ua.frist008.action.record.data.network.device.entity.DeviceDTO
-import ua.frist008.action.record.features.device.entity.DeviceDomainEntity
 
-@Entity(
-    tableName = DeviceDBO.NAME_TABLE,
-    indices = [Index(value = [DeviceDBO.IP], unique = true)],
-)
+/**
+ * The PC the phone connected to last, as it is kept between launches.
+ *
+ * @property name the name the PC sent, if any.
+ * @property ip the IPv4 address of the PC.
+ * @property port the TCP port Action! listens on.
+ */
 data class DeviceDBO(
-    @PrimaryKey(autoGenerate = true)
-    @ColumnInfo(name = ID)
-    val id: Long = 0,
-    @ColumnInfo(name = NAME)
     val name: String?,
-    @ColumnInfo(name = IP, index = true)
     val ip: Long,
-    @ColumnInfo(name = PORT)
     val port: Int,
 ) {
-
-    fun toDomain(isAvailable: Boolean): DeviceDomainEntity =
-        DeviceDomainEntity(
-            id = id,
-            isAvailableStatus = isAvailable,
-            name = name,
-            address = "${IpLongToStringMapper(ip)}:$port",
-        )
 
     fun toDTO(): DeviceDTO =
         DeviceDTO(
@@ -38,12 +21,4 @@ data class DeviceDBO(
             ip = ip,
             port = port,
         )
-
-    companion object {
-        const val NAME_TABLE = "Devices"
-        const val ID = "id_$NAME_TABLE"
-        const val NAME = "name_$NAME_TABLE"
-        const val IP = "ip_$NAME_TABLE"
-        const val PORT = "port_$NAME_TABLE"
-    }
 }

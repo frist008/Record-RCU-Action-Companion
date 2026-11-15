@@ -181,7 +181,7 @@ private fun RootThemePreview() {
         Scaffold(
             topBar = {
                 TopAppBar(
-                    title = { Text(stringResource(id = R.string.devices_title)) },
+                    title = { Text(stringResource(id = R.string.settings_title)) },
                 )
             },
             modifier = Modifier.fillMaxSize(),

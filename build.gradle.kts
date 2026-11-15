@@ -8,7 +8,6 @@ plugins {
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.kotlin.parcelize) apply false
     alias(libs.plugins.kotlin.compose.compiler) apply false
-    alias(libs.plugins.room) apply false
     alias(libs.plugins.di.hilt) apply false
     alias(libs.plugins.licensee) apply false
 }

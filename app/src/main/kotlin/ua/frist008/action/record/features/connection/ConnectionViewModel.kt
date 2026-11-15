@@ -1,21 +1,21 @@
-package ua.frist008.action.record.features.device
+package ua.frist008.action.record.features.connection
 
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.firstOrNull
+import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.flow.retryWhen
 import timber.log.Timber
 import ua.frist008.action.record.core.presentation.BaseViewModel
 import ua.frist008.action.record.core.presentation.dependency.PresentationDependenciesDelegate
 import ua.frist008.action.record.core.util.concurrent.timer
 import ua.frist008.action.record.features.NavCommand
-import ua.frist008.action.record.features.device.entity.DeviceDomainEntity.Companion.toUI
-import ua.frist008.action.record.features.device.entity.DeviceSuccessState
-import ua.frist008.action.record.features.device.entity.DevicesProgressState
-import ua.frist008.action.record.features.device.entity.DevicesSuccessState
+import ua.frist008.action.record.features.NewRoot
+import ua.frist008.action.record.features.connection.entity.ConnectionProgressState
+import java.io.IOException
 import java.net.SocketException
 import java.net.SocketTimeoutException
 import javax.inject.Inject
@@ -23,18 +23,14 @@ import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.Duration.Companion.seconds
 
-@HiltViewModel class DevicesViewModel @Inject constructor(
+@HiltViewModel class ConnectionViewModel @Inject constructor(
     dependencies: PresentationDependenciesDelegate,
-    private val devicesRepository: DeviceRadarRepository,
+    private val connectionRepository: ConnectionRepository,
 ) : BaseViewModel(dependencies) {
-
-    private var ignoreError = false
 
     private val timerJob = atomic<Job?>(null)
     private val scanJob = atomic<Job?>(null)
     private val disposeJob = atomic<Job?>(null)
-
-    private var isAutoFirstNavigate = false
 
     fun onInit() {
         Timber.d("onInit")
@@ -48,45 +44,38 @@ import kotlin.time.Duration.Companion.seconds
         Timber.i("start Scan")
 
         launch(scanJob) {
-            devicesRepository
+            val device = connectionRepository
                 .get()
-                .catch { onScanError() }
-                .collectLatest { list ->
-                    if (list.any { it.isAvailableStatus }) {
-                        val uiList = list.toUI()
+                .retryWhen { cause, _ ->
+                    val isNetworkError = cause is IOException
 
-                        mutableState.emit(DevicesSuccessState(uiList))
-
-                        if (!isAutoFirstNavigate && uiList.size == 1) {
-                            isAutoFirstNavigate = true
-                            onItemClicked(uiList.first())
-                        }
-
-                        ignoreError = true
-                    } else {
-                        val oldIgnoreError = ignoreError
-                        onScanError { if (!oldIgnoreError) restartScan() }
+                    if (isNetworkError) {
+                        Timber.w(cause)
+                        showProgress()
+                        delay(SCAN_RETRY_DELAY)
                     }
+
+                    isNetworkError
                 }
+                .onEach { if (it == null) showProgress() }
+                .firstOrNull { it != null }
+
+            if (device != null) {
+                openRecord()
+            }
         }
     }
 
-    private suspend fun onScanError(onAction: () -> Unit = {}) {
-        if (ignoreError) {
-            ignoreError = false
-            Timber.d("Ignore error")
-            delay(1.seconds)
-        } else if (mutableState.value !is DevicesProgressState) {
+    private suspend fun showProgress() {
+        if (mutableState.value !is ConnectionProgressState) {
             Timber.d("Start Progress")
-            mutableState.emit(DevicesProgressState())
+            mutableState.emit(ConnectionProgressState())
         }
-
-        onAction()
     }
 
     private fun restartTimer(durationDelay: Duration = 0.milliseconds) {
-        val emit: suspend (DevicesProgressState) -> Unit = { state ->
-            if (mutableState.value is DevicesProgressState) {
+        val emit: suspend (ConnectionProgressState) -> Unit = { state ->
+            if (mutableState.value is ConnectionProgressState) {
                 Timber.d("Emit Progress - $state")
                 mutableState.emit(state)
             }
@@ -97,9 +86,9 @@ import kotlin.time.Duration.Companion.seconds
             timer(
                 durationMs = TIMER_MS,
                 delayEventMs = 1.seconds.inWholeMilliseconds,
-                onNextEvent = { durationLeft -> emit(DevicesProgressState(durationLeft)) },
+                onNextEvent = { durationLeft -> emit(ConnectionProgressState(durationLeft)) },
                 onFinished = {
-                    emit(DevicesProgressState())
+                    emit(ConnectionProgressState())
                     Timber.d("Restart Progress")
                     restartTimer(2.seconds)
                 },
@@ -107,11 +96,9 @@ import kotlin.time.Duration.Companion.seconds
         }
     }
 
-    fun onItemClicked(device: DeviceSuccessState) {
-        launch(Dispatchers.Main.immediate) {
-            Timber.i("open RecordScreen")
-            navigator.emit(NavCommand.RecordScreen(device.id))
-        }
+    private suspend fun openRecord() {
+        Timber.i("open RecordScreen")
+        navigator.emit(NewRoot(NavCommand.RecordScreen))
     }
 
     fun onLinkCLick(link: String) {
@@ -137,12 +124,15 @@ import kotlin.time.Duration.Companion.seconds
 
         launch(disposeJob) {
             delay(1.seconds)
-            mutableState.emit(DevicesProgressState())
+            mutableState.emit(ConnectionProgressState())
         }
     }
 
     companion object {
 
         private const val TIMER_MS = 5000L
+
+        /** Pause before the search starts again after the network failed it */
+        private val SCAN_RETRY_DELAY = 1.seconds
     }
 }

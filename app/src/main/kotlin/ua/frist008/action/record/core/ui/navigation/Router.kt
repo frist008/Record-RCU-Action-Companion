@@ -1,5 +1,6 @@
 package ua.frist008.action.record.core.ui.navigation
 
+import android.app.Activity
 import android.content.Context
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
@@ -35,7 +36,11 @@ class Router(
 
     private fun back(command: NavCommand.BackCommand) {
         if (command.backToScreen == null) {
-            backStack.removeLastOrNull()
+            if (backStack.size > 1) {
+                backStack.removeLastOrNull()
+            } else {
+                (context as? Activity)?.finish()
+            }
         } else {
             val targetClass = command.backToScreen::class
             val idx = backStack.indexOfLast { it::class == targetClass }
