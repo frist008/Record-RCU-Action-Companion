@@ -3,7 +3,6 @@
 
     <!-- Common -->
 
-    <string name="back">Back</string>
     <string name="error_unknown_error">Unknown error</string>
 
     <!-- Devices -->
@@ -11,7 +10,6 @@
     <string name="devices_title">Devices</string>
     <string name="device_available">Available</string>
     <string name="device_not_available">Not Available</string>
-    <string name="device_not_available_message">Device not available</string>
     <string name="device_searching">Searching for devices…</string>
     <string name="device_error_not_found">Devices not found…</string>
     <string name="device_error_more">How to fix?</string>

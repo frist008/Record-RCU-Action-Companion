@@ -3,7 +3,6 @@
 
     <!-- Common -->
 
-    <string name="back">वापस</string>
     <string name="error_unknown_error">अज्ञात त्रुटि</string>
 
     <!-- Devices -->
@@ -11,7 +10,6 @@
     <string name="devices_title">डिवाइस</string>
     <string name="device_available">उपलब्ध</string>
     <string name="device_not_available">अनुपलब्ध</string>
-    <string name="device_not_available_message">डिवाइस उपलब्ध नहीं</string>
     <string name="device_searching">डिवाइस खोजा जा रहा है…</string>
     <string name="device_error_not_found">कोई डिवाइस नहीं मिला…</string>
     <string name="device_error_more">कैसे ठीक करें?</string>

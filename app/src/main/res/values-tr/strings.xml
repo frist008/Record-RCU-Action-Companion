@@ -3,7 +3,6 @@
 
     <!-- Common -->
 
-    <string name="back">Geri</string>
     <string name="error_unknown_error">Bilinmeyen hata</string>
 
     <!-- Devices -->
@@ -11,7 +10,6 @@
     <string name="devices_title">Cihazlar</string>
     <string name="device_available">Mevcut</string>
     <string name="device_not_available">Mevcut değil</string>
-    <string name="device_not_available_message">Cihaz mevcut değil</string>
     <string name="device_searching">Cihazlar aranıyor…</string>
     <string name="device_error_not_found">Cihaz bulunamadı…</string>
     <string name="device_error_more">Nasıl düzeltilir?</string>

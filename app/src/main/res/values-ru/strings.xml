@@ -3,7 +3,6 @@
 
     <!-- Common -->
 
-    <string name="back">Назад</string>
     <string name="error_unknown_error">Неизвестная ошибка</string>
 
     <!-- Devices -->
@@ -11,7 +10,6 @@
     <string name="devices_title">Устройства</string>
     <string name="device_available">Доступный</string>
     <string name="device_not_available">Недоступеный</string>
-    <string name="device_not_available_message">Устройство недоступно</string>
     <string name="device_searching">Идёт поиск устройств…</string>
     <string name="device_error_not_found">Устройства не найдены…</string>
     <string name="device_error_more">Как исправить?</string>

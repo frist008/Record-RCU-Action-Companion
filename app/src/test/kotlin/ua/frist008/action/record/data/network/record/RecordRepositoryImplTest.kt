@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
@@ -76,7 +77,6 @@ class RecordRepositoryImplTest {
     @Test
     fun `recordFlow is not null on creation`() {
         every { recordNetworkSource.recordFlow } returns flowOf(null)
-        val flow = repository.recordFlow
-        assertTrue(flow != null)
+        assertNotNull(repository.recordFlow)
     }
 }

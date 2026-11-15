@@ -3,7 +3,6 @@
 
     <!-- Common -->
 
-    <string name="back">Terug</string>
     <string name="error_unknown_error">Onbekende fout</string>
 
     <!-- Devices -->
@@ -11,7 +10,6 @@
     <string name="devices_title">Apparaten</string>
     <string name="device_available">Beschikbaar</string>
     <string name="device_not_available">Niet beschikbaar</string>
-    <string name="device_not_available_message">Apparaat niet beschikbaar</string>
     <string name="device_searching">Zoeken naar apparaten…</string>
     <string name="device_error_not_found">Geen apparaten gevonden…</string>
     <string name="device_error_more">Hoe op te lossen?</string>
