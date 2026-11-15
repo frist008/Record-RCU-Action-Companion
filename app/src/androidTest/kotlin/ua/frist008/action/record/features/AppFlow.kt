@@ -3,6 +3,7 @@ package ua.frist008.action.record.features
 import android.content.Context
 import androidx.annotation.StringRes
 import androidx.compose.ui.test.SemanticsNodeInteraction
+import androidx.compose.ui.test.click
 import androidx.compose.ui.test.hasContentDescription
 import androidx.compose.ui.test.hasText
 import androidx.compose.ui.test.junit4.ComposeTestRule
@@ -10,6 +11,7 @@ import androidx.compose.ui.test.onNodeWithContentDescription
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performTouchInput
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
@@ -107,6 +109,17 @@ class AppFlow(private val composeTestRule: ComposeTestRule) : ExternalResource()
     fun tapDescription(description: String) {
         findDescription(description).performClick()
     }
+
+    /** Taps twice in a row before the screen can change, as a hurried finger does */
+    fun doubleTapDescription(description: String) {
+        findDescription(description).performTouchInput {
+            click()
+            click()
+        }
+    }
+
+    /** Whether the app is still open in front of the user */
+    fun isOpen(): Boolean = scenario?.state == Lifecycle.State.RESUMED
 
     /** Presses the back of the system, as the gesture or the button of the phone does */
     fun pressBack() {
