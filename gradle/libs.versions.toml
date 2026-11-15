@@ -16,9 +16,9 @@ plugin-play-publisher = "4.1.2"
 build-type-debug = "debug"
 build-type-release = "release"
 # build
-version-name = "1.0.4"
+version-name = "1.1.0"
 build-tools-version = "37.0.0"
-sdk-min = "26"
+sdk-min = "29"
 sdk-compile = "37"
 sdk-compile-minor = "2"
 sdk-compile-extension = "15" # for compileSdk 35
