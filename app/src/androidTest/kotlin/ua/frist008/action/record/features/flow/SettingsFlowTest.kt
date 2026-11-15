@@ -12,6 +12,7 @@ import dagger.hilt.android.testing.BindValue
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import dagger.hilt.android.testing.UninstallModules
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -73,7 +74,9 @@ class SettingsFlowTest {
      * 6. the phone is rotated — the values stay;
      * 7. «About» shows the name and the version of the app; back returns to «Settings»;
      * 8. back returns to the record screen; the gear again shows the values kept;
-     * 9. the app goes to the background and comes back — the values stay.
+     * 9. the app goes to the background and comes back — the values stay;
+     * 10. the back arrow tapped twice in a row returns to the record screen once, and the app
+     *     stays open.
      */
     @Test
     fun user_changesEverySetting() {
@@ -167,6 +170,10 @@ class SettingsFlowTest {
         appFlow.waitFor(minFreeSpace)
         appFlow.scrollTo(dimToChanged).assertIsDisplayed()
         appFlow.scrollTo(firstTouch).assertIsOn()
+
+        appFlow.doubleTapDescription(appFlow.getString(R.string.app_name))
+        appFlow.waitFor(FakePc.DEFAULT_STATUS.engine)
+        assertTrue("The app closed on a double tap of the back arrow", appFlow.isOpen())
     }
 
     private fun changeMinFreeSpace(minFreeSpace: String) {
