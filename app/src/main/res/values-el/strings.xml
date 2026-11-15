@@ -28,6 +28,7 @@
     <string name="record_indicator_mic">Το μικρόφωνο καταγράφει</string>
     <string name="record_sound_on">Ήχοι ενεργοί</string>
     <string name="record_sound_off">Ήχοι ανενεργοί</string>
+    <string name="record_remove_ads">Κατάργηση διαφημίσεων</string>
     <string name="record_inactive_title_record">ΕΓΓΡΑΦΗ</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">ΔΕΝ ΒΡΕΘΗΚΕ ΕΝΕΡΓΟ ΠΑΙΧΝΙΔΙ</string>
@@ -35,6 +36,19 @@
     <string name="record_error_already_used">Ο υπολογιστής σας είναι συνδεδεμένος με άλλη εφαρμογή</string>
     <string name="record_error_not_connected">Δεν υπάρχει σύνδεση με τον υπολογιστή σας</string>
     <string name="record_error_port_busy">Μια άλλη εφαρμογή σε αυτό το τηλέφωνο χρησιμοποιεί ήδη τη σύνδεση με τον υπολογιστή σας</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU χωρίς όρια</string>
+    <string name="premium_subtitle">Μία αγορά, δική σας για πάντα</string>
+    <string name="premium_no_ads_title">Χωρίς διαφημίσεις</string>
+    <string name="premium_no_ads_summary">Ούτε ένα banner σε καμία οθόνη</string>
+    <string name="premium_forever_title">Για πάντα, χωρίς συνδρομή</string>
+    <string name="premium_forever_summary">Πληρώνετε μία φορά, δωρεάν ενημερώσεις</string>
+    <string name="premium_buy_pattern">Αγορά για %1$s</string>
+    <string name="premium_restore">Επαναφορά αγορών</string>
+    <string name="premium_via_play">Μέσω Google Play</string>
 
     <!-- Settings -->
 

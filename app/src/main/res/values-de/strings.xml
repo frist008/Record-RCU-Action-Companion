@@ -28,6 +28,7 @@
     <string name="record_indicator_mic">Mikrofon nimmt auf</string>
     <string name="record_sound_on">Töne an</string>
     <string name="record_sound_off">Töne aus</string>
+    <string name="record_remove_ads">Werbung entfernen</string>
     <string name="record_inactive_title_record">AUFNAHME</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">KEIN SPIEL AKTIV</string>
@@ -35,6 +36,19 @@
     <string name="record_error_already_used">Dein PC ist mit einer anderen App verbunden</string>
     <string name="record_error_not_connected">Keine Verbindung zu deinem PC</string>
     <string name="record_error_port_busy">Eine andere App auf diesem Telefon nutzt bereits die Verbindung zu deinem PC</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU ohne Grenzen</string>
+    <string name="premium_subtitle">Ein Kauf, für immer deins</string>
+    <string name="premium_no_ads_title">Keine Werbung</string>
+    <string name="premium_no_ads_summary">Kein einziges Banner auf allen Bildschirmen</string>
+    <string name="premium_forever_title">Für immer, ohne Abo</string>
+    <string name="premium_forever_summary">Einmal zahlen, Updates kostenlos</string>
+    <string name="premium_buy_pattern">Für %1$s kaufen</string>
+    <string name="premium_restore">Käufe wiederherstellen</string>
+    <string name="premium_via_play">Über Google Play</string>
 
     <!-- Settings -->
 

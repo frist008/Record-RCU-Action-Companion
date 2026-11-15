@@ -28,6 +28,7 @@
     <string name="record_indicator_mic">Nagre-record ang mikropono</string>
     <string name="record_sound_on">Naka-on ang tunog</string>
     <string name="record_sound_off">Naka-off ang tunog</string>
+    <string name="record_remove_ads">Alisin ang mga ad</string>
     <string name="record_inactive_title_record">RECORD</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">WALANG AKTIBONG LARO</string>
@@ -35,6 +36,19 @@
     <string name="record_error_already_used">Ang iyong PC ay konektado sa ibang app</string>
     <string name="record_error_not_connected">Walang koneksyon sa iyong PC</string>
     <string name="record_error_port_busy">May ibang app sa teleponong ito na gumagamit na ng koneksyon sa iyong PC</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU nang walang limitasyon</string>
+    <string name="premium_subtitle">Isang bili, sa iyo habambuhay</string>
+    <string name="premium_no_ads_title">Walang ad</string>
+    <string name="premium_no_ads_summary">Walang kahit isang banner sa anumang screen</string>
+    <string name="premium_forever_title">Habambuhay, walang subscription</string>
+    <string name="premium_forever_summary">Magbayad nang isang beses, libre ang mga update</string>
+    <string name="premium_buy_pattern">Bilhin sa halagang %1$s</string>
+    <string name="premium_restore">I-restore ang mga binili</string>
+    <string name="premium_via_play">Sa pamamagitan ng Google Play</string>
 
     <!-- Settings -->
 

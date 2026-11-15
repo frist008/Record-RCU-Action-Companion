@@ -28,6 +28,7 @@
     <string name="record_indicator_mic">麦克风正在录制</string>
     <string name="record_sound_on">声音已开启</string>
     <string name="record_sound_off">声音已关闭</string>
+    <string name="record_remove_ads">移除广告</string>
     <string name="record_inactive_title_record">录制</string>
     <string name="record_inactive_title_stream">直播</string>
     <string name="record_inactive_subtitle">未找到活跃游戏</string>
@@ -35,6 +36,19 @@
     <string name="record_error_already_used">您的电脑已连接到其他应用</string>
     <string name="record_error_not_connected">未连接到您的电脑</string>
     <string name="record_error_port_busy">此手机上的另一个应用已在使用与您电脑的连接</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">高级版</string>
+    <string name="premium_headline">无限制的 Record RCU</string>
+    <string name="premium_subtitle">一次购买，永久拥有</string>
+    <string name="premium_no_ads_title">无广告</string>
+    <string name="premium_no_ads_summary">所有界面都没有横幅广告</string>
+    <string name="premium_forever_title">永久有效，无需订阅</string>
+    <string name="premium_forever_summary">一次付费，免费更新</string>
+    <string name="premium_buy_pattern">以 %1$s 购买</string>
+    <string name="premium_restore">恢复购买</string>
+    <string name="premium_via_play">通过 Google Play</string>
 
     <!-- Settings -->
 

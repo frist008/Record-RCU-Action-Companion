@@ -28,6 +28,7 @@
     <string name="record_indicator_mic">Мікрофон записує</string>
     <string name="record_sound_on">Звуки увімкнено</string>
     <string name="record_sound_off">Звуки вимкнено</string>
+    <string name="record_remove_ads">Прибрати рекламу</string>
     <string name="record_inactive_title_record">ЗАПИС</string>
     <string name="record_inactive_title_stream">ТРАНСЛЯЦІЯ</string>
     <string name="record_inactive_subtitle">АКТИВНОЇ ГРИ НЕ ЗНАЙДЕНО</string>
@@ -35,6 +36,19 @@
     <string name="record_error_already_used">Ваш ПК підключено до іншого додатку</string>
     <string name="record_error_not_connected">Немає з\'єднання з ПК</string>
     <string name="record_error_port_busy">Інший додаток на цьому телефоні вже використовує з\'єднання з ПК</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Преміум</string>
+    <string name="premium_headline">Record RCU без обмежень</string>
+    <string name="premium_subtitle">Одна покупка — і все ваше назавжди</string>
+    <string name="premium_no_ads_title">Без реклами</string>
+    <string name="premium_no_ads_summary">Жодного банера на всіх екранах</string>
+    <string name="premium_forever_title">Назавжди, без підписки</string>
+    <string name="premium_forever_summary">Платіть один раз, оновлення безкоштовні</string>
+    <string name="premium_buy_pattern">Купити за %1$s</string>
+    <string name="premium_restore">Відновити покупки</string>
+    <string name="premium_via_play">Через Google Play</string>
 
     <!-- Settings -->
 
