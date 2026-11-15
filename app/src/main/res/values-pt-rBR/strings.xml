@@ -10,6 +10,10 @@
     <string name="device_searching">Procurando dispositivos…</string>
     <string name="device_error_not_found">Nenhum dispositivo encontrado…</string>
     <string name="device_error_more">Como resolver?</string>
+    <string name="device_permission_local_network">É preciso acesso à rede local para encontrar seu PC</string>
+    <string name="device_permission_local_network_denied">Permita o acesso à rede local nas configurações do Android</string>
+    <string name="device_permission_continue">Continuar</string>
+    <string name="device_permission_settings">Abrir configurações do Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">Idioma do app</string>
     <string name="settings_language_system">Sistema</string>
     <string name="settings_about">Sobre</string>
+    <string name="settings_section_privacy">Privacidade</string>
+    <string name="settings_ads">Anúncios</string>
+    <string name="settings_ads_summary">Alterar seu consentimento para anúncios</string>
     <string name="settings_version_pattern">Versão %1$s</string>
     <string name="settings_minutes_pattern">%1$d min</string>
     <string name="settings_percent_pattern">%1$d%%</string>

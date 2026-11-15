@@ -10,6 +10,10 @@
     <string name="device_searching">Naghahanap ng mga device…</string>
     <string name="device_error_not_found">Walang nahanap na device…</string>
     <string name="device_error_more">Paano ayusin?</string>
+    <string name="device_permission_local_network">Kailangan ng access sa lokal na network para mahanap ang iyong PC</string>
+    <string name="device_permission_local_network_denied">Payagan ang access sa lokal na network sa mga setting ng Android</string>
+    <string name="device_permission_continue">Magpatuloy</string>
+    <string name="device_permission_settings">Buksan ang mga setting ng Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">Wika ng app</string>
     <string name="settings_language_system">System</string>
     <string name="settings_about">Tungkol sa app</string>
+    <string name="settings_section_privacy">Privacy</string>
+    <string name="settings_ads">Mga ad</string>
+    <string name="settings_ads_summary">Baguhin ang iyong pahintulot sa mga ad</string>
     <string name="settings_version_pattern">Bersyon %1$s</string>
     <string name="settings_minutes_pattern">%1$d min</string>
     <string name="settings_percent_pattern">%1$d%%</string>

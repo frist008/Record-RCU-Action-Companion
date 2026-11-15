@@ -10,6 +10,10 @@
     <string name="device_searching">กำลังค้นหาอุปกรณ์…</string>
     <string name="device_error_not_found">ไม่พบอุปกรณ์…</string>
     <string name="device_error_more">วิธีแก้ไข?</string>
+    <string name="device_permission_local_network">ต้องมีสิทธิ์เข้าถึงเครือข่ายภายในเพื่อค้นหา PC ของคุณ</string>
+    <string name="device_permission_local_network_denied">อนุญาตการเข้าถึงเครือข่ายภายในในการตั้งค่า Android</string>
+    <string name="device_permission_continue">ดำเนินการต่อ</string>
+    <string name="device_permission_settings">เปิดการตั้งค่า Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">ภาษาของแอป</string>
     <string name="settings_language_system">ระบบ</string>
     <string name="settings_about">เกี่ยวกับ</string>
+    <string name="settings_section_privacy">ความเป็นส่วนตัว</string>
+    <string name="settings_ads">โฆษณา</string>
+    <string name="settings_ads_summary">เปลี่ยนความยินยอมเกี่ยวกับโฆษณา</string>
     <string name="settings_version_pattern">เวอร์ชัน %1$s</string>
     <string name="settings_minutes_pattern">%1$d นาที</string>
     <string name="settings_percent_pattern">%1$d%%</string>

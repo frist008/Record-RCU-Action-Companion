@@ -10,6 +10,10 @@
     <string name="device_searching">Meklē ierīces…</string>
     <string name="device_error_not_found">Ierīces nav atrastas…</string>
     <string name="device_error_more">Kā novērst?</string>
+    <string name="device_permission_local_network">Lai atrastu jūsu datoru, nepieciešama piekļuve lokālajam tīklam</string>
+    <string name="device_permission_local_network_denied">Atļaujiet piekļuvi lokālajam tīklam Android iestatījumos</string>
+    <string name="device_permission_continue">Turpināt</string>
+    <string name="device_permission_settings">Atvērt Android iestatījumus</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">Lietotnes valoda</string>
     <string name="settings_language_system">Sistēmas</string>
     <string name="settings_about">Par lietotni</string>
+    <string name="settings_section_privacy">Privātums</string>
+    <string name="settings_ads">Reklāmas</string>
+    <string name="settings_ads_summary">Mainīt piekrišanu reklāmām</string>
     <string name="settings_version_pattern">Versija %1$s</string>
     <string name="settings_minutes_pattern">%1$d min</string>
     <string name="settings_percent_pattern">%1$d%%</string>

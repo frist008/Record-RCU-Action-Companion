@@ -10,6 +10,10 @@
     <string name="device_searching">Идёт поиск устройств…</string>
     <string name="device_error_not_found">Устройства не найдены…</string>
     <string name="device_error_more">Как исправить?</string>
+    <string name="device_permission_local_network">Нужен доступ к локальной сети, чтобы найти ваш ПК</string>
+    <string name="device_permission_local_network_denied">Разрешите доступ к локальной сети в настройках Android</string>
+    <string name="device_permission_continue">Продолжить</string>
+    <string name="device_permission_settings">Открыть настройки Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3336114877</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">Язык приложения</string>
     <string name="settings_language_system">Системный</string>
     <string name="settings_about">О приложении</string>
+    <string name="settings_section_privacy">Конфиденциальность</string>
+    <string name="settings_ads">Реклама</string>
+    <string name="settings_ads_summary">Изменить согласие на рекламу</string>
     <string name="settings_version_pattern">Версия %1$s</string>
     <string name="settings_minutes_pattern">%1$d мин</string>
     <string name="settings_percent_pattern">%1$d %%</string>
