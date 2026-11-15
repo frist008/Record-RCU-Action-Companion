@@ -1,3 +1,4 @@
+import com.github.triplet.gradle.androidpublisher.ReleaseStatus
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.milliseconds
@@ -13,6 +14,22 @@ plugins {
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.firebase.perf)
     alias(libs.plugins.licensee)
+    alias(libs.plugins.play.publisher)
+}
+
+// Google Play: the bundle goes as a draft to the internal track, or to the track `-PplayTrack` names.
+// The key of the service account lies in `play-credentials.json` of the root, outside git; without
+// the file the plugin reads the key from the `ANDROID_PUBLISHER_CREDENTIALS` environment variable.
+play {
+    val credentials = rootProject.file("play-credentials.json")
+
+    if (credentials.exists()) {
+        serviceAccountCredentials.set(credentials)
+    }
+
+    defaultToAppBundles.set(true)
+    track.set(providers.gradleProperty("playTrack").orElse("internal"))
+    releaseStatus.set(ReleaseStatus.DRAFT)
 }
 
 licensee {

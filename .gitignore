@@ -19,6 +19,7 @@
 *.keystore
 *.jks
 google-services.json
+/play-credentials.json
 
 # Local tooling and notes
 .claude/
