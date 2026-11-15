@@ -9,7 +9,6 @@ import com.google.android.libraries.ads.mobile.sdk.common.AdLoadCallback
 import com.google.android.libraries.ads.mobile.sdk.common.LoadAdError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.atomicfu.atomic
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
@@ -127,10 +126,6 @@ import kotlin.time.Duration.Companion.seconds
             soundPlayer.isMutedFlow.collect { isMuted ->
                 updateSuccessState { state -> state.copy(isSoundMuted = isMuted) }
             }
-        }
-
-        launch(Dispatchers.IO) {
-            Analytics.subscribeAndBlock()
         }
     }
 

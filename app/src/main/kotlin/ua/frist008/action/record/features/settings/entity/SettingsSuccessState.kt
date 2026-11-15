@@ -19,6 +19,7 @@ import ua.frist008.action.record.core.ui.UIState
  * @property isLanguageVisible whether Android lets the app pick its own language.
  * @property languageName the language the user picked for the app, or null for the system one.
  * @property versionName the version of the app.
+ * @property isAdsPrivacyVisible whether the law asks to keep the consent to ads open to change.
  */
 @Immutable data class SettingsSuccessState(
     val minFreeSpaceGb: Int,
@@ -34,6 +35,7 @@ import ua.frist008.action.record.core.ui.UIState
     val isLanguageVisible: Boolean,
     val languageName: String?,
     val versionName: String,
+    val isAdsPrivacyVisible: Boolean,
 ) : UIState.Success() {
 
     companion object {
@@ -52,6 +54,7 @@ import ua.frist008.action.record.core.ui.UIState
             isLanguageVisible = true,
             languageName = null,
             versionName = "1.0.4",
+            isAdsPrivacyVisible = true,
         )
     }
 }

@@ -26,4 +26,6 @@ interface SettingsActions {
     fun onLanguageClick() = Unit
 
     fun onAboutClick() = Unit
+
+    fun onAdsPrivacyClick() = Unit
 }

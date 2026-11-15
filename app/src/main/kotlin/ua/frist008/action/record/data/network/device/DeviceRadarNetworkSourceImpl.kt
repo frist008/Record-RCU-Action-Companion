@@ -17,10 +17,13 @@ import ua.frist008.action.record.core.di.qualifier.concurrent.IO
 import ua.frist008.action.record.data.mapper.ByteArrayToDeviceMapper
 import ua.frist008.action.record.data.network.DatagramSocketBinder
 import ua.frist008.action.record.data.network.NetworkConst
+import ua.frist008.action.record.data.network.WifiNetworkBinder
 import ua.frist008.action.record.data.network.device.entity.DeviceDTO
 import ua.frist008.action.record.data.network.device.entity.RadarRequestDataHolder
 import java.io.IOException
 import java.net.Inet4Address
+import java.net.InetAddress
+import java.net.InterfaceAddress
 import java.net.NetworkInterface
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
@@ -29,38 +32,47 @@ import kotlin.time.TimeSource
 class DeviceRadarNetworkSourceImpl @Inject constructor(
     @param:IO private val ioDispatcher: CoroutineDispatcher,
     private val selectorManager: SelectorManager,
+    private val wifiNetworkBinder: WifiNetworkBinder,
 ) : DeviceRadarNetworkSource {
 
     override fun get(): Flow<List<DeviceDTO>> =
         flow {
-            val requestDataHolder = RadarRequestDataHolder.newInstance()
-            val socket = DatagramSocketBinder.bind(
-                selectorManager = selectorManager,
-                port = NetworkConst.RADAR_REPLY_PORT,
-                isBroadcast = true,
-            )
-
-            Timber.i("init socket")
-
-            try {
-                scan(socket = socket, requestDataHolder = requestDataHolder, collector = this)
-            } finally {
-                socket.close()
-                Timber.i("cancel")
-            }
+            wifiNetworkBinder.withWifi { scanOnSocket(collector = this) }
         }.flowOn(ioDispatcher)
+
+    private suspend fun scanOnSocket(collector: FlowCollector<List<DeviceDTO>>) {
+        val requestDataHolder = RadarRequestDataHolder.newInstance()
+        val socket = DatagramSocketBinder.bind(
+            selectorManager = selectorManager,
+            port = NetworkConst.RADAR_REPLY_PORT,
+            isBroadcast = true,
+        )
+
+        Timber.i("init socket")
+
+        try {
+            scan(socket = socket, requestDataHolder = requestDataHolder, collector = collector)
+        } finally {
+            socket.close()
+            Timber.i("cancel")
+        }
+    }
 
     private suspend fun scan(
         socket: BoundDatagramSocket,
         requestDataHolder: RadarRequestDataHolder,
         collector: FlowCollector<List<DeviceDTO>>,
     ) {
-        val requestList = getLocalAddressList()
-            .map { address -> requestDataHolder.newClientDataInstance(address.address) }
+        val requestList = getLocalInterfaceAddressList().map { interfaceAddress ->
+            requestDataHolder.newClientDataInstance(interfaceAddress.address.address) to
+                getRequestAddressList(interfaceAddress.broadcast)
+        }
         var repliedSet = emptySet<DeviceDTO>()
 
         while (true) {
-            requestList.forEach { requestArr -> sendRequest(socket, requestArr) }
+            requestList.forEach { (requestArr, addressList) ->
+                addressList.forEach { address -> sendRequest(socket, requestArr, address) }
+            }
             repliedSet = receiveReplies(socket, repliedSet, collector)
             collector.emit(repliedSet.toList())
         }
@@ -94,26 +106,49 @@ class DeviceRadarNetworkSourceImpl @Inject constructor(
         }
     }
 
-    private suspend fun sendRequest(socket: BoundDatagramSocket, requestArr: ByteArray) {
+    private suspend fun sendRequest(
+        socket: BoundDatagramSocket,
+        requestArr: ByteArray,
+        address: InetSocketAddress,
+    ) {
         val packet = Buffer()
 
         packet.write(requestArr)
 
         try {
-            socket.send(Datagram(packet, REQUEST_ADDRESS))
+            socket.send(Datagram(packet, address))
         } catch (e: IOException) {
-            Timber.w(e)
+            Timber.w(e, address.toString())
         }
     }
 
-    private fun getLocalAddressList(): List<Inet4Address> = runCatching {
+    /**
+     * Lists where a request of one local address goes: the broadcast of every network, as the
+     * original app sent it, and the broadcast of the address's own subnet, which reaches the PC
+     * when the first one leaves through another network.
+     *
+     * @param subnetBroadcast the broadcast address of the subnet, null for a point-to-point link.
+     * @return the addresses the request is sent to.
+     */
+    private fun getRequestAddressList(subnetBroadcast: InetAddress?): List<InetSocketAddress> {
+        val subnetAddress = subnetBroadcast?.hostAddress?.let { host ->
+            InetSocketAddress(host, NetworkConst.RADAR_REQUEST_PORT)
+        }
+
+        return listOfNotNull(REQUEST_ADDRESS, subnetAddress)
+    }
+
+    private fun getLocalInterfaceAddressList(): List<InterfaceAddress> = runCatching {
         NetworkInterface
             .getNetworkInterfaces()
             .asSequence()
-            .flatMap { networkInterface -> networkInterface.inetAddresses.asSequence() }
-            .filter { !it.isLoopbackAddress && it.isSiteLocalAddress }
-            .mapNotNull { it as? Inet4Address? }
-            .distinctBy { it.hostAddress }
+            .flatMap { networkInterface -> networkInterface.interfaceAddresses.asSequence() }
+            .filter { interfaceAddress ->
+                val address = interfaceAddress.address
+
+                address is Inet4Address && !address.isLoopbackAddress && address.isSiteLocalAddress
+            }
+            .distinctBy { interfaceAddress -> interfaceAddress.address.hostAddress }
             .toList()
     }.onFailure(Timber::e).getOrElse { emptyList() }
 

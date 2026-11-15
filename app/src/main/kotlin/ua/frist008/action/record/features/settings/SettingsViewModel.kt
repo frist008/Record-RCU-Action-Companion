@@ -110,11 +110,18 @@ import kotlin.time.Duration.Companion.minutes
         }
     }
 
+    override fun onAdsPrivacyClick() {
+        launch(Dispatchers.Main.immediate) {
+            navigator.emit(NavCommand.AdsPrivacyOptions)
+        }
+    }
+
     private suspend fun showSettings(settings: SettingsDomainEntity) {
         val state = settings.toUI(
             isLanguageVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU,
             languageName = settingsRepository.getAppLanguage(),
             versionName = BuildConfig.VERSION_NAME,
+            isAdsPrivacyVisible = settingsRepository.isAdsPrivacyRequired(),
         )
 
         mutableState.emit(state)

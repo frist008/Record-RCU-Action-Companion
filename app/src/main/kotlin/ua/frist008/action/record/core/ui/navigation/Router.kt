@@ -10,6 +10,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import androidx.navigation3.runtime.NavKey
+import com.google.android.ump.UserMessagingPlatform
 import timber.log.Timber
 import ua.frist008.action.record.core.util.media.MimeType
 import ua.frist008.action.record.features.NavCommand
@@ -32,6 +33,8 @@ class Router(
             is NavCommand.App -> openApp(command.appPackage, command.url)
             is NavCommand.Share -> share(command)
             is NavCommand.AppLanguageSettings -> openAppLanguageSettings()
+            is NavCommand.AppDetailsSettings -> openAppDetailsSettings()
+            is NavCommand.AdsPrivacyOptions -> openAdsPrivacyOptions()
             else -> {
                 if (command.isReplaceScreen) backStack.removeLastOrNull()
                 backStack.add(command)
@@ -80,6 +83,24 @@ class Router(
             context.startActivity(Intent(Settings.ACTION_APP_LOCALE_SETTINGS, packageUri))
         } else {
             Timber.d("AppLanguageSettings: Android ${Build.VERSION.SDK_INT} has no app language")
+        }
+    }
+
+    private fun openAppDetailsSettings() {
+        val packageUri = Uri.fromParts(PACKAGE_SCHEME, context.packageName, null)
+
+        context.startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, packageUri))
+    }
+
+    private fun openAdsPrivacyOptions() {
+        val activity = context as? Activity
+
+        if (activity != null) {
+            UserMessagingPlatform.showPrivacyOptionsForm(activity) { formError ->
+                if (formError != null) Timber.w(formError.message)
+            }
+        } else {
+            Timber.d("AdsPrivacyOptions: no activity to show the form in")
         }
     }
 

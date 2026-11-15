@@ -30,6 +30,7 @@ import ua.frist008.action.record.data.mapper.ByteArrayToRecordMapper
 import ua.frist008.action.record.data.network.DatagramSocketBinder
 import ua.frist008.action.record.data.network.NetworkConst
 import ua.frist008.action.record.data.network.NotConnectedException
+import ua.frist008.action.record.data.network.WifiNetworkBinder
 import ua.frist008.action.record.data.network.device.entity.DeviceDTO
 import ua.frist008.action.record.data.network.record.entity.RecordDTO
 import ua.frist008.action.record.features.record.entity.RecordCommand
@@ -41,6 +42,7 @@ import kotlin.time.Duration.Companion.seconds
 class RecordNetworkSourceImpl @Inject constructor(
     @param:IO private val ioDispatcher: CoroutineDispatcher,
     private val selectorManager: SelectorManager,
+    private val wifiNetworkBinder: WifiNetworkBinder,
 ) : RecordNetworkSource {
 
     private val commandMutex = Mutex()
@@ -50,6 +52,10 @@ class RecordNetworkSourceImpl @Inject constructor(
     override val recordFlow = _recordFlow
 
     override suspend fun connect(dto: DeviceDTO): Unit = withContext(ioDispatcher) {
+        wifiNetworkBinder.withWifi { holdConnection(dto) }
+    }
+
+    private suspend fun holdConnection(dto: DeviceDTO) {
         _recordFlow.emit(RecordDTO(false))
 
         val tcpSocket = connectTcp(dto)

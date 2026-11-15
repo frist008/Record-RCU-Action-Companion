@@ -3,10 +3,8 @@ package ua.frist008.action.record.analytics
 import com.google.firebase.Firebase
 import com.google.firebase.analytics.analytics
 import com.google.firebase.analytics.logEvent
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.mapNotNull
+import kotlinx.atomicfu.atomic
 import timber.log.Timber
-import ua.frist008.action.record.core.util.common.takeIfNotEmpty
 import ua.frist008.action.record.features.record.entity.RecordSuccessState
 
 object Analytics {
@@ -15,22 +13,16 @@ object Analytics {
 
     private const val RECORD_DATA_EVENT = "record_data"
 
-    private val engineFlow = MutableStateFlow<String?>(null)
+    /** The engine of the last event, so the same engine is logged once while the process lives */
+    private val lastEngine = atomic<String?>(null)
 
-    private suspend fun logEngine(engine: String) {
-        engineFlow.emit(engine)
-    }
+    fun log(state: RecordSuccessState) {
+        val engine = state.engine.name.trim()
+        val isNewEngine = engine.isNotEmpty() && lastEngine.getAndSet(engine) != engine
 
-    suspend fun subscribeAndBlock() {
-        engineFlow.mapNotNull { it.takeIfNotEmpty() }.collect { engine ->
+        if (isNewEngine) {
             Timber.tag("Engine").d(engine)
             analytics.logEvent(RECORD_DATA_EVENT) { param("engine", engine.replace(' ', '_')) }
-        }
-    }
-
-    suspend fun log(state: RecordSuccessState) {
-        if (state.engine.name.trim().isNotEmpty()) {
-            logEngine(state.engine.name)
         }
     }
 }

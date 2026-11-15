@@ -1,8 +1,5 @@
 package ua.frist008.action.record.features.record.entity
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableStateOf
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import kotlinx.collections.immutable.toImmutableList
@@ -48,13 +45,11 @@ data class RecordDomainEntity(
                 buttonsData = mapRecordType(recordModeType, isStream),
                 fps = fps,
                 maxFps = maxFps,
-                timeState = mutableStateOf(DateUtils.formatFullTime(duration)),
+                time = DateUtils.formatFullTime(duration),
                 // TODO maxDuration = maxDuration IMPORTANT
                 // TODO recTooltip = recTooltip
                 engine = mapEngine(engine),
                 storage = mapStorage(
-                    freeSpaceState = null,
-                    timeRemainingState = null,
                     freeSpaceWithTimestampList = persistentListOf(),
                     freeSpace = freeSpace,
                     minFreeSpace = minFreeSpace,
@@ -76,17 +71,15 @@ data class RecordDomainEntity(
                     persistentListOf()
                 }
 
-            recordSuccessState.timeState.value = DateUtils.formatFullTime(duration)
             recordSuccessState.copy(
                 buttonsData = buttonsData,
                 fps = fps,
                 maxFps = maxFps,
+                time = DateUtils.formatFullTime(duration),
                 // TODO maxDuration = maxDuration IMPORTANT
                 // TODO recTooltip = recTooltip
                 engine = mapEngine(engine),
                 storage = mapStorage(
-                    freeSpaceState = storage.freeSpaceState,
-                    timeRemainingState = storage.timeRemainingState,
                     freeSpaceWithTimestampList = lastFreeSpaceWithTimestampList,
                     freeSpace = freeSpace,
                     minFreeSpace = minFreeSpace,
@@ -105,34 +98,28 @@ data class RecordDomainEntity(
         LiveState(isOnline = streamType != StreamType.OFF, isLive = isStream)
 
     private fun mapStorage(
-        freeSpaceState: MutableState<Float>?,
-        timeRemainingState: MutableState<String>?,
         freeSpaceWithTimestampList: ImmutableList<Pair<Long, Long>>,
         freeSpace: Space,
         minFreeSpace: Space,
     ): StorageState {
         val newFreeSpaceWithTimestampList =
             createFreeSpaceWithTimestampList(freeSpaceWithTimestampList, freeSpace)
-        timeRemainingState?.value = calculateTimeRemaining(newFreeSpaceWithTimestampList, freeSpace)
+        val timeRemaining = calculateTimeRemaining(newFreeSpaceWithTimestampList, freeSpace)
 
         return if (freeSpace < 1.gb) {
-            val freeMB = freeSpace.mb.toInt().toFloat()
-            freeSpaceState?.value = freeMB
-
             StorageState(
-                freeSpaceState = freeSpaceState ?: mutableFloatStateOf(freeMB),
-                timeRemainingState = timeRemainingState ?: mutableStateOf(""),
+                freeSpace = freeSpace.mb.toInt().toFloat(),
+                timeRemaining = timeRemaining,
                 pattern = R.string.record_header_storage_mb_pattern,
                 errorType = ErrorType.ERROR,
                 freeSpaceWithTimestampList = newFreeSpaceWithTimestampList,
             )
         } else {
             val freeGB = freeSpace.gb.round(1).toFloat()
-            freeSpaceState?.value = freeGB
 
             StorageState(
-                freeSpaceState = freeSpaceState ?: mutableFloatStateOf(freeGB),
-                timeRemainingState = timeRemainingState ?: mutableStateOf(""),
+                freeSpace = freeGB,
+                timeRemaining = timeRemaining,
                 pattern = R.string.record_header_storage_gb_pattern,
                 errorType = when {
                     freeSpace < minFreeSpace -> ErrorType.ERROR

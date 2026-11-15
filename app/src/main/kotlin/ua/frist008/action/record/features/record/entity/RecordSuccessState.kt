@@ -2,9 +2,6 @@ package ua.frist008.action.record.features.record.entity
 
 import androidx.annotation.StringRes
 import androidx.compose.runtime.Immutable
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
 import com.google.android.libraries.ads.mobile.sdk.banner.AdSize
 import kotlinx.collections.immutable.ImmutableList
@@ -15,9 +12,8 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
 
 @Immutable data class RecordSuccessState(
     val fps: Int,
-    val fpsState: MutableState<String> = mutableStateOf(fps.toString()),
     val maxFps: Int,
-    val timeState: MutableState<String>,
+    val time: String,
     val engine: EngineState,
     val live: LiveState,
     val storage: StorageState,
@@ -40,16 +36,12 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
     /** Whether a touch now only restores the brightness of the dimmed screen, pressing nothing */
     val isTouchOnlyWakes = dimBrightness != null && isFirstTouchOnlyWakes
 
-    init {
-        fpsState.value = fps.toString()
-    }
-
     companion object {
 
         fun previewStop() = RecordSuccessState(
             fps = 60,
             maxFps = 100,
-            timeState = mutableStateOf("00:00:00"),
+            time = "00:00:00",
             engine = EngineState.previewStopDefault(),
             live = LiveState.previewLiveOff(),
             storage = StorageState.previewDefault(),
@@ -129,8 +121,8 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
 }
 
 @Immutable data class StorageState(
-    val freeSpaceState: MutableState<Float>,
-    val timeRemainingState: MutableState<String>,
+    val freeSpace: Float,
+    val timeRemaining: String,
     @get:StringRes val pattern: Int,
     val errorType: ErrorType,
     val freeSpaceWithTimestampList: ImmutableList<Pair<Long, Long>> = persistentListOf(),
@@ -138,22 +130,22 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
 
     companion object {
         fun previewDefault() = StorageState(
-            freeSpaceState = mutableFloatStateOf(30.4f),
-            timeRemainingState = mutableStateOf(""),
+            freeSpace = 30.4f,
+            timeRemaining = "",
             pattern = R.string.record_header_storage_gb_pattern,
             errorType = ErrorType.DEFAULT,
         )
 
         fun previewWarning() = StorageState(
-            freeSpaceState = mutableFloatStateOf(9.72f),
-            timeRemainingState = mutableStateOf("00:00:00"),
+            freeSpace = 9.72f,
+            timeRemaining = "00:00:00",
             pattern = R.string.record_header_storage_gb_pattern,
             errorType = ErrorType.WARNING,
         )
 
         fun previewError() = StorageState(
-            freeSpaceState = mutableFloatStateOf(30f),
-            timeRemainingState = mutableStateOf("01:22:55"),
+            freeSpace = 30f,
+            timeRemaining = "01:22:55",
             pattern = R.string.record_header_storage_mb_pattern,
             errorType = ErrorType.ERROR,
         )

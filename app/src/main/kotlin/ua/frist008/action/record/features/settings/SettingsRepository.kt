@@ -21,4 +21,12 @@ interface SettingsRepository {
      * @return its name in itself, or null when the app follows the language of the system.
      */
     fun getAppLanguage(): String?
+
+    /**
+     * Tells whether the law of the user's country asks the app to keep their consent to ads open to
+     * change, as Google's consent form found it on the last start.
+     *
+     * @return true when the settings have to lead to that form.
+     */
+    fun isAdsPrivacyRequired(): Boolean
 }
