@@ -44,6 +44,7 @@ import ua.frist008.action.record.BuildConfig
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.component.root.DefaultScaffold
 import ua.frist008.action.record.core.ui.resource.Icons
+import ua.frist008.action.record.core.ui.resource.svg.AdsOff
 import ua.frist008.action.record.core.ui.resource.svg.Camcorder
 import ua.frist008.action.record.core.ui.resource.svg.Mic
 import ua.frist008.action.record.core.ui.resource.svg.Pause
@@ -71,6 +72,7 @@ fun RecordSuccessScreen(
     onPauseClick: () -> Unit = {},
     onStopClick: () -> Unit = {},
     onSoundClick: () -> Unit = {},
+    onRemoveAdsClick: () -> Unit = {},
     onSettingsClick: () -> Unit = {},
 ) {
     DefaultScaffold(
@@ -84,6 +86,9 @@ fun RecordSuccessScreen(
         backIcon = null,
         actions = {
             SoundAction(state.isSoundMuted, onSoundClick)
+
+            if (state.isAdsVisible) RemoveAdsAction(onRemoveAdsClick)
+
             SettingsAction(onSettingsClick)
         },
         topAppBarHeight = 56.dp,
@@ -113,7 +118,8 @@ fun RecordSuccessScreen(
                 onPauseClick = onPauseClick,
                 onStopClick = onStopClick,
             )
-            Ads(bannerLoadCallback, state.adSize)
+
+            if (state.isAdsVisible) Ads(bannerLoadCallback, state.adSize)
         }
     }
 }
@@ -132,6 +138,16 @@ private fun RowScope.SoundAction(isSoundMuted: Boolean, onSoundClick: () -> Unit
                 contentDescription = stringResource(R.string.record_sound_on),
             )
         }
+    }
+}
+
+@Composable
+private fun RowScope.RemoveAdsAction(onRemoveAdsClick: () -> Unit) {
+    IconButton(onClick = onRemoveAdsClick) {
+        Icon(
+            imageVector = Icons.AdsOff,
+            contentDescription = stringResource(R.string.record_remove_ads),
+        )
     }
 }
 

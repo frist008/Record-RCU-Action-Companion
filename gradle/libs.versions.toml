@@ -56,6 +56,8 @@ firebase-bom = "35.2.0"
 # ad
 ads = "1.6.0"
 ads-consent = "4.0.0"
+# billing
+billing = "9.1.0"
 # di
 di-hilt = "2.60.1"
 di-hilt-navigation-compose = "1.4.0"
@@ -123,6 +125,8 @@ firebase-perf = { module = "com.google.firebase:firebase-perf" }
 # ad
 ads = { module = "com.google.android.libraries.ads.mobile.sdk:ads-mobile-sdk", version.ref = "ads" }
 ads-consent = { module = "com.google.android.ump:user-messaging-platform", version.ref = "ads-consent" }
+# billing
+billing = { module = "com.android.billingclient:billing-ktx", version.ref = "billing" }
 # di
 di-hilt = { module = "com.google.dagger:hilt-android", version.ref = "di-hilt" }
 di-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "di-hilt-navigation-compose" }

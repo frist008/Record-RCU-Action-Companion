@@ -25,6 +25,8 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
     val isSoundMuted: Boolean = false,
     val dimBrightness: Float? = null,
     val isFirstTouchOnlyWakes: Boolean = false,
+    /** The banner and the way to remove it: shown once Google Play said Premium is not bought */
+    val isAdsVisible: Boolean = false,
 ) : UIState.Success() {
 
     /** The red camera beside the time: shown only while the recording runs */
@@ -49,6 +51,7 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
             gameActive = true,
             isWebCam = false,
             isMic = false,
+            isAdsVisible = true,
         )
 
         fun previewRecording() = previewStop().copy(

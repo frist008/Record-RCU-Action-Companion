@@ -6,6 +6,8 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import ua.frist008.action.record.data.network.device.DeviceRadarNetworkSource
 import ua.frist008.action.record.data.network.device.DeviceRadarNetworkSourceImpl
+import ua.frist008.action.record.data.network.premium.PremiumNetworkSource
+import ua.frist008.action.record.data.network.premium.PremiumNetworkSourceImpl
 import ua.frist008.action.record.data.network.record.RecordNetworkSource
 import ua.frist008.action.record.data.network.record.RecordNetworkSourceImpl
 import javax.inject.Singleton
@@ -19,4 +21,7 @@ interface SourceModule {
 
     @Binds @Singleton
     fun bindRecordNetworkSource(source: RecordNetworkSourceImpl): RecordNetworkSource
+
+    @Binds @Singleton
+    fun bindPremiumNetworkSource(source: PremiumNetworkSourceImpl): PremiumNetworkSource
 }

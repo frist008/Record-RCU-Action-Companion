@@ -67,6 +67,7 @@ fun RecordScreen(viewModel: RecordViewModel = hiltViewModel()) {
                         onPauseClick = viewModel::onPauseClick,
                         onStopClick = viewModel::onStopClick,
                         onSoundClick = viewModel::onSoundClick,
+                        onRemoveAdsClick = viewModel::onRemoveAdsClick,
                         onSettingsClick = viewModel::onSettingsClick,
                     )
                 } else {

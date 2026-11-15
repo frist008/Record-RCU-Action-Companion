@@ -30,6 +30,7 @@ import ua.frist008.action.record.data.network.DisconnectException
 import ua.frist008.action.record.data.network.NotConnectedException
 import ua.frist008.action.record.features.NavCommand
 import ua.frist008.action.record.features.NewRoot
+import ua.frist008.action.record.features.premium.PremiumRepository
 import ua.frist008.action.record.features.record.entity.ErrorType
 import ua.frist008.action.record.features.record.entity.FixedRecordCommand
 import ua.frist008.action.record.features.record.entity.RecordDomainEntity
@@ -48,6 +49,7 @@ import kotlin.time.Duration.Companion.seconds
     dependencies: PresentationDependenciesDelegate,
     private val recordRepository: RecordRepository,
     private val settingsRepository: SettingsRepository,
+    private val premiumRepository: PremiumRepository,
     private val soundPlayer: SoundPlayer,
     private val vibrator: Vibrator,
 ) : BaseViewModel(dependencies) {
@@ -56,6 +58,9 @@ import kotlin.time.Duration.Companion.seconds
     private val dimJob = atomic<Job?>(null)
     private val stateMutex = Mutex()
     private val settings = atomic(SettingsDomainEntity())
+
+    /** Whether the banner is shown: only once Google Play said Premium is not bought */
+    private val isAdsVisible = atomic(false)
 
     /** The recording time of the last packet, null before the first one */
     private val lastDuration = atomic<Duration?>(null)
@@ -127,6 +132,19 @@ import kotlin.time.Duration.Companion.seconds
                 updateSuccessState { state -> state.copy(isSoundMuted = isMuted) }
             }
         }
+
+        launch {
+            premiumRepository.isPremiumFlow.collect { isPremium ->
+                val isVisible = isPremium == false
+
+                isAdsVisible.value = isVisible
+                updateSuccessState { state -> state.copy(isAdsVisible = isVisible) }
+            }
+        }
+
+        launch {
+            premiumRepository.refresh()
+        }
     }
 
     fun onStartClick(state: RecordSuccessState = state()) {
@@ -183,6 +201,12 @@ import kotlin.time.Duration.Companion.seconds
         soundPlayer.toggleMute()
     }
 
+    fun onRemoveAdsClick() {
+        launch {
+            navigator.emit(NavCommand.PremiumScreen)
+        }
+    }
+
     /** Restores the brightness of the dimmed screen and counts the time without touches again */
     fun onScreenTouch() {
         launch(dimJob) {
@@ -204,6 +228,7 @@ import kotlin.time.Duration.Companion.seconds
                 state.copy(
                     isSoundMuted = soundPlayer.isMutedFlow.value,
                     isFirstTouchOnlyWakes = currentSettings.isFirstTouchOnlyWakes,
+                    isAdsVisible = isAdsVisible.value,
                 )
             } else {
                 state

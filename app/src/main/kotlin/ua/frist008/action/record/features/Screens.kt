@@ -37,4 +37,5 @@ sealed class NavCommand(
     @Serializable @Immutable object RecordScreen : NavCommand()
     @Serializable @Immutable object SettingsScreen : NavCommand()
     @Serializable @Immutable object AboutScreen : NavCommand()
+    @Serializable @Immutable object PremiumScreen : NavCommand()
 }
