@@ -7,9 +7,6 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Enheter</string>
-    <string name="device_available">Tillgänglig</string>
-    <string name="device_not_available">Ej tillgänglig</string>
     <string name="device_searching">Söker efter enheter…</string>
     <string name="device_error_not_found">Inga enheter hittades…</string>
     <string name="device_error_more">Hur fixar man?</string>

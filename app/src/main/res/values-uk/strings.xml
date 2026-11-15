@@ -7,9 +7,6 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Пристрої</string>
-    <string name="device_available">Доступний</string>
-    <string name="device_not_available">Недоступний</string>
     <string name="device_searching">Йде пошук пристроїв…</string>
     <string name="device_error_not_found">Пристрої не знайдено…</string>
     <string name="device_error_more">Як виправити?</string>

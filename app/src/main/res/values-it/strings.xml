@@ -7,9 +7,6 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Dispositivi</string>
-    <string name="device_available">Disponibile</string>
-    <string name="device_not_available">Non disponibile</string>
     <string name="device_searching">Ricerca dispositivi…</string>
     <string name="device_error_not_found">Nessun dispositivo trovato…</string>
     <string name="device_error_more">Come risolvere?</string>
