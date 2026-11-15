@@ -10,6 +10,10 @@
     <string name="device_searching">Αναζήτηση συσκευών…</string>
     <string name="device_error_not_found">Δεν βρέθηκαν συσκευές…</string>
     <string name="device_error_more">Πώς να διορθωθεί;</string>
+    <string name="device_permission_local_network">Απαιτείται πρόσβαση στο τοπικό δίκτυο για να βρεθεί ο υπολογιστής σας</string>
+    <string name="device_permission_local_network_denied">Επιτρέψτε την πρόσβαση στο τοπικό δίκτυο στις ρυθμίσεις του Android</string>
+    <string name="device_permission_continue">Συνέχεια</string>
+    <string name="device_permission_settings">Άνοιγμα ρυθμίσεων Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">Γλώσσα εφαρμογής</string>
     <string name="settings_language_system">Συστήματος</string>
     <string name="settings_about">Πληροφορίες</string>
+    <string name="settings_section_privacy">Απόρρητο</string>
+    <string name="settings_ads">Διαφημίσεις</string>
+    <string name="settings_ads_summary">Αλλαγή συγκατάθεσης για διαφημίσεις</string>
     <string name="settings_version_pattern">Έκδοση %1$s</string>
     <string name="settings_minutes_pattern">%1$d λεπ.</string>
     <string name="settings_percent_pattern">%1$d%%</string>

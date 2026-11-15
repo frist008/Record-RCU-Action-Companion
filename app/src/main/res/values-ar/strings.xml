@@ -10,6 +10,10 @@
     <string name="device_searching">جارٍ البحث عن الأجهزة…</string>
     <string name="device_error_not_found">لم يتم العثور على أجهزة…</string>
     <string name="device_error_more">كيفية الإصلاح؟</string>
+    <string name="device_permission_local_network">يلزم الوصول إلى الشبكة المحلية للعثور على جهاز الكمبيوتر</string>
+    <string name="device_permission_local_network_denied">اسمح بالوصول إلى الشبكة المحلية في إعدادات Android</string>
+    <string name="device_permission_continue">متابعة</string>
+    <string name="device_permission_settings">فتح إعدادات Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">لغة التطبيق</string>
     <string name="settings_language_system">النظام</string>
     <string name="settings_about">حول التطبيق</string>
+    <string name="settings_section_privacy">الخصوصية</string>
+    <string name="settings_ads">الإعلانات</string>
+    <string name="settings_ads_summary">تغيير موافقتك على الإعلانات</string>
     <string name="settings_version_pattern">الإصدار %1$s</string>
     <string name="settings_minutes_pattern">%1$d دقيقة</string>
     <string name="settings_percent_pattern">%1$d%%</string>

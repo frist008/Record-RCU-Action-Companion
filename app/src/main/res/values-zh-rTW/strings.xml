@@ -10,6 +10,10 @@
     <string name="device_searching">正在搜尋裝置…</string>
     <string name="device_error_not_found">未找到裝置…</string>
     <string name="device_error_more">如何修復？</string>
+    <string name="device_permission_local_network">需要區域網路存取權才能找到您的電腦</string>
+    <string name="device_permission_local_network_denied">請在 Android 設定中允許存取區域網路</string>
+    <string name="device_permission_continue">繼續</string>
+    <string name="device_permission_settings">開啟 Android 設定</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">應用程式語言</string>
     <string name="settings_language_system">跟隨系統</string>
     <string name="settings_about">關於</string>
+    <string name="settings_section_privacy">隱私權</string>
+    <string name="settings_ads">廣告</string>
+    <string name="settings_ads_summary">變更您對廣告的同意</string>
     <string name="settings_version_pattern">版本 %1$s</string>
     <string name="settings_minutes_pattern">%1$d 分鐘</string>
     <string name="settings_percent_pattern">%1$d%%</string>

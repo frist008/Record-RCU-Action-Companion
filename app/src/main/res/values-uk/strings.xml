@@ -10,6 +10,10 @@
     <string name="device_searching">Йде пошук пристроїв…</string>
     <string name="device_error_not_found">Пристрої не знайдено…</string>
     <string name="device_error_more">Як виправити?</string>
+    <string name="device_permission_local_network">Потрібен доступ до локальної мережі, щоб знайти ваш ПК</string>
+    <string name="device_permission_local_network_denied">Дозвольте доступ до локальної мережі в налаштуваннях Android</string>
+    <string name="device_permission_continue">Продовжити</string>
+    <string name="device_permission_settings">Відкрити налаштування Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3336125178</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">Мова застосунку</string>
     <string name="settings_language_system">Системна</string>
     <string name="settings_about">Про застосунок</string>
+    <string name="settings_section_privacy">Конфіденційність</string>
+    <string name="settings_ads">Реклама</string>
+    <string name="settings_ads_summary">Змінити згоду на рекламу</string>
     <string name="settings_version_pattern">Версія %1$s</string>
     <string name="settings_minutes_pattern">%1$d хв</string>
     <string name="settings_percent_pattern">%1$d %%</string>

@@ -10,6 +10,10 @@
     <string name="device_searching">डिवाइस खोजा जा रहा है…</string>
     <string name="device_error_not_found">कोई डिवाइस नहीं मिला…</string>
     <string name="device_error_more">कैसे ठीक करें?</string>
+    <string name="device_permission_local_network">आपका PC ढूँढने के लिए लोकल नेटवर्क का ऐक्सेस ज़रूरी है</string>
+    <string name="device_permission_local_network_denied">Android सेटिंग में लोकल नेटवर्क के ऐक्सेस की अनुमति दें</string>
+    <string name="device_permission_continue">जारी रखें</string>
+    <string name="device_permission_settings">Android सेटिंग खोलें</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">ऐप की भाषा</string>
     <string name="settings_language_system">सिस्टम</string>
     <string name="settings_about">ऐप के बारे में</string>
+    <string name="settings_section_privacy">निजता</string>
+    <string name="settings_ads">विज्ञापन</string>
+    <string name="settings_ads_summary">विज्ञापनों के लिए अपनी सहमति बदलें</string>
     <string name="settings_version_pattern">संस्करण %1$s</string>
     <string name="settings_minutes_pattern">%1$d मिनट</string>
     <string name="settings_percent_pattern">%1$d%%</string>

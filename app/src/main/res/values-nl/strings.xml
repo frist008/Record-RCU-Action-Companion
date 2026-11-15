@@ -10,6 +10,10 @@
     <string name="device_searching">Zoeken naar apparaten…</string>
     <string name="device_error_not_found">Geen apparaten gevonden…</string>
     <string name="device_error_more">Hoe op te lossen?</string>
+    <string name="device_permission_local_network">Toegang tot het lokale netwerk is nodig om je pc te vinden</string>
+    <string name="device_permission_local_network_denied">Sta toegang tot het lokale netwerk toe in de Android-instellingen</string>
+    <string name="device_permission_continue">Doorgaan</string>
+    <string name="device_permission_settings">Android-instellingen openen</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">App-taal</string>
     <string name="settings_language_system">Systeem</string>
     <string name="settings_about">Over de app</string>
+    <string name="settings_section_privacy">Privacy</string>
+    <string name="settings_ads">Advertenties</string>
+    <string name="settings_ads_summary">Je toestemming voor advertenties wijzigen</string>
     <string name="settings_version_pattern">Versie %1$s</string>
     <string name="settings_minutes_pattern">%1$d min</string>
     <string name="settings_percent_pattern">%1$d%%</string>

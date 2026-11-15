@@ -10,6 +10,10 @@
     <string name="device_searching">Cihazlar aranıyor…</string>
     <string name="device_error_not_found">Cihaz bulunamadı…</string>
     <string name="device_error_more">Nasıl düzeltilir?</string>
+    <string name="device_permission_local_network">PC\'nizi bulmak için yerel ağ erişimi gerekiyor</string>
+    <string name="device_permission_local_network_denied">Android ayarlarında yerel ağ erişimine izin verin</string>
+    <string name="device_permission_continue">Devam</string>
+    <string name="device_permission_settings">Android ayarlarını aç</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -59,6 +63,9 @@
     <string name="settings_language">Uygulama dili</string>
     <string name="settings_language_system">Sistem</string>
     <string name="settings_about">Hakkında</string>
+    <string name="settings_section_privacy">Gizlilik</string>
+    <string name="settings_ads">Reklamlar</string>
+    <string name="settings_ads_summary">Reklam onayınızı değiştirin</string>
     <string name="settings_version_pattern">Sürüm %1$s</string>
     <string name="settings_minutes_pattern">%1$d dk</string>
     <string name="settings_percent_pattern">%%%1$d</string>

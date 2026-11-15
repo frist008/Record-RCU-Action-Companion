@@ -1,5 +1,6 @@
 package ua.frist008.action.record.data.network.device
 
+import android.content.Context
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
@@ -19,6 +20,7 @@ class ConnectionRepositoryImplTest {
 
     private val deviceDAO: DeviceDAO = mockk()
     private val networkSource: DeviceRadarNetworkSource = mockk()
+    private val context: Context = mockk()
     private lateinit var repository: ConnectionRepositoryImpl
 
     private val firstDto = DeviceDTO(name = "First PC", ip = 16909060L, port = 2555)
@@ -26,7 +28,7 @@ class ConnectionRepositoryImplTest {
 
     @Before
     fun setup() {
-        repository = ConnectionRepositoryImpl(deviceDAO, networkSource)
+        repository = ConnectionRepositoryImpl(deviceDAO, networkSource, context)
     }
 
     @Test
