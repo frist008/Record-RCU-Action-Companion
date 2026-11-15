@@ -20,6 +20,10 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pause</string>
     <string name="record_action_stop">Stop</string>
+    <string name="record_indicator_webcam">Kamera nimmt auf</string>
+    <string name="record_indicator_mic">Mikrofon nimmt auf</string>
+    <string name="record_sound_on">Töne an</string>
+    <string name="record_sound_off">Töne aus</string>
     <string name="record_inactive_title_record">AUFNAHME</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">KEIN SPIEL AKTIV</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Einstellungen</string>
+    <string name="settings_min_free_space">Mindestspeicher</string>
+    <string name="settings_min_free_space_summary">Darunter wird Storage rot</string>
+    <string name="settings_section_sounds">Töne</string>
+    <string name="settings_low_space">Wenig Speicher</string>
+    <string name="settings_low_space_summary">Signal, wenn der Speicher unter das Minimum fällt</string>
+    <string name="settings_record_button">Taste „Aufnahme“</string>
+    <string name="settings_pause_button">Taste „Pause“</string>
+    <string name="settings_stop_button">Taste „Stopp“</string>
+    <string name="settings_button_sound_summary">Ton beim Drücken</string>
+    <string name="settings_duration">Aufnahmedauer</string>
+    <string name="settings_duration_summary">Signal, wenn die Aufnahme die Zeit unten erreicht</string>
+    <string name="settings_duration_after">Signal nach</string>
+    <string name="settings_duration_after_summary">Nach dem Aufnahme-Timer</string>
+    <string name="settings_section_dimming">Bildschirm abdunkeln</string>
+    <string name="settings_dim_after">Abdunkeln nach</string>
+    <string name="settings_dim_after_summary">Ohne Berührung</string>
+    <string name="settings_dim_to">Abdunkeln auf</string>
+    <string name="settings_dim_to_summary">Eine Berührung stellt die Helligkeit wieder her</string>
+    <string name="settings_first_touch">Erste Berührung</string>
+    <string name="settings_first_touch_summary">Nur Helligkeit wiederherstellen, keine Taste drücken</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_language">App-Sprache</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_about">Über die App</string>
+    <string name="settings_version_pattern">Version %1$s</string>
+    <string name="settings_minutes_pattern">%1$d Min.</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Verringern: %1$s</string>
+    <string name="settings_increase_pattern">Erhöhen: %1$s</string>
 
 </resources>

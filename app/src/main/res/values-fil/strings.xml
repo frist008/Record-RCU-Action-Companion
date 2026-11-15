@@ -20,6 +20,10 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">I-pause</string>
     <string name="record_action_stop">Itigil</string>
+    <string name="record_indicator_webcam">Nagre-record ang camera</string>
+    <string name="record_indicator_mic">Nagre-record ang mikropono</string>
+    <string name="record_sound_on">Naka-on ang tunog</string>
+    <string name="record_sound_off">Naka-off ang tunog</string>
     <string name="record_inactive_title_record">RECORD</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">WALANG AKTIBONG LARO</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Mga Setting</string>
+    <string name="settings_min_free_space">Pinakamababang espasyo</string>
+    <string name="settings_min_free_space_summary">Kapag mas mababa, magiging pula ang Storage</string>
+    <string name="settings_section_sounds">Mga tunog</string>
+    <string name="settings_low_space">Kaunting espasyo</string>
+    <string name="settings_low_space_summary">Senyas kapag bumaba sa minimum ang espasyo</string>
+    <string name="settings_record_button">Button na “Record”</string>
+    <string name="settings_pause_button">Button na “Pause”</string>
+    <string name="settings_stop_button">Button na “Stop”</string>
+    <string name="settings_button_sound_summary">Tunog kapag pinindot</string>
+    <string name="settings_duration">Oras ng pagre-record</string>
+    <string name="settings_duration_summary">Senyas kapag naabot ng recording ang oras sa ibaba</string>
+    <string name="settings_duration_after">Senyas pagkalipas ng</string>
+    <string name="settings_duration_after_summary">Ayon sa timer ng recording</string>
+    <string name="settings_section_dimming">Pagpapadilim ng screen</string>
+    <string name="settings_dim_after">Padilimin pagkalipas ng</string>
+    <string name="settings_dim_after_summary">Kapag walang pindot</string>
+    <string name="settings_dim_to">Padilimin hanggang</string>
+    <string name="settings_dim_to_summary">Ibabalik ng pindot ang liwanag</string>
+    <string name="settings_first_touch">Unang pindot</string>
+    <string name="settings_first_touch_summary">Ibalik lang ang liwanag, huwag pindutin ang button</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_language">Wika ng app</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_about">Tungkol sa app</string>
+    <string name="settings_version_pattern">Bersyon %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">Bawasan: %1$s</string>
+    <string name="settings_increase_pattern">Dagdagan: %1$s</string>
 
 </resources>

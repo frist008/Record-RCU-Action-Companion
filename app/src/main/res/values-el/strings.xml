@@ -20,6 +20,10 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Παύση</string>
     <string name="record_action_stop">Διακοπή</string>
+    <string name="record_indicator_webcam">Η κάμερα καταγράφει</string>
+    <string name="record_indicator_mic">Το μικρόφωνο καταγράφει</string>
+    <string name="record_sound_on">Ήχοι ενεργοί</string>
+    <string name="record_sound_off">Ήχοι ανενεργοί</string>
     <string name="record_inactive_title_record">ΕΓΓΡΑΦΗ</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">ΔΕΝ ΒΡΕΘΗΚΕ ΕΝΕΡΓΟ ΠΑΙΧΝΙΔΙ</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Ρυθμίσεις</string>
+    <string name="settings_min_free_space">Ελάχιστος χώρος</string>
+    <string name="settings_min_free_space_summary">Από κάτω, το Storage γίνεται κόκκινο</string>
+    <string name="settings_section_sounds">Ήχοι</string>
+    <string name="settings_low_space">Λίγος χώρος</string>
+    <string name="settings_low_space_summary">Σήμα όταν ο χώρος πέσει κάτω από το ελάχιστο</string>
+    <string name="settings_record_button">Κουμπί «Εγγραφή»</string>
+    <string name="settings_pause_button">Κουμπί «Παύση»</string>
+    <string name="settings_stop_button">Κουμπί «Διακοπή»</string>
+    <string name="settings_button_sound_summary">Ήχος στο πάτημα</string>
+    <string name="settings_duration">Χρόνος εγγραφής</string>
+    <string name="settings_duration_summary">Σήμα όταν η εγγραφή φτάσει τον χρόνο παρακάτω</string>
+    <string name="settings_duration_after">Σήμα μετά από</string>
+    <string name="settings_duration_after_summary">Με βάση το χρονόμετρο εγγραφής</string>
+    <string name="settings_section_dimming">Μείωση φωτεινότητας</string>
+    <string name="settings_dim_after">Μείωση μετά από</string>
+    <string name="settings_dim_after_summary">Χωρίς αγγίγματα</string>
+    <string name="settings_dim_to">Μείωση στο</string>
+    <string name="settings_dim_to_summary">Ένα άγγιγμα επαναφέρει τη φωτεινότητα</string>
+    <string name="settings_first_touch">Πρώτο άγγιγμα</string>
+    <string name="settings_first_touch_summary">Μόνο επαναφορά φωτεινότητας, χωρίς πάτημα κουμπιού</string>
+    <string name="settings_section_app">Εφαρμογή</string>
+    <string name="settings_language">Γλώσσα εφαρμογής</string>
+    <string name="settings_language_system">Συστήματος</string>
+    <string name="settings_about">Πληροφορίες</string>
+    <string name="settings_version_pattern">Έκδοση %1$s</string>
+    <string name="settings_minutes_pattern">%1$d λεπ.</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">Μείωση: %1$s</string>
+    <string name="settings_increase_pattern">Αύξηση: %1$s</string>
 
 </resources>

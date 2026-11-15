@@ -20,6 +20,10 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pauze</string>
     <string name="record_action_stop">Stop</string>
+    <string name="record_indicator_webcam">Kamera ieraksta</string>
+    <string name="record_indicator_mic">Mikrofons ieraksta</string>
+    <string name="record_sound_on">Skaņas ieslēgtas</string>
+    <string name="record_sound_off">Skaņas izslēgtas</string>
     <string name="record_inactive_title_record">IERAKSTS</string>
     <string name="record_inactive_title_stream">STRAUME</string>
     <string name="record_inactive_subtitle">AKTĪVA SPĒLE NAV ATRASTA</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Iestatījumi</string>
+    <string name="settings_min_free_space">Minimālā brīvā vieta</string>
+    <string name="settings_min_free_space_summary">Zem tās Storage kļūst sarkans</string>
+    <string name="settings_section_sounds">Skaņas</string>
+    <string name="settings_low_space">Maz vietas</string>
+    <string name="settings_low_space_summary">Signāls, kad vietas ir mazāk par minimumu</string>
+    <string name="settings_record_button">Poga “Ierakstīt”</string>
+    <string name="settings_pause_button">Poga “Pauze”</string>
+    <string name="settings_stop_button">Poga “Apturēt”</string>
+    <string name="settings_button_sound_summary">Skaņa, nospiežot</string>
+    <string name="settings_duration">Ieraksta laiks</string>
+    <string name="settings_duration_summary">Signāls, kad ieraksts sasniegs laiku zemāk</string>
+    <string name="settings_duration_after">Signāls pēc</string>
+    <string name="settings_duration_after_summary">Pēc ieraksta taimera</string>
+    <string name="settings_section_dimming">Ekrāna aptumšošana</string>
+    <string name="settings_dim_after">Aptumšot pēc</string>
+    <string name="settings_dim_after_summary">Bez pieskārieniem</string>
+    <string name="settings_dim_to">Aptumšot līdz</string>
+    <string name="settings_dim_to_summary">Pieskāriens atjauno spilgtumu</string>
+    <string name="settings_first_touch">Pirmais pieskāriens</string>
+    <string name="settings_first_touch_summary">Tikai atjaunot spilgtumu, nespiest pogu</string>
+    <string name="settings_section_app">Lietotne</string>
+    <string name="settings_language">Lietotnes valoda</string>
+    <string name="settings_language_system">Sistēmas</string>
+    <string name="settings_about">Par lietotni</string>
+    <string name="settings_version_pattern">Versija %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">Samazināt: %1$s</string>
+    <string name="settings_increase_pattern">Palielināt: %1$s</string>
 
 </resources>

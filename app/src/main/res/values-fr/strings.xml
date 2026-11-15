@@ -20,6 +20,10 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pause</string>
     <string name="record_action_stop">Stop</string>
+    <string name="record_indicator_webcam">La caméra enregistre</string>
+    <string name="record_indicator_mic">Le micro enregistre</string>
+    <string name="record_sound_on">Sons activés</string>
+    <string name="record_sound_off">Sons désactivés</string>
     <string name="record_inactive_title_record">ENREG.</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">AUCUN JEU ACTIF TROUVÉ</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Paramètres</string>
+    <string name="settings_min_free_space">Espace minimum</string>
+    <string name="settings_min_free_space_summary">En dessous, Storage devient rouge</string>
+    <string name="settings_section_sounds">Sons</string>
+    <string name="settings_low_space">Espace faible</string>
+    <string name="settings_low_space_summary">Signal quand l’espace passe sous le minimum</string>
+    <string name="settings_record_button">Bouton « Enregistrer »</string>
+    <string name="settings_pause_button">Bouton « Pause »</string>
+    <string name="settings_stop_button">Bouton « Arrêter »</string>
+    <string name="settings_button_sound_summary">Son à l’appui</string>
+    <string name="settings_duration">Durée d’enregistrement</string>
+    <string name="settings_duration_summary">Signal quand l’enregistrement atteint la durée ci-dessous</string>
+    <string name="settings_duration_after">Signal après</string>
+    <string name="settings_duration_after_summary">Selon le minuteur d’enregistrement</string>
+    <string name="settings_section_dimming">Assombrissement de l’écran</string>
+    <string name="settings_dim_after">Assombrir après</string>
+    <string name="settings_dim_after_summary">Sans toucher</string>
+    <string name="settings_dim_to">Assombrir à</string>
+    <string name="settings_dim_to_summary">Un toucher rétablit la luminosité</string>
+    <string name="settings_first_touch">Premier toucher</string>
+    <string name="settings_first_touch_summary">Rétablir la luminosité sans appuyer sur le bouton</string>
+    <string name="settings_section_app">Application</string>
+    <string name="settings_language">Langue de l’application</string>
+    <string name="settings_language_system">Système</string>
+    <string name="settings_about">À propos</string>
+    <string name="settings_version_pattern">Version %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Diminuer : %1$s</string>
+    <string name="settings_increase_pattern">Augmenter : %1$s</string>
 
 </resources>

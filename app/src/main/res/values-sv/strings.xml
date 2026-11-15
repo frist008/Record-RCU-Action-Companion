@@ -20,6 +20,10 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Paus</string>
     <string name="record_action_stop">Stopp</string>
+    <string name="record_indicator_webcam">Kameran spelar in</string>
+    <string name="record_indicator_mic">Mikrofonen spelar in</string>
+    <string name="record_sound_on">Ljud på</string>
+    <string name="record_sound_off">Ljud av</string>
     <string name="record_inactive_title_record">INSPELNING</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">INGET AKTIVT SPEL HITTADES</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Inställningar</string>
+    <string name="settings_min_free_space">Minsta lediga utrymme</string>
+    <string name="settings_min_free_space_summary">Under det blir Storage rött</string>
+    <string name="settings_section_sounds">Ljud</string>
+    <string name="settings_low_space">Lite utrymme</string>
+    <string name="settings_low_space_summary">Signal när utrymmet understiger minimum</string>
+    <string name="settings_record_button">Knappen ”Spela in”</string>
+    <string name="settings_pause_button">Knappen ”Paus”</string>
+    <string name="settings_stop_button">Knappen ”Stoppa”</string>
+    <string name="settings_button_sound_summary">Ljud vid tryck</string>
+    <string name="settings_duration">Inspelningstid</string>
+    <string name="settings_duration_summary">Signal när inspelningen når tiden nedan</string>
+    <string name="settings_duration_after">Signal efter</string>
+    <string name="settings_duration_after_summary">Enligt inspelningstimern</string>
+    <string name="settings_section_dimming">Dämpa skärmen</string>
+    <string name="settings_dim_after">Dämpa efter</string>
+    <string name="settings_dim_after_summary">Utan beröring</string>
+    <string name="settings_dim_to">Dämpa till</string>
+    <string name="settings_dim_to_summary">En beröring återställer ljusstyrkan</string>
+    <string name="settings_first_touch">Första beröringen</string>
+    <string name="settings_first_touch_summary">Återställ bara ljusstyrkan, tryck inte på knappen</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_language">Appens språk</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_about">Om appen</string>
+    <string name="settings_version_pattern">Version %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Minska: %1$s</string>
+    <string name="settings_increase_pattern">Öka: %1$s</string>
 
 </resources>

@@ -20,6 +20,10 @@
     <string name="record_action_record">Oynat</string>
     <string name="record_action_pause">Duraklat</string>
     <string name="record_action_stop">Durdur</string>
+    <string name="record_indicator_webcam">Kamera kaydediyor</string>
+    <string name="record_indicator_mic">Mikrofon kaydediyor</string>
+    <string name="record_sound_on">Sesler açık</string>
+    <string name="record_sound_off">Sesler kapalı</string>
     <string name="record_inactive_title_record">KAYIT</string>
     <string name="record_inactive_title_stream">YAYIN</string>
     <string name="record_inactive_subtitle">AKTİF OYUN BULUNAMADI</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Ayarlar</string>
+    <string name="settings_min_free_space">Minimum boş alan</string>
+    <string name="settings_min_free_space_summary">Altında Storage kırmızı olur</string>
+    <string name="settings_section_sounds">Sesler</string>
+    <string name="settings_low_space">Az alan</string>
+    <string name="settings_low_space_summary">Alan minimumun altına düştüğünde sinyal</string>
+    <string name="settings_record_button">“Kaydet” düğmesi</string>
+    <string name="settings_pause_button">“Duraklat” düğmesi</string>
+    <string name="settings_stop_button">“Durdur” düğmesi</string>
+    <string name="settings_button_sound_summary">Basınca ses</string>
+    <string name="settings_duration">Kayıt süresi</string>
+    <string name="settings_duration_summary">Kayıt aşağıdaki süreye ulaştığında sinyal</string>
+    <string name="settings_duration_after">Sinyal süresi</string>
+    <string name="settings_duration_after_summary">Kayıt sayacına göre</string>
+    <string name="settings_section_dimming">Ekranı karartma</string>
+    <string name="settings_dim_after">Karartma süresi</string>
+    <string name="settings_dim_after_summary">Dokunmadan</string>
+    <string name="settings_dim_to">Karartma düzeyi</string>
+    <string name="settings_dim_to_summary">Dokunmak parlaklığı geri getirir</string>
+    <string name="settings_first_touch">İlk dokunuş</string>
+    <string name="settings_first_touch_summary">Yalnızca parlaklığı geri getir, düğmeye basma</string>
+    <string name="settings_section_app">Uygulama</string>
+    <string name="settings_language">Uygulama dili</string>
+    <string name="settings_language_system">Sistem</string>
+    <string name="settings_about">Hakkında</string>
+    <string name="settings_version_pattern">Sürüm %1$s</string>
+    <string name="settings_minutes_pattern">%1$d dk</string>
+    <string name="settings_percent_pattern">%%%1$d</string>
+    <string name="settings_decrease_pattern">Azalt: %1$s</string>
+    <string name="settings_increase_pattern">Artır: %1$s</string>
 
 </resources>

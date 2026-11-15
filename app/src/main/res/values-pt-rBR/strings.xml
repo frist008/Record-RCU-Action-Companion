@@ -20,6 +20,10 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pausar</string>
     <string name="record_action_stop">Parar</string>
+    <string name="record_indicator_webcam">A câmera está gravando</string>
+    <string name="record_indicator_mic">O microfone está gravando</string>
+    <string name="record_sound_on">Sons ativados</string>
+    <string name="record_sound_off">Sons desativados</string>
     <string name="record_inactive_title_record">GRAVAÇÃO</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">NENHUM JOGO ATIVO</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Configurações</string>
+    <string name="settings_min_free_space">Espaço mínimo</string>
+    <string name="settings_min_free_space_summary">Abaixo disso, Storage fica vermelho</string>
+    <string name="settings_section_sounds">Sons</string>
+    <string name="settings_low_space">Pouco espaço</string>
+    <string name="settings_low_space_summary">Sinal quando o espaço fica abaixo do mínimo</string>
+    <string name="settings_record_button">Botão “Gravar”</string>
+    <string name="settings_pause_button">Botão “Pausar”</string>
+    <string name="settings_stop_button">Botão “Parar”</string>
+    <string name="settings_button_sound_summary">Som ao tocar</string>
+    <string name="settings_duration">Tempo de gravação</string>
+    <string name="settings_duration_summary">Sinal quando a gravação chegar ao tempo abaixo</string>
+    <string name="settings_duration_after">Sinal após</string>
+    <string name="settings_duration_after_summary">Pelo cronômetro da gravação</string>
+    <string name="settings_section_dimming">Escurecer a tela</string>
+    <string name="settings_dim_after">Escurecer após</string>
+    <string name="settings_dim_after_summary">Sem toques</string>
+    <string name="settings_dim_to">Escurecer até</string>
+    <string name="settings_dim_to_summary">Um toque restaura o brilho</string>
+    <string name="settings_first_touch">Primeiro toque</string>
+    <string name="settings_first_touch_summary">Só restaurar o brilho, sem tocar no botão</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_language">Idioma do app</string>
+    <string name="settings_language_system">Sistema</string>
+    <string name="settings_about">Sobre</string>
+    <string name="settings_version_pattern">Versão %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">Diminuir: %1$s</string>
+    <string name="settings_increase_pattern">Aumentar: %1$s</string>
 
 </resources>

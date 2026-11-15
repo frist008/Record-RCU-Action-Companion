@@ -20,6 +20,10 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pause</string>
     <string name="record_action_stop">Stop</string>
+    <string name="record_indicator_webcam">Camera is recording</string>
+    <string name="record_indicator_mic">Microphone is recording</string>
+    <string name="record_sound_on">Sounds on</string>
+    <string name="record_sound_off">Sounds off</string>
     <string name="record_inactive_title_record">RECORD</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">NO ACTIVE GAME FOUND</string>
@@ -31,5 +35,34 @@
     <!-- Settings -->
 
     <string name="settings_title">Settings</string>
+    <string name="settings_min_free_space">Minimum free space</string>
+    <string name="settings_min_free_space_summary">Below it, Storage turns red</string>
+    <string name="settings_section_sounds">Sounds</string>
+    <string name="settings_low_space">Low space</string>
+    <string name="settings_low_space_summary">Signal when space drops below the minimum</string>
+    <string name="settings_record_button">“Record” button</string>
+    <string name="settings_pause_button">“Pause” button</string>
+    <string name="settings_stop_button">“Stop” button</string>
+    <string name="settings_button_sound_summary">Sound on press</string>
+    <string name="settings_duration">Recording time</string>
+    <string name="settings_duration_summary">Signal when the recording reaches the time below</string>
+    <string name="settings_duration_after">Signal after</string>
+    <string name="settings_duration_after_summary">By the recording timer</string>
+    <string name="settings_section_dimming">Screen dimming</string>
+    <string name="settings_dim_after">Dim after</string>
+    <string name="settings_dim_after_summary">Without touches</string>
+    <string name="settings_dim_to">Dim to</string>
+    <string name="settings_dim_to_summary">A touch restores brightness</string>
+    <string name="settings_first_touch">First touch</string>
+    <string name="settings_first_touch_summary">Only restore brightness, don’t press the button</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_language">App language</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_about">About</string>
+    <string name="settings_version_pattern">Version %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">Decrease: %1$s</string>
+    <string name="settings_increase_pattern">Increase: %1$s</string>
 
 </resources>

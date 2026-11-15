@@ -27,6 +27,8 @@ import ua.frist008.action.record.features.connection.entity.DeviceDomainEntity
 import ua.frist008.action.record.features.record.RecordRepository
 import ua.frist008.action.record.features.record.entity.RecordCommand
 import ua.frist008.action.record.features.record.entity.RecordDomainEntity
+import ua.frist008.action.record.features.settings.SettingsRepository
+import ua.frist008.action.record.features.settings.entity.SettingsDomainEntity
 
 /**
  * End-to-end navigation tests that exercise the full ConnectionScreen → RecordScreen flow.
@@ -60,6 +62,9 @@ class ConnectionToRecordNavigationTest {
 
     @BindValue @JvmField
     val recordRepo: RecordRepository = recordRepoFake
+
+    @BindValue @JvmField
+    val settingsRepository: SettingsRepository = FakeSettingsRepository()
 
     // ── Fixtures ───────────────────────────────────────────────────────────
 
@@ -169,4 +174,18 @@ private class FakeRecordRepository : RecordRepository {
     override suspend fun connect(): Unit = suspendCancellableCoroutine { }
 
     override suspend fun sendCommand(command: RecordCommand) = Unit
+}
+
+/** In-memory SettingsRepository that keeps the settings of one test run */
+private class FakeSettingsRepository : SettingsRepository {
+
+    private val settingsMutableFlow = MutableStateFlow(SettingsDomainEntity())
+
+    override val settingsFlow: Flow<SettingsDomainEntity> = settingsMutableFlow
+
+    override suspend fun update(transform: (SettingsDomainEntity) -> SettingsDomainEntity) {
+        settingsMutableFlow.value = transform(settingsMutableFlow.value)
+    }
+
+    override fun getAppLanguage(): String? = null
 }
