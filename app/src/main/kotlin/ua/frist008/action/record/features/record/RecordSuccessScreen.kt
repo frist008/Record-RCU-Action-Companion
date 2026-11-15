@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,6 +22,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -46,9 +48,14 @@ import ua.frist008.action.record.BuildConfig
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.component.root.DefaultScaffold
 import ua.frist008.action.record.core.ui.resource.Icons
+import ua.frist008.action.record.core.ui.resource.svg.Camcorder
+import ua.frist008.action.record.core.ui.resource.svg.Mic
 import ua.frist008.action.record.core.ui.resource.svg.Pause
 import ua.frist008.action.record.core.ui.resource.svg.Play
 import ua.frist008.action.record.core.ui.resource.svg.PlayBold
+import ua.frist008.action.record.core.ui.resource.svg.Settings
+import ua.frist008.action.record.core.ui.resource.svg.SoundOff
+import ua.frist008.action.record.core.ui.resource.svg.SoundOn
 import ua.frist008.action.record.core.ui.resource.svg.Stop
 import ua.frist008.action.record.core.ui.theme.AppTheme
 import ua.frist008.action.record.core.ui.theme.color.PreviewPalette
@@ -67,6 +74,8 @@ fun RecordSuccessScreen(
     onResumeClick: () -> Unit = {},
     onPauseClick: () -> Unit = {},
     onStopClick: () -> Unit = {},
+    onSoundClick: () -> Unit = {},
+    onSettingsClick: () -> Unit = {},
 ) {
     DefaultScaffold(
         title = stringResource(
@@ -76,6 +85,12 @@ fun RecordSuccessScreen(
                 R.string.record_title_record
             },
         ),
+        backIcon = null,
+        actions = {
+            SoundAction(state.isSoundMuted, onSoundClick)
+            SettingsAction(onSettingsClick)
+        },
+        topAppBarHeight = 56.dp,
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -90,7 +105,11 @@ fun RecordSuccessScreen(
                 isPaused = state.buttonsData.isPaused,
                 isRecording = state.buttonsData.isRecording,
             )
-            TimeComponent(timeState = state.timeState)
+            TimeComponent(
+                timeState = state.timeState,
+                isWebCamVisible = state.isWebCamIndicatorVisible,
+                isMicVisible = state.isMicIndicatorVisible,
+            )
             FooterActions(
                 buttonsState = state.buttonsData,
                 onStartClick = onStartClick,
@@ -100,6 +119,33 @@ fun RecordSuccessScreen(
             )
             Ads(bannerLoadCallback, state.adSize)
         }
+    }
+}
+
+@Composable
+private fun RowScope.SoundAction(isSoundMuted: Boolean, onSoundClick: () -> Unit) {
+    IconButton(onClick = onSoundClick) {
+        if (isSoundMuted) {
+            Icon(
+                imageVector = Icons.SoundOff,
+                contentDescription = stringResource(R.string.record_sound_off),
+            )
+        } else {
+            Icon(
+                imageVector = Icons.SoundOn,
+                contentDescription = stringResource(R.string.record_sound_on),
+            )
+        }
+    }
+}
+
+@Composable
+private fun RowScope.SettingsAction(onSettingsClick: () -> Unit) {
+    IconButton(onClick = onSettingsClick) {
+        Icon(
+            imageVector = Icons.Settings,
+            contentDescription = stringResource(R.string.settings_title),
+        )
     }
 }
 
@@ -284,15 +330,40 @@ private fun RowScope.FpsSuffix(isPaused: Boolean, isRecording: Boolean) {
 }
 
 @Composable
-private fun ColumnScope.TimeComponent(timeState: MutableState<String>) {
+private fun ColumnScope.TimeComponent(
+    timeState: MutableState<String>,
+    isWebCamVisible: Boolean,
+    isMicVisible: Boolean,
+) {
     val time by remember { timeState }
 
-    Text(
-        text = time,
-        style = AppTheme.typography.displaySmall,
-        color = AppTheme.colors.onBackground,
-        modifier = Modifier.padding(22.dp),
-    )
+    Row(
+        modifier = Modifier.padding(vertical = 22.dp),
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(modifier = Modifier.width(47.dp), contentAlignment = Alignment.CenterStart) {
+            if (isWebCamVisible) {
+                Image(
+                    imageVector = Icons.Camcorder,
+                    contentDescription = stringResource(R.string.record_indicator_webcam),
+                )
+            }
+        }
+        Text(
+            text = time,
+            style = AppTheme.typography.displaySmall,
+            color = AppTheme.colors.onBackground,
+        )
+        Box(modifier = Modifier.width(47.dp), contentAlignment = Alignment.CenterStart) {
+            if (isMicVisible) {
+                Image(
+                    imageVector = Icons.Mic,
+                    contentDescription = stringResource(R.string.record_indicator_mic),
+                    modifier = Modifier.padding(start = 27.dp),
+                )
+            }
+        }
+    }
 }
 
 @Composable

@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBarColors
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -11,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.navigation.Router
 import ua.frist008.action.record.core.ui.resource.Icons
@@ -28,6 +30,7 @@ fun DefaultScaffold(
     backIcon: ImageVector? = Icons.ArrowBack,
     onBackClick: (navigator: Router) -> Unit = { navigator -> navigator(NavCommand.BackCommand()) },
     actions: @Composable RowScope.() -> Unit = {},
+    topAppBarHeight: Dp = TopAppBarDefaults.TopAppBarExpandedHeight,
     content: @Composable (PaddingValues) -> Unit,
 ) {
     Scaffold(
@@ -39,6 +42,7 @@ fun DefaultScaffold(
                 backIcon = backIcon,
                 onBackClick = onBackClick,
                 actions = actions,
+                height = topAppBarHeight,
             )
         },
         content = content,

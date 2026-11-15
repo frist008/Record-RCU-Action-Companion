@@ -2,6 +2,10 @@ package ua.frist008.action.record.core.ui.navigation
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import android.os.Build
+import android.provider.Settings
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
@@ -27,6 +31,7 @@ class Router(
             is NavCommand.Link -> openLink(command.url)
             is NavCommand.App -> openApp(command.appPackage, command.url)
             is NavCommand.Share -> share(command)
+            is NavCommand.AppLanguageSettings -> openAppLanguageSettings()
             else -> {
                 if (command.isReplaceScreen) backStack.removeLastOrNull()
                 backStack.add(command)
@@ -68,6 +73,16 @@ class Router(
             .launchUrl(context, url.toUri())
     }
 
+    private fun openAppLanguageSettings() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            val packageUri = Uri.fromParts(PACKAGE_SCHEME, context.packageName, null)
+
+            context.startActivity(Intent(Settings.ACTION_APP_LOCALE_SETTINGS, packageUri))
+        } else {
+            Timber.d("AppLanguageSettings: Android ${Build.VERSION.SDK_INT} has no app language")
+        }
+    }
+
     private fun share(command: NavCommand.Share) {
         val subject = context.getString(command.messageRes)
         ShareCompat.IntentBuilder(context)
@@ -76,5 +91,10 @@ class Router(
             .setText(command.url)
             .intent
             .also { context.startActivity(it) }
+    }
+
+    companion object {
+
+        private const val PACKAGE_SCHEME = "package"
     }
 }

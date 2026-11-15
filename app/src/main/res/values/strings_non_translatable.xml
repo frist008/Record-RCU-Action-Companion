@@ -14,4 +14,9 @@
     <string name="record_header_storage_gb_pattern" translatable="false">%1$.1f GB</string>
     <string name="record_header_storage_mb_pattern" translatable="false">%1$.0f MB</string>
 
+    <!-- Settings -->
+
+    <string name="settings_gb_pattern" translatable="false">%1$d GB</string>
+    <string name="settings_about_app_name" translatable="false">Record RCU\nAction Companion</string>
+
 </resources>
