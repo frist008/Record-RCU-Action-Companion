@@ -9,6 +9,7 @@ plugin-google-services = "4.6.0"
 plugin-firebase-crashlytics = "3.0.8"
 plugin-firebase-perf = "2.0.2"
 plugin-ksp = "2.3.13"
+plugin-play-publisher = "4.1.2"
 
 ## common
 # buildType
@@ -171,6 +172,7 @@ di-hilt = { id = "com.google.dagger.hilt.android", version.ref = "di-hilt" }
 google-services = { id = "com.google.gms.google-services", version.ref = "plugin-google-services" }
 firebase-crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "plugin-firebase-crashlytics" }
 firebase-perf = { id = "com.google.firebase.firebase-perf", version.ref = "plugin-firebase-perf" }
+play-publisher = { id = "com.github.triplet.play", version.ref = "plugin-play-publisher" }
 
 [bundles]
 
