@@ -26,7 +26,7 @@ fun RecordScreen(
             if (currentState.gameActive) {
                 RecordSuccessScreen(
                     state = currentState,
-                    adListener = viewModel.adListener,
+                    bannerLoadCallback = viewModel.bannerLoadCallback,
                     onStartClick = viewModel::onStartClick,
                     onResumeClick = viewModel::onResumeClick,
                     onPauseClick = viewModel::onPauseClick,

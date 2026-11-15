@@ -6,7 +6,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.Color
-import com.google.android.gms.ads.AdSize
+import com.google.android.libraries.ads.mobile.sdk.banner.AdSize
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
 import ua.frist008.action.record.R

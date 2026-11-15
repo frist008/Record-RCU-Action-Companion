@@ -16,3 +16,14 @@
 .editorconfig
 /old
 /keystore
+*.keystore
+*.jks
+google-services.json
+
+# Local tooling and notes
+.claude/
+CLAUDE.md
+CLAUDE.local.md
+/PLAN.md
+/.mcp.json
+__pycache__/

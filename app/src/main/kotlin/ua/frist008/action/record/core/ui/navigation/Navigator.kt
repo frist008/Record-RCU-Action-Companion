@@ -1,12 +1,14 @@
 package ua.frist008.action.record.core.ui.navigation
 
 import androidx.compose.runtime.Stable
+import kotlinx.coroutines.ExperimentalForInheritanceCoroutinesApi
 import kotlinx.coroutines.flow.MutableSharedFlow
 import ua.frist008.action.record.features.NavCommand
 
 /**
  * Inject on [ua.frist008.action.record.core.ui.navigation.NavigationModule]
  */
+@OptIn(ExperimentalForInheritanceCoroutinesApi::class)
 @Stable class Navigator(
     sharedFlow: MutableSharedFlow<NavCommand> = MutableSharedFlow(),
 ) : MutableSharedFlow<NavCommand> by sharedFlow {

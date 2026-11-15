@@ -2,13 +2,16 @@ package ua.frist008.action.record.features.record
 
 import android.os.Vibrator
 import androidx.lifecycle.viewModelScope
-import com.google.android.gms.ads.AdListener
-import com.google.android.gms.ads.AdSize
-import com.google.android.gms.ads.LoadAdError
+import com.google.android.libraries.ads.mobile.sdk.banner.AdSize
+import com.google.android.libraries.ads.mobile.sdk.banner.BannerAd
+import com.google.android.libraries.ads.mobile.sdk.banner.BannerAdEventCallback
+import com.google.android.libraries.ads.mobile.sdk.common.AdLoadCallback
+import com.google.android.libraries.ads.mobile.sdk.common.LoadAdError
 import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.atomicfu.atomic
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -51,22 +54,29 @@ class RecordViewModel @AssistedInject constructor(
     private var autoBack: Job? = null
     private val stateMutex = Mutex()
 
-    val adListener = object : AdListener() {
+    /**
+     * The banner's load result: more than ten failed loads in a row switch its size. A click on a loaded banner switches
+     * it too — the user leaves for the ad, and the record screen loads the other size once it is drawn again, where the
+     * old SDK did it on `onAdClosed`; the Next-Gen SDK reports no close for a click that leaves the app. Its guide names
+     * no thread for these callbacks, so the counter is atomic.
+     */
+    val bannerLoadCallback = object : AdLoadCallback<BannerAd> {
 
-        private var errorCounter = 0
+        private val errorCounter = atomic(0)
 
-        override fun onAdLoaded() {
-            errorCounter = 0
-        }
-
-        override fun onAdFailedToLoad(error: LoadAdError) {
-            if (++errorCounter > 10) {
-                errorCounter = 0
-                changeBannerSize()
+        override fun onAdLoaded(ad: BannerAd) {
+            errorCounter.value = 0
+            ad.adEventCallback = object : BannerAdEventCallback {
+                override fun onAdClicked() = changeBannerSize()
             }
         }
 
-        override fun onAdClosed() = changeBannerSize()
+        override fun onAdFailedToLoad(adError: LoadAdError) {
+            if (errorCounter.incrementAndGet() > 10) {
+                errorCounter.value = 0
+                changeBannerSize()
+            }
+        }
     }
 
     init {

@@ -20,6 +20,8 @@ dependencyResolutionManagement {
                 includeGroupByRegex("com\\.android.*")
                 includeGroupByRegex("com\\.google.*")
                 includeGroupByRegex("androidx.*")
+                // Cronet of the Next-Gen Mobile Ads SDK
+                includeGroupByRegex("org\\.chromium.*")
             }
         }
         mavenCentral()

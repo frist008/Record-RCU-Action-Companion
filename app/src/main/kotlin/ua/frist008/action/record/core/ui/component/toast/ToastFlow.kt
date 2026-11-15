@@ -1,10 +1,12 @@
 package ua.frist008.action.record.core.ui.component.toast
 
 import androidx.compose.runtime.Stable
+import kotlinx.coroutines.ExperimentalForInheritanceCoroutinesApi
 import kotlinx.coroutines.flow.MutableSharedFlow
 import javax.inject.Inject
 import javax.inject.Singleton
 
+@OptIn(ExperimentalForInheritanceCoroutinesApi::class)
 @Singleton
 @Stable
 class ToastFlow(

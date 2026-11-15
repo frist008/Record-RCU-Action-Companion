@@ -7,7 +7,6 @@ plugins {
     alias(libs.plugins.ksp)
     alias(libs.plugins.google.services)
     alias(libs.plugins.di.hilt)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.parcelize)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.kotlin.compose.compiler)
@@ -27,7 +26,11 @@ licensee {
 android {
     val currentTime = System.currentTimeMillis().milliseconds
 
-    compileSdk = libs.versions.sdk.compile.asProvider().get().toInt()
+    compileSdk {
+        version = release(libs.versions.sdk.compile.asProvider().get().toInt()) {
+            minorApiLevel = libs.versions.sdk.compile.minor.get().toInt()
+        }
+    }
     // uncomment for 37
     // compileSdkExtension = libs.versions.sdk.compile.extension.get().toInt()
     buildToolsVersion = libs.versions.build.tools.version.get()
@@ -51,7 +54,7 @@ android {
             "zh-rCN", "zh-rTW",
         )
 
-        testInstrumentationRunner = "com.google.dagger.hilt.android.testing.HiltTestRunner"
+        testInstrumentationRunner = "ua.frist008.action.record.HiltTestRunner"
 
         vectorDrawables {
             useSupportLibrary = true
@@ -109,22 +112,9 @@ android {
         sourceCompatibility(libs.versions.jvm.target.asProvider().get().toInt())
     }
 
-    kotlin {
-        compilerOptions {
-            jvmTarget.set(JvmTarget.fromTarget(libs.versions.jvm.target.kotlin.get()))
-
-            optIn.addAll(
-                "androidx.compose.material3.ExperimentalMaterial3Api",
-                "androidx.compose.foundation.ExperimentalFoundationApi",
-                "androidx.compose.foundation.layout.ExperimentalLayoutApi",
-                "androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi",
-                "kotlinx.coroutines.ObsoleteCoroutinesApi",
-            )
-        }
-    }
-
     buildFeatures {
         buildConfig = true
+        resValues = true
     }
 
     room {
@@ -139,6 +129,20 @@ android {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget.set(JvmTarget.fromTarget(libs.versions.jvm.target.kotlin.get()))
+
+        optIn.addAll(
+            "androidx.compose.material3.ExperimentalMaterial3Api",
+            "androidx.compose.foundation.ExperimentalFoundationApi",
+            "androidx.compose.foundation.layout.ExperimentalLayoutApi",
+            "androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi",
+            "kotlinx.coroutines.ObsoleteCoroutinesApi",
+        )
     }
 }
 
