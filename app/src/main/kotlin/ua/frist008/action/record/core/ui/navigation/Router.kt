@@ -47,7 +47,7 @@ class Router(
             if (backStack.size > 1) {
                 backStack.removeLastOrNull()
             } else {
-                (context as? Activity)?.finish()
+                Timber.d("BackCommand: a repeated back on the last screen is dropped")
             }
         } else {
             val targetClass = command.backToScreen::class
