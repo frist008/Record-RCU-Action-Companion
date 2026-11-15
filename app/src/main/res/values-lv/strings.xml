@@ -28,6 +28,7 @@
     <string name="record_indicator_mic">Mikrofons ieraksta</string>
     <string name="record_sound_on">Skaņas ieslēgtas</string>
     <string name="record_sound_off">Skaņas izslēgtas</string>
+    <string name="record_remove_ads">Noņemt reklāmas</string>
     <string name="record_inactive_title_record">IERAKSTS</string>
     <string name="record_inactive_title_stream">STRAUME</string>
     <string name="record_inactive_subtitle">AKTĪVA SPĒLE NAV ATRASTA</string>
@@ -35,6 +36,19 @@
     <string name="record_error_already_used">Jūsu dators ir savienots ar citu lietotni</string>
     <string name="record_error_not_connected">Nav savienojuma ar jūsu datoru</string>
     <string name="record_error_port_busy">Cita lietotne šajā tālrunī jau izmanto savienojumu ar jūsu datoru</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU bez ierobežojumiem</string>
+    <string name="premium_subtitle">Viens pirkums — jūsu uz visiem laikiem</string>
+    <string name="premium_no_ads_title">Bez reklāmām</string>
+    <string name="premium_no_ads_summary">Neviena reklāmkaroga nevienā ekrānā</string>
+    <string name="premium_forever_title">Uz visiem laikiem, bez abonementa</string>
+    <string name="premium_forever_summary">Maksājiet vienreiz, atjauninājumi bez maksas</string>
+    <string name="premium_buy_pattern">Pirkt par %1$s</string>
+    <string name="premium_restore">Atjaunot pirkumus</string>
+    <string name="premium_via_play">Ar Google Play</string>
 
     <!-- Settings -->
 

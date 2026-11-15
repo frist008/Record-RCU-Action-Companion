@@ -28,6 +28,7 @@
     <string name="record_indicator_mic">Mikrofon kaydediyor</string>
     <string name="record_sound_on">Sesler açık</string>
     <string name="record_sound_off">Sesler kapalı</string>
+    <string name="record_remove_ads">Reklamları kaldır</string>
     <string name="record_inactive_title_record">KAYIT</string>
     <string name="record_inactive_title_stream">YAYIN</string>
     <string name="record_inactive_subtitle">AKTİF OYUN BULUNAMADI</string>
@@ -35,6 +36,19 @@
     <string name="record_error_already_used">PC\'niz başka bir uygulamaya bağlı</string>
     <string name="record_error_not_connected">PC\'nizle bağlantı yok</string>
     <string name="record_error_port_busy">Bu telefondaki başka bir uygulama PC\'nizle bağlantıyı zaten kullanıyor</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Sınırsız Record RCU</string>
+    <string name="premium_subtitle">Tek satın alma, sonsuza kadar sizin</string>
+    <string name="premium_no_ads_title">Reklamsız</string>
+    <string name="premium_no_ads_summary">Hiçbir ekranda tek bir banner yok</string>
+    <string name="premium_forever_title">Sonsuza kadar, abonelik yok</string>
+    <string name="premium_forever_summary">Bir kez ödeyin, güncellemeler ücretsiz</string>
+    <string name="premium_buy_pattern">%1$s karşılığında satın al</string>
+    <string name="premium_restore">Satın alımları geri yükle</string>
+    <string name="premium_via_play">Google Play üzerinden</string>
 
     <!-- Settings -->
 

@@ -28,6 +28,7 @@
     <string name="record_indicator_mic">माइक्रोफ़ोन रिकॉर्ड कर रहा है</string>
     <string name="record_sound_on">ध्वनियाँ चालू</string>
     <string name="record_sound_off">ध्वनियाँ बंद</string>
+    <string name="record_remove_ads">विज्ञापन हटाएँ</string>
     <string name="record_inactive_title_record">रिकॉर्ड</string>
     <string name="record_inactive_title_stream">स्ट्रीम</string>
     <string name="record_inactive_subtitle">कोई सक्रिय गेम नहीं मिला</string>
@@ -35,6 +36,19 @@
     <string name="record_error_already_used">आपका PC किसी अन्य ऐप से जुड़ा है</string>
     <string name="record_error_not_connected">आपके PC से कोई कनेक्शन नहीं है</string>
     <string name="record_error_port_busy">इस फ़ोन पर कोई अन्य ऐप पहले से आपके PC के कनेक्शन का उपयोग कर रहा है</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">प्रीमियम</string>
+    <string name="premium_headline">बिना सीमाओं के Record RCU</string>
+    <string name="premium_subtitle">एक बार खरीदें, हमेशा के लिए आपका</string>
+    <string name="premium_no_ads_title">कोई विज्ञापन नहीं</string>
+    <string name="premium_no_ads_summary">किसी भी स्क्रीन पर एक भी बैनर नहीं</string>
+    <string name="premium_forever_title">हमेशा के लिए, कोई सदस्यता नहीं</string>
+    <string name="premium_forever_summary">एक बार भुगतान करें, अपडेट मुफ़्त</string>
+    <string name="premium_buy_pattern">%1$s में खरीदें</string>
+    <string name="premium_restore">खरीदारी वापस लाएँ</string>
+    <string name="premium_via_play">Google Play के ज़रिए</string>
 
     <!-- Settings -->
 

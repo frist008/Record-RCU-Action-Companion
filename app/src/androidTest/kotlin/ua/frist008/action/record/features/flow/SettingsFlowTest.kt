@@ -20,9 +20,11 @@ import ua.frist008.action.record.BuildConfig
 import ua.frist008.action.record.R
 import ua.frist008.action.record.data.SourceModule
 import ua.frist008.action.record.data.network.device.DeviceRadarNetworkSource
+import ua.frist008.action.record.data.network.premium.PremiumNetworkSource
 import ua.frist008.action.record.data.network.record.RecordNetworkSource
 import ua.frist008.action.record.features.AppFlow
 import ua.frist008.action.record.features.FakePc
+import ua.frist008.action.record.features.FakePlay
 
 /**
  * The user opens the settings from the record screen, changes them and finds them kept; the
@@ -50,6 +52,9 @@ class SettingsFlowTest {
 
     @BindValue @JvmField
     val recordSource: RecordNetworkSource = fakePc
+
+    @BindValue @JvmField
+    val premiumSource: PremiumNetworkSource = FakePlay()
 
     @Before
     fun setUp() {
