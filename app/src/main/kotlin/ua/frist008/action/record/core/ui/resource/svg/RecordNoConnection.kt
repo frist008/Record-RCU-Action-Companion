@@ -14,12 +14,19 @@ import ua.frist008.action.record.core.ui.resource.Icons
 
 val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
     Builder(
-        name = "RecordNoConnection", defaultWidth = 288.0.dp, defaultHeight = 288.0.dp,
-        viewportWidth = 288.0f, viewportHeight = 288.0f,
+        name = "RecordNoConnection",
+        defaultWidth = 288.0.dp,
+        defaultHeight = 288.0.dp,
+        viewportWidth = 288.0f,
+        viewportHeight = 288.0f,
     ).apply {
         path(
-            fill = SolidColor(Color(0xFF603E93)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF603E93)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(207.52f, 82.95f)
@@ -29,8 +36,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(189.49f, 45.15f)
@@ -42,8 +53,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(191.46f, 188.52f)
@@ -67,8 +82,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(9.43f, 248.88f)
@@ -82,8 +101,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(151.29f, 238.27f)
@@ -93,8 +116,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(204.06f, 252.12f)
@@ -110,64 +137,96 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF581FB2)),
-            strokeLineWidth = 8.48f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF581FB2)),
+            strokeLineWidth = 8.48f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(176.38f, 258.74f)
             horizontalLineTo(157.73f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF08DCA5)),
-            strokeLineWidth = 8.48f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF08DCA5)),
+            strokeLineWidth = 8.48f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(230.1f, 275.64f)
             horizontalLineTo(41.03f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFBA000)),
-            strokeLineWidth = 8.48f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFFFBA000)),
+            strokeLineWidth = 8.48f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(251.87f, 275.64f)
             horizontalLineTo(212.05f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF581FB2)),
-            strokeLineWidth = 8.48f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF581FB2)),
+            strokeLineWidth = 8.48f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(258.07f, 258.74f)
             horizontalLineTo(203.81f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF08DCA5)),
-            strokeLineWidth = 8.48f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF08DCA5)),
+            strokeLineWidth = 8.48f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(162.03f, 258.74f)
             horizontalLineTo(31.9f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF13A8FC)),
-            strokeLineWidth = 8.48f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF13A8FC)),
+            strokeLineWidth = 8.48f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(93.73f, 258.59f)
             horizontalLineTo(63.45f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFF0B7C)),
-            strokeLineWidth = 8.48f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFFFF0B7C)),
+            strokeLineWidth = 8.48f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(172.79f, 275.64f)
             horizontalLineTo(92.17f)
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(50.12f, 72.69f)
@@ -178,8 +237,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF13A8FC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF13A8FC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(229.8f, 34.97f)
@@ -190,73 +253,109 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFF0B7C)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFFFF0B7C)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(256.83f, 56.21f)
             horizontalLineTo(232.36f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF08DCA5)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF08DCA5)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(268.51f, 81.06f)
             horizontalLineTo(243.12f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF581FB2)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF581FB2)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(58.21f, 141.65f)
             horizontalLineTo(42.03f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF08DCA5)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF08DCA5)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(60.35f, 118.42f)
             horizontalLineTo(27.86f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFE9900)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFFFE9900)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(60.08f, 95.63f)
             horizontalLineTo(32.76f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF581FB2)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF581FB2)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(266.05f, 152.11f)
             horizontalLineTo(237.25f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF13A8FC)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF13A8FC)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(265.35f, 171.78f)
             horizontalLineTo(243.25f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFBA000)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFFFBA000)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(267.62f, 194.49f)
             horizontalLineTo(253.16f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFD511B)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFFFD511B)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(260.39f, 117.4f)
             curveTo(264.648f, 117.4f, 268.1f, 113.953f, 268.1f, 109.7f)
@@ -266,8 +365,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(135.19f, 29.28f)
@@ -278,8 +381,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(9.53f, 138.02f)
@@ -290,8 +397,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(263.16f, 38.72f)
@@ -302,8 +413,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(263.16f, 131.92f)
@@ -318,8 +433,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(234.75f, 118.42f)
@@ -334,8 +453,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF8102)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF8102)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(216.59f, 163.54f)
@@ -350,8 +473,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(14.43f, 81.06f)
@@ -366,16 +493,24 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFD511B)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFFFD511B)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(161.98f, 11.25f)
             horizontalLineTo(147.52f)
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(196.37f, 12.06f)
@@ -390,25 +525,37 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF581FB2)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF581FB2)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(183.55f, 28.15f)
             horizontalLineTo(154.75f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF13A8FC)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF13A8FC)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(105.62f, 12.06f)
             horizontalLineTo(83.52f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFF0B7C)),
-            strokeLineWidth = 7.43f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFFFF0B7C)),
+            strokeLineWidth = 7.43f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(105.62f, 43.94f)
             curveTo(109.878f, 43.94f, 113.33f, 40.493f, 113.33f, 36.24f)
@@ -418,16 +565,24 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFFFD511B)),
-            strokeLineWidth = 8.48f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFFFD511B)),
+            strokeLineWidth = 8.48f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(121.23f, 275.64f)
             horizontalLineTo(90.95f)
         }
         path(
-            fill = SolidColor(Color(0xFF13A8FC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF13A8FC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(131.43f, 221.17f)
@@ -452,8 +607,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF13A8FC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF13A8FC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(248.77f, 234.86f)
@@ -464,8 +623,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFFF3DC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFFF3DC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(182.68f, 242.93f)
@@ -478,8 +641,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFFF3DC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFFF3DC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(255.6f, 230.85f)
@@ -492,8 +659,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF13A8FC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF13A8FC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(182.68f, 242.93f)
@@ -504,8 +675,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF13A8FC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF13A8FC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(258.07f, 245.7f)
@@ -517,8 +692,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFFF3DC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFFF3DC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(249.65f, 231.75f)
@@ -529,8 +708,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(237.5f, 205.31f)
@@ -543,8 +726,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF08DCA5)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF08DCA5)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(229.47f, 206.51f)
@@ -563,8 +750,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(140.16f, 166.26f)
@@ -579,8 +770,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFD9D00)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFD9D00)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(185.62f, 212.69f)
@@ -598,8 +793,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF031F33)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF031F33)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(218.73f, 210.86f)
@@ -612,8 +811,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF8102)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF8102)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(222.52f, 201.27f)
@@ -632,8 +835,8 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
         }
         path(
             fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, fillAlpha = 0.81f,
-            strokeAlpha
-            = 0.81f,
+            strokeAlpha =
+            0.81f,
             strokeLineWidth = 0.0f, strokeLineCap = Butt, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
@@ -645,8 +848,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF031F33)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF031F33)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(184.86f, 218.17f)
@@ -659,8 +866,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(187.56f, 208.61f)
@@ -679,8 +890,8 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
         }
         path(
             fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, fillAlpha = 0.81f,
-            strokeAlpha
-            = 0.81f,
+            strokeAlpha =
+            0.81f,
             strokeLineWidth = 0.0f, strokeLineCap = Butt, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
@@ -692,8 +903,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(178.57f, 221.13f)
@@ -707,8 +922,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF8102)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF8102)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(181.72f, 225.02f)
@@ -721,8 +940,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF603E93)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF603E93)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(168.97f, 221.31f)
@@ -741,8 +964,8 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
         }
         path(
             fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, fillAlpha = 0.81f,
-            strokeAlpha
-            = 0.81f,
+            strokeAlpha =
+            0.81f,
             strokeLineWidth = 0.0f, strokeLineCap = Butt, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
@@ -754,8 +977,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF08DCA5)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF08DCA5)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(171.18f, 225.45f)
@@ -774,8 +1001,8 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
         }
         path(
             fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, fillAlpha = 0.81f,
-            strokeAlpha
-            = 0.81f,
+            strokeAlpha =
+            0.81f,
             strokeLineWidth = 0.0f, strokeLineCap = Butt, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
@@ -787,8 +1014,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFFF3DC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFFF3DC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(245.08f, 204.7f)
@@ -811,8 +1042,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF031F33)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF031F33)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(248.52f, 218.0f)
@@ -824,8 +1059,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(249.91f, 213.91f)
@@ -839,8 +1078,8 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
         }
         path(
             fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, fillAlpha = 0.81f,
-            strokeAlpha
-            = 0.81f,
+            strokeAlpha =
+            0.81f,
             strokeLineWidth = 0.0f, strokeLineCap = Butt, strokeLineJoin = Miter,
             strokeLineMiter = 4.0f, pathFillType = NonZero,
         ) {
@@ -852,8 +1091,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF08DCA5)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF08DCA5)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(135.19f, 48.15f)
@@ -866,8 +1109,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(127.26f, 53.13f)
@@ -883,8 +1130,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFBA000)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFBA000)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(216.91f, 148.83f)
@@ -911,8 +1162,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF031F33)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF031F33)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(205.437f, 103.469f)
@@ -923,8 +1178,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFFFBDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFFFBDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(208.4f, 91.619f)
@@ -935,8 +1194,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF13A8FC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF13A8FC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(200.428f, 92.041f)
@@ -947,8 +1210,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(200.12f, 95.04f)
@@ -962,8 +1229,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF031F33)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF031F33)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(170.328f, 110.593f)
@@ -974,8 +1245,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFFFBDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFFFBDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(173.164f, 97.193f)
@@ -986,8 +1261,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF13A8FC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF13A8FC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(164.635f, 97.618f)
@@ -998,8 +1277,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(164.29f, 101.02f)
@@ -1013,8 +1296,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFF0B7C)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFF0B7C)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(182.48f, 152.11f)
@@ -1031,8 +1318,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF603E93)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF603E93)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(132.48f, 101.07f)
@@ -1046,8 +1337,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF08DCA5)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF08DCA5)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(124.94f, 52.18f)
@@ -1059,8 +1354,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF13A8FC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF13A8FC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(132.72f, 61.19f)
@@ -1077,24 +1376,36 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF031F33)),
-            strokeLineWidth = 4.0f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF031F33)),
+            strokeLineWidth = 4.0f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(212.31f, 138.35f)
             curveTo(208.47f, 136.19f, 207.4f, 133.71f, 207.52f, 131.09f)
         }
         path(
-            fill = SolidColor(Color(0x00000000)), stroke = SolidColor(Color(0xFF031F33)),
-            strokeLineWidth = 4.0f, strokeLineCap = Round, strokeLineJoin = Miter,
-            strokeLineMiter = 4.0f, pathFillType = NonZero,
+            fill = SolidColor(Color(0x00000000)),
+            stroke = SolidColor(Color(0xFF031F33)),
+            strokeLineWidth = 4.0f,
+            strokeLineCap = Round,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
+            pathFillType = NonZero,
         ) {
             moveTo(201.38f, 137.27f)
             curveTo(204.93f, 136.61f, 207.0f, 134.77f, 207.11f, 131.34f)
         }
         path(
-            fill = SolidColor(Color(0xFF031F33)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF031F33)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(207.979f, 130.176f)
@@ -1105,8 +1416,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF08DCA5)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF08DCA5)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(28.68f, 141.65f)
@@ -1116,8 +1431,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF13A8FC)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF13A8FC)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(65.13f, 152.59f)
@@ -1133,8 +1452,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFF603E93)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFF603E93)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(22.55f, 224.28f)
@@ -1146,8 +1469,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFCFDDA)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFCFDDA)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(145.19f, 250.77f)
@@ -1164,8 +1491,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFBA000)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFBA000)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(136.83f, 250.82f)
@@ -1185,8 +1516,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFFD511B)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFFD511B)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(52.55f, 223.4f)
@@ -1197,8 +1532,12 @@ val Icons.RecordNoConnection: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
             close()
         }
         path(
-            fill = SolidColor(Color(0xFFDA076B)), stroke = null, strokeLineWidth = 0.0f,
-            strokeLineCap = Butt, strokeLineJoin = Miter, strokeLineMiter = 4.0f,
+            fill = SolidColor(Color(0xFFDA076B)),
+            stroke = null,
+            strokeLineWidth = 0.0f,
+            strokeLineCap = Butt,
+            strokeLineJoin = Miter,
+            strokeLineMiter = 4.0f,
             pathFillType = NonZero,
         ) {
             moveTo(22.71f, 209.21f)

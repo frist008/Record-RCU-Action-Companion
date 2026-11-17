@@ -2,7 +2,8 @@ package ua.frist008.action.record.core.util.common
 
 import kotlin.math.pow
 
-@Suppress("MemberVisibilityCanBePrivate") object ByteConst {
+@Suppress("MemberVisibilityCanBePrivate")
+object ByteConst {
 
     const val BITS_1: Int = Byte.SIZE_BITS // 8
     const val BITS_2: Int = Byte.SIZE_BITS * 2 // 16

@@ -9,7 +9,7 @@ import timber.log.Timber
 import java.net.BindException
 import kotlin.time.Duration.Companion.milliseconds
 
-/** Binds the UDP sockets of the protocol, retrying while a port is still held, as the original app */
+/** Binds the UDP sockets of the protocol, retrying while a port is held, as the original app */
 object DatagramSocketBinder {
 
     private const val BIND_ATTEMPTS = 5

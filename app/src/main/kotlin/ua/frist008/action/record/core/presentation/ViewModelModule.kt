@@ -13,5 +13,7 @@ import ua.frist008.action.record.core.presentation.dependency.PresentationDepend
 interface ViewModelModule {
 
     @Binds @ActivityRetainedScoped
-    fun bindPresentationDependencies(dependencies: PresentationDependencies): PresentationDependenciesDelegate
+    fun bindPresentationDependencies(
+        dependencies: PresentationDependencies,
+    ): PresentationDependenciesDelegate
 }

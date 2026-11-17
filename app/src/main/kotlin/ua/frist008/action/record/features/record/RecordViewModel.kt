@@ -66,10 +66,11 @@ import kotlin.time.Duration.Companion.seconds
     private val lastDuration = atomic<Duration?>(null)
 
     /**
-     * The banner's load result: more than ten failed loads in a row switch its size. A click on a loaded banner switches
-     * it too — the user leaves for the ad, and the record screen loads the other size once it is drawn again, where the
-     * old SDK did it on `onAdClosed`; the Next-Gen SDK reports no close for a click that leaves the app. Its guide names
-     * no thread for these callbacks, so the counter is atomic.
+     * The banner's load result: more than ten failed loads in a row switch its size. A click on a
+     * loaded banner switches it too — the user leaves for the ad, and the record screen loads the
+     * other size once it is drawn again, where the old SDK did it on `onAdClosed`; the Next-Gen SDK
+     * reports no close for a click that leaves the app. Its guide names no thread for these
+     * callbacks, so the counter is atomic.
      */
     val bannerLoadCallback = object : AdLoadCallback<BannerAd> {
 
@@ -277,7 +278,7 @@ import kotlin.time.Duration.Companion.seconds
         }
     }
 
-    /** Opens the search when the PC stays out of reach for [AUTO_BACK_DELAY], keeping a countdown */
+    /** Opens the search when the PC stays out of reach for [AUTO_BACK_DELAY] */
     private fun startAutoBack() {
         if (autoBackJob.value?.isActive != true) {
             launch(autoBackJob) {
@@ -306,7 +307,7 @@ import kotlin.time.Duration.Companion.seconds
 
             is NotConnectedException -> toastFlow.emit(R.string.record_error_not_connected)
 
-            // A command the PC never took ends the session, as the release 1.0.4 does on a failed write
+            // A command the PC never took ends the session, as 1.0.4 does on a failed write
             is SocketTimeoutException -> {
                 toastFlow.emit(R.string.record_error_not_connected)
                 delay(RECONNECT_DELAY)

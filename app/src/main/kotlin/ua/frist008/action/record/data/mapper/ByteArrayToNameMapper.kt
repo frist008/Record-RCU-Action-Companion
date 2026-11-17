@@ -6,10 +6,13 @@ package ua.frist008.action.record.data.mapper
  */
 object ByteArrayToNameMapper : (ByteArray, Int) -> String? {
 
+    private const val LENGTH_INDEX = 11
+    private const val NAME_OFFSET = LENGTH_INDEX + Int.SIZE_BYTES
+
     override operator fun invoke(dataArr: ByteArray, size: Int): String? {
         if (size < NAME_OFFSET) return null
 
-        val declaredLength = ByteArrayToNumberMapper(dataArr, 11, Int.SIZE_BYTES) // dataArr[11-14]
+        val declaredLength = ByteArrayToNumberMapper(dataArr, LENGTH_INDEX, Int.SIZE_BYTES)
 
         if (declaredLength <= 0) return null
 
@@ -18,6 +21,4 @@ object ByteArrayToNameMapper : (ByteArray, Int) -> String? {
 
         return name.ifEmpty { null }
     }
-
-    private const val NAME_OFFSET = 15
 }

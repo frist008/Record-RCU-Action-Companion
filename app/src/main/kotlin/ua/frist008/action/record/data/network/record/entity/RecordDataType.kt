@@ -35,7 +35,7 @@ sealed class RecordDataType<T>(val code: Byte) {
 
     protected fun <P> log(old: P, new: P) {
         if (BuildConfig.DEBUG && old != new) {
-            Timber.d("$code - old=${old}, new=$new; ${this::class.simpleName}")
+            Timber.d("$code - old=$old, new=$new; ${this::class.simpleName}")
         }
     }
 
@@ -71,14 +71,14 @@ sealed class RecordDataType<T>(val code: Byte) {
         )
     }
 
-    data object UnknownDataType : NumberDataType(-1) {
+    data object UnknownDataType : NumberDataType(code = -1) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
-            Timber.e("$code - old=${old}, new=$newData; Unknown")
+            Timber.e("$code - old=$old, new=$newData; Unknown")
             return old
         }
     }
 
-    data object RecordModeDataType : NumberDataType(11) {
+    data object RecordModeDataType : NumberDataType(code = 11) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val recordModeType = RecordModeType[newData.toInt()]
             log(old.recordModeType, recordModeType)
@@ -86,7 +86,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object FpsDataType : NumberDataType(12) {
+    data object FpsDataType : NumberDataType(code = 12) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val newFps = newData.toInt()
             log(old.fps, newFps)
@@ -94,7 +94,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object MaxFpsDataType : NumberDataType(22) {
+    data object MaxFpsDataType : NumberDataType(code = 22) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val maxFps = newData.toInt()
             log(old.maxFps, maxFps)
@@ -102,7 +102,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object DurationDataType : NumberDataType(13) {
+    data object DurationDataType : NumberDataType(code = 13) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val duration = newData.seconds
             log(old.duration, duration)
@@ -110,7 +110,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object MaxDurationDataType : NumberDataType(14) {
+    data object MaxDurationDataType : NumberDataType(code = 14) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val maxDuration = newData.seconds
             log(old.maxDuration.inWholeSeconds, maxDuration.inWholeSeconds)
@@ -118,7 +118,9 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object RecTooltipDataType : RecordDataType<String>(15) {
+    data object RecTooltipDataType : RecordDataType<String>(code = 15) {
+
+        private const val MAX_SIZE = 1023
 
         override fun read(dataArr: ByteArray, offset: Int, length: Int): String {
             val textLength = length.coerceAtMost(MAX_SIZE)
@@ -130,11 +132,9 @@ sealed class RecordDataType<T>(val code: Byte) {
             log(old.recTooltip, newData)
             return old.copy(recTooltip = newData)
         }
-
-        private const val MAX_SIZE = 1023
     }
 
-    data object EngineDataType : RecordDataType<String>(16) {
+    data object EngineDataType : RecordDataType<String>(code = 16) {
 
         override fun read(dataArr: ByteArray, offset: Int, length: Int): String =
             ByteArrayToTextMapper(dataArr, offset, length, Charsets.ISO_8859_1)
@@ -145,7 +145,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object StorageDataType : NumberDataType(17) {
+    data object StorageDataType : NumberDataType(code = 17) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val freeSpace = newData.mb
             log(old.freeSpace.mb, freeSpace.mb)
@@ -153,7 +153,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object StreamTypeDataType : NumberDataType(18) {
+    data object StreamTypeDataType : NumberDataType(code = 18) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val streamType = StreamType[newData.toInt()]
             log(old.streamType, streamType)
@@ -161,15 +161,19 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object RecordOrStreamDataType : NumberDataType(19) {
+    data object RecordOrStreamDataType : NumberDataType(code = 19) {
+
+        /** The value of the field while the PC streams rather than records */
+        private const val STREAM = 3L
+
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
-            val isStream = newData == 3L
+            val isStream = newData == STREAM
             log(old.isStream, isStream)
             return old.copy(isStream = isStream)
         }
     }
 
-    data object WebCamDataType : NumberDataType(20) {
+    data object WebCamDataType : NumberDataType(code = 20) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val isWebCam = newData != 0L
             log(old.isWebCam, isWebCam)
@@ -177,7 +181,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object MicDataType : NumberDataType(21) {
+    data object MicDataType : NumberDataType(code = 21) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val isMic = newData != 0L
             log(old.isMic, isMic)
@@ -185,7 +189,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object GameActiveDataType : NumberDataType(23) {
+    data object GameActiveDataType : NumberDataType(code = 23) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val gameActive = newData != 0L
             log(old.gameActive, gameActive)
@@ -193,7 +197,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    data object WebCamTypeDataType : NumberDataType(24) {
+    data object WebCamTypeDataType : NumberDataType(code = 24) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val webCamType = newData.toInt()
             log(old.webCamType, webCamType)
@@ -207,7 +211,17 @@ sealed class RecordDataType<T>(val code: Byte) {
      * shown bytes once its chunks are in. No screen shows the frames before version 1.2.0; a chunk
      * outside its packet or its frame, or of a frame with no size, is skipped.
      */
-    data object WebDataDataType : RecordDataType<WebCamChunk?>(25) {
+    data object WebDataDataType : RecordDataType<WebCamChunk?>(code = 25) {
+
+        private const val FRAME_ID = 0
+        private const val CHUNK_INDEX = 1
+        private const val CAMERA_INDEX = 2
+        private const val WIDTH = 3
+        private const val HEIGHT = 4
+        private const val CHUNK_PIXELS = 5
+        private const val PIXELS_LENGTH = 6
+        private const val HEADER_SIZE = 7 * Int.SIZE_BYTES
+        private const val BYTES_PER_PIXEL = 2
 
         override fun read(dataArr: ByteArray, offset: Int, length: Int): WebCamChunk? {
             if (length < HEADER_SIZE) return null
@@ -305,17 +319,11 @@ sealed class RecordDataType<T>(val code: Byte) {
                 camera.e >= chunk.width * chunk.height / chunk.chunkPixels - 1
 
         private fun readInt(dataArr: ByteArray, offset: Int, index: Int): Int =
-            ByteArrayToNumberMapper(dataArr, offset + index * Int.SIZE_BYTES, Int.SIZE_BYTES).toInt()
-
-        private const val FRAME_ID = 0
-        private const val CHUNK_INDEX = 1
-        private const val CAMERA_INDEX = 2
-        private const val WIDTH = 3
-        private const val HEIGHT = 4
-        private const val CHUNK_PIXELS = 5
-        private const val PIXELS_LENGTH = 6
-        private const val HEADER_SIZE = 7 * Int.SIZE_BYTES
-        private const val BYTES_PER_PIXEL = 2
+            ByteArrayToNumberMapper(
+                dataArr = dataArr,
+                offset = offset + index * Int.SIZE_BYTES,
+                length = Int.SIZE_BYTES,
+            ).toInt()
     }
 }
 
@@ -333,7 +341,7 @@ sealed class RecordDataType<T>(val code: Byte) {
  * @property dataArr the bytes of the status packet.
  * @property pixelsOffset the index of the first pixel byte in [dataArr].
  */
-class WebCamChunk(
+data class WebCamChunk(
     val frameId: Int,
     val chunkIndex: Int,
     val cameraIndex: Int,
@@ -343,4 +351,34 @@ class WebCamChunk(
     val pixelsLength: Int,
     val dataArr: ByteArray,
     val pixelsOffset: Int,
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+
+        return other is WebCamChunk &&
+            frameId == other.frameId &&
+            chunkIndex == other.chunkIndex &&
+            cameraIndex == other.cameraIndex &&
+            width == other.width &&
+            height == other.height &&
+            chunkPixels == other.chunkPixels &&
+            pixelsLength == other.pixelsLength &&
+            dataArr.contentEquals(other.dataArr) &&
+            pixelsOffset == other.pixelsOffset
+    }
+
+    override fun hashCode(): Int {
+        var result = frameId
+
+        result = 31 * result + chunkIndex
+        result = 31 * result + cameraIndex
+        result = 31 * result + width
+        result = 31 * result + height
+        result = 31 * result + chunkPixels
+        result = 31 * result + pixelsLength
+        result = 31 * result + dataArr.contentHashCode()
+        result = 31 * result + pixelsOffset
+
+        return result
+    }
+}

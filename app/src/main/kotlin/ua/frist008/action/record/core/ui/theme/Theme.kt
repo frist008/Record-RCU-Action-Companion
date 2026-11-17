@@ -52,13 +52,13 @@ internal object AppTheme {
     val shapes = Shapes()
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+/** The theme wrapper of a preview whose content reads `MaterialTheme` */
 @Composable
 fun RootThemePreview(content: @Composable () -> Unit = { Text("Hello World") }) {
     RootTheme { content() }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
+/** The theme and scaffold wrapper of a preview, titled [titleRes] */
 @Composable
 fun RootThemeScaffoldPreview(
     @StringRes titleRes: Int = R.string.app_name,
@@ -71,4 +71,10 @@ fun RootThemeScaffoldPreview(
             content(it)
         }
     }
+}
+
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+private fun RootThemeScaffoldDefaultPreview() {
+    RootThemeScaffoldPreview()
 }

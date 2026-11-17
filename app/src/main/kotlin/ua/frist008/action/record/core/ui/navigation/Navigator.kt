@@ -9,7 +9,8 @@ import ua.frist008.action.record.features.NavCommand
  * Inject on [ua.frist008.action.record.core.ui.navigation.NavigationModule]
  */
 @OptIn(ExperimentalForInheritanceCoroutinesApi::class)
-@Stable class Navigator(
+@Stable
+class Navigator(
     sharedFlow: MutableSharedFlow<NavCommand> = MutableSharedFlow(),
 ) : MutableSharedFlow<NavCommand> by sharedFlow {
 

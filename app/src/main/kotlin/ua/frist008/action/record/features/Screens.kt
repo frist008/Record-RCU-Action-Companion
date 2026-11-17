@@ -19,6 +19,7 @@ sealed class NavCommand(
     @Serializable @Immutable class BackCommand(val backToScreen: NavCommand? = null) : NavCommand()
 
     @Serializable @Immutable data class Link(val url: String) : NavCommand()
+
     @Serializable @Immutable data class App(val appPackage: String, val url: String) : NavCommand()
 
     @Serializable @Immutable
@@ -34,8 +35,12 @@ sealed class NavCommand(
     @Serializable @Immutable object AdsPrivacyOptions : NavCommand()
 
     @Serializable @Immutable object ConnectionScreen : NavCommand()
+
     @Serializable @Immutable object RecordScreen : NavCommand()
+
     @Serializable @Immutable object SettingsScreen : NavCommand()
+
     @Serializable @Immutable object AboutScreen : NavCommand()
+
     @Serializable @Immutable object PremiumScreen : NavCommand()
 }

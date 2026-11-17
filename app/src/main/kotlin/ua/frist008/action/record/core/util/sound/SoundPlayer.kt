@@ -68,7 +68,10 @@ import javax.inject.Singleton
  * @property tone the tone of [ToneGenerator] it plays when it has no [actionSound].
  */
 enum class AppSound(val actionSound: Int?, val tone: Int) {
-    RECORD(actionSound = MediaActionSound.START_VIDEO_RECORDING, tone = ToneGenerator.TONE_PROP_ACK),
+    RECORD(
+        actionSound = MediaActionSound.START_VIDEO_RECORDING,
+        tone = ToneGenerator.TONE_PROP_ACK,
+    ),
     PAUSE(actionSound = MediaActionSound.FOCUS_COMPLETE, tone = ToneGenerator.TONE_PROP_ACK),
     STOP(actionSound = MediaActionSound.STOP_VIDEO_RECORDING, tone = ToneGenerator.TONE_PROP_ACK),
     LOW_SPACE(actionSound = null, tone = ToneGenerator.TONE_SUP_ERROR),

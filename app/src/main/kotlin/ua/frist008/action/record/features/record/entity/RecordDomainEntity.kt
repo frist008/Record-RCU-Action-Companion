@@ -94,103 +94,117 @@ data class RecordDomainEntity(
         }
     }
 
-    private fun mapLiveState(streamType: StreamType, isStream: Boolean) =
-        LiveState(isOnline = streamType != StreamType.OFF, isLive = isStream)
+    companion object {
 
-    private fun mapStorage(
-        freeSpaceWithTimestampList: ImmutableList<Pair<Long, Long>>,
-        freeSpace: Space,
-        minFreeSpace: Space,
-    ): StorageState {
-        val newFreeSpaceWithTimestampList =
-            createFreeSpaceWithTimestampList(freeSpaceWithTimestampList, freeSpace)
-        val timeRemaining = calculateTimeRemaining(newFreeSpaceWithTimestampList, freeSpace)
+        /** How many free-space samples the time left needs before it is shown */
+        private const val TIME_REMAINING_MIN_SAMPLES = 5
 
-        return if (freeSpace < 1.gb) {
-            StorageState(
-                freeSpace = freeSpace.mb.toInt().toFloat(),
-                timeRemaining = timeRemaining,
-                pattern = R.string.record_header_storage_mb_pattern,
-                errorType = ErrorType.ERROR,
-                freeSpaceWithTimestampList = newFreeSpaceWithTimestampList,
-            )
-        } else {
-            val freeGB = freeSpace.gb.round(1).toFloat()
+        /** How many free-space samples are kept; the oldest goes past it */
+        private const val FREE_SPACE_MAX_SAMPLES = 15
 
-            StorageState(
-                freeSpace = freeGB,
-                timeRemaining = timeRemaining,
-                pattern = R.string.record_header_storage_gb_pattern,
-                errorType = when {
-                    freeSpace < minFreeSpace -> ErrorType.ERROR
-                    freeGB < 10f -> ErrorType.WARNING
-                    else -> ErrorType.DEFAULT
-                },
-                freeSpaceWithTimestampList = newFreeSpaceWithTimestampList,
-            )
+        /** The free space in GB below which it is shown as a warning */
+        private const val WARNING_FREE_SPACE_GB = 10f
+
+        private fun mapLiveState(streamType: StreamType, isStream: Boolean) =
+            LiveState(isOnline = streamType != StreamType.OFF, isLive = isStream)
+
+        private fun mapStorage(
+            freeSpaceWithTimestampList: ImmutableList<Pair<Long, Long>>,
+            freeSpace: Space,
+            minFreeSpace: Space,
+        ): StorageState {
+            val newFreeSpaceWithTimestampList =
+                createFreeSpaceWithTimestampList(freeSpaceWithTimestampList, freeSpace)
+            val timeRemaining = calculateTimeRemaining(newFreeSpaceWithTimestampList, freeSpace)
+
+            return if (freeSpace < 1.gb) {
+                StorageState(
+                    freeSpace = freeSpace.mb.toInt().toFloat(),
+                    timeRemaining = timeRemaining,
+                    pattern = R.string.record_header_storage_mb_pattern,
+                    errorType = ErrorType.ERROR,
+                    freeSpaceWithTimestampList = newFreeSpaceWithTimestampList,
+                )
+            } else {
+                val freeGB = freeSpace.gb.round(1).toFloat()
+
+                StorageState(
+                    freeSpace = freeGB,
+                    timeRemaining = timeRemaining,
+                    pattern = R.string.record_header_storage_gb_pattern,
+                    errorType = when {
+                        freeSpace < minFreeSpace -> ErrorType.ERROR
+                        freeGB < WARNING_FREE_SPACE_GB -> ErrorType.WARNING
+                        else -> ErrorType.DEFAULT
+                    },
+                    freeSpaceWithTimestampList = newFreeSpaceWithTimestampList,
+                )
+            }
         }
-    }
 
-    private fun calculateTimeRemaining(
-        lastFreeSpaceWithTimestamp: ImmutableList<Pair<Long, Long>>,
-        freeSpace: Space,
-    ): String {
-        if (lastFreeSpaceWithTimestamp.size < 5) return ""
+        private fun calculateTimeRemaining(
+            lastFreeSpaceWithTimestamp: ImmutableList<Pair<Long, Long>>,
+            freeSpace: Space,
+        ): String {
+            if (lastFreeSpaceWithTimestamp.size < TIME_REMAINING_MIN_SAMPLES) return ""
 
-        val (firstBytes, firstTimeMs) = lastFreeSpaceWithTimestamp.last()
-        val (lastBytes, lastTimeMs) = lastFreeSpaceWithTimestamp.first()
+            val (firstBytes, firstTimeMs) = lastFreeSpaceWithTimestamp.last()
+            val (lastBytes, lastTimeMs) = lastFreeSpaceWithTimestamp.first()
 
-        val differenceBetweenSpace = abs(firstBytes - lastBytes)
-        val differenceBetweenTime = abs(firstTimeMs - lastTimeMs)
+            val differenceBetweenSpace = abs(firstBytes - lastBytes)
+            val differenceBetweenTime = abs(firstTimeMs - lastTimeMs)
 
-        val countTimesUntilSpaceEnded =
-            if (differenceBetweenSpace > 0) freeSpace.bytes / differenceBetweenSpace else 0
-        val timeUntilSpaceEndedMs = countTimesUntilSpaceEnded * differenceBetweenTime
+            val countTimesUntilSpaceEnded =
+                if (differenceBetweenSpace > 0) freeSpace.bytes / differenceBetweenSpace else 0
+            val timeUntilSpaceEndedMs = countTimesUntilSpaceEnded * differenceBetweenTime
 
-        return DateUtils.formatFullTime(timeUntilSpaceEndedMs.milliseconds)
-    }
+            return DateUtils.formatFullTime(timeUntilSpaceEndedMs.milliseconds)
+        }
 
-    @OptIn(ExperimentalTime::class)
-    private fun createFreeSpaceWithTimestampList(
-        list: ImmutableList<Pair<Long, Long>>,
-        freeSpace: Space,
-    ): ImmutableList<Pair<Long, Long>> {
-        if (freeSpace.bytes == 0L || freeSpace.bytes == list.lastOrNull()?.first) return list
+        @OptIn(ExperimentalTime::class)
+        private fun createFreeSpaceWithTimestampList(
+            list: ImmutableList<Pair<Long, Long>>,
+            freeSpace: Space,
+        ): ImmutableList<Pair<Long, Long>> {
+            if (freeSpace.bytes == 0L || freeSpace.bytes == list.lastOrNull()?.first) return list
 
-        val newValue = freeSpace.bytes to Clock.System.now().toEpochMilliseconds()
-        val trimmedList = (if (list.size > 15) list.subList(1, list.size) else list)
+            val newValue = freeSpace.bytes to Clock.System.now().toEpochMilliseconds()
+            val trimmedList =
+                (if (list.size > FREE_SPACE_MAX_SAMPLES) list.subList(1, list.size) else list)
 
-        return (trimmedList.asSequence() + newValue).toImmutableList()
-    }
+            return (trimmedList.asSequence() + newValue).toImmutableList()
+        }
 
-    private fun mapEngine(engine: String): EngineState {
-        val trimmedEngine = engine.trim()
+        private fun mapEngine(engine: String): EngineState {
+            val trimmedEngine = engine.trim()
 
-        return when (trimmedEngine.lowercase()) {
-            "aero" -> EngineState(name = "Desktop", errorType = ErrorType.ERROR)
+            return when (trimmedEngine.lowercase()) {
+                "aero" -> EngineState(name = "Desktop", errorType = ErrorType.ERROR)
 
-            "dx9",
-            "dx10",
-            "dx11",
-            "dx12",
-            "opengl",
-            "vulkan",
+                "dx9",
+                "dx10",
+                "dx11",
+                "dx12",
+                "opengl",
+                "vulkan",
                 -> EngineState(name = trimmedEngine, errorType = ErrorType.DEFAULT)
 
-            else -> EngineState(name = trimmedEngine, errorType = ErrorType.DEFAULT)
+                else -> EngineState(name = trimmedEngine, errorType = ErrorType.DEFAULT)
+            }
         }
-    }
 
-    private fun mapRecordType(
-        recordModeType: RecordModeType,
-        isStream: Boolean,
-    ): RecordButtonsState {
-        val isRecording = recordModeType == RecordModeType.RECORD
-        val isPaused = recordModeType == RecordModeType.PAUSE
-        return RecordButtonsState(
-            isRecordingVisible = !isRecording || !isStream,
-            isRecording = isRecording,
-            isStopVisible = isRecording || isPaused,
-        )
+        private fun mapRecordType(
+            recordModeType: RecordModeType,
+            isStream: Boolean,
+        ): RecordButtonsState {
+            val isRecording = recordModeType == RecordModeType.RECORD
+            val isPaused = recordModeType == RecordModeType.PAUSE
+
+            return RecordButtonsState(
+                isRecordingVisible = !isRecording || !isStream,
+                isRecording = isRecording,
+                isStopVisible = isRecording || isPaused,
+            )
+        }
     }
 }

@@ -11,9 +11,9 @@ data class ConnectionProgressState private constructor(
     private val _isLoading: Boolean = timerValue.isEmpty(),
 ) : UIState.Progress() {
 
+    val isLoading = _isLoading || timerValue.isEmpty()
+
     constructor(duration: Duration) : this((duration.inWholeSeconds + 1).toString())
 
     constructor() : this("")
-
-    val isLoading = _isLoading || timerValue.isEmpty()
 }

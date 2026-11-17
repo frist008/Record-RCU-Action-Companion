@@ -5,7 +5,7 @@ import ua.frist008.action.record.features.connection.entity.DeviceDomainEntity
 
 interface ConnectionRepository {
 
-    /** The permission Android 17 and newer ask the user for before the search reaches the network */
+    /** The permission Android 17 and newer ask for before the search reaches the network */
     val localNetworkPermission: String
 
     /**

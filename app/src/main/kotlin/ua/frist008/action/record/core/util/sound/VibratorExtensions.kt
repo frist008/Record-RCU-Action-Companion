@@ -11,19 +11,18 @@ fun Vibrator.vibrate(vibratorEffect: VibratorEffect) {
 
         val effect = vibratorEffect.effectClick
 
-        when {
-            Build.VERSION.SDK_INT >= Build.VERSION_CODES.S ->
-                if (areAllPrimitivesSupported(effect)) {
-                    vibrate(
-                        VibrationEffect.startComposition()
-                            .addPrimitive(effect)
-                            .compose(),
-                    )
-                } else {
-                    vibrate(VibrationEffect.createOneShot(VibratorEffect.DEFAULT_DURATION, effect))
-                }
-
-            else -> vibrate(VibrationEffect.createPredefined(effect))
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            if (areAllPrimitivesSupported(effect)) {
+                vibrate(
+                    VibrationEffect.startComposition()
+                        .addPrimitive(effect)
+                        .compose(),
+                )
+            } else {
+                vibrate(VibrationEffect.createOneShot(VibratorEffect.DEFAULT_DURATION, effect))
+            }
+        } else {
+            vibrate(VibrationEffect.createPredefined(effect))
         }
     } catch (e: Throwable) {
         Timber.e(e)

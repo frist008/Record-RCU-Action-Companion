@@ -26,19 +26,20 @@ val Icons.AdsOff: ImageVector by lazy(LazyThreadSafetyMode.NONE) {
         viewportHeight = 24f,
     ).apply {
         // The square with the band of the slash cut out: the frame and the letters part around it
-        val gapClip = PathData {
-            moveTo(0f, 0f)
-            horizontalLineTo(24f)
-            verticalLineTo(24f)
-            horizontalLineTo(0f)
-            close()
-            moveTo(4.41f, 1.59f)
-            arcTo(2f, 2f, 0f, false, false, 1.59f, 4.41f)
-            lineTo(19.59f, 22.41f)
-            arcTo(2f, 2f, 0f, false, false, 22.41f, 19.59f)
-            close()
-        }
-        group(clipPathData = gapClip) {
+        group(
+            clipPathData = PathData {
+                moveTo(0f, 0f)
+                horizontalLineTo(24f)
+                verticalLineTo(24f)
+                horizontalLineTo(0f)
+                close()
+                moveTo(4.41f, 1.59f)
+                arcTo(2f, 2f, 0f, false, false, 1.59f, 4.41f)
+                lineTo(19.59f, 22.41f)
+                arcTo(2f, 2f, 0f, false, false, 22.41f, 19.59f)
+                close()
+            },
+        ) {
             path(
                 stroke = SolidColor(Color(0xFFF1F2F2)),
                 strokeLineWidth = 1.6f,

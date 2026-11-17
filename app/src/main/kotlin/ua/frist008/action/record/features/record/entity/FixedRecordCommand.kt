@@ -5,10 +5,10 @@ enum class FixedRecordCommand(
     override val commandArr: ByteArray = byteArrayOf(commandInt.toByte()),
 ) : RecordCommand {
 
-    START(1),
-    RESUME(1),
-    PAUSE(1),
-    STOP(3),
+    START(commandInt = 1),
+    RESUME(commandInt = 1),
+    PAUSE(commandInt = 1),
+    STOP(commandInt = 3),
 }
 
 /** The codes the original app sends to start and resume a recording; no screen sends them yet */
@@ -17,10 +17,10 @@ enum class OriginalRecordCommand(
     override val commandArr: ByteArray = byteArrayOf(commandInt.toByte()),
 ) : RecordCommand {
 
-    START(2),
-    RESUME(2),
-    PAUSE(1),
-    STOP(3),
+    START(commandInt = 2),
+    RESUME(commandInt = 2),
+    PAUSE(commandInt = 1),
+    STOP(commandInt = 3),
 }
 
 enum class StreamingRecordCommand(
@@ -28,8 +28,8 @@ enum class StreamingRecordCommand(
     override val commandArr: ByteArray = byteArrayOf(commandInt.toByte()),
 ) : RecordCommand {
 
-    START(1),
-    STOP(3),
+    START(commandInt = 1),
+    STOP(commandInt = 3),
 }
 
 interface RecordCommand {

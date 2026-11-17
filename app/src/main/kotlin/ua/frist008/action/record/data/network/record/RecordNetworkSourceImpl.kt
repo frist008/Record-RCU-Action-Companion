@@ -51,8 +51,10 @@ class RecordNetworkSourceImpl @Inject constructor(
     private val _recordFlow = MutableStateFlow(RecordDTO(false))
     override val recordFlow = _recordFlow
 
-    override suspend fun connect(dto: DeviceDTO): Unit = withContext(ioDispatcher) {
-        wifiNetworkBinder.withWifi { holdConnection(dto) }
+    override suspend fun connect(dto: DeviceDTO) {
+        withContext(ioDispatcher) {
+            wifiNetworkBinder.withWifi { holdConnection(dto) }
+        }
     }
 
     private suspend fun holdConnection(dto: DeviceDTO) {

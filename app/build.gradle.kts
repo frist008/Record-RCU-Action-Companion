@@ -17,9 +17,10 @@ plugins {
     alias(libs.plugins.play.publisher)
 }
 
-// Google Play: the bundle goes as a draft to the internal track, or to the track `-PplayTrack` names.
-// The key of the service account lies in `play-credentials.json` of the root, outside git; without
-// the file the plugin reads the key from the `ANDROID_PUBLISHER_CREDENTIALS` environment variable.
+// Google Play: the bundle goes as a draft to the internal track, or to the track `-PplayTrack`
+// names. The key of the service account lies in `play-credentials.json` of the root, outside git;
+// without the file the plugin reads the key from the `ANDROID_PUBLISHER_CREDENTIALS` environment
+// variable.
 play {
     val credentials = rootProject.file("play-credentials.json")
 
@@ -35,7 +36,9 @@ play {
 licensee {
     allow("Apache-2.0")
     allow("MIT")
-    allow("BSD-3-Clause") // TODO Add screen in settings with https://github.com/google/play-services-plugins/tree/main/oss-licenses-plugin
+    // TODO Add screen in settings with
+    //  https://github.com/google/play-services-plugins/tree/main/oss-licenses-plugin
+    allow("BSD-3-Clause")
     allowUrl("https://developer.android.com/studio/terms.html")
 }
 
@@ -103,7 +106,6 @@ android {
             resValue("bool", "firebase_performance_enabled", "true")
             resValue("bool", "firebase_analytics_enabled", "false")
             resValue("bool", "firebase_crashlytics_enabled", "false")
-
         }
         release {
             signingConfig = signingConfigs.getByName(libs.versions.build.type.release.get())

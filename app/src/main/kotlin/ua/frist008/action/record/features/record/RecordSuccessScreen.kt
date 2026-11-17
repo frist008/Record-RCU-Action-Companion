@@ -261,7 +261,7 @@ fun StorageTitleText(paddingValues: PaddingValues) {
 }
 
 @Composable
-fun StorageValueText(
+fun ColumnScope.StorageValueText(
     paddingValues: PaddingValues,
     size: Float,
     time: String,
@@ -424,7 +424,8 @@ private fun ColumnScope.Ads(bannerLoadCallback: AdLoadCallback<BannerAd>, adSize
     val isInEditMode = BuildConfig.DEBUG && LocalView.current.isInEditMode
     // https://developers.google.com/admob/android/next-gen/banner/fixed-size
 
-    // A new size is a new AdView: the Next-Gen SDK takes the size with the request, and the old view is destroyed.
+    // A new size is a new AdView: the Next-Gen SDK takes the size with the request, and the old
+    // view is destroyed.
     key(adSize) {
         AndroidView(
             modifier = Modifier
@@ -435,7 +436,10 @@ private fun ColumnScope.Ads(bannerLoadCallback: AdLoadCallback<BannerAd>, adSize
                     View(context).apply { setBackgroundColor(Color.WHITE) }
                 } else {
                     AdView(context).apply {
-                        loadAd(buildAdRequest(context.getString(R.string.ad), adSize), bannerLoadCallback)
+                        loadAd(
+                            buildAdRequest(context.getString(R.string.ad), adSize),
+                            bannerLoadCallback,
+                        )
                     }
                 }
             },
@@ -444,7 +448,10 @@ private fun ColumnScope.Ads(bannerLoadCallback: AdLoadCallback<BannerAd>, adSize
     }
 }
 
-private fun buildAdRequest(adUnitId: String, adSize: AdSize) = BannerAdRequest.Builder(adUnitId, adSize)
+private fun buildAdRequest(adUnitId: String, adSize: AdSize) = BannerAdRequest.Builder(
+    adUnitId,
+    adSize,
+)
     .addKeyword("game recording")
     .addKeyword("screen capture")
     .addKeyword("streaming")

@@ -8,13 +8,16 @@ import kotlin.time.Duration.Companion.minutes
 /**
  * The settings the user picked; every default keeps the behaviour the app had before them.
  *
- * @property minFreeSpace the free space of the recording disk of the PC below which Storage turns red.
+ * @property minFreeSpace the free space of the recording disk of the PC below which Storage turns
+ * red.
  * @property isLowSpaceSound whether a signal sounds once the free space falls below [minFreeSpace].
  * @property isRecordButtonSound whether the record button sounds when it is pressed.
  * @property isPauseButtonSound whether the pause button sounds when it is pressed.
  * @property isStopButtonSound whether the stop button sounds when it is pressed.
- * @property isDurationSound whether a signal sounds once the recording reaches [durationSoundAfter].
- * @property durationSoundAfter the length of the recording, by the timer of the recorder, of the signal.
+ * @property isDurationSound whether a signal sounds once the recording reaches
+ * [durationSoundAfter].
+ * @property durationSoundAfter the length of the recording, by the timer of the recorder, of the
+ * signal.
  * @property dimAfter the time without a touch after which the record screen dims.
  * @property dimToPercent the brightness of the dimmed screen, in percent of the full one.
  * @property isFirstTouchOnlyWakes whether the first touch of the dimmed screen only restores the
@@ -27,8 +30,8 @@ data class SettingsDomainEntity(
     val isPauseButtonSound: Boolean = false,
     val isStopButtonSound: Boolean = false,
     val isDurationSound: Boolean = false,
-    val durationSoundAfter: Duration = 30.minutes,
-    val dimAfter: Duration = 10.minutes,
+    val durationSoundAfter: Duration = DEFAULT_DURATION_SOUND_AFTER,
+    val dimAfter: Duration = DEFAULT_DIM_AFTER,
     val dimToPercent: Int = 10,
     val isFirstTouchOnlyWakes: Boolean = false,
 ) {
@@ -55,4 +58,10 @@ data class SettingsDomainEntity(
             versionName = versionName,
             isAdsPrivacyVisible = isAdsPrivacyVisible,
         )
+
+    companion object {
+
+        private val DEFAULT_DURATION_SOUND_AFTER = 30.minutes
+        private val DEFAULT_DIM_AFTER = 10.minutes
+    }
 }

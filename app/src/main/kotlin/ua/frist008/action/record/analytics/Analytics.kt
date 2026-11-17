@@ -9,9 +9,9 @@ import ua.frist008.action.record.features.record.entity.RecordSuccessState
 
 object Analytics {
 
-    private val analytics by lazy(LazyThreadSafetyMode.NONE) { Firebase.analytics }
-
     private const val RECORD_DATA_EVENT = "record_data"
+
+    private val firebaseAnalytics by lazy(LazyThreadSafetyMode.NONE) { Firebase.analytics }
 
     /** The engine of the last event, so the same engine is logged once while the process lives */
     private val lastEngine = atomic<String?>(null)
@@ -22,7 +22,9 @@ object Analytics {
 
         if (isNewEngine) {
             Timber.tag("Engine").d(engine)
-            analytics.logEvent(RECORD_DATA_EVENT) { param("engine", engine.replace(' ', '_')) }
+            firebaseAnalytics.logEvent(RECORD_DATA_EVENT) {
+                param("engine", engine.replace(' ', '_'))
+            }
         }
     }
 }
