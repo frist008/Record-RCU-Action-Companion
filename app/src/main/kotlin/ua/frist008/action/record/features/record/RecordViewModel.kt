@@ -304,9 +304,14 @@ import kotlin.time.Duration.Companion.seconds
         when (cause) {
             is DisconnectException -> openConnection()
 
-            is NotConnectedException,
-            is SocketTimeoutException,
-                -> toastFlow.emit(R.string.record_error_not_connected)
+            is NotConnectedException -> toastFlow.emit(R.string.record_error_not_connected)
+
+            // A command the PC never took ends the session, as the release 1.0.4 does on a failed write
+            is SocketTimeoutException -> {
+                toastFlow.emit(R.string.record_error_not_connected)
+                delay(RECONNECT_DELAY)
+                openConnection()
+            }
 
             is BindException -> {
                 toastFlow.emit(R.string.record_error_port_busy)

@@ -20,7 +20,7 @@ data class RecordDTO(
     val maxFps: Int = 0,
     val isWebCam: Boolean = false,
     val isMic: Boolean = false,
-    val gameActive: Boolean = true,
+    val gameActive: Boolean = false,
     val webCamType: Int = 0,
     val webCamDataList: List<WebCamData> = listOf(
         WebCamData(),
@@ -28,6 +28,8 @@ data class RecordDTO(
         WebCamData(),
         WebCamData(),
     ),
+    /** Whether a frame of a web camera was completed in the packet being read, false at its start */
+    val isWebCamFrameReady: Boolean = false,
 ) {
 
     fun toDomain() = RecordDomainEntity(

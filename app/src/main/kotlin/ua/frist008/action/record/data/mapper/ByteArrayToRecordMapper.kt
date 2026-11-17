@@ -7,7 +7,8 @@ import ua.frist008.action.record.data.network.record.entity.RecordDataType
 /**
  * Applies a status packet of the record session to the last state: bytes 11–14 hold the length of
  * the payload counted from byte 11, then come the fields — a type byte, four bytes of length and
- * the value; `null` when the packet is no status packet.
+ * the value; `null` when the packet is no status packet. The session counts as connected once a
+ * field of the record mode or of FPS arrives, as the release 1.0.4.
  */
 object ByteArrayToRecordMapper : (ByteArray, Int, RecordDTO) -> RecordDTO? {
 
@@ -23,7 +24,7 @@ object ByteArrayToRecordMapper : (ByteArray, Int, RecordDTO) -> RecordDTO? {
         if (payloadLength <= 0) return null
 
         val end = (PAYLOAD_OFFSET + payloadLength).coerceAtMost(size.toLong()).toInt()
-        var record = old.copy(connected = true)
+        var record = old.copy(isWebCamFrameReady = false)
         var fieldOffset = FIELDS_OFFSET
 
         while (fieldOffset + FIELD_HEADER_SIZE <= end) {
