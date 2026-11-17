@@ -82,7 +82,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val recordModeType = RecordModeType[newData.toInt()]
             log(old.recordModeType, recordModeType)
-            return old.copy(webCamType = 0, recordModeType = recordModeType)
+            return old.copy(connected = true, webCamType = 0, recordModeType = recordModeType)
         }
     }
 
@@ -90,7 +90,7 @@ sealed class RecordDataType<T>(val code: Byte) {
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
             val newFps = newData.toInt()
             log(old.fps, newFps)
-            return old.copy(fps = newFps)
+            return old.copy(connected = true, fps = newFps)
         }
     }
 
@@ -201,11 +201,146 @@ sealed class RecordDataType<T>(val code: Byte) {
         }
     }
 
-    /** A chunk of a web camera frame, skipped until the previews of version 1.2.0 */
-    data object WebDataDataType : RecordDataType<Unit>(25) {
+    /**
+     * A chunk of a frame of a web camera, assembled into [RecordDTO.webCamDataList] as the release
+     * 1.0.4 does: the chunks of one frame fill its assembling bytes, and the frame is copied to the
+     * shown bytes once its chunks are in. No screen shows the frames before version 1.2.0; a chunk
+     * outside its packet or its frame, or of a frame with no size, is skipped.
+     */
+    data object WebDataDataType : RecordDataType<WebCamChunk?>(25) {
 
-        override fun read(dataArr: ByteArray, offset: Int, length: Int) = Unit
+        override fun read(dataArr: ByteArray, offset: Int, length: Int): WebCamChunk? {
+            if (length < HEADER_SIZE) return null
 
-        override fun map(newData: Unit, old: RecordDTO): RecordDTO = old
+            val chunk = WebCamChunk(
+                frameId = readInt(dataArr, offset, FRAME_ID),
+                chunkIndex = readInt(dataArr, offset, CHUNK_INDEX),
+                cameraIndex = readInt(dataArr, offset, CAMERA_INDEX),
+                width = readInt(dataArr, offset, WIDTH),
+                height = readInt(dataArr, offset, HEIGHT),
+                chunkPixels = readInt(dataArr, offset, CHUNK_PIXELS),
+                pixelsLength = readInt(dataArr, offset, PIXELS_LENGTH),
+                dataArr = dataArr,
+                pixelsOffset = offset + HEADER_SIZE,
+            )
+            val isInPacket = chunk.pixelsLength in 0..(length - HEADER_SIZE)
+            val hasSize = chunk.width > 0 && chunk.height > 0 && chunk.chunkPixels > 0
+
+            return if (isInPacket && hasSize && chunk.chunkIndex >= 0) chunk else null
+        }
+
+        override fun map(newData: WebCamChunk?, old: RecordDTO): RecordDTO {
+            val chunk = newData ?: return old
+            val cameraIndex = chunk.cameraIndex
+
+            if (cameraIndex !in 0 until old.webCamType) return old
+
+            val webCam = old.webCamDataList.getOrNull(cameraIndex) ?: return old
+            val isFrameReadyInPacket = old.isWebCamFrameReady
+            val assembled = assemble(chunk, webCam, isFrameReadyInPacket) ?: return old
+            val webCamList = old.webCamDataList.toMutableList()
+
+            webCamList[cameraIndex] = assembled.copy(a = chunk.frameId)
+
+            val isFrameReady = isFrameReadyInPacket || isFrameCompleted(chunk, assembled)
+
+            return old.copy(webCamDataList = webCamList, isWebCamFrameReady = isFrameReady)
+        }
+
+        /**
+         * Copies the chunk into the assembling bytes of its camera and, once the frame is complete
+         * or a frame was completed earlier in the packet, the assembling bytes into the shown ones.
+         *
+         * @return the camera with the chunk applied, or null when the chunk is of an older frame
+         * or falls outside the frame.
+         */
+        private fun assemble(
+            chunk: WebCamChunk,
+            webCam: WebCamData,
+            isFrameReadyInPacket: Boolean,
+        ): WebCamData? {
+            val frameSize = chunk.width.toLong() * chunk.height * BYTES_PER_PIXEL
+
+            if (frameSize > Int.MAX_VALUE) return null
+
+            var camera = webCam
+            var assemblingArr = camera.f
+            var shownArr = camera.g
+
+            if (assemblingArr == null || shownArr == null || shownArr.size < frameSize) {
+                assemblingArr = ByteArray(frameSize.toInt())
+                shownArr = ByteArray(frameSize.toInt())
+                camera = camera.copy(a = chunk.frameId, f = assemblingArr, g = shownArr)
+            }
+
+            if (camera.a == 0) camera = camera.copy(a = chunk.frameId)
+
+            val destination = chunk.chunkIndex.toLong() * BYTES_PER_PIXEL * chunk.chunkPixels
+            val isInFrame = destination + chunk.pixelsLength <= assemblingArr.size
+
+            if (camera.a > chunk.frameId || !isInFrame) return null
+
+            chunk.dataArr.copyInto(
+                destination = assemblingArr,
+                destinationOffset = destination.toInt(),
+                startIndex = chunk.pixelsOffset,
+                endIndex = chunk.pixelsOffset + chunk.pixelsLength,
+            )
+            camera = camera.copy(b = chunk.cameraIndex, c = chunk.width, d = chunk.height)
+
+            if (camera.a != chunk.frameId) return camera.copy(e = 0)
+
+            camera = camera.copy(e = camera.e + 1)
+
+            if (isFrameReadyInPacket || isFrameCompleted(chunk, camera)) {
+                assemblingArr.copyInto(shownArr)
+            }
+
+            return camera
+        }
+
+        /** Whether the chunks the camera counted complete the frame of the chunk */
+        private fun isFrameCompleted(chunk: WebCamChunk, camera: WebCamData): Boolean =
+            camera.a == chunk.frameId &&
+                camera.e >= chunk.width * chunk.height / chunk.chunkPixels - 1
+
+        private fun readInt(dataArr: ByteArray, offset: Int, index: Int): Int =
+            ByteArrayToNumberMapper(dataArr, offset + index * Int.SIZE_BYTES, Int.SIZE_BYTES).toInt()
+
+        private const val FRAME_ID = 0
+        private const val CHUNK_INDEX = 1
+        private const val CAMERA_INDEX = 2
+        private const val WIDTH = 3
+        private const val HEIGHT = 4
+        private const val CHUNK_PIXELS = 5
+        private const val PIXELS_LENGTH = 6
+        private const val HEADER_SIZE = 7 * Int.SIZE_BYTES
+        private const val BYTES_PER_PIXEL = 2
     }
 }
+
+/**
+ * A chunk of a frame of a web camera, as status field 25 carries it: seven numbers of four bytes,
+ * then the RGB565 pixels.
+ *
+ * @property frameId the number of the frame the chunk belongs to.
+ * @property chunkIndex the place of the chunk in its frame, counted in chunks.
+ * @property cameraIndex the camera of the frame, from 0.
+ * @property width the width of the frame in pixels.
+ * @property height the height of the frame in pixels.
+ * @property chunkPixels the pixels of a whole chunk.
+ * @property pixelsLength the length of the pixel bytes of this chunk.
+ * @property dataArr the bytes of the status packet.
+ * @property pixelsOffset the index of the first pixel byte in [dataArr].
+ */
+class WebCamChunk(
+    val frameId: Int,
+    val chunkIndex: Int,
+    val cameraIndex: Int,
+    val width: Int,
+    val height: Int,
+    val chunkPixels: Int,
+    val pixelsLength: Int,
+    val dataArr: ByteArray,
+    val pixelsOffset: Int,
+)
