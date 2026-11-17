@@ -15,12 +15,14 @@ import ua.frist008.action.record.features.settings.entity.SettingsSuccessState
 @Composable
 fun SettingsScreen(viewModel: SettingsViewModel = hiltViewModel()) {
     val state by viewModel.state.collectAsState()
+    // The screen gets the events of the settings alone, never the ViewModel
+    val actions: SettingsActions = viewModel
 
     DefaultScaffold(title = stringResource(R.string.settings_title)) { innerPadding ->
         when (val currentState = state) {
             is SettingsSuccessState -> SettingsSuccessScreen(
                 state = currentState,
-                actions = viewModel,
+                actions = actions,
                 innerPadding = innerPadding,
             )
 

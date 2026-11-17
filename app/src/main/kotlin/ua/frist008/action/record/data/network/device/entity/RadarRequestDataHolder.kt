@@ -19,14 +19,19 @@ class RadarRequestDataHolder private constructor(phoneIdArr: ByteArray?) {
 
         clientDataArr[0] = NetworkConst.KEY_0 // clientDataArr[0-1] key
         clientDataArr[1] = NetworkConst.KEY_1
-        clientDataArr[2] = (sequence shr ByteConst.BITS_1).toByte() // clientDataArr[2-3] sequence
-        clientDataArr[3] = sequence.toByte()
-        // clientDataArr[4-7] is the address of the phone, written per address by newClientDataInstance
+        // clientDataArr[2-3] sequence
+        clientDataArr[NetworkConst.SEQUENCE_INDEX] = (sequence shr ByteConst.BITS_1).toByte()
+        clientDataArr[NetworkConst.SEQUENCE_INDEX + 1] = sequence.toByte()
+        // clientDataArr[4-7] is the address of the phone, written by newClientDataInstance
         // clientDataArr[8-9] is the port the PC replies to, 4198: 16, 102
-        clientDataArr[8] = (replyPort shr ByteConst.BITS_1).toByte()
-        clientDataArr[9] = replyPort.toByte()
+        clientDataArr[NetworkConst.PORT_INDEX] = (replyPort shr ByteConst.BITS_1).toByte()
+        clientDataArr[NetworkConst.PORT_INDEX + 1] = replyPort.toByte()
         // clientDataArr[10-13] is the id of the phone: its first four bytes
-        phoneIdArr?.copyInto(clientDataArr, destinationOffset = 10, endIndex = Int.SIZE_BYTES)
+        phoneIdArr?.copyInto(
+            destination = clientDataArr,
+            destinationOffset = PHONE_ID_INDEX,
+            endIndex = Int.SIZE_BYTES,
+        )
     }
 
     /**
@@ -38,15 +43,16 @@ class RadarRequestDataHolder private constructor(phoneIdArr: ByteArray?) {
     fun newClientDataInstance(localAddressArr: ByteArray): ByteArray {
         val dataArr = clientDataArr.copyOf()
 
-        localAddressArr.copyInto(dataArr, destinationOffset = 4) // clientDataArr[4-7]
+        localAddressArr.copyInto(dataArr, destinationOffset = NetworkConst.ADDRESS_INDEX)
 
         return dataArr
     }
 
     companion object {
 
-        suspend fun newInstance() = RadarRequestDataHolder(FirebaseId.getIdMurmurHash3())
-
         private const val REQUEST_SIZE = 32
+        private const val PHONE_ID_INDEX = 10
+
+        suspend fun newInstance() = RadarRequestDataHolder(FirebaseId.getIdMurmurHash3())
     }
 }

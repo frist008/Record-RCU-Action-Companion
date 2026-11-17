@@ -22,8 +22,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.draw.drawWithCache
+import androidx.compose.ui.draw.dropShadow
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
@@ -239,6 +239,14 @@ private fun ColumnScope.PremiumPurchase(
     }
 }
 
+/** The center of the purple glow, from the top of the content */
+private val AccentGlowCenterY = 102.dp
+private val AccentGlowRadius = 120.dp
+
+/** The center of the glow under the badge, from the top of the content */
+private val BadgeGlowCenterY = 82.dp
+private val BadgeGlowRadius = 75.dp
+
 /**
  * Draws the two glows of the design behind the logo; they run past the top of the content, under
  * the app bar.
@@ -246,11 +254,11 @@ private fun ColumnScope.PremiumPurchase(
 private fun Modifier.glows(accentColors: List<Color>, badgeColors: List<Color>): Modifier =
     drawWithCache {
         val centerX = size.width / 2
-        val accentCenter = Offset(centerX, 102.dp.toPx())
-        val accentRadius = 120.dp.toPx()
+        val accentCenter = Offset(centerX, AccentGlowCenterY.toPx())
+        val accentRadius = AccentGlowRadius.toPx()
         val accentBrush = Brush.radialGradient(accentColors, accentCenter, accentRadius)
-        val badgeCenter = Offset(centerX, 82.dp.toPx())
-        val badgeRadius = 75.dp.toPx()
+        val badgeCenter = Offset(centerX, BadgeGlowCenterY.toPx())
+        val badgeRadius = BadgeGlowRadius.toPx()
         val badgeBrush = Brush.radialGradient(badgeColors, badgeCenter, badgeRadius)
 
         onDrawBehind {

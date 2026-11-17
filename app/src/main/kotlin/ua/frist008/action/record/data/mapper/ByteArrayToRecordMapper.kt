@@ -12,10 +12,14 @@ import ua.frist008.action.record.data.network.record.entity.RecordDataType
  */
 object ByteArrayToRecordMapper : (ByteArray, Int, RecordDTO) -> RecordDTO? {
 
+    private const val PAYLOAD_OFFSET = 11
+    private const val FIELDS_OFFSET = 15
+    private const val FIELD_HEADER_SIZE = 5
+
     override operator fun invoke(dataArr: ByteArray, size: Int, old: RecordDTO): RecordDTO? {
         val isStatus = size >= FIELDS_OFFSET &&
             ByteArrayToIsFromPcMapper(dataArr, size) &&
-            dataArr[10] == NetworkConst.TYPE_STATUS
+            dataArr[NetworkConst.TYPE_INDEX] == NetworkConst.TYPE_STATUS
 
         if (!isStatus) return null
 
@@ -40,8 +44,4 @@ object ByteArrayToRecordMapper : (ByteArray, Int, RecordDTO) -> RecordDTO? {
 
         return record
     }
-
-    private const val PAYLOAD_OFFSET = 11
-    private const val FIELDS_OFFSET = 15
-    private const val FIELD_HEADER_SIZE = 5
 }

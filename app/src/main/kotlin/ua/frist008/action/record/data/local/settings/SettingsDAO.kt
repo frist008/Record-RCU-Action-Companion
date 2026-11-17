@@ -65,20 +65,20 @@ import kotlin.time.Duration.Companion.minutes
         val minFreeSpaceGb = preferences[MIN_FREE_SPACE_GB_KEY]
         val durationSoundMinutes = preferences[DURATION_SOUND_MINUTES_KEY]
         val dimAfterMinutes = preferences[DIM_AFTER_MINUTES_KEY]
+        val isRecordButtonSound = preferences[RECORD_BUTTON_SOUND_KEY]
+        val isFirstTouchOnlyWakes = preferences[FIRST_TOUCH_ONLY_WAKES_KEY]
 
         return SettingsDomainEntity(
             minFreeSpace = minFreeSpaceGb?.gb ?: default.minFreeSpace,
             isLowSpaceSound = preferences[LOW_SPACE_SOUND_KEY] ?: default.isLowSpaceSound,
-            isRecordButtonSound =
-                preferences[RECORD_BUTTON_SOUND_KEY] ?: default.isRecordButtonSound,
+            isRecordButtonSound = isRecordButtonSound ?: default.isRecordButtonSound,
             isPauseButtonSound = preferences[PAUSE_BUTTON_SOUND_KEY] ?: default.isPauseButtonSound,
             isStopButtonSound = preferences[STOP_BUTTON_SOUND_KEY] ?: default.isStopButtonSound,
             isDurationSound = preferences[DURATION_SOUND_KEY] ?: default.isDurationSound,
             durationSoundAfter = durationSoundMinutes?.minutes ?: default.durationSoundAfter,
             dimAfter = dimAfterMinutes?.minutes ?: default.dimAfter,
             dimToPercent = preferences[DIM_TO_PERCENT_KEY] ?: default.dimToPercent,
-            isFirstTouchOnlyWakes =
-                preferences[FIRST_TOUCH_ONLY_WAKES_KEY] ?: default.isFirstTouchOnlyWakes,
+            isFirstTouchOnlyWakes = isFirstTouchOnlyWakes ?: default.isFirstTouchOnlyWakes,
         )
     }
 

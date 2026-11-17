@@ -9,7 +9,7 @@ class TagDebugTree : Timber.DebugTree() {
             priority,
             "Timber.${tag ?: "NULL"}",
             message,
-            t?.let(TagDebugTree::DebugException),
+            t?.let { cause -> DebugException(cause) },
         )
     }
 

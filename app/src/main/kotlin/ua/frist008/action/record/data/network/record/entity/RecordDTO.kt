@@ -28,7 +28,7 @@ data class RecordDTO(
         WebCamData(),
         WebCamData(),
     ),
-    /** Whether a frame of a web camera was completed in the packet being read, false at its start */
+    /** Whether a web camera frame was completed in the packet being read, false at its start */
     val isWebCamFrameReady: Boolean = false,
 ) {
 
@@ -63,33 +63,27 @@ data class WebCamData(
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other !is WebCamData) return false
 
-        if (a != other.a) return false
-        if (b != other.b) return false
-        if (c != other.c) return false
-        if (d != other.d) return false
-        if (e != other.e) return false
-        if (f != null) {
-            if (other.f == null) return false
-            if (!f.contentEquals(other.f)) return false
-        } else if (other.f != null) return false
-        if (g != null) {
-            if (other.g == null) return false
-            if (!g.contentEquals(other.g)) return false
-        } else if (other.g != null) return false
-
-        return true
+        return other is WebCamData &&
+            a == other.a &&
+            b == other.b &&
+            c == other.c &&
+            d == other.d &&
+            e == other.e &&
+            f.contentEquals(other.f) &&
+            g.contentEquals(other.g)
     }
 
     override fun hashCode(): Int {
         var result = a
+
         result = 31 * result + b
         result = 31 * result + c
         result = 31 * result + d
         result = 31 * result + e
         result = 31 * result + (f?.contentHashCode() ?: 0)
         result = 31 * result + (g?.contentHashCode() ?: 0)
+
         return result
     }
 }

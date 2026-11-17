@@ -49,8 +49,8 @@ import javax.inject.Inject
                 initAdsIfAllowed(consentInformation)
             }
         }
-        val onFailed = ConsentInformation.OnConsentInfoUpdateFailureListener { requestConsentError ->
-            Timber.w(requestConsentError.message)
+        val onFailed = ConsentInformation.OnConsentInfoUpdateFailureListener { consentError ->
+            Timber.w(consentError.message)
             initAdsIfAllowed(consentInformation)
         }
 
@@ -66,8 +66,8 @@ import javax.inject.Inject
     }
 
     /**
-     * Starts the Mobile Ads SDK off the main thread, as Google's guide requires, with the request configuration passed
-     * in, so the first request already carries it.
+     * Starts the Mobile Ads SDK off the main thread, as Google's guide requires, with the request
+     * configuration passed in, so the first request already carries it.
      */
     private fun initAds() {
         val requestConfiguration = RequestConfiguration.Builder()

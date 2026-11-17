@@ -23,4 +23,3 @@ inline val localTimeSecondsNow
     get() = localTimeNow.let { time ->
         LocalTime(time.hour, time.minute, time.second)
     }
-

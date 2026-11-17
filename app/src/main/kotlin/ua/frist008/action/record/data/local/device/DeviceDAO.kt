@@ -39,7 +39,8 @@ import javax.inject.Singleton
     /**
      * Reads the PC the phone connected to last.
      *
-     * @return the PC, or null when the phone has not connected to one yet or its file is unreadable.
+     * @return the PC, or null when the phone has not connected to one yet or its file is
+     * unreadable.
      */
     suspend fun get(): DeviceDBO? {
         val preferences = try {

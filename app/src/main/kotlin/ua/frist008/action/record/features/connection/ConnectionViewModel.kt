@@ -156,7 +156,7 @@ import kotlin.time.Duration.Companion.seconds
         when (cause) {
             is SocketTimeoutException,
             is SocketException,
-                -> Timber.v(cause)
+            -> Timber.v(cause)
 
             else -> super.onFailure(cause)
         }

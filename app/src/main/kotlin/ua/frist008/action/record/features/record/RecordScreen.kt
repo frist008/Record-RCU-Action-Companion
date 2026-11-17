@@ -57,22 +57,20 @@ fun RecordScreen(viewModel: RecordViewModel = hiltViewModel()) {
             },
     ) {
         when (val currentState = state) {
-            is RecordSuccessState -> {
-                if (currentState.gameActive) {
-                    RecordSuccessScreen(
-                        state = currentState,
-                        bannerLoadCallback = viewModel.bannerLoadCallback,
-                        onStartClick = viewModel::onStartClick,
-                        onResumeClick = viewModel::onResumeClick,
-                        onPauseClick = viewModel::onPauseClick,
-                        onStopClick = viewModel::onStopClick,
-                        onSoundClick = viewModel::onSoundClick,
-                        onRemoveAdsClick = viewModel::onRemoveAdsClick,
-                        onSettingsClick = viewModel::onSettingsClick,
-                    )
-                } else {
-                    RecordInactiveGameScreen(currentState.storage, currentState.live.isLive)
-                }
+            is RecordSuccessState -> if (currentState.gameActive) {
+                RecordSuccessScreen(
+                    state = currentState,
+                    bannerLoadCallback = viewModel.bannerLoadCallback,
+                    onStartClick = viewModel::onStartClick,
+                    onResumeClick = viewModel::onResumeClick,
+                    onPauseClick = viewModel::onPauseClick,
+                    onStopClick = viewModel::onStopClick,
+                    onSoundClick = viewModel::onSoundClick,
+                    onRemoveAdsClick = viewModel::onRemoveAdsClick,
+                    onSettingsClick = viewModel::onSettingsClick,
+                )
+            } else {
+                RecordInactiveGameScreen(currentState.storage, currentState.live.isLive)
             }
 
             is UIState.Progress -> RecordProgressScreen()

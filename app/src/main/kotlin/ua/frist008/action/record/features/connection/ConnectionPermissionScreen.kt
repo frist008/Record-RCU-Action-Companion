@@ -54,7 +54,7 @@ fun ConnectionPermissionScreen(
             onContinueClick = onContinueClick,
             onSettingsClick = onSettingsClick,
         )
-        // Keeps the place of the link of the progress screen, so the button stands where its timer does
+        // Keeps the place of the link of the progress screen; the button stands where its timer is
         Spacer(modifier = Modifier.height(60.dp))
     }
 }
@@ -91,7 +91,11 @@ private fun ColumnScope.ConnectionPermissionButton(
     onContinueClick: () -> Unit,
     onSettingsClick: () -> Unit,
 ) {
-    val textRes = if (isDenied) R.string.device_permission_settings else R.string.device_permission_continue
+    val textRes = if (isDenied) {
+        R.string.device_permission_settings
+    } else {
+        R.string.device_permission_continue
+    }
 
     ButtonComponent(
         text = stringResource(textRes),
