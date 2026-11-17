@@ -24,7 +24,18 @@ sealed class NavCommand(
     @Serializable @Immutable
     data class Share(val url: String, @get:StringRes val messageRes: Int) : NavCommand()
 
-    @Serializable @Immutable object DevicesScreen : NavCommand()
-    @Serializable @Immutable data class RecordScreen(val pcId: Long) : NavCommand()
+    /** The screen of Android where the user picks the language of the app, Android 13 and newer */
+    @Serializable @Immutable object AppLanguageSettings : NavCommand()
+
+    /** The page of the app in the settings of Android, where the user gives a refused permission */
+    @Serializable @Immutable object AppDetailsSettings : NavCommand()
+
+    /** The form of Google where the user changes the consent to ads, where the law asks for one */
+    @Serializable @Immutable object AdsPrivacyOptions : NavCommand()
+
+    @Serializable @Immutable object ConnectionScreen : NavCommand()
+    @Serializable @Immutable object RecordScreen : NavCommand()
     @Serializable @Immutable object SettingsScreen : NavCommand()
+    @Serializable @Immutable object AboutScreen : NavCommand()
+    @Serializable @Immutable object PremiumScreen : NavCommand()
 }

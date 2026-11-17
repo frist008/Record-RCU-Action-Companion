@@ -1,10 +1,6 @@
 package ua.frist008.action.record.core.util.concurrent
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.TickerMode
-import kotlinx.coroutines.channels.ticker
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.delay
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.milliseconds
 import kotlin.time.TimeSource
@@ -15,24 +11,22 @@ suspend fun timer(
     onNextEvent: suspend (msLeft: Duration) -> Unit = {},
     onFinished: suspend () -> Unit,
 ) {
-    val startTime = TimeSource.Monotonic.markNow()
-    val initialDelayMillis = if (durationMs == delayEventMs) durationMs else 0
-    val tickerChannel = ticker(
-        delayMillis = delayEventMs,
-        initialDelayMillis = initialDelayMillis,
-        context = Dispatchers.IO,
-        mode = TickerMode.FIXED_PERIOD,
-    )
+    val startMark = TimeSource.Monotonic.markNow()
+    val duration = durationMs.milliseconds
+    val period = delayEventMs.milliseconds
+    var nextTick = if (durationMs == delayEventMs) duration else Duration.ZERO
 
-    tickerChannel.receiveAsFlow().collectLatest {
-        val msPassed = TimeSource.Monotonic.markNow() - startTime
-        val durationLeft = durationMs.milliseconds - msPassed
+    while (true) {
+        delay(nextTick - startMark.elapsedNow())
 
-        if (durationLeft <= 0.milliseconds) {
-            tickerChannel.cancel()
+        val durationLeft = duration - startMark.elapsedNow()
+
+        if (durationLeft <= Duration.ZERO) {
             onFinished()
-        } else {
-            onNextEvent(durationLeft)
+            return
         }
+
+        onNextEvent(durationLeft)
+        nextTick += period
     }
 }

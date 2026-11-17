@@ -8,6 +8,12 @@ interface RecordRepository {
 
     val recordFlow: Flow<RecordDomainEntity>
 
-    suspend fun connect(deviceId: Long)
+    /**
+     * Holds a session with the PC the phone connected to last until the session ends.
+     *
+     * @throws ua.frist008.action.record.data.network.DisconnectException when the phone has not
+     * connected to a PC yet.
+     */
+    suspend fun connect()
     suspend fun sendCommand(command: RecordCommand)
 }

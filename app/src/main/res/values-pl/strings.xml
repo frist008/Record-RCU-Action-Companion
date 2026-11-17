@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Urządzenia</string>
-    <string name="device_available">Dostępne</string>
-    <string name="device_not_available">Niedostępne</string>
     <string name="device_searching">Wyszukiwanie urządzeń…</string>
     <string name="device_error_not_found">Nie znaleziono urządzeń…</string>
     <string name="device_error_more">Jak naprawić?</string>
+    <string name="device_permission_local_network">Aby znaleźć Twój PC, potrzebny jest dostęp do sieci lokalnej</string>
+    <string name="device_permission_local_network_denied">Zezwól na dostęp do sieci lokalnej w ustawieniach Androida</string>
+    <string name="device_permission_continue">Dalej</string>
+    <string name="device_permission_settings">Otwórz ustawienia Androida</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pauza</string>
     <string name="record_action_stop">Stop</string>
+    <string name="record_indicator_webcam">Kamera nagrywa</string>
+    <string name="record_indicator_mic">Mikrofon nagrywa</string>
+    <string name="record_sound_on">Dźwięki włączone</string>
+    <string name="record_sound_off">Dźwięki wyłączone</string>
+    <string name="record_remove_ads">Usuń reklamy</string>
     <string name="record_inactive_title_record">NAGRYWANIE</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">NIE ZNALEZIONO AKTYWNEJ GRY</string>
     <string name="record_inactive_message">URUCHOM GRĘ NA SWOIM PC</string>
     <string name="record_error_already_used">Twój PC jest połączony z inną aplikacją</string>
+    <string name="record_error_not_connected">Brak połączenia z Twoim PC</string>
+    <string name="record_error_port_busy">Inna aplikacja na tym telefonie już używa połączenia z Twoim PC</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU bez ograniczeń</string>
+    <string name="premium_subtitle">Jeden zakup — Twój na zawsze</string>
+    <string name="premium_no_ads_title">Bez reklam</string>
+    <string name="premium_no_ads_summary">Ani jednego banera na żadnym ekranie</string>
+    <string name="premium_forever_title">Na zawsze, bez subskrypcji</string>
+    <string name="premium_forever_summary">Płacisz raz, aktualizacje za darmo</string>
+    <string name="premium_buy_pattern">Kup za %1$s</string>
+    <string name="premium_restore">Przywróć zakupy</string>
+    <string name="premium_via_play">Przez Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">Ustawienia</string>
+    <string name="settings_min_free_space">Minimum miejsca</string>
+    <string name="settings_min_free_space_summary">Poniżej Storage zmieni kolor na czerwony</string>
+    <string name="settings_section_sounds">Dźwięki</string>
+    <string name="settings_low_space">Mało miejsca</string>
+    <string name="settings_low_space_summary">Sygnał, gdy miejsca jest mniej niż minimum</string>
+    <string name="settings_record_button">Przycisk „Nagrywaj”</string>
+    <string name="settings_pause_button">Przycisk „Pauza”</string>
+    <string name="settings_stop_button">Przycisk „Stop”</string>
+    <string name="settings_button_sound_summary">Dźwięk przy naciśnięciu</string>
+    <string name="settings_duration">Czas nagrania</string>
+    <string name="settings_duration_summary">Sygnał, gdy nagranie osiągnie czas poniżej</string>
+    <string name="settings_duration_after">Sygnał po</string>
+    <string name="settings_duration_after_summary">Według licznika nagrania</string>
+    <string name="settings_section_dimming">Przyciemnianie ekranu</string>
+    <string name="settings_dim_after">Przyciemnij po</string>
+    <string name="settings_dim_after_summary">Bez dotyku</string>
+    <string name="settings_dim_to">Przyciemnij do</string>
+    <string name="settings_dim_to_summary">Dotyk przywróci jasność</string>
+    <string name="settings_first_touch">Pierwszy dotyk</string>
+    <string name="settings_first_touch_summary">Tylko przywróć jasność, nie naciskaj przycisku</string>
+    <string name="settings_section_app">Aplikacja</string>
+    <string name="settings_language">Język aplikacji</string>
+    <string name="settings_language_system">Systemowy</string>
+    <string name="settings_about">O aplikacji</string>
+    <string name="settings_section_privacy">Prywatność</string>
+    <string name="settings_ads">Reklamy</string>
+    <string name="settings_ads_summary">Zmień zgodę na reklamy</string>
+    <string name="settings_version_pattern">Wersja %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">Zmniejsz: %1$s</string>
+    <string name="settings_increase_pattern">Zwiększ: %1$s</string>
 
 </resources>

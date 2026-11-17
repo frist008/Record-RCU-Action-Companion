@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Appareils</string>
-    <string name="device_available">Disponible</string>
-    <string name="device_not_available">Indisponible</string>
     <string name="device_searching">Recherche d\'appareils…</string>
     <string name="device_error_not_found">Aucun appareil trouvé…</string>
     <string name="device_error_more">Comment résoudre ?</string>
+    <string name="device_permission_local_network">L’accès au réseau local est nécessaire pour trouver votre PC</string>
+    <string name="device_permission_local_network_denied">Autorisez l’accès au réseau local dans les paramètres Android</string>
+    <string name="device_permission_continue">Continuer</string>
+    <string name="device_permission_settings">Ouvrir les paramètres Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pause</string>
     <string name="record_action_stop">Stop</string>
+    <string name="record_indicator_webcam">La caméra enregistre</string>
+    <string name="record_indicator_mic">Le micro enregistre</string>
+    <string name="record_sound_on">Sons activés</string>
+    <string name="record_sound_off">Sons désactivés</string>
+    <string name="record_remove_ads">Supprimer les publicités</string>
     <string name="record_inactive_title_record">ENREG.</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">AUCUN JEU ACTIF TROUVÉ</string>
     <string name="record_inactive_message">LANCEZ LE JEU SUR VOTRE PC</string>
     <string name="record_error_already_used">Votre PC est connecté à une autre app</string>
+    <string name="record_error_not_connected">Aucune connexion à votre PC</string>
+    <string name="record_error_port_busy">Une autre app de ce téléphone utilise déjà la connexion à votre PC</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU sans limites</string>
+    <string name="premium_subtitle">Un seul achat, à vous pour toujours</string>
+    <string name="premium_no_ads_title">Sans publicité</string>
+    <string name="premium_no_ads_summary">Aucune bannière sur aucun écran</string>
+    <string name="premium_forever_title">Pour toujours, sans abonnement</string>
+    <string name="premium_forever_summary">Payez une fois, mises à jour gratuites</string>
+    <string name="premium_buy_pattern">Acheter pour %1$s</string>
+    <string name="premium_restore">Restaurer les achats</string>
+    <string name="premium_via_play">Via Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">Paramètres</string>
+    <string name="settings_min_free_space">Espace minimum</string>
+    <string name="settings_min_free_space_summary">En dessous, Storage devient rouge</string>
+    <string name="settings_section_sounds">Sons</string>
+    <string name="settings_low_space">Espace faible</string>
+    <string name="settings_low_space_summary">Signal quand l’espace passe sous le minimum</string>
+    <string name="settings_record_button">Bouton « Enregistrer »</string>
+    <string name="settings_pause_button">Bouton « Pause »</string>
+    <string name="settings_stop_button">Bouton « Arrêter »</string>
+    <string name="settings_button_sound_summary">Son à l’appui</string>
+    <string name="settings_duration">Durée d’enregistrement</string>
+    <string name="settings_duration_summary">Signal quand l’enregistrement atteint la durée ci-dessous</string>
+    <string name="settings_duration_after">Signal après</string>
+    <string name="settings_duration_after_summary">Selon le minuteur d’enregistrement</string>
+    <string name="settings_section_dimming">Assombrissement de l’écran</string>
+    <string name="settings_dim_after">Assombrir après</string>
+    <string name="settings_dim_after_summary">Sans toucher</string>
+    <string name="settings_dim_to">Assombrir à</string>
+    <string name="settings_dim_to_summary">Un toucher rétablit la luminosité</string>
+    <string name="settings_first_touch">Premier toucher</string>
+    <string name="settings_first_touch_summary">Rétablir la luminosité sans appuyer sur le bouton</string>
+    <string name="settings_section_app">Application</string>
+    <string name="settings_language">Langue de l’application</string>
+    <string name="settings_language_system">Système</string>
+    <string name="settings_about">À propos</string>
+    <string name="settings_section_privacy">Confidentialité</string>
+    <string name="settings_ads">Publicités</string>
+    <string name="settings_ads_summary">Modifier votre consentement aux publicités</string>
+    <string name="settings_version_pattern">Version %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Diminuer : %1$s</string>
+    <string name="settings_increase_pattern">Augmenter : %1$s</string>
 
 </resources>

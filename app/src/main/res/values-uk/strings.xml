@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Пристрої</string>
-    <string name="device_available">Доступний</string>
-    <string name="device_not_available">Недоступний</string>
     <string name="device_searching">Йде пошук пристроїв…</string>
     <string name="device_error_not_found">Пристрої не знайдено…</string>
     <string name="device_error_more">Як виправити?</string>
+    <string name="device_permission_local_network">Потрібен доступ до локальної мережі, щоб знайти ваш ПК</string>
+    <string name="device_permission_local_network_denied">Дозвольте доступ до локальної мережі в налаштуваннях Android</string>
+    <string name="device_permission_continue">Продовжити</string>
+    <string name="device_permission_settings">Відкрити налаштування Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3336125178</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">Запис</string>
     <string name="record_action_pause">Пауза</string>
     <string name="record_action_stop">Стоп</string>
+    <string name="record_indicator_webcam">Камера записує</string>
+    <string name="record_indicator_mic">Мікрофон записує</string>
+    <string name="record_sound_on">Звуки увімкнено</string>
+    <string name="record_sound_off">Звуки вимкнено</string>
+    <string name="record_remove_ads">Прибрати рекламу</string>
     <string name="record_inactive_title_record">ЗАПИС</string>
     <string name="record_inactive_title_stream">ТРАНСЛЯЦІЯ</string>
     <string name="record_inactive_subtitle">АКТИВНОЇ ГРИ НЕ ЗНАЙДЕНО</string>
     <string name="record_inactive_message">ЗАПУСТІТЬ ГРУ НА КОМП\'ЮТЕРІ</string>
     <string name="record_error_already_used">Ваш ПК підключено до іншого додатку</string>
+    <string name="record_error_not_connected">Немає з\'єднання з ПК</string>
+    <string name="record_error_port_busy">Інший додаток на цьому телефоні вже використовує з\'єднання з ПК</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Преміум</string>
+    <string name="premium_headline">Record RCU без обмежень</string>
+    <string name="premium_subtitle">Одна покупка — і все ваше назавжди</string>
+    <string name="premium_no_ads_title">Без реклами</string>
+    <string name="premium_no_ads_summary">Жодного банера на всіх екранах</string>
+    <string name="premium_forever_title">Назавжди, без підписки</string>
+    <string name="premium_forever_summary">Платіть один раз, оновлення безкоштовні</string>
+    <string name="premium_buy_pattern">Купити за %1$s</string>
+    <string name="premium_restore">Відновити покупки</string>
+    <string name="premium_via_play">Через Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">Налаштування</string>
+    <string name="settings_min_free_space">Мінімум місця</string>
+    <string name="settings_min_free_space_summary">Менше — Storage стане червоним</string>
+    <string name="settings_section_sounds">Звуки</string>
+    <string name="settings_low_space">Мало місця</string>
+    <string name="settings_low_space_summary">Сигнал, коли місця менше за мінімум</string>
+    <string name="settings_record_button">Кнопка «Запис»</string>
+    <string name="settings_pause_button">Кнопка «Пауза»</string>
+    <string name="settings_stop_button">Кнопка «Стоп»</string>
+    <string name="settings_button_sound_summary">Звук під час натискання</string>
+    <string name="settings_duration">Час запису</string>
+    <string name="settings_duration_summary">Сигнал, коли запис дійде до часу нижче</string>
+    <string name="settings_duration_after">Сигнал через</string>
+    <string name="settings_duration_after_summary">За таймером запису</string>
+    <string name="settings_section_dimming">Затемнення екрана</string>
+    <string name="settings_dim_after">Затемнити через</string>
+    <string name="settings_dim_after_summary">Без дотиків</string>
+    <string name="settings_dim_to">Затемнити до</string>
+    <string name="settings_dim_to_summary">Дотик поверне яскравість</string>
+    <string name="settings_first_touch">Перший дотик</string>
+    <string name="settings_first_touch_summary">Лише повернути яскравість, кнопку не натискати</string>
+    <string name="settings_section_app">Застосунок</string>
+    <string name="settings_language">Мова застосунку</string>
+    <string name="settings_language_system">Системна</string>
+    <string name="settings_about">Про застосунок</string>
+    <string name="settings_section_privacy">Конфіденційність</string>
+    <string name="settings_ads">Реклама</string>
+    <string name="settings_ads_summary">Змінити згоду на рекламу</string>
+    <string name="settings_version_pattern">Версія %1$s</string>
+    <string name="settings_minutes_pattern">%1$d хв</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Зменшити: %1$s</string>
+    <string name="settings_increase_pattern">Збільшити: %1$s</string>
 
 </resources>

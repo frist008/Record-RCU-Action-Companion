@@ -2,6 +2,7 @@ package ua.frist008.action.record.core.di.module
 
 import android.content.Context
 import android.content.res.Resources
+import android.net.ConnectivityManager
 import android.os.Build
 import android.os.Vibrator
 import android.os.VibratorManager
@@ -17,6 +18,10 @@ class ContextModule {
 
     @Provides
     fun provideResources(@ApplicationContext context: Context): Resources = context.resources
+
+    @Provides
+    fun provideConnectivityManager(@ApplicationContext context: Context): ConnectivityManager =
+        context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
     @Provides
     fun provideVibrator(@ApplicationContext context: Context): Vibrator =

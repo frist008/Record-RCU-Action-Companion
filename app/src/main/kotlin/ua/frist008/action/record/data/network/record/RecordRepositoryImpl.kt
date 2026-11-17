@@ -1,48 +1,30 @@
 package ua.frist008.action.record.data.network.record
 
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterNotNull
+import kotlinx.coroutines.flow.map
 import ua.frist008.action.record.data.local.device.DeviceDAO
 import ua.frist008.action.record.data.network.DisconnectException
+import ua.frist008.action.record.data.network.record.entity.RecordDTO
 import ua.frist008.action.record.features.record.RecordRepository
 import ua.frist008.action.record.features.record.entity.RecordCommand
 import ua.frist008.action.record.features.record.entity.RecordDomainEntity
 import javax.inject.Inject
 
 class RecordRepositoryImpl @Inject constructor(
-    private val databaseSource: DeviceDAO,
+    private val deviceDAO: DeviceDAO,
     private val recordNetworkSource: RecordNetworkSource,
 ) : RecordRepository {
 
-    private val currentDeviceId = MutableStateFlow(EMPTY_DEVICE_ID)
-
     override val recordFlow: Flow<RecordDomainEntity>
-        get() = combine(
-            currentDeviceId.filter { it != EMPTY_DEVICE_ID },
-            recordNetworkSource.recordFlow.filterNotNull(),
-        ) { deviceId, dto ->
-            dto.toDomain(deviceId)
-        }
+        get() = recordNetworkSource.recordFlow.filterNotNull().map(RecordDTO::toDomain)
 
-    override suspend fun connect(deviceId: Long) {
-        val dbo = databaseSource.get(deviceId) ?: throw DisconnectException()
+    override suspend fun connect() {
+        val dbo = deviceDAO.get() ?: throw DisconnectException()
 
-        try {
-            currentDeviceId.emit(deviceId)
-            recordNetworkSource.connect(dbo.toDTO())
-        } finally {
-            currentDeviceId.tryEmit(EMPTY_DEVICE_ID)
-        }
+        recordNetworkSource.connect(dbo.toDTO())
     }
 
     override suspend fun sendCommand(command: RecordCommand) =
         recordNetworkSource.sendCommand(command)
-
-    companion object {
-
-        private const val EMPTY_DEVICE_ID = -1L
-    }
 }

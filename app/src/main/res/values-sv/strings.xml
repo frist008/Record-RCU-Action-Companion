@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Enheter</string>
-    <string name="device_available">Tillgänglig</string>
-    <string name="device_not_available">Ej tillgänglig</string>
     <string name="device_searching">Söker efter enheter…</string>
     <string name="device_error_not_found">Inga enheter hittades…</string>
     <string name="device_error_more">Hur fixar man?</string>
+    <string name="device_permission_local_network">Åtkomst till lokalt nätverk behövs för att hitta din PC</string>
+    <string name="device_permission_local_network_denied">Tillåt åtkomst till lokalt nätverk i Android-inställningarna</string>
+    <string name="device_permission_continue">Fortsätt</string>
+    <string name="device_permission_settings">Öppna Android-inställningarna</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Paus</string>
     <string name="record_action_stop">Stopp</string>
+    <string name="record_indicator_webcam">Kameran spelar in</string>
+    <string name="record_indicator_mic">Mikrofonen spelar in</string>
+    <string name="record_sound_on">Ljud på</string>
+    <string name="record_sound_off">Ljud av</string>
+    <string name="record_remove_ads">Ta bort annonser</string>
     <string name="record_inactive_title_record">INSPELNING</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">INGET AKTIVT SPEL HITTADES</string>
     <string name="record_inactive_message">STARTA SPELET PÅ DIN PC</string>
     <string name="record_error_already_used">Din PC är ansluten till en annan app</string>
+    <string name="record_error_not_connected">Ingen anslutning till din PC</string>
+    <string name="record_error_port_busy">En annan app på den här telefonen använder redan anslutningen till din PC</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU utan gränser</string>
+    <string name="premium_subtitle">Ett köp, ditt för alltid</string>
+    <string name="premium_no_ads_title">Inga annonser</string>
+    <string name="premium_no_ads_summary">Inte en enda banner på någon skärm</string>
+    <string name="premium_forever_title">För alltid, utan prenumeration</string>
+    <string name="premium_forever_summary">Betala en gång, uppdateringar gratis</string>
+    <string name="premium_buy_pattern">Köp för %1$s</string>
+    <string name="premium_restore">Återställ köp</string>
+    <string name="premium_via_play">Via Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">Inställningar</string>
+    <string name="settings_min_free_space">Minsta lediga utrymme</string>
+    <string name="settings_min_free_space_summary">Under det blir Storage rött</string>
+    <string name="settings_section_sounds">Ljud</string>
+    <string name="settings_low_space">Lite utrymme</string>
+    <string name="settings_low_space_summary">Signal när utrymmet understiger minimum</string>
+    <string name="settings_record_button">Knappen ”Spela in”</string>
+    <string name="settings_pause_button">Knappen ”Paus”</string>
+    <string name="settings_stop_button">Knappen ”Stoppa”</string>
+    <string name="settings_button_sound_summary">Ljud vid tryck</string>
+    <string name="settings_duration">Inspelningstid</string>
+    <string name="settings_duration_summary">Signal när inspelningen når tiden nedan</string>
+    <string name="settings_duration_after">Signal efter</string>
+    <string name="settings_duration_after_summary">Enligt inspelningstimern</string>
+    <string name="settings_section_dimming">Dämpa skärmen</string>
+    <string name="settings_dim_after">Dämpa efter</string>
+    <string name="settings_dim_after_summary">Utan beröring</string>
+    <string name="settings_dim_to">Dämpa till</string>
+    <string name="settings_dim_to_summary">En beröring återställer ljusstyrkan</string>
+    <string name="settings_first_touch">Första beröringen</string>
+    <string name="settings_first_touch_summary">Återställ bara ljusstyrkan, tryck inte på knappen</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_language">Appens språk</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_about">Om appen</string>
+    <string name="settings_section_privacy">Integritet</string>
+    <string name="settings_ads">Annonser</string>
+    <string name="settings_ads_summary">Ändra ditt samtycke till annonser</string>
+    <string name="settings_version_pattern">Version %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Minska: %1$s</string>
+    <string name="settings_increase_pattern">Öka: %1$s</string>
 
 </resources>

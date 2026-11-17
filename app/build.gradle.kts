@@ -1,3 +1,4 @@
+import com.github.triplet.gradle.androidpublisher.ReleaseStatus
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import kotlin.time.Duration.Companion.days
 import kotlin.time.Duration.Companion.milliseconds
@@ -12,8 +13,23 @@ plugins {
     alias(libs.plugins.kotlin.compose.compiler)
     alias(libs.plugins.firebase.crashlytics)
     alias(libs.plugins.firebase.perf)
-    alias(libs.plugins.room)
     alias(libs.plugins.licensee)
+    alias(libs.plugins.play.publisher)
+}
+
+// Google Play: the bundle goes as a draft to the internal track, or to the track `-PplayTrack` names.
+// The key of the service account lies in `play-credentials.json` of the root, outside git; without
+// the file the plugin reads the key from the `ANDROID_PUBLISHER_CREDENTIALS` environment variable.
+play {
+    val credentials = rootProject.file("play-credentials.json")
+
+    if (credentials.exists()) {
+        serviceAccountCredentials.set(credentials)
+    }
+
+    defaultToAppBundles.set(true)
+    track.set(providers.gradleProperty("playTrack").orElse("internal"))
+    releaseStatus.set(ReleaseStatus.DRAFT)
 }
 
 licensee {
@@ -117,8 +133,9 @@ android {
         resValues = true
     }
 
-    room {
-        schemaDirectory("$projectDir/schemas")
+    // https://developer.android.com/guide/topics/resources/app-languages#auto-localeconfig
+    androidResources {
+        generateLocaleConfig = true
     }
 
     testOptions {
@@ -141,7 +158,6 @@ kotlin {
             "androidx.compose.foundation.ExperimentalFoundationApi",
             "androidx.compose.foundation.layout.ExperimentalLayoutApi",
             "androidx.lifecycle.viewmodel.compose.SavedStateHandleSaveableApi",
-            "kotlinx.coroutines.ObsoleteCoroutinesApi",
         )
     }
 }
@@ -168,10 +184,10 @@ dependencies {
 
     // Framework
     implementation(libs.bundles.di)
-    ksp(libs.bundles.database.compiler)
-    implementation(libs.bundles.database)
     ksp(libs.bundles.di.compiler)
-    implementation(libs.ads)
+    implementation(libs.ads.asProvider())
+    implementation(libs.ads.consent)
+    implementation(libs.billing)
     implementation(platform(libs.kotlin.coroutines.bom))
     implementation(libs.bundles.coroutines.bom)
     implementation(libs.data.store)

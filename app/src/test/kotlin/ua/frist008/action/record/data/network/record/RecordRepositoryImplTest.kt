@@ -5,10 +5,10 @@ import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.mockk
-import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
-import org.junit.Assert.assertFalse
+import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
 import org.junit.Before
@@ -16,7 +16,9 @@ import org.junit.Test
 import ua.frist008.action.record.data.local.device.DeviceDAO
 import ua.frist008.action.record.data.local.device.DeviceDBO
 import ua.frist008.action.record.data.network.DisconnectException
+import ua.frist008.action.record.data.network.NotConnectedException
 import ua.frist008.action.record.data.network.record.entity.RecordDTO
+import ua.frist008.action.record.features.record.entity.FixedRecordCommand
 
 class RecordRepositoryImplTest {
 
@@ -24,7 +26,7 @@ class RecordRepositoryImplTest {
     private val recordNetworkSource: RecordNetworkSource = mockk()
     private lateinit var repository: RecordRepositoryImpl
 
-    private val testDbo = DeviceDBO(id = 1L, name = "Test PC", ip = 16909060L, port = 2555)
+    private val testDbo = DeviceDBO(name = "Test PC", ip = 16909060L, port = 2555)
     private val testDto = testDbo.toDTO()
 
     @Before
@@ -33,12 +35,12 @@ class RecordRepositoryImplTest {
     }
 
     @Test
-    fun `connect throws DisconnectException when device not found`() = runTest {
-        coEvery { deviceDAO.get(any()) } returns null
+    fun `connect throws DisconnectException when no PC is remembered`() = runTest {
+        coEvery { deviceDAO.get() } returns null
 
         var thrown: Throwable? = null
         try {
-            repository.connect(1L)
+            repository.connect()
         } catch (e: DisconnectException) {
             thrown = e
         }
@@ -47,36 +49,52 @@ class RecordRepositoryImplTest {
     }
 
     @Test
-    fun `connect calls networkSource_connect with correct DTO`() = runTest {
-        coEvery { deviceDAO.get(1L) } returns testDbo
+    fun `connect calls networkSource_connect with the remembered PC`() = runTest {
+        coEvery { deviceDAO.get() } returns testDbo
         coJustRun { recordNetworkSource.connect(any()) }
 
-        repository.connect(1L)
+        repository.connect()
 
         coVerify { recordNetworkSource.connect(testDto) }
     }
 
     @Test
-    fun `recordFlow emits domain entity with correct deviceId`() = runTest {
+    fun `recordFlow skips null and emits the domain entity of the DTO`() = runTest {
         val recordDto = RecordDTO(connected = true, fps = 60, gameActive = true)
-        val recordFlow = MutableStateFlow<RecordDTO?>(recordDto)
 
-        coEvery { deviceDAO.get(1L) } returns testDbo
-        every { recordNetworkSource.recordFlow } returns recordFlow
-        coJustRun { recordNetworkSource.connect(any()) }
+        every { recordNetworkSource.recordFlow } returns flowOf(null, recordDto)
 
-        // Start connection to populate currentDeviceId
-        // (we just verify the flow structure is correct here)
-        val repo = RecordRepositoryImpl(deviceDAO, recordNetworkSource)
-        // The flow combines currentDeviceId (needs to be non-empty) with recordFlow
-        // We can't easily test the combined flow without starting connect(),
-        // so we verify the basic properties
-        assertFalse(repo.recordFlow === recordFlow)
+        val result = repository.recordFlow.first()
+
+        assertEquals(recordDto.toDomain(), result)
     }
 
     @Test
     fun `recordFlow is not null on creation`() {
         every { recordNetworkSource.recordFlow } returns flowOf(null)
         assertNotNull(repository.recordFlow)
+    }
+
+    @Test
+    fun `sendCommand passes the command to networkSource`() = runTest {
+        coJustRun { recordNetworkSource.sendCommand(any()) }
+
+        repository.sendCommand(FixedRecordCommand.STOP)
+
+        coVerify { recordNetworkSource.sendCommand(FixedRecordCommand.STOP) }
+    }
+
+    @Test
+    fun `sendCommand throws NotConnectedException without a session`() = runTest {
+        coEvery { recordNetworkSource.sendCommand(any()) } throws NotConnectedException()
+
+        var thrown: Throwable? = null
+        try {
+            repository.sendCommand(FixedRecordCommand.START)
+        } catch (e: NotConnectedException) {
+            thrown = e
+        }
+
+        assertTrue(thrown is NotConnectedException)
     }
 }

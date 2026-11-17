@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Συσκευές</string>
-    <string name="device_available">Διαθέσιμο</string>
-    <string name="device_not_available">Μη διαθέσιμο</string>
     <string name="device_searching">Αναζήτηση συσκευών…</string>
     <string name="device_error_not_found">Δεν βρέθηκαν συσκευές…</string>
     <string name="device_error_more">Πώς να διορθωθεί;</string>
+    <string name="device_permission_local_network">Απαιτείται πρόσβαση στο τοπικό δίκτυο για να βρεθεί ο υπολογιστής σας</string>
+    <string name="device_permission_local_network_denied">Επιτρέψτε την πρόσβαση στο τοπικό δίκτυο στις ρυθμίσεις του Android</string>
+    <string name="device_permission_continue">Συνέχεια</string>
+    <string name="device_permission_settings">Άνοιγμα ρυθμίσεων Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Παύση</string>
     <string name="record_action_stop">Διακοπή</string>
+    <string name="record_indicator_webcam">Η κάμερα καταγράφει</string>
+    <string name="record_indicator_mic">Το μικρόφωνο καταγράφει</string>
+    <string name="record_sound_on">Ήχοι ενεργοί</string>
+    <string name="record_sound_off">Ήχοι ανενεργοί</string>
+    <string name="record_remove_ads">Κατάργηση διαφημίσεων</string>
     <string name="record_inactive_title_record">ΕΓΓΡΑΦΗ</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">ΔΕΝ ΒΡΕΘΗΚΕ ΕΝΕΡΓΟ ΠΑΙΧΝΙΔΙ</string>
     <string name="record_inactive_message">ΕΚΚΙΝΗΣΤΕ ΤΟ ΠΑΙΧΝΙΔΙ ΣΤΟ PC</string>
     <string name="record_error_already_used">Ο υπολογιστής σας είναι συνδεδεμένος με άλλη εφαρμογή</string>
+    <string name="record_error_not_connected">Δεν υπάρχει σύνδεση με τον υπολογιστή σας</string>
+    <string name="record_error_port_busy">Μια άλλη εφαρμογή σε αυτό το τηλέφωνο χρησιμοποιεί ήδη τη σύνδεση με τον υπολογιστή σας</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU χωρίς όρια</string>
+    <string name="premium_subtitle">Μία αγορά, δική σας για πάντα</string>
+    <string name="premium_no_ads_title">Χωρίς διαφημίσεις</string>
+    <string name="premium_no_ads_summary">Ούτε ένα banner σε καμία οθόνη</string>
+    <string name="premium_forever_title">Για πάντα, χωρίς συνδρομή</string>
+    <string name="premium_forever_summary">Πληρώνετε μία φορά, δωρεάν ενημερώσεις</string>
+    <string name="premium_buy_pattern">Αγορά για %1$s</string>
+    <string name="premium_restore">Επαναφορά αγορών</string>
+    <string name="premium_via_play">Μέσω Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">Ρυθμίσεις</string>
+    <string name="settings_min_free_space">Ελάχιστος χώρος</string>
+    <string name="settings_min_free_space_summary">Από κάτω, το Storage γίνεται κόκκινο</string>
+    <string name="settings_section_sounds">Ήχοι</string>
+    <string name="settings_low_space">Λίγος χώρος</string>
+    <string name="settings_low_space_summary">Σήμα όταν ο χώρος πέσει κάτω από το ελάχιστο</string>
+    <string name="settings_record_button">Κουμπί «Εγγραφή»</string>
+    <string name="settings_pause_button">Κουμπί «Παύση»</string>
+    <string name="settings_stop_button">Κουμπί «Διακοπή»</string>
+    <string name="settings_button_sound_summary">Ήχος στο πάτημα</string>
+    <string name="settings_duration">Χρόνος εγγραφής</string>
+    <string name="settings_duration_summary">Σήμα όταν η εγγραφή φτάσει τον χρόνο παρακάτω</string>
+    <string name="settings_duration_after">Σήμα μετά από</string>
+    <string name="settings_duration_after_summary">Με βάση το χρονόμετρο εγγραφής</string>
+    <string name="settings_section_dimming">Μείωση φωτεινότητας</string>
+    <string name="settings_dim_after">Μείωση μετά από</string>
+    <string name="settings_dim_after_summary">Χωρίς αγγίγματα</string>
+    <string name="settings_dim_to">Μείωση στο</string>
+    <string name="settings_dim_to_summary">Ένα άγγιγμα επαναφέρει τη φωτεινότητα</string>
+    <string name="settings_first_touch">Πρώτο άγγιγμα</string>
+    <string name="settings_first_touch_summary">Μόνο επαναφορά φωτεινότητας, χωρίς πάτημα κουμπιού</string>
+    <string name="settings_section_app">Εφαρμογή</string>
+    <string name="settings_language">Γλώσσα εφαρμογής</string>
+    <string name="settings_language_system">Συστήματος</string>
+    <string name="settings_about">Πληροφορίες</string>
+    <string name="settings_section_privacy">Απόρρητο</string>
+    <string name="settings_ads">Διαφημίσεις</string>
+    <string name="settings_ads_summary">Αλλαγή συγκατάθεσης για διαφημίσεις</string>
+    <string name="settings_version_pattern">Έκδοση %1$s</string>
+    <string name="settings_minutes_pattern">%1$d λεπ.</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">Μείωση: %1$s</string>
+    <string name="settings_increase_pattern">Αύξηση: %1$s</string>
 
 </resources>

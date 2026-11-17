@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">อุปกรณ์</string>
-    <string name="device_available">พร้อมใช้งาน</string>
-    <string name="device_not_available">ไม่พร้อมใช้</string>
     <string name="device_searching">กำลังค้นหาอุปกรณ์…</string>
     <string name="device_error_not_found">ไม่พบอุปกรณ์…</string>
     <string name="device_error_more">วิธีแก้ไข?</string>
+    <string name="device_permission_local_network">ต้องมีสิทธิ์เข้าถึงเครือข่ายภายในเพื่อค้นหา PC ของคุณ</string>
+    <string name="device_permission_local_network_denied">อนุญาตการเข้าถึงเครือข่ายภายในในการตั้งค่า Android</string>
+    <string name="device_permission_continue">ดำเนินการต่อ</string>
+    <string name="device_permission_settings">เปิดการตั้งค่า Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">เล่น</string>
     <string name="record_action_pause">หยุดชั่วคราว</string>
     <string name="record_action_stop">หยุด</string>
+    <string name="record_indicator_webcam">กล้องกำลังบันทึก</string>
+    <string name="record_indicator_mic">ไมโครโฟนกำลังบันทึก</string>
+    <string name="record_sound_on">เปิดเสียง</string>
+    <string name="record_sound_off">ปิดเสียง</string>
+    <string name="record_remove_ads">นำโฆษณาออก</string>
     <string name="record_inactive_title_record">บันทึก</string>
     <string name="record_inactive_title_stream">สตรีม</string>
     <string name="record_inactive_subtitle">ไม่พบเกมที่กำลังเล่น</string>
     <string name="record_inactive_message">เปิดเกมบนคอมพิวเตอร์ของคุณ</string>
     <string name="record_error_already_used">PC ของคุณเชื่อมต่อกับแอปอื่นอยู่</string>
+    <string name="record_error_not_connected">ไม่มีการเชื่อมต่อกับ PC ของคุณ</string>
+    <string name="record_error_port_busy">แอปอื่นในโทรศัพท์เครื่องนี้กำลังใช้การเชื่อมต่อกับ PC ของคุณอยู่</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">พรีเมียม</string>
+    <string name="premium_headline">Record RCU ไร้ขีดจำกัด</string>
+    <string name="premium_subtitle">ซื้อครั้งเดียว เป็นของคุณตลอดไป</string>
+    <string name="premium_no_ads_title">ไม่มีโฆษณา</string>
+    <string name="premium_no_ads_summary">ไม่มีแบนเนอร์บนหน้าจอใดเลย</string>
+    <string name="premium_forever_title">ตลอดไป ไม่ต้องสมัครสมาชิก</string>
+    <string name="premium_forever_summary">จ่ายครั้งเดียว อัปเดตฟรี</string>
+    <string name="premium_buy_pattern">ซื้อในราคา %1$s</string>
+    <string name="premium_restore">กู้คืนการซื้อ</string>
+    <string name="premium_via_play">ผ่าน Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">การตั้งค่า</string>
+    <string name="settings_min_free_space">พื้นที่ขั้นต่ำ</string>
+    <string name="settings_min_free_space_summary">ต่ำกว่านี้ Storage จะเป็นสีแดง</string>
+    <string name="settings_section_sounds">เสียง</string>
+    <string name="settings_low_space">พื้นที่เหลือน้อย</string>
+    <string name="settings_low_space_summary">ส่งเสียงเมื่อพื้นที่ต่ำกว่าขั้นต่ำ</string>
+    <string name="settings_record_button">ปุ่ม “บันทึก”</string>
+    <string name="settings_pause_button">ปุ่ม “หยุดชั่วคราว”</string>
+    <string name="settings_stop_button">ปุ่ม “หยุด”</string>
+    <string name="settings_button_sound_summary">เสียงเมื่อกด</string>
+    <string name="settings_duration">เวลาบันทึก</string>
+    <string name="settings_duration_summary">ส่งเสียงเมื่อการบันทึกถึงเวลาด้านล่าง</string>
+    <string name="settings_duration_after">ส่งเสียงหลังจาก</string>
+    <string name="settings_duration_after_summary">ตามตัวจับเวลาการบันทึก</string>
+    <string name="settings_section_dimming">หรี่หน้าจอ</string>
+    <string name="settings_dim_after">หรี่หลังจาก</string>
+    <string name="settings_dim_after_summary">เมื่อไม่ได้แตะ</string>
+    <string name="settings_dim_to">หรี่ถึง</string>
+    <string name="settings_dim_to_summary">แตะเพื่อคืนความสว่าง</string>
+    <string name="settings_first_touch">การแตะครั้งแรก</string>
+    <string name="settings_first_touch_summary">คืนความสว่างเท่านั้น ไม่กดปุ่ม</string>
+    <string name="settings_section_app">แอป</string>
+    <string name="settings_language">ภาษาของแอป</string>
+    <string name="settings_language_system">ระบบ</string>
+    <string name="settings_about">เกี่ยวกับ</string>
+    <string name="settings_section_privacy">ความเป็นส่วนตัว</string>
+    <string name="settings_ads">โฆษณา</string>
+    <string name="settings_ads_summary">เปลี่ยนความยินยอมเกี่ยวกับโฆษณา</string>
+    <string name="settings_version_pattern">เวอร์ชัน %1$s</string>
+    <string name="settings_minutes_pattern">%1$d นาที</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">ลด: %1$s</string>
+    <string name="settings_increase_pattern">เพิ่ม: %1$s</string>
 
 </resources>

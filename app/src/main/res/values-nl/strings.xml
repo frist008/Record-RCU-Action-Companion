@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Apparaten</string>
-    <string name="device_available">Beschikbaar</string>
-    <string name="device_not_available">Niet beschikbaar</string>
     <string name="device_searching">Zoeken naar apparaten…</string>
     <string name="device_error_not_found">Geen apparaten gevonden…</string>
     <string name="device_error_more">Hoe op te lossen?</string>
+    <string name="device_permission_local_network">Toegang tot het lokale netwerk is nodig om je pc te vinden</string>
+    <string name="device_permission_local_network_denied">Sta toegang tot het lokale netwerk toe in de Android-instellingen</string>
+    <string name="device_permission_continue">Doorgaan</string>
+    <string name="device_permission_settings">Android-instellingen openen</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pauze</string>
     <string name="record_action_stop">Stop</string>
+    <string name="record_indicator_webcam">Camera neemt op</string>
+    <string name="record_indicator_mic">Microfoon neemt op</string>
+    <string name="record_sound_on">Geluiden aan</string>
+    <string name="record_sound_off">Geluiden uit</string>
+    <string name="record_remove_ads">Advertenties verwijderen</string>
     <string name="record_inactive_title_record">OPNAME</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">GEEN ACTIEF SPEL GEVONDEN</string>
     <string name="record_inactive_message">START HET SPEL OP JE PC</string>
     <string name="record_error_already_used">Je pc is verbonden met een andere app</string>
+    <string name="record_error_not_connected">Geen verbinding met je pc</string>
+    <string name="record_error_port_busy">Een andere app op deze telefoon gebruikt de verbinding met je pc al</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU zonder grenzen</string>
+    <string name="premium_subtitle">Eén aankoop, voor altijd van jou</string>
+    <string name="premium_no_ads_title">Geen advertenties</string>
+    <string name="premium_no_ads_summary">Geen enkele banner op welk scherm dan ook</string>
+    <string name="premium_forever_title">Voor altijd, geen abonnement</string>
+    <string name="premium_forever_summary">Eén keer betalen, updates gratis</string>
+    <string name="premium_buy_pattern">Kopen voor %1$s</string>
+    <string name="premium_restore">Aankopen herstellen</string>
+    <string name="premium_via_play">Via Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">Instellingen</string>
+    <string name="settings_min_free_space">Minimale vrije ruimte</string>
+    <string name="settings_min_free_space_summary">Daaronder wordt Storage rood</string>
+    <string name="settings_section_sounds">Geluiden</string>
+    <string name="settings_low_space">Weinig ruimte</string>
+    <string name="settings_low_space_summary">Signaal als de ruimte onder het minimum komt</string>
+    <string name="settings_record_button">Knop ‘Opnemen’</string>
+    <string name="settings_pause_button">Knop ‘Pauze’</string>
+    <string name="settings_stop_button">Knop ‘Stoppen’</string>
+    <string name="settings_button_sound_summary">Geluid bij indrukken</string>
+    <string name="settings_duration">Opnameduur</string>
+    <string name="settings_duration_summary">Signaal als de opname de tijd hieronder bereikt</string>
+    <string name="settings_duration_after">Signaal na</string>
+    <string name="settings_duration_after_summary">Volgens de opnametimer</string>
+    <string name="settings_section_dimming">Scherm dimmen</string>
+    <string name="settings_dim_after">Dimmen na</string>
+    <string name="settings_dim_after_summary">Zonder aanraking</string>
+    <string name="settings_dim_to">Dimmen tot</string>
+    <string name="settings_dim_to_summary">Aanraken herstelt de helderheid</string>
+    <string name="settings_first_touch">Eerste aanraking</string>
+    <string name="settings_first_touch_summary">Alleen helderheid herstellen, geen knop indrukken</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_language">App-taal</string>
+    <string name="settings_language_system">Systeem</string>
+    <string name="settings_about">Over de app</string>
+    <string name="settings_section_privacy">Privacy</string>
+    <string name="settings_ads">Advertenties</string>
+    <string name="settings_ads_summary">Je toestemming voor advertenties wijzigen</string>
+    <string name="settings_version_pattern">Versie %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">Verlagen: %1$s</string>
+    <string name="settings_increase_pattern">Verhogen: %1$s</string>
 
 </resources>

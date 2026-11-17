@@ -88,8 +88,8 @@ fun RecordInactiveGameScreen(
         StorageTitleText(PaddingValues(8.dp))
         StorageValueText(
             paddingValues = PaddingValues(8.dp),
-            sizeState = storage.freeSpaceState,
-            timeState = storage.timeRemainingState,
+            size = storage.freeSpace,
+            time = storage.timeRemaining,
             pattern = storage.pattern,
             errorType = storage.errorType,
         )

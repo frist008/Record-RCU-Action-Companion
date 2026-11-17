@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">الأجهزة</string>
-    <string name="device_available">متاح</string>
-    <string name="device_not_available">غير متاح</string>
     <string name="device_searching">جارٍ البحث عن الأجهزة…</string>
     <string name="device_error_not_found">لم يتم العثور على أجهزة…</string>
     <string name="device_error_more">كيفية الإصلاح؟</string>
+    <string name="device_permission_local_network">يلزم الوصول إلى الشبكة المحلية للعثور على جهاز الكمبيوتر</string>
+    <string name="device_permission_local_network_denied">اسمح بالوصول إلى الشبكة المحلية في إعدادات Android</string>
+    <string name="device_permission_continue">متابعة</string>
+    <string name="device_permission_settings">فتح إعدادات Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">تشغيل</string>
     <string name="record_action_pause">إيقاف مؤقت</string>
     <string name="record_action_stop">إيقاف</string>
+    <string name="record_indicator_webcam">الكاميرا تسجّل</string>
+    <string name="record_indicator_mic">الميكروفون يسجّل</string>
+    <string name="record_sound_on">الأصوات مفعّلة</string>
+    <string name="record_sound_off">الأصوات متوقفة</string>
+    <string name="record_remove_ads">إزالة الإعلانات</string>
     <string name="record_inactive_title_record">تسجيل</string>
     <string name="record_inactive_title_stream">بث</string>
     <string name="record_inactive_subtitle">لم يتم العثور على لعبة نشطة</string>
     <string name="record_inactive_message">شغّل اللعبة على جهاز الكمبيوتر</string>
     <string name="record_error_already_used">جهاز الكمبيوتر متصل بتطبيق آخر</string>
+    <string name="record_error_not_connected">لا يوجد اتصال بجهاز الكمبيوتر</string>
+    <string name="record_error_port_busy">تطبيق آخر على هذا الهاتف يستخدم الاتصال بجهاز الكمبيوتر بالفعل</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">بريميوم</string>
+    <string name="premium_headline">Record RCU بلا حدود</string>
+    <string name="premium_subtitle">شراء واحد، لك إلى الأبد</string>
+    <string name="premium_no_ads_title">بدون إعلانات</string>
+    <string name="premium_no_ads_summary">لا إعلان شريطي واحد على أي شاشة</string>
+    <string name="premium_forever_title">إلى الأبد، بدون اشتراك</string>
+    <string name="premium_forever_summary">ادفع مرة واحدة، والتحديثات مجانية</string>
+    <string name="premium_buy_pattern">الشراء مقابل %1$s</string>
+    <string name="premium_restore">استعادة المشتريات</string>
+    <string name="premium_via_play">عبر Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">الإعدادات</string>
+    <string name="settings_min_free_space">الحد الأدنى للمساحة</string>
+    <string name="settings_min_free_space_summary">أقل منه يصبح Storage أحمر</string>
+    <string name="settings_section_sounds">الأصوات</string>
+    <string name="settings_low_space">مساحة منخفضة</string>
+    <string name="settings_low_space_summary">تنبيه عندما تقل المساحة عن الحد الأدنى</string>
+    <string name="settings_record_button">زر «تسجيل»</string>
+    <string name="settings_pause_button">زر «إيقاف مؤقت»</string>
+    <string name="settings_stop_button">زر «إيقاف»</string>
+    <string name="settings_button_sound_summary">صوت عند الضغط</string>
+    <string name="settings_duration">مدة التسجيل</string>
+    <string name="settings_duration_summary">تنبيه عندما يصل التسجيل إلى الوقت أدناه</string>
+    <string name="settings_duration_after">تنبيه بعد</string>
+    <string name="settings_duration_after_summary">حسب مؤقت التسجيل</string>
+    <string name="settings_section_dimming">تعتيم الشاشة</string>
+    <string name="settings_dim_after">التعتيم بعد</string>
+    <string name="settings_dim_after_summary">بدون لمس</string>
+    <string name="settings_dim_to">التعتيم إلى</string>
+    <string name="settings_dim_to_summary">اللمس يعيد السطوع</string>
+    <string name="settings_first_touch">اللمسة الأولى</string>
+    <string name="settings_first_touch_summary">إعادة السطوع فقط دون ضغط الزر</string>
+    <string name="settings_section_app">التطبيق</string>
+    <string name="settings_language">لغة التطبيق</string>
+    <string name="settings_language_system">النظام</string>
+    <string name="settings_about">حول التطبيق</string>
+    <string name="settings_section_privacy">الخصوصية</string>
+    <string name="settings_ads">الإعلانات</string>
+    <string name="settings_ads_summary">تغيير موافقتك على الإعلانات</string>
+    <string name="settings_version_pattern">الإصدار %1$s</string>
+    <string name="settings_minutes_pattern">%1$d دقيقة</string>
+    <string name="settings_percent_pattern">%1$d%%</string>
+    <string name="settings_decrease_pattern">تقليل: %1$s</string>
+    <string name="settings_increase_pattern">زيادة: %1$s</string>
 
 </resources>

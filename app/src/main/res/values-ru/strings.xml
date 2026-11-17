@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Устройства</string>
-    <string name="device_available">Доступный</string>
-    <string name="device_not_available">Недоступеный</string>
     <string name="device_searching">Идёт поиск устройств…</string>
     <string name="device_error_not_found">Устройства не найдены…</string>
     <string name="device_error_more">Как исправить?</string>
+    <string name="device_permission_local_network">Нужен доступ к локальной сети, чтобы найти ваш ПК</string>
+    <string name="device_permission_local_network_denied">Разрешите доступ к локальной сети в настройках Android</string>
+    <string name="device_permission_continue">Продолжить</string>
+    <string name="device_permission_settings">Открыть настройки Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3336114877</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">Запись</string>
     <string name="record_action_pause">Пауза</string>
     <string name="record_action_stop">Стоп</string>
+    <string name="record_indicator_webcam">Камера пишет</string>
+    <string name="record_indicator_mic">Микрофон пишет</string>
+    <string name="record_sound_on">Звуки включены</string>
+    <string name="record_sound_off">Звуки выключены</string>
+    <string name="record_remove_ads">Убрать рекламу</string>
     <string name="record_inactive_title_record">ЗАПИСЬ</string>
     <string name="record_inactive_title_stream">ТРАНСЛЯЦИЯ</string>
     <string name="record_inactive_subtitle">АКТИВНАЯ ИГРА НЕ НАЙДЕНА</string>
     <string name="record_inactive_message">ЗАПУСТИТЕ ИГРУ НА СВОЕМ КОМПЬЮТЕРЕ</string>
     <string name="record_error_already_used">Ваш ПК подключен к другому приложению</string>
+    <string name="record_error_not_connected">Нет соединения с ПК</string>
+    <string name="record_error_port_busy">Другое приложение на этом телефоне уже использует соединение с ПК</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Премиум</string>
+    <string name="premium_headline">Record RCU без ограничений</string>
+    <string name="premium_subtitle">Одна покупка — и всё ваше навсегда</string>
+    <string name="premium_no_ads_title">Без рекламы</string>
+    <string name="premium_no_ads_summary">Ни одного баннера на всех экранах</string>
+    <string name="premium_forever_title">Навсегда, без подписки</string>
+    <string name="premium_forever_summary">Платите один раз, обновления бесплатно</string>
+    <string name="premium_buy_pattern">Купить за %1$s</string>
+    <string name="premium_restore">Восстановить покупки</string>
+    <string name="premium_via_play">Через Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">Настройки</string>
+    <string name="settings_min_free_space">Минимум места</string>
+    <string name="settings_min_free_space_summary">Меньше — Storage станет красным</string>
+    <string name="settings_section_sounds">Звуки</string>
+    <string name="settings_low_space">Мало места</string>
+    <string name="settings_low_space_summary">Сигнал, когда места меньше минимума</string>
+    <string name="settings_record_button">Кнопка «Запись»</string>
+    <string name="settings_pause_button">Кнопка «Пауза»</string>
+    <string name="settings_stop_button">Кнопка «Стоп»</string>
+    <string name="settings_button_sound_summary">Звук при нажатии</string>
+    <string name="settings_duration">Время записи</string>
+    <string name="settings_duration_summary">Сигнал, когда запись дойдёт до времени ниже</string>
+    <string name="settings_duration_after">Сигнал через</string>
+    <string name="settings_duration_after_summary">По таймеру записи</string>
+    <string name="settings_section_dimming">Затемнение экрана</string>
+    <string name="settings_dim_after">Затемнить через</string>
+    <string name="settings_dim_after_summary">Без касаний</string>
+    <string name="settings_dim_to">Затемнить до</string>
+    <string name="settings_dim_to_summary">Касание вернёт яркость</string>
+    <string name="settings_first_touch">Первое касание</string>
+    <string name="settings_first_touch_summary">Только вернуть яркость, кнопку не нажимать</string>
+    <string name="settings_section_app">Приложение</string>
+    <string name="settings_language">Язык приложения</string>
+    <string name="settings_language_system">Системный</string>
+    <string name="settings_about">О приложении</string>
+    <string name="settings_section_privacy">Конфиденциальность</string>
+    <string name="settings_ads">Реклама</string>
+    <string name="settings_ads_summary">Изменить согласие на рекламу</string>
+    <string name="settings_version_pattern">Версия %1$s</string>
+    <string name="settings_minutes_pattern">%1$d мин</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Уменьшить: %1$s</string>
+    <string name="settings_increase_pattern">Увеличить: %1$s</string>
 
 </resources>

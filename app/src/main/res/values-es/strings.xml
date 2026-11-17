@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Dispositivos</string>
-    <string name="device_available">Disponible</string>
-    <string name="device_not_available">No disponible</string>
     <string name="device_searching">Buscando dispositivos…</string>
     <string name="device_error_not_found">No se encontraron dispositivos…</string>
     <string name="device_error_more">¿Cómo solucionarlo?</string>
+    <string name="device_permission_local_network">Se necesita acceso a la red local para encontrar tu PC</string>
+    <string name="device_permission_local_network_denied">Permite el acceso a la red local en los ajustes de Android</string>
+    <string name="device_permission_continue">Continuar</string>
+    <string name="device_permission_settings">Abrir ajustes de Android</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pausa</string>
     <string name="record_action_stop">Detener</string>
+    <string name="record_indicator_webcam">La cámara está grabando</string>
+    <string name="record_indicator_mic">El micrófono está grabando</string>
+    <string name="record_sound_on">Sonidos activados</string>
+    <string name="record_sound_off">Sonidos desactivados</string>
+    <string name="record_remove_ads">Quitar anuncios</string>
     <string name="record_inactive_title_record">GRABACIÓN</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">NO SE ENCONTRÓ JUEGO ACTIVO</string>
     <string name="record_inactive_message">INICIA EL JUEGO EN TU PC</string>
     <string name="record_error_already_used">Tu PC está conectado a otra app</string>
+    <string name="record_error_not_connected">Sin conexión con tu PC</string>
+    <string name="record_error_port_busy">Otra app de este teléfono ya está usando la conexión con tu PC</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU sin límites</string>
+    <string name="premium_subtitle">Una sola compra, tuya para siempre</string>
+    <string name="premium_no_ads_title">Sin anuncios</string>
+    <string name="premium_no_ads_summary">Ni un banner en ninguna pantalla</string>
+    <string name="premium_forever_title">Para siempre, sin suscripción</string>
+    <string name="premium_forever_summary">Paga una vez, actualizaciones gratis</string>
+    <string name="premium_buy_pattern">Comprar por %1$s</string>
+    <string name="premium_restore">Restaurar compras</string>
+    <string name="premium_via_play">A través de Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">Ajustes</string>
+    <string name="settings_min_free_space">Espacio mínimo</string>
+    <string name="settings_min_free_space_summary">Por debajo, Storage se pone rojo</string>
+    <string name="settings_section_sounds">Sonidos</string>
+    <string name="settings_low_space">Poco espacio</string>
+    <string name="settings_low_space_summary">Señal cuando el espacio baja del mínimo</string>
+    <string name="settings_record_button">Botón «Grabar»</string>
+    <string name="settings_pause_button">Botón «Pausa»</string>
+    <string name="settings_stop_button">Botón «Detener»</string>
+    <string name="settings_button_sound_summary">Sonido al pulsar</string>
+    <string name="settings_duration">Tiempo de grabación</string>
+    <string name="settings_duration_summary">Señal cuando la grabación llegue al tiempo de abajo</string>
+    <string name="settings_duration_after">Señal tras</string>
+    <string name="settings_duration_after_summary">Según el temporizador de grabación</string>
+    <string name="settings_section_dimming">Atenuación de pantalla</string>
+    <string name="settings_dim_after">Atenuar tras</string>
+    <string name="settings_dim_after_summary">Sin tocar</string>
+    <string name="settings_dim_to">Atenuar al</string>
+    <string name="settings_dim_to_summary">Un toque restaura el brillo</string>
+    <string name="settings_first_touch">Primer toque</string>
+    <string name="settings_first_touch_summary">Solo restaurar el brillo, sin pulsar el botón</string>
+    <string name="settings_section_app">Aplicación</string>
+    <string name="settings_language">Idioma de la app</string>
+    <string name="settings_language_system">Sistema</string>
+    <string name="settings_about">Acerca de</string>
+    <string name="settings_section_privacy">Privacidad</string>
+    <string name="settings_ads">Anuncios</string>
+    <string name="settings_ads_summary">Cambiar tu consentimiento de anuncios</string>
+    <string name="settings_version_pattern">Versión %1$s</string>
+    <string name="settings_minutes_pattern">%1$d min</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Reducir: %1$s</string>
+    <string name="settings_increase_pattern">Aumentar: %1$s</string>
 
 </resources>

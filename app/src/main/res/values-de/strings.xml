@@ -7,12 +7,13 @@
 
     <!-- Devices -->
 
-    <string name="devices_title">Geräte</string>
-    <string name="device_available">Verfügbar</string>
-    <string name="device_not_available">Nicht verfügbar</string>
     <string name="device_searching">Suche nach Geräten…</string>
     <string name="device_error_not_found">Keine Geräte gefunden…</string>
     <string name="device_error_more">Wie beheben?</string>
+    <string name="device_permission_local_network">Zugriff auf das lokale Netzwerk wird benötigt, um deinen PC zu finden</string>
+    <string name="device_permission_local_network_denied">Erlaube den Zugriff auf das lokale Netzwerk in den Android-Einstellungen</string>
+    <string name="device_permission_continue">Weiter</string>
+    <string name="device_permission_settings">Android-Einstellungen öffnen</string>
     <string name="device_error_more_link">https://steamcommunity.com/sharedfiles/filedetails/?id=3331437683</string>
 
     <!-- Record -->
@@ -23,14 +24,66 @@
     <string name="record_action_record">Play</string>
     <string name="record_action_pause">Pause</string>
     <string name="record_action_stop">Stop</string>
+    <string name="record_indicator_webcam">Kamera nimmt auf</string>
+    <string name="record_indicator_mic">Mikrofon nimmt auf</string>
+    <string name="record_sound_on">Töne an</string>
+    <string name="record_sound_off">Töne aus</string>
+    <string name="record_remove_ads">Werbung entfernen</string>
     <string name="record_inactive_title_record">AUFNAHME</string>
     <string name="record_inactive_title_stream">STREAM</string>
     <string name="record_inactive_subtitle">KEIN SPIEL AKTIV</string>
     <string name="record_inactive_message">STARTE DAS SPIEL AUF DEINEM PC</string>
     <string name="record_error_already_used">Dein PC ist mit einer anderen App verbunden</string>
+    <string name="record_error_not_connected">Keine Verbindung zu deinem PC</string>
+    <string name="record_error_port_busy">Eine andere App auf diesem Telefon nutzt bereits die Verbindung zu deinem PC</string>
+
+    <!-- Premium -->
+
+    <string name="premium_badge">Premium</string>
+    <string name="premium_headline">Record RCU ohne Grenzen</string>
+    <string name="premium_subtitle">Ein Kauf, für immer deins</string>
+    <string name="premium_no_ads_title">Keine Werbung</string>
+    <string name="premium_no_ads_summary">Kein einziges Banner auf allen Bildschirmen</string>
+    <string name="premium_forever_title">Für immer, ohne Abo</string>
+    <string name="premium_forever_summary">Einmal zahlen, Updates kostenlos</string>
+    <string name="premium_buy_pattern">Für %1$s kaufen</string>
+    <string name="premium_restore">Käufe wiederherstellen</string>
+    <string name="premium_via_play">Über Google Play</string>
 
     <!-- Settings -->
 
     <string name="settings_title">Einstellungen</string>
+    <string name="settings_min_free_space">Mindestspeicher</string>
+    <string name="settings_min_free_space_summary">Darunter wird Storage rot</string>
+    <string name="settings_section_sounds">Töne</string>
+    <string name="settings_low_space">Wenig Speicher</string>
+    <string name="settings_low_space_summary">Signal, wenn der Speicher unter das Minimum fällt</string>
+    <string name="settings_record_button">Taste „Aufnahme“</string>
+    <string name="settings_pause_button">Taste „Pause“</string>
+    <string name="settings_stop_button">Taste „Stopp“</string>
+    <string name="settings_button_sound_summary">Ton beim Drücken</string>
+    <string name="settings_duration">Aufnahmedauer</string>
+    <string name="settings_duration_summary">Signal, wenn die Aufnahme die Zeit unten erreicht</string>
+    <string name="settings_duration_after">Signal nach</string>
+    <string name="settings_duration_after_summary">Nach dem Aufnahme-Timer</string>
+    <string name="settings_section_dimming">Bildschirm abdunkeln</string>
+    <string name="settings_dim_after">Abdunkeln nach</string>
+    <string name="settings_dim_after_summary">Ohne Berührung</string>
+    <string name="settings_dim_to">Abdunkeln auf</string>
+    <string name="settings_dim_to_summary">Eine Berührung stellt die Helligkeit wieder her</string>
+    <string name="settings_first_touch">Erste Berührung</string>
+    <string name="settings_first_touch_summary">Nur Helligkeit wiederherstellen, keine Taste drücken</string>
+    <string name="settings_section_app">App</string>
+    <string name="settings_language">App-Sprache</string>
+    <string name="settings_language_system">System</string>
+    <string name="settings_about">Über die App</string>
+    <string name="settings_section_privacy">Datenschutz</string>
+    <string name="settings_ads">Werbung</string>
+    <string name="settings_ads_summary">Einwilligung zu Werbung ändern</string>
+    <string name="settings_version_pattern">Version %1$s</string>
+    <string name="settings_minutes_pattern">%1$d Min.</string>
+    <string name="settings_percent_pattern">%1$d %%</string>
+    <string name="settings_decrease_pattern">Verringern: %1$s</string>
+    <string name="settings_increase_pattern">Erhöhen: %1$s</string>
 
 </resources>
