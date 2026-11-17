@@ -26,7 +26,7 @@ class RecordRepositoryImplTest {
     private val recordNetworkSource: RecordNetworkSource = mockk()
     private lateinit var repository: RecordRepositoryImpl
 
-    private val testDbo = DeviceDBO(name = "Test PC", ip = 16909060L, port = 2555)
+    private val testDbo = DeviceDBO(name = "Test PC", ip = 16_909_060L, port = 2555)
     private val testDto = testDbo.toDTO()
 
     @Before

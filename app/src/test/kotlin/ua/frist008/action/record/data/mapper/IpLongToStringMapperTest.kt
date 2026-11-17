@@ -18,13 +18,13 @@ class IpLongToStringMapperTest {
     @Test
     fun `maps single MSB to first octet`() {
         // 1 shl 24 = 16777216
-        assertEquals("1.0.0.0", IpLongToStringMapper(16777216L))
+        assertEquals("1.0.0.0", IpLongToStringMapper(16_777_216L))
     }
 
     @Test
     fun `maps 1_2_3_4`() {
         // 0x01020304 = 16909060
-        assertEquals("1.2.3.4", IpLongToStringMapper(16909060L))
+        assertEquals("1.2.3.4", IpLongToStringMapper(16_909_060L))
     }
 
     @Test

@@ -23,8 +23,8 @@ class ConnectionRepositoryImplTest {
     private val context: Context = mockk()
     private lateinit var repository: ConnectionRepositoryImpl
 
-    private val firstDto = DeviceDTO(name = "First PC", ip = 16909060L, port = 2555)
-    private val secondDto = DeviceDTO(name = "Second PC", ip = 16909061L, port = 2555)
+    private val firstDto = DeviceDTO(name = "First PC", ip = 16_909_060L, port = 2555)
+    private val secondDto = DeviceDTO(name = "Second PC", ip = 16_909_061L, port = 2555)
 
     @Before
     fun setup() {
@@ -73,7 +73,7 @@ class ConnectionRepositoryImplTest {
 
     @Test
     fun `get picks the first PC when the last one did not reply`() = runTest {
-        val lastDto = DeviceDTO(name = "Last PC", ip = 16909062L, port = 2555)
+        val lastDto = DeviceDTO(name = "Last PC", ip = 16_909_062L, port = 2555)
 
         every { networkSource.get() } returns flowOf(listOf(firstDto, secondDto))
         coEvery { deviceDAO.get() } returns lastDto.toDBO()
