@@ -16,13 +16,13 @@ class ByteArrayToNumberMapperTest {
     @Test
     fun `two bytes are read unsigned`() {
         // 0xFFFF = 65535
-        assertEquals(65535L, ByteArrayToNumberMapper(buildBytes(0xFF, 0xFF), 0, 2))
+        assertEquals(65_535L, ByteArrayToNumberMapper(buildBytes(0xFF, 0xFF), 0, 2))
     }
 
     @Test
     fun `four bytes are read big-endian`() {
         // 0x00010203 = 66051
-        assertEquals(66051L, ByteArrayToNumberMapper(buildBytes(0x00, 0x01, 0x02, 0x03), 0, 4))
+        assertEquals(66_051L, ByteArrayToNumberMapper(buildBytes(0x00, 0x01, 0x02, 0x03), 0, 4))
     }
 
     @Test
@@ -34,7 +34,7 @@ class ByteArrayToNumberMapperTest {
     @Test
     fun `four bytes above 127 in the lower bytes stay positive`() {
         // 0x0000C0A8 = 49320
-        assertEquals(49320L, ByteArrayToNumberMapper(buildBytes(0x00, 0x00, 0xC0, 0xA8), 0, 4))
+        assertEquals(49_320L, ByteArrayToNumberMapper(buildBytes(0x00, 0x00, 0xC0, 0xA8), 0, 4))
     }
 
     @Test

@@ -30,7 +30,7 @@ class ByteArrayToRecordMapperTest {
         return headerArr + ByteArray(6) + packetType.toByte() + payloadLengthArr + fieldsArr
     }
 
-    /** Builds field 25: a chunk of two pixels of the frame [FRAME_ID] of camera 0, two by two pixels */
+    /** Builds field 25: a chunk of two pixels of the frame [FRAME_ID] of camera 0, two by two */
     private fun buildWebCamChunk(chunkIndex: Int, pixelsArr: ByteArray): ByteArray {
         val headerArr = listOf(FRAME_ID, chunkIndex, 0, 2, 2, 2, pixelsArr.size)
             .fold(ByteArray(0)) { all, value -> all + buildInt(value) }
@@ -72,10 +72,13 @@ class ByteArrayToRecordMapperTest {
     fun `game is inactive until its field arrives`() {
         val fpsArr = buildField(type = 12, valueArr = buildInt(60))
         val firstArr = buildStatus(listOf(fpsArr))
-        val secondArr = buildStatus(listOf(fpsArr, buildField(type = 23, valueArr = byteArrayOf(1))))
+        val secondArr =
+            buildStatus(listOf(fpsArr, buildField(type = 23, valueArr = byteArrayOf(1))))
 
         val first = ByteArrayToRecordMapper(firstArr, firstArr.size, disconnected)
-        val second = first?.let { record -> ByteArrayToRecordMapper(secondArr, secondArr.size, record) }
+        val second = first?.let { record ->
+            ByteArrayToRecordMapper(secondArr, secondArr.size, record)
+        }
 
         assertFalse(first?.gameActive ?: true)
         assertTrue(second?.gameActive == true)
@@ -94,7 +97,7 @@ class ByteArrayToRecordMapperTest {
     }
 
     @Test
-    fun `skips a web camera chunk of a camera the PC does not stream and reads the field after it`() {
+    fun `skips a chunk of a camera the PC does not stream and reads the next field`() {
         val webCamArr = buildField(type = 25, valueArr = ByteArray(40) { 0x7F })
         val fpsArr = buildField(type = 12, valueArr = buildInt(50))
         val dataArr = buildStatus(listOf(webCamArr, fpsArr))

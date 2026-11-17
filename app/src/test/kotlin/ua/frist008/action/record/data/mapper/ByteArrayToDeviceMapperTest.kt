@@ -24,7 +24,7 @@ class ByteArrayToDeviceMapperTest {
         val dto = ByteArrayToDeviceMapper(dataArr, dataArr.size)
 
         // 192.168.0.13 = 0xC0A8000D = 3232235533; 2555 = 0x09FB
-        assertEquals(DeviceDTO(name = "Game PC", ip = 3232235533L, port = 2555), dto)
+        assertEquals(DeviceDTO(name = "Game PC", ip = 3_232_235_533L, port = 2555), dto)
     }
 
     @Test
@@ -40,7 +40,7 @@ class ByteArrayToDeviceMapperTest {
 
         val dto = ByteArrayToDeviceMapper(dataArr, 10)
 
-        assertEquals(DeviceDTO(name = null, ip = 3232235533L, port = 2555), dto)
+        assertEquals(DeviceDTO(name = null, ip = 3_232_235_533L, port = 2555), dto)
     }
 
     @Test

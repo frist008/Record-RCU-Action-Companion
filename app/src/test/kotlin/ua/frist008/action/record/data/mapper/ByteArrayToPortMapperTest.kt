@@ -42,6 +42,6 @@ class ByteArrayToPortMapperTest {
     @Test
     fun `port 65535 max`() {
         // 65535 = 0xFFFF: high=255, low=255
-        assertEquals(65535, ByteArrayToPortMapper(byteArrayWithPort(high = 0xFF, low = 0xFF)))
+        assertEquals(65_535, ByteArrayToPortMapper(byteArrayWithPort(high = 0xFF, low = 0xFF)))
     }
 }

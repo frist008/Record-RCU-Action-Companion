@@ -104,7 +104,7 @@ class FakePc : DeviceRadarNetworkSource, RecordNetworkSource {
 
             FixedRecordCommand.STOP,
             StreamingRecordCommand.STOP,
-                -> RecordModeType.STOP
+            -> RecordModeType.STOP
 
             else -> RecordModeType.RECORD
         }

@@ -42,7 +42,7 @@ class AppFlow(private val composeTestRule: ComposeTestRule) : ExternalResource()
     private var dataStore: DataStore<Preferences>? = null
     private var savedPreferences: Preferences? = null
 
-    /** Opens the app as the launcher does, with no PC remembered and the settings at their defaults */
+    /** Opens the app as the launcher does, with no PC remembered and the default settings */
     fun launch() {
         val appDataStore = EntryPointAccessors
             .fromApplication(context, AppFlowEntryPoint::class.java)

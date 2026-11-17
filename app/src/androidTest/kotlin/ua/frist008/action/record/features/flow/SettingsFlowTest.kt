@@ -131,13 +131,7 @@ class SettingsFlowTest {
         appFlow.findText(version).assertIsDisplayed()
 
         changeMinFreeSpace(minFreeSpace)
-
-        appFlow.scrollTo(duration)
-        appFlow.tap(duration)
-        appFlow.findText(duration).assertIsOn()
-        appFlow.findDescription(increaseDurationAfter).assertIsEnabled()
-        appFlow.tapDescription(increaseDurationAfter)
-        appFlow.waitFor(durationAfterChanged)
+        turnOnDurationSound(duration, increaseDurationAfter, durationAfterChanged)
 
         appFlow.scrollTo(dimTo)
         appFlow.tapDescription(appFlow.getString(R.string.settings_increase_pattern, dimTo))
@@ -152,11 +146,7 @@ class SettingsFlowTest {
         appFlow.scrollTo(dimToChanged).assertIsDisplayed()
         appFlow.scrollTo(firstTouch).assertIsOn()
 
-        appFlow.scrollTo(about)
-        appFlow.tap(about)
-        appFlow.waitFor(appFlow.getString(R.string.settings_about_app_name))
-        appFlow.findText(version).assertIsDisplayed()
-        appFlow.pressBack()
+        openAboutAndReturn(about, version)
         appFlow.waitFor(minFreeSpace)
 
         appFlow.pressBack()
@@ -188,5 +178,26 @@ class SettingsFlowTest {
         appFlow.waitFor(oneGb)
         appFlow.tapDescription(decrease)
         appFlow.waitFor(oneGb)
+    }
+
+    private fun turnOnDurationSound(
+        duration: String,
+        increaseDurationAfter: String,
+        durationAfterChanged: String,
+    ) {
+        appFlow.scrollTo(duration)
+        appFlow.tap(duration)
+        appFlow.findText(duration).assertIsOn()
+        appFlow.findDescription(increaseDurationAfter).assertIsEnabled()
+        appFlow.tapDescription(increaseDurationAfter)
+        appFlow.waitFor(durationAfterChanged)
+    }
+
+    private fun openAboutAndReturn(about: String, version: String) {
+        appFlow.scrollTo(about)
+        appFlow.tap(about)
+        appFlow.waitFor(appFlow.getString(R.string.settings_about_app_name))
+        appFlow.findText(version).assertIsDisplayed()
+        appFlow.pressBack()
     }
 }
