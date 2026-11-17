@@ -1,28 +1,23 @@
 package ua.frist008.action.record.data.mapper
 
-import timber.log.Timber
-import ua.frist008.action.record.core.util.common.ByteConst
-import ua.frist008.action.record.data.network.NetworkConst
-
+/**
+ * Reads the name of the PC from a radar reply: its length in bytes 11–14, its UTF-8 bytes from
+ * byte 15 on, cut at the end of the packet; `null` when it is absent or empty.
+ */
 object ByteArrayToNameMapper : (ByteArray, Int) -> String? {
 
     override operator fun invoke(dataArr: ByteArray, size: Int): String? {
-        val namePCLong = ((dataArr[14].toLong()) and ByteConst.MAX_UBYTE_LONG) or
-            ((dataArr[11].toLong() shl ByteConst.BITS_3) and -ByteConst.MAX_BYTES_POW_3_LONG) or
-            ((dataArr[12].toLong() shl ByteConst.BITS_2) and NetworkConst.FFFF_MINUS_1) or
-            ((dataArr[13].toLong() shl ByteConst.BITS_1) and NetworkConst.FF00_LONG)
-        val namePCByteSize = (if (15 + namePCLong <= size) namePCLong else size - 15L)
-            .coerceAtLeast(0L)
-            .toInt()
-        val namePCByteArr = ByteArray(namePCByteSize + 1)
-        namePCByteArr[namePCByteSize] = 0
+        if (size < NAME_OFFSET) return null
 
-        return if (namePCLong > 0) {
-            System.arraycopy(dataArr, 15, namePCByteArr, 0, namePCByteSize)
+        val declaredLength = ByteArrayToNumberMapper(dataArr, 11, Int.SIZE_BYTES) // dataArr[11-14]
 
-            runCatching { String(namePCByteArr) }.onFailure(Timber::e).getOrNull()
-        } else {
-            null
-        }
+        if (declaredLength <= 0) return null
+
+        val length = declaredLength.coerceAtMost((size - NAME_OFFSET).toLong()).toInt()
+        val name = ByteArrayToTextMapper(dataArr, NAME_OFFSET, length, Charsets.UTF_8)
+
+        return name.ifEmpty { null }
     }
+
+    private const val NAME_OFFSET = 15
 }

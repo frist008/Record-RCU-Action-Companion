@@ -1,11 +1,8 @@
 package ua.frist008.action.record.data.mapper
 
-import ua.frist008.action.record.core.util.common.ByteConst
-import ua.frist008.action.record.data.network.NetworkConst
-
+/** Reads the TCP port of the PC from bytes 8–9 of a radar reply */
 object ByteArrayToPortMapper : (ByteArray) -> Int {
 
     override operator fun invoke(dataArr: ByteArray): Int =
-        ((dataArr[8].toInt() shl ByteConst.BITS_1) and NetworkConst.FF00) or
-            (dataArr[9].toInt() and ByteConst.MAX_UBYTE)
+        ByteArrayToNumberMapper(dataArr, 8, Short.SIZE_BYTES).toInt() // dataArr[8-9]
 }

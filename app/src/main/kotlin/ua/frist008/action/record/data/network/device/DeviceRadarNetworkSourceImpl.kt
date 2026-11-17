@@ -1,167 +1,127 @@
 package ua.frist008.action.record.data.network.device
 
+import io.ktor.network.selector.SelectorManager
+import io.ktor.network.sockets.BoundDatagramSocket
+import io.ktor.network.sockets.Datagram
+import io.ktor.network.sockets.InetSocketAddress
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.channels.TickerMode
-import kotlinx.coroutines.channels.ticker
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.receiveAsFlow
-import kotlinx.coroutines.sync.Mutex
-import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.flow.FlowCollector
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.withTimeoutOrNull
+import kotlinx.io.Buffer
+import kotlinx.io.readByteArray
 import timber.log.Timber
 import ua.frist008.action.record.core.di.qualifier.concurrent.IO
-import ua.frist008.action.record.core.util.concurrent.onCancel
-import ua.frist008.action.record.data.mapper.ByteArrayToIpMapper
-import ua.frist008.action.record.data.mapper.ByteArrayToNameMapper
-import ua.frist008.action.record.data.mapper.ByteArrayToPortMapper
+import ua.frist008.action.record.data.mapper.ByteArrayToDeviceMapper
+import ua.frist008.action.record.data.network.DatagramSocketBinder
+import ua.frist008.action.record.data.network.NetworkConst
 import ua.frist008.action.record.data.network.device.entity.DeviceDTO
 import ua.frist008.action.record.data.network.device.entity.RadarRequestDataHolder
 import java.io.IOException
-import java.net.DatagramPacket
-import java.net.DatagramSocket
 import java.net.Inet4Address
-import java.net.InetAddress
 import java.net.NetworkInterface
-import java.net.SocketTimeoutException
 import javax.inject.Inject
+import kotlin.time.Duration.Companion.seconds
+import kotlin.time.TimeSource
 
 class DeviceRadarNetworkSourceImpl @Inject constructor(
     @param:IO private val ioDispatcher: CoroutineDispatcher,
+    private val selectorManager: SelectorManager,
 ) : DeviceRadarNetworkSource {
 
-    private val socketMutex = Mutex()
-    private val packetMutex = Mutex()
+    override fun get(): Flow<List<DeviceDTO>> =
+        flow {
+            val requestDataHolder = RadarRequestDataHolder.newInstance()
+            val socket = DatagramSocketBinder.bind(
+                selectorManager = selectorManager,
+                port = NetworkConst.RADAR_REPLY_PORT,
+                isBroadcast = true,
+            )
 
-    private val radarUdpClientSocketState = MutableStateFlow<DatagramSocket?>(null)
+            Timber.i("init socket")
 
-    override suspend fun get(): Flow<DeviceDTO?> {
-        val requestDataHolder = RadarRequestDataHolder.newInstance()
-        val udpClientSocket = getOrCreateUdpClientSocket()
-        val clientDataList = getClientDataList(requestDataHolder)
-
-        return ticker(
-            delayMillis = TIMEOUT_PING_MS,
-            initialDelayMillis = 0L,
-            context = ioDispatcher,
-            mode = TickerMode.FIXED_DELAY,
-        )
-            .receiveAsFlow()
-            .map { get(udpClientSocket, clientDataList, requestDataHolder) }
-            .onCancel {
-                udpClientSocket.close()
+            try {
+                scan(socket = socket, requestDataHolder = requestDataHolder, collector = this)
+            } finally {
+                socket.close()
                 Timber.i("cancel")
             }
+        }.flowOn(ioDispatcher)
+
+    private suspend fun scan(
+        socket: BoundDatagramSocket,
+        requestDataHolder: RadarRequestDataHolder,
+        collector: FlowCollector<List<DeviceDTO>>,
+    ) {
+        val requestList = getLocalAddressList()
+            .map { address -> requestDataHolder.newClientDataInstance(address.address) }
+        var repliedSet = emptySet<DeviceDTO>()
+
+        while (true) {
+            requestList.forEach { requestArr -> sendRequest(socket, requestArr) }
+            repliedSet = receiveReplies(socket, repliedSet, collector)
+            collector.emit(repliedSet.toList())
+        }
     }
 
-    private fun get(
-        udpClientSocket: DatagramSocket,
-        clientDataList: List<DatagramPacket>,
-        requestDataHolder: RadarRequestDataHolder,
-    ): DeviceDTO? =
-        clientDataList
-            .asSequence()
-            .mapNotNull { requestData -> get(udpClientSocket, requestData) }
-            .map { responseData -> parse(responseData, requestDataHolder) }
-            .firstOrNull()
+    /**
+     * Receives the replies of one scan period, telling a PC new to the last period at once.
+     *
+     * @param socket the socket the replies come to.
+     * @param previousSet the PCs that replied in the last period.
+     * @param collector the collector a new PC is emitted to, together with the PCs already known.
+     * @return the PCs that replied in this period.
+     */
+    private suspend fun receiveReplies(
+        socket: BoundDatagramSocket,
+        previousSet: Set<DeviceDTO>,
+        collector: FlowCollector<List<DeviceDTO>>,
+    ): Set<DeviceDTO> {
+        val periodMark = TimeSource.Monotonic.markNow()
+        val repliedSet = LinkedHashSet<DeviceDTO>()
 
-    private fun get(udpClientSocket: DatagramSocket, clientData: DatagramPacket): DatagramPacket? =
-        try {
-            val responseDataArr = ByteArray(RESPONSE_SIZE)
-            val responseData = DatagramPacket(responseDataArr, responseDataArr.size)
+        while (true) {
+            val timeLeft = SCAN_PERIOD - periodMark.elapsedNow()
+            val dataArr = withTimeoutOrNull(timeLeft) { socket.receive().packet.readByteArray() }
+                ?: return repliedSet
+            val dto = ByteArrayToDeviceMapper(dataArr, dataArr.size) ?: continue
 
-            udpClientSocket.send(clientData)
-            udpClientSocket.receive(responseData)
-
-            if (responseData.length > 0) {
-                responseData
-            } else {
-                null
+            if (repliedSet.add(dto) && dto !in previousSet) {
+                collector.emit((previousSet + repliedSet).toList())
             }
-        } catch (e: SocketTimeoutException) {
-            Timber.v(e)
-            null
+        }
+    }
+
+    private suspend fun sendRequest(socket: BoundDatagramSocket, requestArr: ByteArray) {
+        val packet = Buffer()
+
+        packet.write(requestArr)
+
+        try {
+            socket.send(Datagram(packet, REQUEST_ADDRESS))
         } catch (e: IOException) {
             Timber.w(e)
-            null
         }
-
-    private suspend fun getOrCreateUdpClientSocket(): DatagramSocket = socketMutex.withLock {
-        val radarUdpClientSocket = radarUdpClientSocketState.value
-        if (radarUdpClientSocket != null && !radarUdpClientSocket.isClosed) {
-            return@withLock radarUdpClientSocket
-        }
-
-        val resultUdpClientSocket = DatagramSocket(SERVER_PORT, SERVER_INET_ADDRESS)
-
-        Timber.i("init socket")
-        resultUdpClientSocket.setSoTimeout(TIMEOUT_PONG_MS)
-
-        radarUdpClientSocketState.emit(resultUdpClientSocket)
-
-        return@withLock resultUdpClientSocket
     }
 
-    private suspend fun getClientDataList(requestDataHolder: RadarRequestDataHolder): List<DatagramPacket> =
-        packetMutex.withLock {
-            return@withLock getClientInetAddressSequence()
-                .distinctBy { it.hostAddress }
-                .map { inetAddress ->
-                    val addressArr = inetAddress.address
-                    val dataArr = requestDataHolder.newClientDataInstance()
-                    dataArr[4] = addressArr[0]
-                    dataArr[5] = addressArr[1]
-                    dataArr[6] = addressArr[2]
-                    dataArr[7] = addressArr[3]
-                    DatagramPacket(dataArr, dataArr.size, CLIENT_INET_ADDRESS, CLIENT_PORT)
-                }
-                .toList()
-        }
-
-    private fun getClientInetAddressSequence(): Sequence<Inet4Address> = runCatching {
+    private fun getLocalAddressList(): List<Inet4Address> = runCatching {
         NetworkInterface
             .getNetworkInterfaces()
             .asSequence()
-            .map { networkInterface -> networkInterface.inetAddresses.asSequence() }
-            .flatten()
+            .flatMap { networkInterface -> networkInterface.inetAddresses.asSequence() }
             .filter { !it.isLoopbackAddress && it.isSiteLocalAddress }
             .mapNotNull { it as? Inet4Address? }
-    }.onFailure(Timber::e).getOrElse { emptySequence() }
-
-    private fun parse(
-        datagramPacket: DatagramPacket,
-        requestDataHolder: RadarRequestDataHolder,
-    ): DeviceDTO? {
-        val clientDataArr = datagramPacket.data
-
-        return if (requestDataHolder.isResponseValid(clientDataArr)) { // clientDataArr[0-3]
-            val ip = ByteArrayToIpMapper(clientDataArr) // clientDataArr[4-7]
-            val port = ByteArrayToPortMapper(clientDataArr) // clientDataArr[8-9]
-            val namePC =
-                if (clientDataArr[10].toInt() == 1) { // clientDataArr[10] is true
-                    val size = datagramPacket.length
-                    ByteArrayToNameMapper(clientDataArr, size) // clientDataArr[11-15]
-                } else {
-                    null
-                }
-
-            DeviceDTO(namePC, ip, port)
-        } else {
-            null
-        }
-    }
+            .distinctBy { it.hostAddress }
+            .toList()
+    }.onFailure(Timber::e).getOrElse { emptyList() }
 
     companion object {
 
-        private const val TIMEOUT_PING_MS = 1000L
-        private const val TIMEOUT_PONG_MS = 1500
+        private val SCAN_PERIOD = 1.seconds
 
-        private const val RESPONSE_SIZE = 1024
-
-        private const val SERVER_PORT = 4198
-        private val SERVER_INET_ADDRESS = InetAddress.getByName("0.0.0.0")
-
-        private const val CLIENT_PORT = 4199
-        private val CLIENT_INET_ADDRESS = InetAddress.getByName("255.255.255.255")
+        private val REQUEST_ADDRESS =
+            InetSocketAddress(NetworkConst.BROADCAST_HOST, NetworkConst.RADAR_REQUEST_PORT)
     }
 }

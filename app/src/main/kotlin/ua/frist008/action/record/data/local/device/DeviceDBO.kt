@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
-import ua.frist008.action.record.data.mapper.toIPStr
+import ua.frist008.action.record.data.mapper.IpLongToStringMapper
 import ua.frist008.action.record.data.network.device.entity.DeviceDTO
 import ua.frist008.action.record.features.device.entity.DeviceDomainEntity
 
@@ -29,7 +29,7 @@ data class DeviceDBO(
             id = id,
             isAvailableStatus = isAvailable,
             name = name,
-            address = "${ip.toIPStr}:$port",
+            address = "${IpLongToStringMapper(ip)}:$port",
         )
 
     fun toDTO(): DeviceDTO =

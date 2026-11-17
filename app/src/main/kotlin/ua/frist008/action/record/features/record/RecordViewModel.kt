@@ -29,6 +29,7 @@ import ua.frist008.action.record.core.ui.UIState
 import ua.frist008.action.record.core.util.sound.VibratorEffect
 import ua.frist008.action.record.core.util.sound.vibrate
 import ua.frist008.action.record.data.network.DisconnectException
+import ua.frist008.action.record.data.network.NotConnectedException
 import ua.frist008.action.record.features.NavCommand
 import ua.frist008.action.record.features.record.entity.FixedRecordCommand
 import ua.frist008.action.record.features.record.entity.RecordSuccessState
@@ -178,9 +179,16 @@ class RecordViewModel @AssistedInject constructor(
         when (cause) {
             is DisconnectException -> navigator.emit(NavCommand.BackCommand())
 
-            is ConnectException,
-            is BindException,
-                -> {
+            is NotConnectedException,
+            is SocketTimeoutException,
+                -> toastFlow.emit(R.string.record_error_not_connected)
+
+            is BindException -> {
+                toastFlow.emit(R.string.record_error_port_busy)
+                navigator.emit(NavCommand.BackCommand())
+            }
+
+            is ConnectException -> {
                 toastFlow.emit(R.string.record_error_already_used)
                 navigator.emit(NavCommand.BackCommand())
             }

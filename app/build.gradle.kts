@@ -175,6 +175,7 @@ dependencies {
     implementation(platform(libs.kotlin.coroutines.bom))
     implementation(libs.bundles.coroutines.bom)
     implementation(libs.data.store)
+    implementation(libs.ktor.network)
 
     // Util
     coreLibraryDesugaring(libs.jdk.desugar)

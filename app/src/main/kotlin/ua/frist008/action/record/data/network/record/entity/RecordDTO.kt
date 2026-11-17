@@ -20,7 +20,7 @@ data class RecordDTO(
     val maxFps: Int = 0,
     val isWebCam: Boolean = false,
     val isMic: Boolean = false,
-    val gameActive: Boolean = false,
+    val gameActive: Boolean = true,
     val webCamType: Int = 0,
     val webCamDataList: List<WebCamData> = listOf(
         WebCamData(),
