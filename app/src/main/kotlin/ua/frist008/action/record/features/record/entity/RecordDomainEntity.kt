@@ -96,15 +96,6 @@ data class RecordDomainEntity(
 
     companion object {
 
-        /** How many free-space samples the time left needs before it is shown */
-        private const val TIME_REMAINING_MIN_SAMPLES = 5
-
-        /** How many free-space samples are kept; the oldest goes past it */
-        private const val FREE_SPACE_MAX_SAMPLES = 15
-
-        /** The free space in GB below which it is shown as a warning */
-        private const val WARNING_FREE_SPACE_GB = 10f
-
         private fun mapLiveState(streamType: StreamType, isStream: Boolean) =
             LiveState(isOnline = streamType != StreamType.OFF, isLive = isStream)
 
@@ -113,6 +104,7 @@ data class RecordDomainEntity(
             freeSpace: Space,
             minFreeSpace: Space,
         ): StorageState {
+            val warningFreeSpaceGb = 10f // the free space in GB below which it is a warning
             val newFreeSpaceWithTimestampList =
                 createFreeSpaceWithTimestampList(freeSpaceWithTimestampList, freeSpace)
             val timeRemaining = calculateTimeRemaining(newFreeSpaceWithTimestampList, freeSpace)
@@ -134,7 +126,7 @@ data class RecordDomainEntity(
                     pattern = R.string.record_header_storage_gb_pattern,
                     errorType = when {
                         freeSpace < minFreeSpace -> ErrorType.ERROR
-                        freeGB < WARNING_FREE_SPACE_GB -> ErrorType.WARNING
+                        freeGB < warningFreeSpaceGb -> ErrorType.WARNING
                         else -> ErrorType.DEFAULT
                     },
                     freeSpaceWithTimestampList = newFreeSpaceWithTimestampList,
@@ -146,7 +138,10 @@ data class RecordDomainEntity(
             lastFreeSpaceWithTimestamp: ImmutableList<Pair<Long, Long>>,
             freeSpace: Space,
         ): String {
-            if (lastFreeSpaceWithTimestamp.size < TIME_REMAINING_MIN_SAMPLES) return ""
+            // How many free-space samples the time left needs before it is shown
+            val timeRemainingMinSamples = 5
+
+            if (lastFreeSpaceWithTimestamp.size < timeRemainingMinSamples) return ""
 
             val (firstBytes, firstTimeMs) = lastFreeSpaceWithTimestamp.last()
             val (lastBytes, lastTimeMs) = lastFreeSpaceWithTimestamp.first()
@@ -166,11 +161,13 @@ data class RecordDomainEntity(
             list: ImmutableList<Pair<Long, Long>>,
             freeSpace: Space,
         ): ImmutableList<Pair<Long, Long>> {
+            val freeSpaceMaxSamples = 15 // the oldest free-space sample goes past it
+
             if (freeSpace.bytes == 0L || freeSpace.bytes == list.lastOrNull()?.first) return list
 
             val newValue = freeSpace.bytes to Clock.System.now().toEpochMilliseconds()
             val trimmedList =
-                (if (list.size > FREE_SPACE_MAX_SAMPLES) list.subList(1, list.size) else list)
+                (if (list.size > freeSpaceMaxSamples) list.subList(1, list.size) else list)
 
             return (trimmedList.asSequence() + newValue).toImmutableList()
         }

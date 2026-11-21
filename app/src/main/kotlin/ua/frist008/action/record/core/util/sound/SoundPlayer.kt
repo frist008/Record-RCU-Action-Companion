@@ -28,7 +28,9 @@ import javax.inject.Singleton
     }
 
     private val toneGenerator by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        runCatching { ToneGenerator(AudioManager.STREAM_NOTIFICATION, TONE_VOLUME) }
+        val toneVolume = 80
+
+        runCatching { ToneGenerator(AudioManager.STREAM_NOTIFICATION, toneVolume) }
             .onFailure(Timber::w)
             .getOrNull()
     }
@@ -50,14 +52,10 @@ import javax.inject.Singleton
         if (actionSound != null) {
             mediaActionSound.play(actionSound)
         } else {
-            toneGenerator?.startTone(sound.tone, TONE_DURATION_MS)
+            val toneDurationMs = 600
+
+            toneGenerator?.startTone(sound.tone, toneDurationMs)
         }
-    }
-
-    companion object {
-
-        private const val TONE_VOLUME = 80
-        private const val TONE_DURATION_MS = 600
     }
 }
 

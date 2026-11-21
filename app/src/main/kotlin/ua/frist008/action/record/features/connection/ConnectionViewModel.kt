@@ -86,6 +86,8 @@ import kotlin.time.Duration.Companion.seconds
 
     // TODO For version 1.2: move work with Repository to ForegroundService
     private fun restartScan() {
+        val scanRetryDelay = 1.seconds // pause before the search restarts after a network failure
+
         Timber.i("start Scan")
 
         launch(scanJob) {
@@ -97,7 +99,7 @@ import kotlin.time.Duration.Companion.seconds
                     if (isNetworkError) {
                         Timber.w(cause)
                         showProgress()
-                        delay(SCAN_RETRY_DELAY)
+                        delay(scanRetryDelay)
                     }
 
                     isNetworkError
@@ -119,6 +121,7 @@ import kotlin.time.Duration.Companion.seconds
     }
 
     private fun restartTimer(durationDelay: Duration = 0.milliseconds) {
+        val timerMs = 5000L
         val emit: suspend (ConnectionProgressState) -> Unit = { state ->
             if (mutableState.value is ConnectionProgressState) {
                 Timber.d("Emit Progress - $state")
@@ -129,7 +132,7 @@ import kotlin.time.Duration.Companion.seconds
         launch(timerJob) {
             delay(durationDelay)
             timer(
-                durationMs = TIMER_MS,
+                durationMs = timerMs,
                 delayEventMs = 1.seconds.inWholeMilliseconds,
                 onNextEvent = { durationLeft -> emit(ConnectionProgressState(durationLeft)) },
                 onFinished = {
@@ -175,13 +178,5 @@ import kotlin.time.Duration.Companion.seconds
                 mutableState.emit(ConnectionProgressState())
             }
         }
-    }
-
-    companion object {
-
-        private const val TIMER_MS = 5000L
-
-        /** Pause before the search starts again after the network failed it */
-        private val SCAN_RETRY_DELAY = 1.seconds
     }
 }

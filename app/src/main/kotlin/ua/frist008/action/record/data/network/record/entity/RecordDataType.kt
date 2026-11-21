@@ -120,10 +120,9 @@ sealed class RecordDataType<T>(val code: Byte) {
 
     data object RecTooltipDataType : RecordDataType<String>(code = 15) {
 
-        private const val MAX_SIZE = 1023
-
         override fun read(dataArr: ByteArray, offset: Int, length: Int): String {
-            val textLength = length.coerceAtMost(MAX_SIZE)
+            val maxSize = 1023
+            val textLength = length.coerceAtMost(maxSize)
 
             return ByteArrayToTextMapper(dataArr, offset, textLength, Charsets.UTF_8)
         }
@@ -163,11 +162,9 @@ sealed class RecordDataType<T>(val code: Byte) {
 
     data object RecordOrStreamDataType : NumberDataType(code = 19) {
 
-        /** The value of the field while the PC streams rather than records */
-        private const val STREAM = 3L
-
         override fun map(newData: Long, old: RecordDTO): RecordDTO {
-            val isStream = newData == STREAM
+            val stream = 3L // the value of the field while the PC streams rather than records
+            val isStream = newData == stream
             log(old.isStream, isStream)
             return old.copy(isStream = isStream)
         }
@@ -213,31 +210,30 @@ sealed class RecordDataType<T>(val code: Byte) {
      */
     data object WebDataDataType : RecordDataType<WebCamChunk?>(code = 25) {
 
-        private const val FRAME_ID = 0
-        private const val CHUNK_INDEX = 1
-        private const val CAMERA_INDEX = 2
-        private const val WIDTH = 3
-        private const val HEIGHT = 4
-        private const val CHUNK_PIXELS = 5
-        private const val PIXELS_LENGTH = 6
-        private const val HEADER_SIZE = 7 * Int.SIZE_BYTES
-        private const val BYTES_PER_PIXEL = 2
-
         override fun read(dataArr: ByteArray, offset: Int, length: Int): WebCamChunk? {
-            if (length < HEADER_SIZE) return null
+            val frameIdField = 0
+            val chunkIndexField = 1
+            val cameraIndexField = 2
+            val widthField = 3
+            val heightField = 4
+            val chunkPixelsField = 5
+            val pixelsLengthField = 6
+            val headerSize = 7 * Int.SIZE_BYTES // seven numbers of four bytes
+
+            if (length < headerSize) return null
 
             val chunk = WebCamChunk(
-                frameId = readInt(dataArr, offset, FRAME_ID),
-                chunkIndex = readInt(dataArr, offset, CHUNK_INDEX),
-                cameraIndex = readInt(dataArr, offset, CAMERA_INDEX),
-                width = readInt(dataArr, offset, WIDTH),
-                height = readInt(dataArr, offset, HEIGHT),
-                chunkPixels = readInt(dataArr, offset, CHUNK_PIXELS),
-                pixelsLength = readInt(dataArr, offset, PIXELS_LENGTH),
+                frameId = readInt(dataArr, offset, frameIdField),
+                chunkIndex = readInt(dataArr, offset, chunkIndexField),
+                cameraIndex = readInt(dataArr, offset, cameraIndexField),
+                width = readInt(dataArr, offset, widthField),
+                height = readInt(dataArr, offset, heightField),
+                chunkPixels = readInt(dataArr, offset, chunkPixelsField),
+                pixelsLength = readInt(dataArr, offset, pixelsLengthField),
                 dataArr = dataArr,
-                pixelsOffset = offset + HEADER_SIZE,
+                pixelsOffset = offset + headerSize,
             )
-            val isInPacket = chunk.pixelsLength in 0..(length - HEADER_SIZE)
+            val isInPacket = chunk.pixelsLength in 0..(length - headerSize)
             val hasSize = chunk.width > 0 && chunk.height > 0 && chunk.chunkPixels > 0
 
             return if (isInPacket && hasSize && chunk.chunkIndex >= 0) chunk else null
@@ -273,7 +269,8 @@ sealed class RecordDataType<T>(val code: Byte) {
             webCam: WebCamData,
             isFrameReadyInPacket: Boolean,
         ): WebCamData? {
-            val frameSize = chunk.width.toLong() * chunk.height * BYTES_PER_PIXEL
+            val bytesPerPixel = 2
+            val frameSize = chunk.width.toLong() * chunk.height * bytesPerPixel
 
             if (frameSize > Int.MAX_VALUE) return null
 
@@ -289,7 +286,7 @@ sealed class RecordDataType<T>(val code: Byte) {
 
             if (camera.a == 0) camera = camera.copy(a = chunk.frameId)
 
-            val destination = chunk.chunkIndex.toLong() * BYTES_PER_PIXEL * chunk.chunkPixels
+            val destination = chunk.chunkIndex.toLong() * bytesPerPixel * chunk.chunkPixels
             val isInFrame = destination + chunk.pixelsLength <= assemblingArr.size
 
             if (camera.a > chunk.frameId || !isInFrame) return null

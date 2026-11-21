@@ -91,11 +91,12 @@ class DeviceRadarNetworkSourceImpl @Inject constructor(
         previousSet: Set<DeviceDTO>,
         collector: FlowCollector<List<DeviceDTO>>,
     ): Set<DeviceDTO> {
+        val scanPeriod = 1.seconds
         val periodMark = TimeSource.Monotonic.markNow()
         val repliedSet = LinkedHashSet<DeviceDTO>()
 
         while (true) {
-            val timeLeft = SCAN_PERIOD - periodMark.elapsedNow()
+            val timeLeft = scanPeriod - periodMark.elapsedNow()
             val dataArr = withTimeoutOrNull(timeLeft) { socket.receive().packet.readByteArray() }
                 ?: return repliedSet
             val dto = ByteArrayToDeviceMapper(dataArr, dataArr.size) ?: continue
@@ -131,11 +132,13 @@ class DeviceRadarNetworkSourceImpl @Inject constructor(
      * @return the addresses the request is sent to.
      */
     private fun getRequestAddressList(subnetBroadcast: InetAddress?): List<InetSocketAddress> {
+        val requestPort = 4199 // the port the PC receives the radar request on
+        val broadcastAddress = InetSocketAddress(NetworkConst.BROADCAST_HOST, requestPort)
         val subnetAddress = subnetBroadcast?.hostAddress?.let { host ->
-            InetSocketAddress(host, NetworkConst.RADAR_REQUEST_PORT)
+            InetSocketAddress(host, requestPort)
         }
 
-        return listOfNotNull(REQUEST_ADDRESS, subnetAddress)
+        return listOfNotNull(broadcastAddress, subnetAddress)
     }
 
     private fun getLocalInterfaceAddressList(): List<InterfaceAddress> = runCatching {
@@ -151,12 +154,4 @@ class DeviceRadarNetworkSourceImpl @Inject constructor(
             .distinctBy { interfaceAddress -> interfaceAddress.address.hostAddress }
             .toList()
     }.onFailure(Timber::e).getOrElse { emptyList() }
-
-    companion object {
-
-        private val SCAN_PERIOD = 1.seconds
-
-        private val REQUEST_ADDRESS =
-            InetSocketAddress(NetworkConst.BROADCAST_HOST, NetworkConst.RADAR_REQUEST_PORT)
-    }
 }
