@@ -19,7 +19,9 @@ fun Vibrator.vibrate(vibratorEffect: VibratorEffect) {
                         .compose(),
                 )
             } else {
-                vibrate(VibrationEffect.createOneShot(VibratorEffect.DEFAULT_DURATION, effect))
+                val defaultDuration = 100L
+
+                vibrate(VibrationEffect.createOneShot(defaultDuration, effect))
             }
         } else {
             vibrate(VibrationEffect.createPredefined(effect))
@@ -87,9 +89,4 @@ enum class VibratorEffect(val effectClick: Int) {
             VibrationEffect.EFFECT_HEAVY_CLICK
         },
     ),
-    ;
-
-    companion object {
-        const val DEFAULT_DURATION = 100L
-    }
 }

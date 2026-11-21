@@ -13,8 +13,6 @@ object FirebaseId {
 
     private val firebase by lazy { FirebaseInstallations.getInstance() }
 
-    private val ID_TIMEOUT = 3.seconds
-
     private var idHashArr: ByteArray? = null
 
     /**
@@ -29,7 +27,8 @@ object FirebaseId {
 
     private suspend fun loadId(): String? =
         try {
-            val id = withTimeoutOrNull(ID_TIMEOUT) { firebase.id.await() }
+            val idTimeout = 3.seconds
+            val id = withTimeoutOrNull(idTimeout) { firebase.id.await() }
 
             if (id == null) {
                 Timber.w("timeout")

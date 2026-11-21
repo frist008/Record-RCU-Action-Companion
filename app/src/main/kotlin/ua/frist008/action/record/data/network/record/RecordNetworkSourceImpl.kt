@@ -28,7 +28,6 @@ import timber.log.Timber
 import ua.frist008.action.record.core.di.qualifier.concurrent.IO
 import ua.frist008.action.record.data.mapper.ByteArrayToRecordMapper
 import ua.frist008.action.record.data.network.DatagramSocketBinder
-import ua.frist008.action.record.data.network.NetworkConst
 import ua.frist008.action.record.data.network.NotConnectedException
 import ua.frist008.action.record.data.network.WifiNetworkBinder
 import ua.frist008.action.record.data.network.device.entity.DeviceDTO
@@ -60,12 +59,13 @@ class RecordNetworkSourceImpl @Inject constructor(
     private suspend fun holdConnection(dto: DeviceDTO) {
         _recordFlow.emit(RecordDTO(false))
 
+        val statusPort = 4197 // the port the phone receives the status packets of the session on
         val tcpSocket = connectTcp(dto)
 
         try {
             val udpSocket = DatagramSocketBinder.bind(
                 selectorManager = selectorManager,
-                port = NetworkConst.STATUS_PORT,
+                port = statusPort,
                 isBroadcast = false,
             )
 
@@ -82,10 +82,13 @@ class RecordNetworkSourceImpl @Inject constructor(
         }
     }
 
-    private suspend fun connectTcp(dto: DeviceDTO): Socket =
-        withTimeoutOrNull(CONNECT_TIMEOUT) {
+    private suspend fun connectTcp(dto: DeviceDTO): Socket {
+        val connectTimeout = 3.seconds
+
+        return withTimeoutOrNull(connectTimeout) {
             aSocket(selectorManager).tcp().connect(dto.ipStr, dto.port) { noDelay = true }
         } ?: throw SocketTimeoutException("${dto.ipStr}:${dto.port}")
+    }
 
     /**
      * Holds the open session until the PC closes the TCP connection or sends nothing, neither over
@@ -114,7 +117,8 @@ class RecordNetworkSourceImpl @Inject constructor(
         }
 
     private suspend fun readTcp(channel: ByteReadChannel, activityCounter: MutableStateFlow<Long>) {
-        val bufferArr = ByteArray(TCP_BUFFER_SIZE)
+        val tcpBufferSize = 1024
+        val bufferArr = ByteArray(tcpBufferSize)
 
         try {
             while (channel.readAvailable(bufferArr, 0, bufferArr.size) >= 0) {
@@ -140,10 +144,12 @@ class RecordNetworkSourceImpl @Inject constructor(
     }
 
     private suspend fun awaitSilence(activityCounter: StateFlow<Long>) {
+        val livenessTimeout = 7.5.seconds // five reads of 1.5 s in the original app
+
         while (true) {
             val seenCount = activityCounter.value
 
-            withTimeoutOrNull(LIVENESS_TIMEOUT) {
+            withTimeoutOrNull(livenessTimeout) {
                 activityCounter.firstOrNull { it != seenCount }
             } ?: return
         }
@@ -152,23 +158,13 @@ class RecordNetworkSourceImpl @Inject constructor(
     override suspend fun sendCommand(command: RecordCommand) =
         commandMutex.withLock {
             val channel = commandChannelState.value ?: throw NotConnectedException()
+            val writeTimeout = 1.5.seconds
 
             withContext(ioDispatcher) {
-                withTimeoutOrNull(WRITE_TIMEOUT) {
+                withTimeoutOrNull(writeTimeout) {
                     channel.writeFully(command.commandArr)
                     channel.flush()
                 } ?: throw SocketTimeoutException("$command")
             }
         }
-
-    companion object {
-
-        private val CONNECT_TIMEOUT = 3.seconds
-        private val WRITE_TIMEOUT = 1.5.seconds
-
-        /** Silence of the PC that ends the session: five reads of 1.5 s in the original app */
-        private val LIVENESS_TIMEOUT = 7.5.seconds
-
-        private const val TCP_BUFFER_SIZE = 1024
-    }
 }

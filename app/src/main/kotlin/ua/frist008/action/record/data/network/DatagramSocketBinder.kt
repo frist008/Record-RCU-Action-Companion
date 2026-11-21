@@ -12,10 +12,6 @@ import kotlin.time.Duration.Companion.milliseconds
 /** Binds the UDP sockets of the protocol, retrying while a port is held, as the original app */
 object DatagramSocketBinder {
 
-    private const val BIND_ATTEMPTS = 5
-
-    private val BIND_RETRY_DELAY = 500.milliseconds
-
     /**
      * Binds a UDP socket on every address of the phone.
      *
@@ -30,14 +26,16 @@ object DatagramSocketBinder {
         port: Int,
         isBroadcast: Boolean,
     ): BoundDatagramSocket {
+        val bindAttempts = 5
+        val bindRetryDelay = 500.milliseconds
         val localAddress = InetSocketAddress(NetworkConst.ANY_HOST, port)
 
-        repeat(BIND_ATTEMPTS - 1) { attempt ->
+        repeat(bindAttempts - 1) { attempt ->
             try {
                 return aSocket(selectorManager).udp().bind(localAddress) { broadcast = isBroadcast }
             } catch (e: BindException) {
                 Timber.w(e, "$port; attempt $attempt")
-                delay(BIND_RETRY_DELAY)
+                delay(bindRetryDelay)
             }
         }
 

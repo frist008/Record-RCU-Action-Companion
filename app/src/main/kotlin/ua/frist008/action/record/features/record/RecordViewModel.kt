@@ -211,12 +211,14 @@ import kotlin.time.Duration.Companion.seconds
     /** Restores the brightness of the dimmed screen and counts the time without touches again */
     fun onScreenTouch() {
         launch(dimJob) {
+            // The percent of the full brightness, as the window takes it from 0 to 1
+            val percentMax = 100f
             val currentSettings = settings.value
 
             updateSuccessState { state -> state.copy(dimBrightness = null) }
             delay(currentSettings.dimAfter)
             updateSuccessState { state ->
-                state.copy(dimBrightness = currentSettings.dimToPercent / PERCENT_MAX)
+                state.copy(dimBrightness = currentSettings.dimToPercent / percentMax)
             }
         }
     }
@@ -278,11 +280,13 @@ import kotlin.time.Duration.Companion.seconds
         }
     }
 
-    /** Opens the search when the PC stays out of reach for [AUTO_BACK_DELAY] */
+    /** Opens the search when the PC stays out of reach for 10 seconds */
     private fun startAutoBack() {
+        val autoBackDelay = 10.seconds
+
         if (autoBackJob.value?.isActive != true) {
             launch(autoBackJob) {
-                delay(AUTO_BACK_DELAY)
+                delay(autoBackDelay)
                 openConnection()
             }
         }
@@ -302,6 +306,9 @@ import kotlin.time.Duration.Companion.seconds
     }
 
     override suspend fun onFailure(cause: Throwable) {
+        // Pause before the search, which reconnects at once, against a loop of refusals
+        val reconnectDelay = 5.seconds
+
         when (cause) {
             is DisconnectException -> openConnection()
 
@@ -310,39 +317,28 @@ import kotlin.time.Duration.Companion.seconds
             // A command the PC never took ends the session, as 1.0.4 does on a failed write
             is SocketTimeoutException -> {
                 toastFlow.emit(R.string.record_error_not_connected)
-                delay(RECONNECT_DELAY)
+                delay(reconnectDelay)
                 openConnection()
             }
 
             is BindException -> {
                 toastFlow.emit(R.string.record_error_port_busy)
-                delay(RECONNECT_DELAY)
+                delay(reconnectDelay)
                 openConnection()
             }
 
             is ConnectException -> {
                 toastFlow.emit(R.string.record_error_already_used)
-                delay(RECONNECT_DELAY)
+                delay(reconnectDelay)
                 openConnection()
             }
 
             else -> {
                 toastFlow.emit(R.string.error_unknown_error)
                 super.onFailure(cause)
-                delay(RECONNECT_DELAY)
+                delay(reconnectDelay)
                 openConnection()
             }
         }
-    }
-
-    companion object {
-
-        private val AUTO_BACK_DELAY = 10.seconds
-
-        /** Pause before the search, which reconnects at once, against a loop of refusals */
-        private val RECONNECT_DELAY = 5.seconds
-
-        /** The percent of the full brightness, as the window takes it from 0 to 1 */
-        private const val PERCENT_MAX = 100f
     }
 }

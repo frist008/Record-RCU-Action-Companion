@@ -8,10 +8,10 @@ import ua.frist008.action.record.data.network.NetworkConst
  */
 object ByteArrayToIsFromPcMapper : (ByteArray, Int) -> Boolean {
 
-    private const val HEADER_SIZE = 4
+    override operator fun invoke(dataArr: ByteArray, size: Int): Boolean {
+        val headerSize = 4
 
-    override operator fun invoke(dataArr: ByteArray, size: Int): Boolean =
-        size >= HEADER_SIZE &&
+        return size >= headerSize &&
             dataArr[0] == NetworkConst.KEY_0 &&
             dataArr[1] == NetworkConst.KEY_1 &&
             ByteArrayToNumberMapper(
@@ -19,4 +19,5 @@ object ByteArrayToIsFromPcMapper : (ByteArray, Int) -> Boolean {
                 offset = NetworkConst.SEQUENCE_INDEX,
                 length = Short.SIZE_BYTES,
             ) > Short.MAX_VALUE
+    }
 }

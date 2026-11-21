@@ -239,26 +239,22 @@ private fun ColumnScope.PremiumPurchase(
     }
 }
 
-/** The center of the purple glow, from the top of the content */
-private val AccentGlowCenterY = 102.dp
-private val AccentGlowRadius = 120.dp
-
-/** The center of the glow under the badge, from the top of the content */
-private val BadgeGlowCenterY = 82.dp
-private val BadgeGlowRadius = 75.dp
-
 /**
  * Draws the two glows of the design behind the logo; they run past the top of the content, under
  * the app bar.
  */
 private fun Modifier.glows(accentColors: List<Color>, badgeColors: List<Color>): Modifier =
     drawWithCache {
+        val accentGlowCenterY = 102.dp // the center of the purple glow, from the top of the content
+        val accentGlowRadius = 120.dp
+        val badgeGlowCenterY = 82.dp // the center of the badge glow, from the top of the content
+        val badgeGlowRadius = 75.dp
         val centerX = size.width / 2
-        val accentCenter = Offset(centerX, AccentGlowCenterY.toPx())
-        val accentRadius = AccentGlowRadius.toPx()
+        val accentCenter = Offset(centerX, accentGlowCenterY.toPx())
+        val accentRadius = accentGlowRadius.toPx()
         val accentBrush = Brush.radialGradient(accentColors, accentCenter, accentRadius)
-        val badgeCenter = Offset(centerX, BadgeGlowCenterY.toPx())
-        val badgeRadius = BadgeGlowRadius.toPx()
+        val badgeCenter = Offset(centerX, badgeGlowCenterY.toPx())
+        val badgeRadius = badgeGlowRadius.toPx()
         val badgeBrush = Brush.radialGradient(badgeColors, badgeCenter, badgeRadius)
 
         onDrawBehind {
