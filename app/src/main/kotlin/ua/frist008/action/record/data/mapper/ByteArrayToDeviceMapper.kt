@@ -6,13 +6,13 @@ import ua.frist008.action.record.data.network.device.entity.DeviceDTO
 /** Reads the PC from its reply to the radar request; `null` when the packet is no such reply */
 object ByteArrayToDeviceMapper : (ByteArray, Int) -> DeviceDTO? {
 
-    private const val REPLY_MIN_SIZE = 10
-
     override operator fun invoke(dataArr: ByteArray, size: Int): DeviceDTO? {
-        if (size < REPLY_MIN_SIZE || !ByteArrayToIsFromPcMapper(dataArr, size)) return null
+        val replyMinSize = 10
+        val typeRadarReply: Byte = 1 // the packet type in byte 10 of a reply to the radar request
 
-        val isNamed = size > REPLY_MIN_SIZE &&
-            dataArr[NetworkConst.TYPE_INDEX] == NetworkConst.TYPE_RADAR_REPLY
+        if (size < replyMinSize || !ByteArrayToIsFromPcMapper(dataArr, size)) return null
+
+        val isNamed = size > replyMinSize && dataArr[NetworkConst.TYPE_INDEX] == typeRadarReply
 
         return DeviceDTO(
             name = if (isNamed) ByteArrayToNameMapper(dataArr, size) else null, // dataArr[11-…]

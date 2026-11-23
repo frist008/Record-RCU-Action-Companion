@@ -1,40 +1,57 @@
 package ua.frist008.action.record.core.util.sound
 
-import android.media.AudioManager
-import android.media.MediaActionSound
-import android.media.ToneGenerator
+import android.content.Context
+import android.media.AudioAttributes
+import android.media.SoundPool
+import androidx.annotation.RawRes
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import timber.log.Timber
+import ua.frist008.action.record.R
 import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
- * Plays the signals of the app with the sounds of the system, so it ships no audio file; a mute
- * silences them until the app is closed.
+ * Plays the signals of the app from its own sound files, so they sound the same on every phone; a
+ * mute silences them until the app is closed.
  */
-@Singleton class SoundPlayer @Inject constructor() {
+@Singleton class SoundPlayer @Inject constructor(
+    @param:ApplicationContext private val context: Context,
+) {
 
     private val isMutedMutableFlow = MutableStateFlow(false)
 
     /** Whether the sounds are muted from the app bar of the record screen */
     val isMutedFlow: StateFlow<Boolean> = isMutedMutableFlow.asStateFlow()
 
-    private val mediaActionSound by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        MediaActionSound().apply {
-            AppSound.entries.forEach { sound -> sound.actionSound?.let(::load) }
-        }
+    private val soundPool by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        val attributes = AudioAttributes.Builder()
+            .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+            .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .build()
+
+        SoundPool.Builder()
+            .setMaxStreams(AppSound.entries.size)
+            .setAudioAttributes(attributes)
+            .build()
     }
 
-    private val toneGenerator by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        runCatching { ToneGenerator(AudioManager.STREAM_NOTIFICATION, TONE_VOLUME) }
-            .onFailure(Timber::w)
-            .getOrNull()
+    /** The id of each signal in [soundPool]: the first read starts loading the files */
+    private val soundIds by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
+        AppSound.entries.associateWith { sound -> soundPool.load(context, sound.rawRes, 1) }
     }
 
     fun toggleMute() {
         isMutedMutableFlow.value = !isMutedMutableFlow.value
+    }
+
+    /**
+     * Starts loading the sound files, so the first signal plays at once; it reads the files, so it
+     * is called off the main thread. A signal played before its file is loaded stays silent.
+     */
+    fun load() {
+        soundIds
     }
 
     /**
@@ -45,35 +62,19 @@ import javax.inject.Singleton
     fun play(sound: AppSound) {
         if (isMutedMutableFlow.value) return
 
-        val actionSound = sound.actionSound
-
-        if (actionSound != null) {
-            mediaActionSound.play(actionSound)
-        } else {
-            toneGenerator?.startTone(sound.tone, TONE_DURATION_MS)
-        }
-    }
-
-    companion object {
-
-        private const val TONE_VOLUME = 80
-        private const val TONE_DURATION_MS = 600
+        soundPool.play(soundIds.getValue(sound), 1f, 1f, 1, 0, 1f)
     }
 }
 
 /**
  * A signal of the app.
  *
- * @property actionSound the sound of the camera of the system it plays, or null for a [tone].
- * @property tone the tone of [ToneGenerator] it plays when it has no [actionSound].
+ * @property rawRes the sound file it plays.
  */
-enum class AppSound(val actionSound: Int?, val tone: Int) {
-    RECORD(
-        actionSound = MediaActionSound.START_VIDEO_RECORDING,
-        tone = ToneGenerator.TONE_PROP_ACK,
-    ),
-    PAUSE(actionSound = MediaActionSound.FOCUS_COMPLETE, tone = ToneGenerator.TONE_PROP_ACK),
-    STOP(actionSound = MediaActionSound.STOP_VIDEO_RECORDING, tone = ToneGenerator.TONE_PROP_ACK),
-    LOW_SPACE(actionSound = null, tone = ToneGenerator.TONE_SUP_ERROR),
-    DURATION(actionSound = null, tone = ToneGenerator.TONE_PROP_BEEP2),
+enum class AppSound(@param:RawRes val rawRes: Int) {
+    RECORD(R.raw.sound_record),
+    PAUSE(R.raw.sound_pause),
+    STOP(R.raw.sound_stop),
+    LOW_SPACE(R.raw.sound_low_space),
+    DURATION(R.raw.sound_duration),
 }

@@ -11,12 +11,15 @@ import kotlin.random.Random
  */
 class RadarRequestDataHolder private constructor(phoneIdArr: ByteArray?) {
 
-    private val clientDataArr = ByteArray(REQUEST_SIZE)
+    private val clientDataArr: ByteArray
 
     init {
+        val requestSize = 32
+        val phoneIdIndex = 10
         val sequence = Random.nextInt(Short.MAX_VALUE.toInt())
         val replyPort = NetworkConst.RADAR_REPLY_PORT
 
+        clientDataArr = ByteArray(requestSize)
         clientDataArr[0] = NetworkConst.KEY_0 // clientDataArr[0-1] key
         clientDataArr[1] = NetworkConst.KEY_1
         // clientDataArr[2-3] sequence
@@ -29,7 +32,7 @@ class RadarRequestDataHolder private constructor(phoneIdArr: ByteArray?) {
         // clientDataArr[10-13] is the id of the phone: its first four bytes
         phoneIdArr?.copyInto(
             destination = clientDataArr,
-            destinationOffset = PHONE_ID_INDEX,
+            destinationOffset = phoneIdIndex,
             endIndex = Int.SIZE_BYTES,
         )
     }
@@ -49,9 +52,6 @@ class RadarRequestDataHolder private constructor(phoneIdArr: ByteArray?) {
     }
 
     companion object {
-
-        private const val REQUEST_SIZE = 32
-        private const val PHONE_ID_INDEX = 10
 
         suspend fun newInstance() = RadarRequestDataHolder(FirebaseId.getIdMurmurHash3())
     }
