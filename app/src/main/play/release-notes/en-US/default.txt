@@ -1,0 +1,7 @@
+New:
+• Sound alerts for low disk space, for pressing “Record”, “Pause” and “Stop”, and for a set recording time
+• The record screen shows whether the microphone and the camera are recording
+• FPS history chart on the record and stream screens
+• Choice of the minimum free space below which Storage turns red
+• Choice of the app language
+• Dimming of the record screen when it isn’t touched for a long time

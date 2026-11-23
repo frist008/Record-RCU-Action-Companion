@@ -1,0 +1,23 @@
+Mobilā pavadoņlietotne Record RCU ļauj vadīt ierakstīšanu un tiešraidi jūsu Windows datorā!
+
+Pateicoties Record RCU, varat paslēpt Action pārklājuma logu un vairs to neieslēgt!
+
+Galvenās funkcijas:
+- Spēles ieraksta vai straumes attālināta sākšana, kā arī ieraksta pauzēšana vai procesa apturēšana.
+- Informācija katru sekundi par: kadru ātrumu (FPS), video ieraksta laiku (stundās, minūtēs un sekundēs), brīvo vietu jūsu datorā (GB un MB), tiešsaistes straumes statusu (ieslēgts/izslēgts), spēles dzinēju (Vulkan, OpenGL u. c.), mikrofona un kameras ierakstīšanu.
+- FPS vēstures grafiks ieraksta un straumēšanas ekrānā.
+- Skaņas signāli: diskā maz vietas, “Ierakstīt”, “Pauze” un “Apturēt” nospiešana, iestatītais ieraksta laiks; skaņas izslēdzamas tieši ieraksta ekrānā.
+- Ieraksta ekrāna aptumšošana, ja tam ilgi nepieskaras.
+- Savs brīvās vietas minimums, zem kura Storage kļūst sarkans.
+- Lietotnes valodas izvēle (Android 13 un jaunāka versija).
+- Lietotne pati atrod datoru un pievienojas tam, kuram pievienojāties pagājušajā reizē.
+- “Premium”: viens pirkums uz visiem laikiem, bez abonementa, noņem reklāmas.
+
+Lai lietotne darbotos, pārliecinieties, ka ir izpildīti šie nosacījumi:
+- Sistēmā Windows mainiet tīkla tipu no Publisks uz Privāts (Iestatījumi -> Tīkls -> Rekvizīti -> Privāts);
+- Instalējiet Action Mirillis savā Windows;
+- Palaidiet Action Mirillis savā Windows un vispārīgajos iestatījumos atzīmējiet "Enable Action! RCU" (iespējams, būs jārestartē lietotne);
+- Instalējiet un palaidiet šo lietotni;
+
+Prasības:
+- Mobilajai ierīcei un datoram jābūt savienotiem ar vienu lokālo tīklu.

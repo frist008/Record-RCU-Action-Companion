@@ -1,0 +1,7 @@
+Bago:
+• Tunog na alerto kapag kulang ang espasyo sa disk, kapag pinindot ang “Record”, “Pause” at “Stop”, at sa itinakdang oras ng pag-record
+• Makikita sa screen ng pag-record kung nagre-record ang mikropono at camera
+• Chart ng kasaysayan ng FPS sa screen ng pag-record at pag-stream
+• Pagpili ng pinakamababang libreng espasyo na kapag mas mababa ay magiging pula ang Storage
+• Pagpili ng wika ng app
+• Pagpapadilim ng screen ng pag-record kapag matagal itong hindi nahahawakan

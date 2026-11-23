@@ -1,0 +1,7 @@
+Nowości:
+• Sygnał dźwiękowy przy małej ilości miejsca na dysku, po naciśnięciu „Nagrywaj”, „Pauza” i „Stop” oraz po ustawionym czasie nagrywania
+• Ekran nagrywania pokazuje, czy mikrofon i kamera nagrywają
+• Wykres historii FPS na ekranie nagrywania i transmisji
+• Wybór minimum wolnego miejsca, poniżej którego Storage robi się czerwony
+• Wybór języka aplikacji
+• Przyciemnianie ekranu nagrywania, gdy długo nikt go nie dotyka

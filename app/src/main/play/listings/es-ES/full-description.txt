@@ -1,0 +1,23 @@
+¡El complemento móvil Record RCU te permite controlar la grabación y la transmisión en directo en tu PC con Windows!
+
+¡Gracias a Record RCU puedes ocultar la ventana superpuesta de Action y no volver a activarla nunca!
+
+Funciones principales:
+- Inicio remoto de la grabación o transmisión de un juego, además de pausar la grabación o detener el proceso.
+- Información cada segundo sobre: velocidad de fotogramas (FPS), tiempo de grabación del vídeo (en horas, minutos y segundos), espacio libre en tu PC (en GB y MB), estado de la transmisión en línea (activada/desactivada), motor del juego (Vulkan, OpenGL, etc.), grabación del micrófono y la cámara.
+- Gráfico del historial de FPS en las pantallas de grabación y transmisión.
+- Señales sonoras: poco espacio en disco, pulsación de «Grabar», «Pausa» y «Detener», tiempo de grabación fijado; los sonidos se desactivan directamente en la pantalla de grabación.
+- Atenuación de la pantalla de grabación cuando no se toca durante mucho tiempo.
+- Tu propio mínimo de espacio libre, por debajo del cual Storage se pone rojo.
+- Elección del idioma de la app (Android 13 y posteriores).
+- La app encuentra el PC por sí sola y se conecta al que usaste la última vez.
+- «Premium»: una sola compra para siempre, sin suscripción, elimina los anuncios.
+
+Para que la app funcione, asegúrate de cumplir estas condiciones:
+- En Windows, cambia el tipo de red de Pública a Privada (Configuración -> Red -> Propiedades -> Privada);
+- Instala Action Mirillis en tu Windows;
+- Ejecuta Action Mirillis en tu Windows y marca la casilla "Enable Action! RCU" en la configuración general (puede que tengas que reiniciar la app);
+- Instala y abre esta app;
+
+Requisitos:
+- El dispositivo móvil y el PC deben estar conectados a la misma red local.

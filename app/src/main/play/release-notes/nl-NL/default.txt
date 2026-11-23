@@ -1,0 +1,7 @@
+Nieuw:
+• Geluidssignaal bij weinig schijfruimte, bij het indrukken van ‘Opnemen’, ‘Pauze’ en ‘Stoppen’ en bij een ingestelde opnameduur
+• Het opnamescherm toont of de microfoon en de camera opnemen
+• FPS-geschiedenisgrafiek op het opname- en streamscherm
+• Keuze van de minimale vrije ruimte waaronder Storage rood wordt
+• Keuze van de app-taal
+• Dimmen van het opnamescherm als het lang niet wordt aangeraakt

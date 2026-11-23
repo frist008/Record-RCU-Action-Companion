@@ -1,0 +1,23 @@
+Sa mobile companion na Record RCU, makokontrol mo ang pag-record at live stream sa iyong Windows PC!
+
+Dahil sa Record RCU, maitatago mo ang overlay window ng Action at hindi mo na ito kailangang buksan muli!
+
+Pangunahing feature:
+- Pagsisimula nang malayuan ng pag-record o pag-stream ng laro, pati ang pag-pause ng recording o pagtigil ng proseso.
+- Impormasyon bawat segundo tungkol sa: frame rate (FPS), oras ng pag-record ng video (sa oras, minuto at segundo), libreng espasyo sa iyong PC (sa GB at MB), status ng online stream (on/off), game engine (Vulkan, OpenGL, atbp.), pag-record ng mikropono at camera.
+- Chart ng kasaysayan ng FPS sa screen ng pag-record at pag-stream.
+- Mga tunog na signal: kulang na espasyo sa disk, pagpindot sa “Record”, “Pause” at “Stop”, itinakdang oras ng pag-record; napapatay ang mga tunog mismo sa screen ng pag-record.
+- Pagpapadilim ng screen ng pag-record kapag matagal itong hindi nahahawakan.
+- Sariling pinakamababang libreng espasyo na kapag mas mababa ay magiging pula ang Storage.
+- Pagpili ng wika ng app (Android 13 at mas bago).
+- Kusang hinahanap ng app ang PC at kumokonekta sa PC na huli mong kinonektahan.
+- “Premium”: isang bili habambuhay, walang subscription, inaalis ang mga ad.
+
+Para gumana ang app, tiyaking natupad mo ang mga sumusunod:
+- Sa Windows, palitan ang uri ng network mula Public patungong Private (Settings -> Network -> Properties -> Private);
+- I-install ang Action Mirillis sa iyong Windows;
+- Patakbuhin ang Action Mirillis sa iyong Windows at i-check ang "Enable Action! RCU" sa General Settings (maaaring kailanganing i-restart ang app);
+- I-install at patakbuhin ang app na ito;
+
+Mga kinakailangan:
+- Dapat nakakonekta ang mobile device at PC sa iisang lokal na network.

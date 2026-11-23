@@ -1,0 +1,23 @@
+Record RCU mobil yardımcısı, Windows bilgisayarınızda kaydı ve canlı yayını yönetmenizi sağlar!
+
+Record RCU sayesinde Action’ın yer paylaşımı penceresini gizleyebilir ve bir daha hiç açmayabilirsiniz!
+
+Temel özellikler:
+- Bir oyunun kaydını veya yayınını uzaktan başlatma, kaydı duraklatma ya da durdurma.
+- Her saniye şu bilgiler: kare hızı (FPS), video kayıt süresi (saat, dakika ve saniye olarak), bilgisayarınızdaki boş alan (GB ve MB olarak), çevrimiçi yayın durumu (açık/kapalı), oyun motoru (Vulkan, OpenGL vb.), mikrofon ve kamera kaydı.
+- Kayıt ve yayın ekranlarında FPS geçmişi grafiği.
+- Sesli sinyaller: disk alanının azalması, “Kaydet”, “Duraklat” ve “Durdur” düğmelerine basılması, ayarlanan kayıt süresi; sesler doğrudan kayıt ekranında kapatılır.
+- Uzun süre dokunulmadığında kayıt ekranının karartılması.
+- Altına inildiğinde Storage’ın kırmızıya döndüğü kendi minimum boş alanınız.
+- Uygulama dilini seçme (Android 13 ve üzeri).
+- Uygulama bilgisayarı kendisi bulur ve en son bağlandığınız bilgisayara bağlanır.
+- “Premium”: abonelik olmadan tek seferlik kalıcı satın alma, reklamları kaldırır.
+
+Uygulamanın çalışması için şu koşulları sağladığınızdan emin olun:
+- Windows’ta ağ türünü Ortak’tan Özel’e değiştirin (Ayarlar -> Ağ -> Özellikler -> Özel);
+- Windows’unuza Action Mirillis’i yükleyin;
+- Windows’unuzda Action Mirillis’i çalıştırın ve Genel Ayarlar’da "Enable Action! RCU" kutusunu işaretleyin (uygulamayı yeniden başlatmanız gerekebilir);
+- Bu uygulamayı yükleyin ve çalıştırın;
+
+Gereksinimler:
+- Mobil cihaz ve bilgisayar aynı yerel ağa bağlı olmalıdır.
