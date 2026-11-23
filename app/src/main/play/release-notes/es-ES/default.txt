@@ -1,0 +1,7 @@
+Novedades:
+• Aviso sonoro de poco espacio en disco, al pulsar «Grabar», «Pausa» y «Detener» y al llegar al tiempo de grabación fijado
+• La pantalla de grabación muestra si el micrófono y la cámara están grabando
+• Gráfico del historial de FPS en las pantallas de grabación y transmisión
+• Elección del espacio libre mínimo por debajo del cual Storage se pone rojo
+• Elección del idioma de la app
+• Atenuación de la pantalla de grabación cuando no se toca durante mucho tiempo

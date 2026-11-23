@@ -1,0 +1,25 @@
+Mobile App Companion lets you control your Windows desktop computer for Record and LIVE stream gameplay games!
+
+With Record RCU Companion you can hide the PC overlay app!
+
+Key Features:
+- Controls: start, stop, and pause RECORDING gameplay games or Windows desktop;
+- Controls: start and stop, STREAMING gameplay games or Windows desktop;
+- Displays information: Framerate (FPS), Video recording time (in hours, minutes, and seconds), Free space on your PC (GB, MB), Online Stream activity status (on/off), Recording engine (Vulkan, OpenGL, etc...), and Microphone and camera recording;
+- FPS history chart on the record and stream screens;
+- Sound signals: low disk space, pressing “Record”, “Pause” and “Stop”, a set recording time; sounds turn off right on the record screen;
+- Dimming of the record screen when it isn’t touched for a long time;
+- Your own minimum free space, below which Storage turns red;
+- Choice of the app language (Android 13 and newer);
+- The app finds your PC by itself and connects to the one you connected to last time;
+- “Premium”: one purchase forever, no subscription, removes ads.
+
+Getting started:
+- In Windows, change the network type from Public to Private (Settings -> Network -> Properties -> Private);
+- Install Action Mirillis software on your Windows;
+- Run Action Mirillis on your Windows and the active checkbox in General Settings "Enable Action! RCU" (maybe Reboot App);
+- Install and run this app;
+- Profit!
+
+Requirements:
+- Mobile device and PC must be connected to the same local network.

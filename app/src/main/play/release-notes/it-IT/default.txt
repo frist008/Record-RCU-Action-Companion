@@ -1,0 +1,7 @@
+Novità:
+• Avviso sonoro per poco spazio su disco, alla pressione di «Registra», «Pausa» e «Stop» e al tempo di registrazione impostato
+• La schermata di registrazione mostra se il microfono e la videocamera stanno registrando
+• Grafico della cronologia degli FPS nelle schermate di registrazione e streaming
+• Scelta dello spazio libero minimo sotto il quale Storage diventa rosso
+• Scelta della lingua dell’app
+• Oscuramento della schermata di registrazione quando non viene toccata a lungo

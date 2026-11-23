@@ -1,0 +1,7 @@
+Nytt:
+• Ljudsignal vid lite diskutrymme, vid tryck på ”Spela in”, ”Paus” och ”Stoppa” och vid inställd inspelningstid
+• Inspelningsskärmen visar om mikrofonen och kameran spelar in
+• Diagram över FPS-historiken på inspelnings- och streamingskärmen
+• Val av minsta lediga utrymme under vilket Storage blir rött
+• Val av appens språk
+• Dämpning av inspelningsskärmen när den inte rörs på länge

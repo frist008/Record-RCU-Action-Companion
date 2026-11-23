@@ -1,0 +1,7 @@
+Yenilikler:
+• Disk alanı azaldığında, “Kaydet”, “Duraklat” ve “Durdur” düğmelerine basıldığında ve ayarlanan kayıt süresi dolduğunda sesli uyarı
+• Kayıt ekranında mikrofonun ve kameranın kayıt yapıp yapmadığı görünür
+• Kayıt ve yayın ekranlarında FPS geçmişi grafiği
+• Altına inildiğinde Storage’ın kırmızıya döndüğü minimum boş alanı seçme
+• Uygulama dilini seçme
+• Uzun süre dokunulmadığında kayıt ekranının karartılması

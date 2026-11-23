@@ -1,0 +1,7 @@
+Jaunumi:
+• Skaņas signāls, ja diskā trūkst vietas, nospiežot “Ierakstīt”, “Pauze” un “Apturēt” un sasniedzot iestatīto ieraksta laiku
+• Ieraksta ekrānā redzams, vai mikrofons un kamera ieraksta
+• FPS vēstures grafiks ieraksta un straumēšanas ekrānā
+• Minimālās brīvās vietas izvēle, zem kuras Storage kļūst sarkans
+• Lietotnes valodas izvēle
+• Ieraksta ekrāna aptumšošana, ja tam ilgi nepieskaras

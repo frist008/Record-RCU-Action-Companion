@@ -1,0 +1,23 @@
+Med mobilappen Record RCU styr du inspelning och livestreaming på din Windows-dator!
+
+Tack vare Record RCU kan du dölja överlagringsfönstret i Action och aldrig slå på det igen!
+
+Huvudfunktioner:
+- Starta inspelning eller streaming av ett spel på distans, pausa inspelningen eller stoppa den.
+- Information varje sekund om: bildfrekvens (FPS), videons inspelningstid (i timmar, minuter och sekunder), ledigt utrymme på din dator (i GB och MB), status för onlinestreamen (på/av), spelmotor (Vulkan, OpenGL m.m.), inspelning av mikrofon och kamera.
+- Diagram över FPS-historiken på inspelnings- och streamingskärmen.
+- Ljudsignaler: lite diskutrymme, tryck på ”Spela in”, ”Paus” och ”Stoppa”, inställd inspelningstid; ljuden stängs av direkt på inspelningsskärmen.
+- Dämpning av inspelningsskärmen när den inte rörs på länge.
+- Eget minsta lediga utrymme som Storage blir rött under.
+- Val av appens språk (Android 13 och senare).
+- Appen hittar datorn själv och ansluter till den du anslöt till senast.
+- ”Premium”: ett köp för alltid, utan prenumeration, tar bort annonser.
+
+För att appen ska fungera, se till att följande villkor är uppfyllda:
+- Ändra nätverkstypen i Windows från Offentligt till Privat (Inställningar -> Nätverk -> Egenskaper -> Privat);
+- Installera Action Mirillis på din Windows;
+- Starta Action Mirillis på din Windows och markera rutan "Enable Action! RCU" i de allmänna inställningarna (appen kan behöva startas om);
+- Installera och starta den här appen;
+
+Krav:
+- Mobilenheten och datorn måste vara anslutna till samma lokala nätverk.

@@ -1,0 +1,7 @@
+Neu:
+• Tonsignal bei wenig Speicherplatz auf der Festplatte, beim Drücken von „Aufnahme“, „Pause“ und „Stopp“ und bei der eingestellten Aufnahmedauer
+• Der Aufnahmebildschirm zeigt, ob Mikrofon und Kamera aufnehmen
+• FPS-Verlaufsdiagramm auf dem Aufnahme- und Stream-Bildschirm
+• Wahl des Mindestspeichers, unter dem Storage rot wird
+• Wahl der App-Sprache
+• Abdunkeln des Aufnahmebildschirms, wenn er lange nicht berührt wird

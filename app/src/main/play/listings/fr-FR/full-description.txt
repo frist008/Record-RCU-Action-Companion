@@ -1,0 +1,23 @@
+Le compagnon mobile Record RCU vous permet de contrôler l’enregistrement et la diffusion en direct sur votre PC Windows !
+
+Grâce à Record RCU, vous pouvez masquer la fenêtre de superposition d’Action et ne plus jamais l’activer !
+
+Fonctions principales :
+- Démarrage à distance de l’enregistrement ou de la diffusion d’un jeu, ainsi que la mise en pause ou l’arrêt de l’enregistrement.
+- Informations chaque seconde sur : la fréquence d’images (FPS), la durée d’enregistrement de la vidéo (en heures, minutes et secondes), l’espace libre sur votre PC (en Go et Mo), l’état de la diffusion en ligne (activée/désactivée), le moteur du jeu (Vulkan, OpenGL, etc.), l’enregistrement du micro et de la caméra.
+- Graphique de l’historique des FPS sur les écrans d’enregistrement et de diffusion.
+- Signaux sonores : espace disque insuffisant, appui sur « Enregistrer », « Pause » et « Arrêter », durée d’enregistrement définie ; les sons se coupent directement sur l’écran d’enregistrement.
+- Assombrissement de l’écran d’enregistrement quand on ne le touche pas longtemps.
+- Votre propre espace libre minimum, en dessous duquel Storage devient rouge.
+- Choix de la langue de l’application (Android 13 et versions ultérieures).
+- L’application trouve le PC toute seule et se connecte à celui auquel vous vous êtes connecté la dernière fois.
+- « Premium » : un seul achat pour toujours, sans abonnement, supprime les publicités.
+
+Pour que l’application fonctionne, vérifiez les conditions suivantes :
+- Dans Windows, passez le type de réseau de Public à Privé (Paramètres -> Réseau -> Propriétés -> Privé) ;
+- Installez Action Mirillis sur votre Windows ;
+- Lancez Action Mirillis sur votre Windows et cochez "Enable Action! RCU" dans les paramètres généraux (il faudra peut-être redémarrer l’application) ;
+- Installez et lancez cette application ;
+
+Configuration requise :
+- L’appareil mobile et le PC doivent être connectés au même réseau local.

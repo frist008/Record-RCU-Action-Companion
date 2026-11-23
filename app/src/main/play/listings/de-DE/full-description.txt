@@ -1,0 +1,23 @@
+Mit der mobilen Begleit-App Record RCU steuerst du Aufnahme und Livestream auf deinem Windows-PC!
+
+Dank Record RCU kannst du das Overlay-Fenster von Action ausblenden und musst es nie wieder einschalten!
+
+Hauptfunktionen:
+- Aufnahme oder Stream eines Spiels aus der Ferne starten, die Aufnahme pausieren oder den Vorgang stoppen.
+- Jede Sekunde Infos zu: Bildrate (FPS), Aufnahmezeit des Videos (in Stunden, Minuten und Sekunden), freiem Speicher auf deinem PC (in GB und MB), Status des Online-Streams (an/aus), Spiel-Engine (Vulkan, OpenGL usw.), Aufnahme von Mikrofon und Kamera.
+- FPS-Verlaufsdiagramm auf dem Aufnahme- und Stream-Bildschirm.
+- Tonsignale: wenig Speicherplatz auf der Festplatte, Drücken von „Aufnahme“, „Pause“ und „Stopp“, eingestellte Aufnahmedauer; die Töne lassen sich direkt auf dem Aufnahmebildschirm ausschalten.
+- Abdunkeln des Aufnahmebildschirms, wenn er lange nicht berührt wird.
+- Eigener Mindestspeicher, unter dem Storage rot wird.
+- Wahl der App-Sprache (Android 13 und neuer).
+- Die App findet den PC selbst und verbindet sich mit dem, mit dem du zuletzt verbunden warst.
+- „Premium“: ein Kauf für immer, ohne Abo, entfernt die Werbung.
+
+Damit die App funktioniert, stelle Folgendes sicher:
+- Ändere in Windows den Netzwerktyp von Öffentlich auf Privat (Einstellungen -> Netzwerk -> Eigenschaften -> Privat);
+- Installiere Action Mirillis auf deinem Windows;
+- Starte Action Mirillis auf deinem Windows und aktiviere in den allgemeinen Einstellungen das Kästchen "Enable Action! RCU" (eventuell musst du die App neu starten);
+- Installiere und starte diese App;
+
+Voraussetzungen:
+- Mobilgerät und PC müssen mit demselben lokalen Netzwerk verbunden sein.

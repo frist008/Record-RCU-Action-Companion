@@ -1,0 +1,7 @@
+Nouveautés :
+• Alerte sonore si l’espace disque manque, à l’appui sur « Enregistrer », « Pause » et « Arrêter » et à la durée d’enregistrement définie
+• L’écran d’enregistrement indique si le micro et la caméra enregistrent
+• Graphique de l’historique des FPS sur les écrans d’enregistrement et de diffusion
+• Choix de l’espace libre minimum sous lequel Storage devient rouge
+• Choix de la langue de l’application
+• Assombrissement de l’écran d’enregistrement quand on ne le touche pas longtemps

@@ -1,0 +1,23 @@
+Met de mobiele companion-app Record RCU bedien je opnames en livestreams op je Windows-pc!
+
+Dankzij Record RCU kun je het overlayvenster van Action verbergen en hoef je het nooit meer aan te zetten!
+
+Belangrijkste functies:
+- Op afstand de opname of stream van een game starten, en de opname pauzeren of stoppen.
+- Elke seconde informatie over: framerate (FPS), opnametijd van de video (in uren, minuten en seconden), vrije ruimte op je pc (in GB en MB), status van de livestream (aan/uit), game-engine (Vulkan, OpenGL enz.), opname van microfoon en camera.
+- FPS-geschiedenisgrafiek op het opname- en streamscherm.
+- Geluidssignalen: weinig schijfruimte, indrukken van ‘Opnemen’, ‘Pauze’ en ‘Stoppen’, een ingestelde opnameduur; de geluiden zet je direct op het opnamescherm uit.
+- Dimmen van het opnamescherm als het lang niet wordt aangeraakt.
+- Eigen minimale vrije ruimte waaronder Storage rood wordt.
+- Keuze van de app-taal (Android 13 en nieuwer).
+- De app vindt de pc zelf en maakt verbinding met de pc waarmee je de vorige keer verbonden was.
+- ‘Premium’: één aankoop voor altijd, zonder abonnement, verwijdert advertenties.
+
+Zorg ervoor dat aan de volgende voorwaarden is voldaan:
+- Wijzig in Windows het netwerktype van Openbaar naar Privé (Instellingen -> Netwerk -> Eigenschappen -> Privé);
+- Installeer Action Mirillis op je Windows;
+- Start Action Mirillis op je Windows en vink in de algemene instellingen "Enable Action! RCU" aan (mogelijk moet je de app opnieuw starten);
+- Installeer en start deze app;
+
+Vereisten:
+- Mobiel apparaat en pc moeten met hetzelfde lokale netwerk verbonden zijn.
