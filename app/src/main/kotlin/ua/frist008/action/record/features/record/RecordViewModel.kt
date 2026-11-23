@@ -93,6 +93,10 @@ import kotlin.time.Duration.Companion.seconds
 
     init {
         launch {
+            soundPlayer.load()
+        }
+
+        launch {
             while (viewModelScope.isActive) {
                 try {
                     recordRepository.connect()
