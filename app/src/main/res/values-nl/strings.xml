@@ -81,6 +81,8 @@
     <string name="settings_ads">Advertenties</string>
     <string name="settings_ads_summary">Je toestemming voor advertenties wijzigen</string>
     <string name="settings_version_pattern">Versie %1$s</string>
+    <string name="settings_about_privacy_policy">Privacybeleid</string>
+    <string name="settings_about_licenses">Opensourcelicenties</string>
     <string name="settings_minutes_pattern">%1$d min</string>
     <string name="settings_percent_pattern">%1$d%%</string>
     <string name="settings_decrease_pattern">Verlagen: %1$s</string>

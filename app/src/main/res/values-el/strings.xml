@@ -81,6 +81,8 @@
     <string name="settings_ads">Διαφημίσεις</string>
     <string name="settings_ads_summary">Αλλαγή συγκατάθεσης για διαφημίσεις</string>
     <string name="settings_version_pattern">Έκδοση %1$s</string>
+    <string name="settings_about_privacy_policy">Πολιτική απορρήτου</string>
+    <string name="settings_about_licenses">Άδειες ανοιχτού κώδικα</string>
     <string name="settings_minutes_pattern">%1$d λεπ.</string>
     <string name="settings_percent_pattern">%1$d%%</string>
     <string name="settings_decrease_pattern">Μείωση: %1$s</string>

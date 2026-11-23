@@ -81,6 +81,8 @@
     <string name="settings_ads">โฆษณา</string>
     <string name="settings_ads_summary">เปลี่ยนความยินยอมเกี่ยวกับโฆษณา</string>
     <string name="settings_version_pattern">เวอร์ชัน %1$s</string>
+    <string name="settings_about_privacy_policy">นโยบายความเป็นส่วนตัว</string>
+    <string name="settings_about_licenses">สัญญาอนุญาตโอเพนซอร์ส</string>
     <string name="settings_minutes_pattern">%1$d นาที</string>
     <string name="settings_percent_pattern">%1$d%%</string>
     <string name="settings_decrease_pattern">ลด: %1$s</string>

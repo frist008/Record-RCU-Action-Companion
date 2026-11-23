@@ -81,6 +81,8 @@
     <string name="settings_ads">الإعلانات</string>
     <string name="settings_ads_summary">تغيير موافقتك على الإعلانات</string>
     <string name="settings_version_pattern">الإصدار %1$s</string>
+    <string name="settings_about_privacy_policy">سياسة الخصوصية</string>
+    <string name="settings_about_licenses">تراخيص البرامج مفتوحة المصدر</string>
     <string name="settings_minutes_pattern">%1$d دقيقة</string>
     <string name="settings_percent_pattern">%1$d%%</string>
     <string name="settings_decrease_pattern">تقليل: %1$s</string>

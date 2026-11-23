@@ -81,6 +81,8 @@
     <string name="settings_ads">Реклама</string>
     <string name="settings_ads_summary">Изменить согласие на рекламу</string>
     <string name="settings_version_pattern">Версия %1$s</string>
+    <string name="settings_about_privacy_policy">Политика конфиденциальности</string>
+    <string name="settings_about_licenses">Лицензии открытого ПО</string>
     <string name="settings_minutes_pattern">%1$d мин</string>
     <string name="settings_percent_pattern">%1$d %%</string>
     <string name="settings_decrease_pattern">Уменьшить: %1$s</string>

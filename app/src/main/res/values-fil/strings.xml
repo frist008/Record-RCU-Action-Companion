@@ -81,6 +81,8 @@
     <string name="settings_ads">Mga ad</string>
     <string name="settings_ads_summary">Baguhin ang iyong pahintulot sa mga ad</string>
     <string name="settings_version_pattern">Bersyon %1$s</string>
+    <string name="settings_about_privacy_policy">Patakaran sa privacy</string>
+    <string name="settings_about_licenses">Mga lisensya ng open source</string>
     <string name="settings_minutes_pattern">%1$d min</string>
     <string name="settings_percent_pattern">%1$d%%</string>
     <string name="settings_decrease_pattern">Bawasan: %1$s</string>

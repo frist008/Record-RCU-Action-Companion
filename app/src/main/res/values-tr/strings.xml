@@ -81,6 +81,8 @@
     <string name="settings_ads">Reklamlar</string>
     <string name="settings_ads_summary">Reklam onayınızı değiştirin</string>
     <string name="settings_version_pattern">Sürüm %1$s</string>
+    <string name="settings_about_privacy_policy">Gizlilik politikası</string>
+    <string name="settings_about_licenses">Açık kaynak lisansları</string>
     <string name="settings_minutes_pattern">%1$d dk</string>
     <string name="settings_percent_pattern">%%%1$d</string>
     <string name="settings_decrease_pattern">Azalt: %1$s</string>

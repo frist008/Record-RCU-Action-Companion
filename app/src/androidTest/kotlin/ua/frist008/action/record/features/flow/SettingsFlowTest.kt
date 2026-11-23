@@ -1,6 +1,7 @@
 package ua.frist008.action.record.features.flow
 
 import android.os.Build
+import androidx.compose.ui.test.assertHasClickAction
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertIsEnabled
 import androidx.compose.ui.test.assertIsNotEnabled
@@ -72,7 +73,8 @@ class SettingsFlowTest {
      * 4. «Recording time» on — «Signal after» is enabled, and its «+» shows 35 min;
      * 5. «+» of «Dim to» shows 20 %; «First touch» on;
      * 6. the phone is rotated — the values stay;
-     * 7. «About» shows the name and the version of the app; back returns to «Settings»;
+     * 7. «About» shows the name and the version of the app and the links «Privacy policy» and
+     *    «Open source licenses»; back returns to «Settings»;
      * 8. back returns to the record screen; the gear again shows the values kept;
      * 9. the app goes to the background and comes back — the values stay;
      * 10. the back arrow tapped twice in a row returns to the record screen once, and the app
@@ -198,6 +200,12 @@ class SettingsFlowTest {
         appFlow.tap(about)
         appFlow.waitFor(appFlow.getString(R.string.settings_about_app_name))
         appFlow.findText(version).assertIsDisplayed()
+        appFlow.scrollTo(appFlow.getString(R.string.settings_about_privacy_policy))
+            .assertIsDisplayed()
+            .assertHasClickAction()
+        appFlow.scrollTo(appFlow.getString(R.string.settings_about_licenses))
+            .assertIsDisplayed()
+            .assertHasClickAction()
         appFlow.pressBack()
     }
 }
