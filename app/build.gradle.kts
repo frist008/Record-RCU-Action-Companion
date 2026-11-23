@@ -15,6 +15,7 @@ plugins {
     alias(libs.plugins.firebase.perf)
     alias(libs.plugins.licensee)
     alias(libs.plugins.play.publisher)
+    alias(libs.plugins.oss.licenses)
 }
 
 // Google Play: the bundle goes as a draft to the internal track, or to the track `-PplayTrack`
@@ -36,8 +37,6 @@ play {
 licensee {
     allow("Apache-2.0")
     allow("MIT")
-    // TODO Add screen in settings with
-    //  https://github.com/google/play-services-plugins/tree/main/oss-licenses-plugin
     allow("BSD-3-Clause")
     allowUrl("https://developer.android.com/studio/terms.html")
 }
@@ -196,6 +195,7 @@ dependencies {
     implementation(libs.ktor.network)
 
     // Util
+    implementation(libs.oss.licenses)
     coreLibraryDesugaring(libs.jdk.desugar)
     implementation(libs.leakcanary)
     debugImplementation(libs.leakcanary.debug)

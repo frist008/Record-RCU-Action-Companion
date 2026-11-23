@@ -71,6 +71,10 @@ import ua.frist008.action.record.core.ui.theme.RootTheme
 
     val fps = Palette.WHITE_NEUTRAL
 
+    /** The chart of the FPS under its number: green on the stream, red on the recording */
+    val fpsChartStream = Palette.GREEN_LIGHT
+    val fpsChartRecord = Palette.RED_LIGHT
+
     val hint = Palette.WHITE_NEUTRAL
     val hintDim = Palette.WHITE_DIM
 

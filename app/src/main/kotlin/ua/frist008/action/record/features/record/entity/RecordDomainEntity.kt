@@ -41,13 +41,19 @@ data class RecordDomainEntity(
         // val fps = min(fps, maxFps)
 
         return if (recordSuccessState == null) {
+            val buttonsData = mapRecordType(recordModeType, isStream)
+
             RecordSuccessState(
-                buttonsData = mapRecordType(recordModeType, isStream),
+                buttonsData = buttonsData,
                 fps = fps,
                 maxFps = maxFps,
+                fpsHistory = mapFpsHistory(
+                    fpsHistory = persistentListOf(),
+                    fps = fps,
+                    isRunning = buttonsData.isRecording,
+                    isNewSecond = true,
+                ),
                 time = DateUtils.formatFullTime(duration),
-                // TODO maxDuration = maxDuration IMPORTANT
-                // TODO recTooltip = recTooltip
                 engine = mapEngine(engine),
                 storage = mapStorage(
                     freeSpaceWithTimestampList = persistentListOf(),
@@ -55,11 +61,9 @@ data class RecordDomainEntity(
                     minFreeSpace = minFreeSpace,
                 ),
                 live = mapLiveState(streamType, isStream),
-                isWebCam = isWebCam, // TODO show cam IMPORTANT
-                isMic = isMic, // TODO show mic IMPORTANT
+                isWebCam = isWebCam,
+                isMic = isMic,
                 gameActive = gameActive,
-                // TODO webCamType = webCamType,
-                // TODO webCamDataList = webCamDataList,
             )
         } else {
             val storage = recordSuccessState.storage
@@ -70,14 +74,19 @@ data class RecordDomainEntity(
                 } else {
                     persistentListOf()
                 }
+            val time = DateUtils.formatFullTime(duration)
 
             recordSuccessState.copy(
                 buttonsData = buttonsData,
                 fps = fps,
                 maxFps = maxFps,
-                time = DateUtils.formatFullTime(duration),
-                // TODO maxDuration = maxDuration IMPORTANT
-                // TODO recTooltip = recTooltip
+                fpsHistory = mapFpsHistory(
+                    fpsHistory = recordSuccessState.fpsHistory,
+                    fps = fps,
+                    isRunning = buttonsData.isRecording,
+                    isNewSecond = time != recordSuccessState.time,
+                ),
+                time = time,
                 engine = mapEngine(engine),
                 storage = mapStorage(
                     freeSpaceWithTimestampList = lastFreeSpaceWithTimestampList,
@@ -85,16 +94,31 @@ data class RecordDomainEntity(
                     minFreeSpace = minFreeSpace,
                 ),
                 live = mapLiveState(streamType, isStream),
-                isWebCam = isWebCam, // TODO show cam IMPORTANT
-                isMic = isMic, // TODO show mic IMPORTANT
+                isWebCam = isWebCam,
+                isMic = isMic,
                 gameActive = gameActive,
-                // TODO webCamType = webCamType,
-                // TODO webCamDataList = webCamDataList,
             )
         }
     }
 
     companion object {
+
+        /**
+         * Keeps the FPS of the last seconds the recording or the stream runs, one value a second,
+         * for the chart under the FPS; a stop or a pause clears it.
+         *
+         * @param isNewSecond whether the time of the recording moved on since the last value.
+         */
+        private fun mapFpsHistory(
+            fpsHistory: ImmutableList<Int>,
+            fps: Int,
+            isRunning: Boolean,
+            isNewSecond: Boolean,
+        ): ImmutableList<Int> = when {
+            !isRunning -> persistentListOf()
+            !isNewSecond -> fpsHistory
+            else -> (fpsHistory.takeLast(FpsChartState.POINTS - 1) + fps).toImmutableList()
+        }
 
         private fun mapLiveState(streamType: StreamType, isStream: Boolean) =
             LiveState(isOnline = streamType != StreamType.OFF, isLive = isStream)
