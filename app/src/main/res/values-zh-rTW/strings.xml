@@ -81,6 +81,8 @@
     <string name="settings_ads">廣告</string>
     <string name="settings_ads_summary">變更您對廣告的同意</string>
     <string name="settings_version_pattern">版本 %1$s</string>
+    <string name="settings_about_privacy_policy">隱私權政策</string>
+    <string name="settings_about_licenses">開放原始碼授權</string>
     <string name="settings_minutes_pattern">%1$d 分鐘</string>
     <string name="settings_percent_pattern">%1$d%%</string>
     <string name="settings_decrease_pattern">減少：%1$s</string>

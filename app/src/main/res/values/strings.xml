@@ -81,6 +81,8 @@
     <string name="settings_ads">Ads</string>
     <string name="settings_ads_summary">Change your consent to ads</string>
     <string name="settings_version_pattern">Version %1$s</string>
+    <string name="settings_about_privacy_policy">Privacy policy</string>
+    <string name="settings_about_licenses">Open source licenses</string>
     <string name="settings_minutes_pattern">%1$d min</string>
     <string name="settings_percent_pattern">%1$d%%</string>
     <string name="settings_decrease_pattern">Decrease: %1$s</string>

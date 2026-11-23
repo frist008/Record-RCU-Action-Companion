@@ -81,6 +81,8 @@
     <string name="settings_ads">विज्ञापन</string>
     <string name="settings_ads_summary">विज्ञापनों के लिए अपनी सहमति बदलें</string>
     <string name="settings_version_pattern">संस्करण %1$s</string>
+    <string name="settings_about_privacy_policy">गोपनीयता नीति</string>
+    <string name="settings_about_licenses">ओपन सोर्स लाइसेंस</string>
     <string name="settings_minutes_pattern">%1$d मिनट</string>
     <string name="settings_percent_pattern">%1$d%%</string>
     <string name="settings_decrease_pattern">घटाएँ: %1$s</string>
