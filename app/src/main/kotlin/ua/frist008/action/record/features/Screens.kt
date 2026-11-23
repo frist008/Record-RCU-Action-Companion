@@ -34,6 +34,9 @@ sealed class NavCommand(
     /** The form of Google where the user changes the consent to ads, where the law asks for one */
     @Serializable @Immutable object AdsPrivacyOptions : NavCommand()
 
+    /** The screen of Google with the licenses of the open-source libraries of the app */
+    @Serializable @Immutable object OpenSourceLicenses : NavCommand()
+
     @Serializable @Immutable object ConnectionScreen : NavCommand()
 
     @Serializable @Immutable object RecordScreen : NavCommand()

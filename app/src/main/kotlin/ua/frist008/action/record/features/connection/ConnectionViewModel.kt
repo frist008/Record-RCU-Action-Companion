@@ -84,7 +84,6 @@ import kotlin.time.Duration.Companion.seconds
         restartScan()
     }
 
-    // TODO For version 1.2: move work with Repository to ForegroundService
     private fun restartScan() {
         val scanRetryDelay = 1.seconds // pause before the search restarts after a network failure
 

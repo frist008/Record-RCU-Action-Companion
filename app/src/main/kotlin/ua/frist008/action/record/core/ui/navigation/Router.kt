@@ -10,6 +10,7 @@ import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.app.ShareCompat
 import androidx.core.net.toUri
 import androidx.navigation3.runtime.NavKey
+import com.google.android.gms.oss.licenses.OssLicensesMenuActivity
 import com.google.android.ump.UserMessagingPlatform
 import timber.log.Timber
 import ua.frist008.action.record.core.util.media.MimeType
@@ -35,6 +36,7 @@ class Router(
             is NavCommand.AppLanguageSettings -> openAppLanguageSettings()
             is NavCommand.AppDetailsSettings -> openAppDetailsSettings()
             is NavCommand.AdsPrivacyOptions -> openAdsPrivacyOptions()
+            is NavCommand.OpenSourceLicenses -> openOpenSourceLicenses()
             else -> {
                 if (command.isReplaceScreen) backStack.removeLastOrNull()
                 backStack.add(command)
@@ -102,6 +104,10 @@ class Router(
         } else {
             Timber.d("AdsPrivacyOptions: no activity to show the form in")
         }
+    }
+
+    private fun openOpenSourceLicenses() {
+        context.startActivity(Intent(context, OssLicensesMenuActivity::class.java))
     }
 
     private fun share(command: NavCommand.Share) {

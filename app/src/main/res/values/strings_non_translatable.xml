@@ -18,5 +18,6 @@
 
     <string name="settings_gb_pattern" translatable="false">%1$d GB</string>
     <string name="settings_about_app_name" translatable="false">Record RCU\nAction Companion</string>
+    <string name="settings_about_privacy_policy_url" translatable="false">https://doc-hosting.flycricket.io/record-rcu-action-companion/8e78b7e1-21b7-4374-9771-23f812de956d/privacy</string>
 
 </resources>

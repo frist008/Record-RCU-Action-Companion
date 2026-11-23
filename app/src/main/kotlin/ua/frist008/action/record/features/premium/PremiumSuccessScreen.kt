@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
@@ -128,7 +129,7 @@ private fun ColumnScope.PremiumBadge() {
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
             .padding(top = 16.dp)
-            .height(24.dp)
+            .heightIn(min = 24.dp)
             .border(width = 1.dp, color = badgeColor, shape = 12.dp.shape)
             .padding(horizontal = 10.dp),
     ) {
@@ -206,7 +207,7 @@ private fun ColumnScope.PremiumPurchase(
         modifier = Modifier
             .padding(start = 8.dp, top = 24.dp, end = 8.dp)
             .fillMaxWidth()
-            .height(48.dp)
+            .heightIn(min = 48.dp)
             .dropShadow(
                 shape = buttonShape,
                 shadow = Shadow(

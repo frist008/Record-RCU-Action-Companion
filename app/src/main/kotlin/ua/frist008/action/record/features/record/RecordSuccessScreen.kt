@@ -6,21 +6,27 @@ import android.graphics.Color
 import android.view.View
 import androidx.annotation.StringRes
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxScope
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -29,6 +35,9 @@ import androidx.compose.runtime.key
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.drawscope.Stroke
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -58,6 +67,7 @@ import ua.frist008.action.record.core.ui.theme.AppTheme
 import ua.frist008.action.record.core.ui.theme.color.PreviewPalette
 import ua.frist008.action.record.features.record.entity.EngineState
 import ua.frist008.action.record.features.record.entity.ErrorType
+import ua.frist008.action.record.features.record.entity.FpsChartState
 import ua.frist008.action.record.features.record.entity.LiveState
 import ua.frist008.action.record.features.record.entity.RecordButtonsState
 import ua.frist008.action.record.features.record.entity.RecordSuccessState
@@ -93,10 +103,13 @@ fun RecordSuccessScreen(
         },
         topAppBarHeight = 56.dp,
     ) { innerPadding ->
+        // A phone too short for the screen scrolls it, the FPS keeping the height of its number
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding),
+                .padding(innerPadding)
+                .verticalScroll(rememberScrollState())
+                .height(IntrinsicSize.Min),
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally,
         ) {
@@ -105,6 +118,7 @@ fun RecordSuccessScreen(
                 fps = state.fps.toString(),
                 isPaused = state.buttonsData.isPaused,
                 isRecording = state.buttonsData.isRecording,
+                chart = state.fpsChart,
             )
             TimeComponent(
                 time = state.time,
@@ -288,6 +302,7 @@ private fun ColumnScope.FpsContainer(
     fps: String,
     isPaused: Boolean,
     isRecording: Boolean,
+    chart: FpsChartState?,
 ) {
     Box(
         modifier = Modifier
@@ -296,7 +311,8 @@ private fun ColumnScope.FpsContainer(
             .padding(vertical = 8.dp),
         contentAlignment = Alignment.Center,
     ) {
-        // TODO add Chart
+        if (chart != null) FpsChart(chart)
+
         Row(
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically,
@@ -317,6 +333,54 @@ private fun ColumnScope.FpsContainer(
             )
             FpsSuffix(isPaused, isRecording)
         }
+    }
+}
+
+/**
+ * The FPS of the last seconds as a line over a fill fading down, behind the FPS number: the stream
+ * draws it green across the whole width, the recording red across 55 % of it, as the design does.
+ */
+@Composable
+private fun BoxScope.FpsChart(chart: FpsChartState) {
+    val isLive = chart.isLive
+    val color = if (isLive) AppTheme.colors.fpsChartStream else AppTheme.colors.fpsChartRecord
+
+    Canvas(
+        modifier = Modifier
+            .fillMaxHeight()
+            .fillMaxWidth(if (isLive) 1f else 0.55f)
+            .align(Alignment.CenterStart),
+    ) {
+        val values = chart.values
+        val maxFps = maxOf(chart.maxFps, 1)
+        val width = size.width
+        val height = size.height
+        val step = width / (FpsChartState.POINTS - 1)
+        val firstX = width - (values.size - 1) * step
+        val line = Path()
+
+        // The newest value stands at the right edge, the older ones go left a step a second
+        values.forEachIndexed { index, value ->
+            val x = firstX + index * step
+            val y = height * (1f - value.coerceIn(0, maxFps).toFloat() / maxFps)
+
+            if (index == 0) line.moveTo(x, y) else line.lineTo(x, y)
+        }
+
+        val fill = Path().apply {
+            addPath(line)
+            lineTo(width, height)
+            lineTo(firstX, height)
+            close()
+        }
+
+        drawPath(
+            path = fill,
+            brush = Brush.verticalGradient(
+                colors = listOf(color.copy(alpha = 0.7f), color.copy(alpha = 0f)),
+            ),
+        )
+        drawPath(path = line, color = color, style = Stroke(width = 3.dp.toPx()))
     }
 }
 

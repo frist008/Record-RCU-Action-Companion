@@ -6,6 +6,7 @@ import androidx.compose.ui.graphics.Color
 import com.google.android.libraries.ads.mobile.sdk.banner.AdSize
 import kotlinx.collections.immutable.ImmutableList
 import kotlinx.collections.immutable.persistentListOf
+import kotlinx.collections.immutable.toImmutableList
 import ua.frist008.action.record.R
 import ua.frist008.action.record.core.ui.UIState
 import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
@@ -27,7 +28,21 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
     val isFirstTouchOnlyWakes: Boolean = false,
     /** The banner and the way to remove it: shown once Google Play said Premium is not bought */
     val isAdsVisible: Boolean = false,
+    /** The FPS of the last seconds the recording or the stream runs, one value a second */
+    val fpsHistory: ImmutableList<Int> = persistentListOf(),
 ) : UIState.Success() {
+
+    /**
+     * The chart of [fpsHistory] under the FPS: shown while the recording or the stream runs, but
+     * not while the stream is unavailable, as the design draws it; null while it is hidden.
+     */
+    val fpsChart = live.isLive.let { isLive ->
+        if (buttonsData.isRecording && (!isLive || live.isOnline) && fpsHistory.size > 1) {
+            FpsChartState(values = fpsHistory, maxFps = maxFps, isLive = isLive)
+        } else {
+            null
+        }
+    }
 
     /** The red camera beside the time: shown only while the recording runs */
     val isWebCamIndicatorVisible = isWebCam && buttonsData.isRecording
@@ -63,6 +78,7 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
             buttonsData = RecordButtonsState.previewRecording(),
             isWebCam = true,
             isMic = false,
+            fpsHistory = previewFpsHistory(),
         )
 
         fun previewPaused() = previewStop().copy(
@@ -84,7 +100,38 @@ import ua.frist008.action.record.core.ui.theme.color.AppColorScheme
             buttonsData = RecordButtonsState.previewStream(),
             isWebCam = true,
             isMic = true,
+            fpsHistory = previewFpsHistory(),
         )
+
+        /** A saw of the FPS: from 60 down by 3 a second, back to 60 every 7 seconds */
+        private fun previewFpsHistory(): ImmutableList<Int> {
+            val maxFps = 60
+            val drop = 3
+            val period = 7
+
+            return List(FpsChartState.POINTS) { second -> maxFps - second % period * drop }
+                .toImmutableList()
+        }
+    }
+}
+
+/**
+ * The chart of the FPS under its number.
+ *
+ * @property values the FPS of the last seconds, one a second, the oldest first.
+ * @property maxFps the FPS the top of the chart stands for.
+ * @property isLive whether the stream runs, drawn green across the width, or the recording, red.
+ */
+@Immutable data class FpsChartState(
+    val values: ImmutableList<Int>,
+    val maxFps: Int,
+    val isLive: Boolean,
+) {
+
+    companion object {
+
+        /** The points of the chart, as many as Figma draws: the seconds it shows */
+        const val POINTS = 37
     }
 }
 
